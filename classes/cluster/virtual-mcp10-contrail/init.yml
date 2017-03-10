@@ -2,6 +2,8 @@ classes:
 - system.linux.system.single
 - system.rsyslog.client.single
 - system.openssh.server.team.lab
+- system.openssh.server.team.tcpcloud
+- system.openssh.server.team.mcp_qa
 - cluster.virtual-mcp10-contrail.infra
 - cluster.virtual-mcp10-contrail.openstack
 - cluster.virtual-mcp10-contrail.stacklight
