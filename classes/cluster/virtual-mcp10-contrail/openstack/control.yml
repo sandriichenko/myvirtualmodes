@@ -1,7 +1,7 @@
 classes:
 - system.linux.system.lowmem
 - system.linux.system.repo.mcp_contrail
-- system.linux.system.repo.mos92
+- system.linux.system.repo.mcp10
 - system.linux.system.repo.mos9_galera
 #- system.linux.system.repo.mos9
 #- system.linux.system.repo.mos9_latest
