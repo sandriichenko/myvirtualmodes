@@ -5,6 +5,8 @@ classes:
 - system.nova.compute.cluster
 - system.opencontrail.compute.cluster
 - system.heka.alarm.openstack_compute
+- system.opencontrail.client.cluster
+- system.opencontrail.client.resource.virtual_router
 - service.opencontrail.compute.cluster
 - cluster.virtual-mcp10-contrail
 parameters:
