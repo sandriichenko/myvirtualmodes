@@ -1,6 +1,7 @@
 parameters:
   _param:
     openstack_version: mitaka
+    apt_mk_version: nightly
     openstack_region: RegionOne
     admin_email: root@localhost
     cluster_public_host: 172.16.10.254

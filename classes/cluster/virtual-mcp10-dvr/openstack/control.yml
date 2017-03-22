@@ -1,7 +1,8 @@
 classes:
 - system.linux.system.lowmem
-- system.linux.system.repo.mcp10
-- system.linux.system.repo.tcp_extra
+- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.saltstack.trusty
 - system.memcached.server.single
 - system.rabbitmq.server.cluster
 - system.rabbitmq.server.vhost.openstack

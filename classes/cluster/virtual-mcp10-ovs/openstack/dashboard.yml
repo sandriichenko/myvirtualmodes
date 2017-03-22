@@ -1,4 +1,6 @@
 classes:
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.saltstack.trusty
 - system.linux.system.repo.tcp_mk20
 - service.horizon.server.single
 - cluster.virtual-mcp10-ovs

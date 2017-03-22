@@ -1,6 +1,7 @@
 classes:
-- system.linux.system.repo.mcp10
-- system.linux.system.repo.tcp_extra
+- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.saltstack.xenial
 - system.neutron.gateway.cluster
 - cluster.virtual-mcp10-ovs
 parameters:
