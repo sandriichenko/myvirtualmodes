@@ -18,6 +18,7 @@ classes:
 - system.ceilometer.server.cluster
 - system.ceilometer.server.backend.influxdb
 - system.aodh.server.cluster
+- system.opencontrail.client.resource.edge_router
 - system.opencontrail.control.cluster
 - system.opencontrail.client.cluster
 - system.opencontrail.client.resource.control_node
@@ -47,6 +48,8 @@ parameters:
     cluster_node02_address: ${_param:openstack_control_node02_address}
     cluster_node03_hostname: ctl03
     cluster_node03_address: ${_param:openstack_control_node03_address}
+    opencontrail_router01_hostname: vsrx01.${_param:cluster_domain}
+    opencontrail_router01_address: 172.16.10.200
   linux:
     system:
       package:
