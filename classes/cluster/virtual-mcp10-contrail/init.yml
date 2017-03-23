@@ -12,7 +12,6 @@ parameters:
   _param:
     cluster_domain: virtual-mcp10-contrail.local
     cluster_name: virtual-mcp10-contrail
-    cluster_public_host: _
 
     # infra service addresses
     infra_config_address: 172.16.10.100
