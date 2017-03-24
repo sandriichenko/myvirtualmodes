@@ -25,6 +25,7 @@ classes:
 - system.opencontrail.client.resource.config_node
 - system.opencontrail.client.resource.database_node
 - system.opencontrail.client.resource.analytics_node
+- system.haproxy.proxy.listen.opencontrail.analytics
 - system.heka.ceilometer_collector.single
 - system.galera.server.cluster
 - system.galera.server.database.aodh
