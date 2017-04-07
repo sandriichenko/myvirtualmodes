@@ -1,0 +1,15 @@
+classes:
+#- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.mos10
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.saltstack.xenial
+- system.horizon.server.single
+- cluster.virtual-mcp11-dvr
+parameters:
+  linux:
+    network:
+      interface:
+        eth1:
+          enabled: true
+          type: eth
+          proto: dhcp
