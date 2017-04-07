@@ -44,6 +44,7 @@ parameters:
     cluster_node02_address: ${_param:openstack_control_node02_address}
     cluster_node03_hostname: ctl03
     cluster_node03_address: ${_param:openstack_control_node03_address}
+    keepalived_openstack_telemetry_vip_interface: ens4
   linux:
     system:
       package:
