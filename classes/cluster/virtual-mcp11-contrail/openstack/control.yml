@@ -9,6 +9,7 @@ classes:
 - system.memcached.server.single
 - system.rabbitmq.server.cluster
 - system.rabbitmq.server.vhost.openstack
+- system.keystone.server.wsgi
 - system.keystone.server.cluster
 - system.keystone.server.storage.glusterfs
 - system.glance.control.cluster
