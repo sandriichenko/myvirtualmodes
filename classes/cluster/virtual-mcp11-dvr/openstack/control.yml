@@ -34,7 +34,7 @@ classes:
 
 parameters:
   _param:
-    keepalived_vip_interface: eth1
+    keepalived_vip_interface: ens4
   linux:
     system:
       package:
@@ -42,7 +42,7 @@ parameters:
           version: latest
     network:
       interface:
-        eth1:
+        ens4:
           enabled: true
           type: eth
           proto: dhcp
