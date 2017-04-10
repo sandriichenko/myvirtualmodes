@@ -18,7 +18,7 @@ classes:
 parameters:
   _param:
     keepalived_vip_interface: eth1
-    cluster_vip_address: ${_param:openstack_control_address}
+    cluster_vip_address: ${_param:opencontrail_control_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: ntw01
     cluster_node01_address: ${_param:opencontrail_control_node01_address}
@@ -46,9 +46,19 @@ parameters:
         port: 9042
       network:
         host: ${_param:openstack_control_address}
+      identity:
+        host: ${_param:openstack_control_address}
     common:
       network:
+        host: ${_param:openstack_control_address}
+      identity:
         host: ${_param:openstack_control_address}
     config:
       network:
         host: ${_param:openstack_control_address}
+      identity:
+        host: ${_param:openstack_control_address}
+      message_queue:
+        engine: rabbitmq
+        host: ${_param:openstack_control_address}
+        port: 5672
