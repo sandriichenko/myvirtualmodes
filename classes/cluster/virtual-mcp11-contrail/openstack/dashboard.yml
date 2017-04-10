@@ -8,6 +8,7 @@ classes:
 - system.horizon.server.plugin.overrides
 - cluster.virtual-mcp11-contrail
 parameters:
+  linux:
     network:
       interface:
         ens4:

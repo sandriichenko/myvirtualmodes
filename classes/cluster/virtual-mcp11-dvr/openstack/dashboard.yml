@@ -9,7 +9,7 @@ parameters:
   linux:
     network:
       interface:
-        eth1:
+        ens4:
           enabled: true
           type: eth
           proto: dhcp

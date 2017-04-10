@@ -10,9 +10,13 @@ classes:
 - system.rabbitmq.server.cluster
 - system.rabbitmq.server.vhost.openstack
 - system.keystone.server.cluster
-- system.keystone.server.storage.glusterfs
 - system.glance.control.cluster
-- system.glance.control.storage.glusterfs
+- system.glusterfs.server.volume.glance
+- system.glusterfs.server.volume.keystone
+- system.glusterfs.server.cluster
+- system.glusterfs.client.cluster
+- system.glusterfs.client.volume.glance
+- system.glusterfs.client.volume.keystone
 - system.nova.control.cluster
 - system.neutron.control.opencontrail.cluster
 - system.cinder.control.cluster
