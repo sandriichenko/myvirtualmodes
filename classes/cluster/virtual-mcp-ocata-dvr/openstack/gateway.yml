@@ -4,7 +4,7 @@ classes:
 - system.linux.system.repo.saltstack.xenial
 - system.linux.network.interface.single_ovs_dvr
 - system.neutron.gateway.cluster
-- cluster.virtual-mcp11-dvr
+- cluster.virtual-mcp-ocata-dvr
 parameters:
   _param:
     primary_interface: ens4

@@ -3,7 +3,7 @@ classes:
 - system.linux.system.repo.saltstack.xenial
 - system.linux.system.repo.mcp.openstack
 - service.horizon.server.single
-- cluster.virtual-mcp11-ovs
+- cluster.virtual-mcp-ocata-ovs
 parameters:
   linux:
     network:

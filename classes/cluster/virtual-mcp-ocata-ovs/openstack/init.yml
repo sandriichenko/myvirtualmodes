@@ -1,23 +1,23 @@
 parameters:
   _param:
-    openstack_version: newton
+    openstack_version: ocata
     apt_mk_version: nightly
     mcp_repo_version: 1.1
     openstack_region: RegionOne
     admin_email: root@localhost
+    cluster_public_protocol: http
     cluster_public_host: 172.16.10.254
     neutron_public_protocol: http
-    cluster_public_protocol: http
-    neutron_control_dvr: True
+    neutron_control_dvr: False
     neutron_tenant_network_types: "flat,vxlan"
     neutron_l3_ha: False
     neutron_global_physnet_mtu: 1500
     neutron_external_mtu: 1500
-    neutron_gateway_dvr: True
-    neutron_gateway_agent_mode: dvr_snat
-    neutron_compute_dvr: True
-    neutron_compute_agent_mode: dvr
-    neutron_compute_external_access: True
+    neutron_gateway_dvr: False
+    neutron_gateway_agent_mode: legacy
+    neutron_compute_dvr: False
+    neutron_compute_agent_mode: legacy
+    neutron_compute_external_access: False
     galera_server_cluster_name: openstack_cluster
     galera_server_maintenance_password: workshop
     galera_server_admin_password: workshop
@@ -73,6 +73,7 @@ parameters:
     keystone_neutron_password: workshop
     keystone_nova_password: workshop
     ceilometer_secret_key: workshop
+    metadata_password: workshop
     horizon_version: ${_param:openstack_version}
     horizon_secret_key: opaesee8Que2yahJoh9fo0eefo1Aeyo6ahyei8zeiboh3aeth5loth7ieNa5xi5e
     horizon_identity_host: ${_param:cluster_vip_address}

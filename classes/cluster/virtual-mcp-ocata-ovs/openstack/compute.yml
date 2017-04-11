@@ -5,7 +5,7 @@ classes:
 - system.nova.compute.cluster
 - system.neutron.compute.cluster
 - system.heka.alarm.openstack_compute
-- cluster.virtual-mcp11-ovs
+- cluster.virtual-mcp-ocata-ovs
 parameters:
   _param:
     primary_interface: ens4

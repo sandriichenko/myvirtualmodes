@@ -2,10 +2,8 @@ classes:
 - system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.xenial
-- system.nova.compute.cluster
-- system.neutron.compute.cluster
-- system.heka.alarm.openstack_compute
-- cluster.virtual-mcp11-ovs
+- system.neutron.gateway.cluster
+- cluster.virtual-mcp-ocata-ovs
 parameters:
   _param:
     primary_interface: ens4
@@ -13,19 +11,6 @@ parameters:
     external_interface: ens6
     interface_mtu: 9000
     linux_system_codename: xenial
-  nova:
-    compute:
-      vncproxy_url: http://${_param:cluster_vip_address}:6080
-      notification:
-        driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
-        notify_on:
-          state_change: vm_and_task_state
-      message_queue:
-        members:
-          - host: ${_param:openstack_control_node01_address}
-          - host: ${_param:openstack_control_node02_address}
-          - host: ${_param:openstack_control_node03_address}
   linux:
     network:
       bridge: openvswitch
@@ -48,17 +33,23 @@ parameters:
           mtu: ${_param:interface_mtu}
           proto: manual
           type: eth
+        br-floating:
+          enabled: true
+          type: ovs_bridge
+          mtu: ${_param:interface_mtu}
         br-mgmt:
           enabled: true
           type: bridge
           proto: static
           address: ${_param:single_address}
           netmask: 255.255.255.0
+          mtu: ${_param:interface_mtu}
           use_interfaces:
           - ${_param:primary_interface}
         br-mesh:
           enabled: true
           type: bridge
+          mtu: ${_param:interface_mtu}
           proto: static
           address: ${_param:tenant_address}
           netmask: 255.255.255.0
