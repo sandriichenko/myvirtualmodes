@@ -88,6 +88,8 @@ parameters:
         openstack_proxy_node01:
           classes:
           - cluster.virtual-mcp11-ovs.openstack.proxy
+          params:
+            linux_system_codename: xenial
         stacklight_server_node01:
           classes:
           - system.influxdb.server.single

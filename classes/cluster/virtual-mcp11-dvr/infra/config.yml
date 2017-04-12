@@ -89,3 +89,8 @@ parameters:
           classes:
           - system.influxdb.server.single
           - system.influxdb.database.stacklight
+        openstack_proxy_node01:
+          classes:
+          - cluster.virtual-mcp11-dvr.openstack.proxy
+          params:
+            linux_system_codename: xenial
