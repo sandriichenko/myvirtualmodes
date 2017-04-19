@@ -1,19 +1,16 @@
 classes:
-- system.linux.system.repo.tcp_mk20
-#- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.ubuntu
+- system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.trusty
 - system.horizon.server.single
+- system.horizon.server.plugin.contrail
+- system.horizon.server.plugin.overrides
 - cluster.virtual-mcp10-contrail
 parameters:
-  horizon:
-    server:
-      version: liberty
+  _param:
+    horizon_site_branding: OpenStack Dashboard
   linux:
-    system:
-      repo:
-        tcpcloud_openstack:
-          source: deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty liberty
     network:
       interface:
         eth1:
