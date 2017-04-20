@@ -1,10 +1,13 @@
 classes:
+- system.linux.system.repo.ubuntu
 - system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.xenial
 - system.horizon.server.single
 - cluster.virtual-mcp-ocata-dvr
 parameters:
+  _param:
+    horizon_site_branding: OpenStack Dashboard
   linux:
     network:
       interface:

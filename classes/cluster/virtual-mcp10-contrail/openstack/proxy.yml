@@ -15,3 +15,8 @@ parameters:
       engine: salt
       mode: secure
     salt_minion_ca_host: cfg01.${_param:cluster_domain}
+  linux:
+    system:
+      package:
+        libapache2-mod-wsgi:
+          version: latest
