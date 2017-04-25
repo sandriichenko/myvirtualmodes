@@ -1,6 +1,7 @@
 classes:
 - service.git.client
 - system.linux.system.single
+- system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.salt
 - system.openssh.client.lab
 - system.salt.master.api

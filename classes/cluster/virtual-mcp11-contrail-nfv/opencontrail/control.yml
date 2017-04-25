@@ -2,8 +2,9 @@ classes:
 - system.linux.system.lowmem
 - system.linux.system.repo.cassandra
 - system.linux.system.repo.mcp.contrail
-#- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mos10
+- system.linux.system.repo.ubuntu
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.trusty
 - system.opencontrail.client.resource.edge_router
@@ -29,6 +30,7 @@ parameters:
     opencontrail_router01_hostname: vsrx01.${_param:cluster_domain}
     opencontrail_router01_address: 172.16.10.131
     openstack_version: mitaka
+    linux_system_codename: trusty
   linux:
     network:
       interface:

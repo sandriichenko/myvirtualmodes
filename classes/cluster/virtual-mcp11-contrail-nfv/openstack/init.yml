@@ -1,6 +1,6 @@
 parameters:
   _param:
-    openstack_version: newton
+    openstack_version: ocata
     apt_mk_version: nightly
     openstack_region: RegionOne
     admin_email: root@localhost
