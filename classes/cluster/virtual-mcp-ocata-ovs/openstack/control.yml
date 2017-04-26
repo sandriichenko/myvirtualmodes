@@ -29,6 +29,7 @@ classes:
 - system.galera.server.database.heat
 - system.galera.server.database.keystone
 - system.galera.server.database.nova
+- system.haproxy.proxy.listen.openstack.nova-placement
 - cluster.virtual-mcp-ocata-ovs
 parameters:
   _param:
