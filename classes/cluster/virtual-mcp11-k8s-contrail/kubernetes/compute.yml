@@ -6,6 +6,9 @@ classes:
 - cluster.virtual-mcp11-k8s-calico.infra
 - cluster.virtual-mcp11-k8s-calico.opencontrail.compute
 parameters:
+  _param:
+    kubernetes_hyperkube_image: docker-prod-virtual.sandbox.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.5.4-5
+
   docker:
     host:
       pkgs:
@@ -27,4 +30,4 @@ parameters:
           image: docker-prod-virtual.sandbox.mirantis.net/mirantis/projectcalico/calico/cni:latest
     common:
       hyperkube:
-        image: docker-prod-virtual.sandbox.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.5.4-5
+        image: ${_param:kubernetes_hyperkube_image}
