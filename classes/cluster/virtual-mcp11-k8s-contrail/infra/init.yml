@@ -6,6 +6,7 @@ classes:
 - system.openssh.server.team.mcp_qa
 - cluster.virtual-mcp11-k8s-contrail.kubernetes
 - cluster.virtual-mcp11-k8s-contrail.opencontrail
+- cluster.overwrite
 parameters:
   _param:
 

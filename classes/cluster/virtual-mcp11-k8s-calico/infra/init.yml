@@ -6,6 +6,7 @@ classes:
 - system.openssh.server.team.mcp_qa
 - system.rsyslog.client.single
 - cluster.virtual-mcp11-k8s-calico.kubernetes
+- cluster.overwrite
 parameters:
   _param:
     # infra service addresses
