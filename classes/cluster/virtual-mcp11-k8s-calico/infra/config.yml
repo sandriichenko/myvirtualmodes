@@ -12,7 +12,7 @@ classes:
 parameters:
   _param:
     salt_master_base_environment: prd
-    reclass_data_repository: "https://gerrit.mcp.mirantis.net/salt-models/mcp-virtual-lab"
+    reclass_data_repository: "https://gerrit.mcp.mirantis.net/salt-models/mcp-virtual-lab.git"
     reclass_data_revision: master
     reclass_config_master: ${_param:infra_config_deploy_address}
     single_address: ${_param:infra_config_address}
@@ -51,3 +51,12 @@ parameters:
             salt_master_host: ${_param:infra_config_address}
             linux_system_codename: xenial
             single_address: ${_param:kubernetes_proxy_node01_address}
+        mon_node:
+          name: ${_param:kubernetes_monitor_node01_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.infra
+          params:
+            salt_master_host: ${_param:infra_config_address}
+            linux_system_codename: xenial
+            single_address: ${_param:kubernetes_monitor_node01_address}
