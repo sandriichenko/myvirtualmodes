@@ -1,0 +1,30 @@
+classes:
+- system.linux.system.repo.docker
+- system.kubernetes.pool.cluster
+- system.salt.minion.cert.k8s_client
+- system.salt.minion.cert.etcd_client
+- cluster.virtual-mcp11-k8s-calico.infra
+- cluster.virtual-mcp11-k8s-calico.opencontrail.compute
+parameters:
+  docker:
+    host:
+      pkgs:
+        - docker-engine=1.12.6-0~ubuntu-xenial
+        - python-docker
+  kubernetes:
+    pool:
+      network:
+        engine: opencontrail
+        opencontrail:
+          address: ${_param:opencontrail_control_address}
+        etcd:
+          ssl:
+            enabled: true
+        image: docker-prod-virtual.sandbox.mirantis.net/mirantis/projectcalico/calico/node:latest
+        calicoctl:
+          image: docker-prod-virtual.sandbox.mirantis.net/mirantis/projectcalico/calico/ctl:latest
+        cni:
+          image: docker-prod-virtual.sandbox.mirantis.net/mirantis/projectcalico/calico/cni:latest
+    common:
+      hyperkube:
+        image: docker-prod-virtual.sandbox.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.5.4-5

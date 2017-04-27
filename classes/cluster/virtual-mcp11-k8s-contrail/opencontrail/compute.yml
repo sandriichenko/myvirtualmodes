@@ -1,0 +1,18 @@
+classes:
+- system.opencontrail.compute.cluster
+parameters:
+  _param:
+    opencontrail_compute_address: ${_param:single_address}
+    opencontrail_compute_iface: eth1
+    opencontrail_compute_gateway: 172.16.10.1
+    opencontrail_compute_dns: 8.8.8.8
+  opencontrail:
+    common:
+      identity:
+        engine: k8s
+        host: none
+        token: none
+        password: none
+      network:
+        engine: k8s
+        host: none
