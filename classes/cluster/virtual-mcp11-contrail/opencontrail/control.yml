@@ -2,8 +2,7 @@ classes:
 - system.linux.system.lowmem
 - system.linux.system.repo.cassandra
 - system.linux.system.repo.mcp.contrail
-#- system.linux.system.repo.mcp.openstack
-- system.linux.system.repo.mos10
+- system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.trusty
 - system.opencontrail.client.resource.edge_router
@@ -17,6 +16,7 @@ classes:
 - cluster.virtual-mcp11-contrail
 parameters:
   _param:
+    openstack_version: mitaka
     keepalived_vip_interface: eth1
     cluster_vip_address: ${_param:opencontrail_control_address}
     cluster_local_address: ${_param:single_address}

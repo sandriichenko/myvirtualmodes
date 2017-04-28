@@ -2,8 +2,7 @@ classes:
 - system.linux.system.lowmem
 - system.linux.system.repo.glusterfs
 - system.linux.system.repo.mcp.contrail
-#- system.linux.system.repo.mcp.openstack
-- system.linux.system.repo.mos10
+- system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.xenial
 - system.memcached.server.single
