@@ -1,11 +1,16 @@
 classes:
 - system.linux.system.single
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.mcp.salt
+- system.linux.system.repo.ubuntu
 - system.openssh.server.team.lab
 - system.openssh.server.team.stacklight
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.mcp_qa
 - system.rsyslog.client.single
+- system.telegraf.agent
 - cluster.virtual-mcp11-k8s-calico.kubernetes
+- cluster.virtual-mcp11-k8s-calico.monitoring
 - cluster.virtual-mcp11-k8s-calico.swarm
 - cluster.overwrite
 parameters:
@@ -17,6 +22,7 @@ parameters:
 
     cluster_domain: virtual-mcp11-k8s-calico.local
     cluster_name: virtual-mcp11-k8s-calico
+    apt_mk_version: nightly
   linux:
     network:
       host:
@@ -35,3 +41,17 @@ parameters:
     system:
       name: ${_param:infra_config_hostname}
       domain: ${_param:cluster_domain}
+  telegraf:
+    agent:
+      enabled: true
+      interval: 15
+      round_interval: false
+      metric_batch_size: 1000
+      metric_buffer_limit: 10000
+      collection_jitter: 2
+      output:
+        prometheus_client:
+          bind:
+            address: 0.0.0.0
+            port: 9126
+          engine: prometheus

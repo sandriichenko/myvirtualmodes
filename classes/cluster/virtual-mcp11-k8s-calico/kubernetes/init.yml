@@ -49,6 +49,9 @@ parameters:
     calico_private_network: 192.168.0.0
     calico_private_netmask: 16
 
+    # glusterfs
+    glusterfs_service_host: ${_param:kubernetes_control_address}
+
   linux:
     network:
       resolv:

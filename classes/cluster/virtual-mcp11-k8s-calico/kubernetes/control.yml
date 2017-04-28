@@ -4,6 +4,8 @@ classes:
 - system.linux.system.repo.docker
 - system.salt.minion.cert.etcd_server
 - system.kubernetes.master.cluster
+- system.glusterfs.server.cluster
+- system.glusterfs.server.volume.prometheus
 - cluster.virtual-mcp11-k8s-calico.kubernetes.compute
 - cluster.virtual-mcp11-k8s-calico.infra
 parameters:

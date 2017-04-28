@@ -1,0 +1,3 @@
+parameters:
+  _param:
+    prometheus_control_address: ${_param:docker_swarm_address}

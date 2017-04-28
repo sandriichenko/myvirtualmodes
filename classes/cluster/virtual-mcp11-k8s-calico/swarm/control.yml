@@ -1,7 +1,0 @@
-classes:
-- system.docker.host
-- cluster.virtual-mcp11-k8s-calico.infra
-parameters:
-  _param:
-    cluster_vip_address: ${_param:docker_swarm_address}
-    cluster_public_host: ${_param:docker_swarm_hostname}

@@ -1,5 +1,4 @@
 classes:
-- system.linux.system.repo.mcp.salt
 - system.linux.system.repo.ubuntu
 - system.openssh.client.lab
 - system.salt.master.pkg
@@ -19,7 +18,6 @@ parameters:
     linux_system_codename: xenial
     salt_api_password_hash: "$6$WV0P1shnoDh2gI/Z$22/Bcd7ffMv0jDlFpT63cAU4PiXHz9pjXwngToKwqAsgoeK4HNR3PiKaushjxp3JsQ8hNoJmAC6TxzVqfV8WH/"
     salt_master_host: ${_param:infra_config_deploy_address}
-    apt_mk_version: nightly
   reclass:
     storage:
       node:
@@ -45,7 +43,7 @@ parameters:
           name: ${_param:kubernetes_proxy_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.infra
+          - cluster.${_param:cluster_name}.monitoring.proxy
           params:
             salt_master_host: ${_param:infra_config_deploy_address}
             linux_system_codename: xenial
@@ -55,25 +53,31 @@ parameters:
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.swarm.master
+          - cluster.${_param:cluster_name}.monitoring.server
           params:
             salt_master_host: ${_param:infra_config_deploy_address}
             linux_system_codename: xenial
             single_address: ${_param:docker_swarm_node01_address}
+            keepalived_vip_priority: 100
         docker_swarm_node02:
           name: ${_param:docker_swarm_node02_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.swarm.slave
+          - cluster.${_param:cluster_name}.monitoring.server
           params:
             salt_master_host: ${_param:infra_config_deploy_address}
             linux_system_codename: xenial
             single_address: ${_param:docker_swarm_node02_address}
+            keepalived_vip_priority: 101
         docker_swarm_node03:
           name: ${_param:docker_swarm_node03_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.swarm.slave
+          - cluster.${_param:cluster_name}.monitoring.server
           params:
             salt_master_host: ${_param:infra_config_deploy_address}
             linux_system_codename: xenial
             single_address: ${_param:docker_swarm_node03_address}
+            keepalived_vip_priority: 102
