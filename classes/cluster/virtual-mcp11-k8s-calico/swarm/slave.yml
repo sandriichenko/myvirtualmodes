@@ -1,0 +1,8 @@
+classes:
+- system.docker.swarm.manager
+- cluster.virtual-mcp11-k8s-calico.swarm.control
+parameters:
+  docker:
+    swarm:
+      master:
+        host: ${_param:docker_swarm_node01_address}

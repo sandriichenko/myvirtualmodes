@@ -1,10 +1,12 @@
-
 classes:
 - system.linux.system.single
 - system.openssh.server.team.lab
+- system.openssh.server.team.stacklight
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.mcp_qa
+- system.rsyslog.client.single
 - cluster.virtual-mcp11-k8s-calico.kubernetes
+- cluster.virtual-mcp11-k8s-calico.swarm
 - cluster.overwrite
 parameters:
   _param:
@@ -15,7 +17,6 @@ parameters:
 
     cluster_domain: virtual-mcp11-k8s-calico.local
     cluster_name: virtual-mcp11-k8s-calico
-    #cluster_public_host: ""
   linux:
     network:
       host:
@@ -24,11 +25,6 @@ parameters:
           names:
           - ${_param:infra_config_hostname}
           - ${_param:infra_config_hostname}.${_param:cluster_domain}
-        cfg:
-          address: ${_param:infra_config_address}
-          names:
-          - cfg
-          - cfg.${_param:cluster_domain}
       interface:
         ens4:
           enabled: true

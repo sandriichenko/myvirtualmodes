@@ -16,10 +16,9 @@ parameters:
     reclass_data_revision: master
     reclass_config_master: ${_param:infra_config_deploy_address}
     single_address: ${_param:infra_config_address}
-    deploy_address: ${_param:infra_config_deploy_address}
     linux_system_codename: xenial
     salt_api_password_hash: "$6$WV0P1shnoDh2gI/Z$22/Bcd7ffMv0jDlFpT63cAU4PiXHz9pjXwngToKwqAsgoeK4HNR3PiKaushjxp3JsQ8hNoJmAC6TxzVqfV8WH/"
-    salt_master_host: ${_param:infra_config_address}
+    salt_master_host: ${_param:infra_config_deploy_address}
     apt_mk_version: nightly
   reclass:
     storage:
@@ -30,7 +29,7 @@ parameters:
           classes:
           - cluster.${_param:cluster_name}.kubernetes.compute
           params:
-            salt_master_host: ${_param:infra_config_address}
+            salt_master_host: ${_param:infra_config_deploy_address}
             linux_system_codename: xenial
             single_address: ${_param:kubernetes_compute_node01_address}
         kubernetes_compute_node02:
@@ -39,7 +38,7 @@ parameters:
           classes:
           - cluster.${_param:cluster_name}.kubernetes.compute
           params:
-            salt_master_host: ${_param:infra_config_address}
+            salt_master_host: ${_param:infra_config_deploy_address}
             linux_system_codename: xenial
             single_address: ${_param:kubernetes_compute_node02_address}
         prx_node:
@@ -48,15 +47,33 @@ parameters:
           classes:
           - cluster.${_param:cluster_name}.infra
           params:
-            salt_master_host: ${_param:infra_config_address}
+            salt_master_host: ${_param:infra_config_deploy_address}
             linux_system_codename: xenial
             single_address: ${_param:kubernetes_proxy_node01_address}
-        mon_node:
-          name: ${_param:kubernetes_monitor_node01_hostname}
+        docker_swarm_node01:
+          name: ${_param:docker_swarm_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.infra
+          - cluster.${_param:cluster_name}.swarm.master
           params:
-            salt_master_host: ${_param:infra_config_address}
+            salt_master_host: ${_param:infra_config_deploy_address}
             linux_system_codename: xenial
-            single_address: ${_param:kubernetes_monitor_node01_address}
+            single_address: ${_param:docker_swarm_node01_address}
+        docker_swarm_node02:
+          name: ${_param:docker_swarm_node02_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.swarm.slave
+          params:
+            salt_master_host: ${_param:infra_config_deploy_address}
+            linux_system_codename: xenial
+            single_address: ${_param:docker_swarm_node02_address}
+        docker_swarm_node03:
+          name: ${_param:docker_swarm_node03_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.swarm.slave
+          params:
+            salt_master_host: ${_param:infra_config_deploy_address}
+            linux_system_codename: xenial
+            single_address: ${_param:docker_swarm_node03_address}
