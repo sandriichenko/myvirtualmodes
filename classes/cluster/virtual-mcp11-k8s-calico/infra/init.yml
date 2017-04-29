@@ -36,24 +36,6 @@ parameters:
           proto: static
           address: ${_param:single_address}
           netmask: 255.255.255.0
-          route:
-            kubernetes_services:
-              address: 10.254.0.0
-              netmask: 255.255.0.0
-              gateway: ${_param:single_address}
     system:
       name: ${_param:infra_config_hostname}
       domain: ${_param:cluster_domain}
-      rc:
-        local: |
-          #!/bin/sh -e
-          #
-          # rc.local
-          #
-          ######### This file is managed by Salt! ##########
-          # This script is executed at the end of each multiuser runlevel.
-          # Make sure that the script will "exit 0" on success or any other
-          # value on error.
-          #
-          ip r a 10.254.0.0/16 dev ens4
-          exit 0
