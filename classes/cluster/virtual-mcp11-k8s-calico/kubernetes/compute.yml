@@ -34,8 +34,8 @@ parameters:
       resolv:
         dns:
           - 10.254.0.10
-          - 8.8.8.8
-          - 8.8.4.4
+          - 172.18.176.4
+          - 172.18.176.7
       interface:
         ens4:
           route:
@@ -43,4 +43,10 @@ parameters:
               address: 10.254.0.0
               netmask: 255.255.0.0
               gateway: ${_param:single_address}
-
+      interface:
+        ens4:
+          route:
+            kubernetes_services:
+              address: 10.254.0.0
+              netmask: 255.255.0.0
+              gateway: ${_param:single_address}
