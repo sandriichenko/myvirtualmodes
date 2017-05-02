@@ -33,7 +33,3 @@ salt --state-output=terse -C 'I@kubernetes:master' state.sls kubernetes exclude=
 
 # Register addons
 salt --state-output=terse -C 'I@kubernetes:master' --subset 1 state.sls kubernetes.master.setup
-
-# Nginx needs to be configured
-#salt --state-output=terse -C 'I@nginx:server' state.sls nginx
-# IMHO not related to k8s installation
