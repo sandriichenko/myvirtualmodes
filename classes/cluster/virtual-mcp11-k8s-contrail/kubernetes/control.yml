@@ -4,8 +4,7 @@ classes:
 - system.linux.system.repo.docker
 - system.salt.minion.cert.etcd_server
 - system.kubernetes.master.cluster
-- cluster.virtual-mcp11-k8s-calico.kubernetes.compute
-- cluster.virtual-mcp11-k8s-calico.infra
+- cluster.virtual-mcp11-k8s-contrail.kubernetes.compute
 parameters:
   _param:
     keepalived_vip_interface: ens4

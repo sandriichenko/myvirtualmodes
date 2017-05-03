@@ -3,8 +3,8 @@ classes:
 - system.kubernetes.pool.cluster
 - system.salt.minion.cert.k8s_client
 - system.salt.minion.cert.etcd_client
-- cluster.virtual-mcp11-k8s-calico.infra
-- cluster.virtual-mcp11-k8s-calico.opencontrail.compute
+- cluster.virtual-mcp11-k8s-contrail.infra
+- cluster.virtual-mcp11-k8s-contrail.opencontrail.compute
 parameters:
   _param:
     kubernetes_hyperkube_image: docker-prod-virtual.sandbox.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.5.4-5

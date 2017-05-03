@@ -11,6 +11,11 @@ parameters:
     opencontrail_control_node02_address: 172.16.10.111
     opencontrail_control_node03_address: 172.16.10.112
 
+    keystone_admin_password: none
+    opencontrail_stats_password: password
+    keystone_service_token: none
+    openstack_version: mitaka
+
   linux:
     network:
       host:
