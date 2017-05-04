@@ -53,6 +53,7 @@ parameters:
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.swarm.master
+          - cluster.${_param:cluster_name}.monitoring.client
           - cluster.${_param:cluster_name}.monitoring.server
           params:
             salt_master_host: ${_param:infra_config_deploy_address}
