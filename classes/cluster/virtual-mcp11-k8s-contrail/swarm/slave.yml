@@ -1,0 +1,11 @@
+classes:
+- system.docker.host
+- system.docker.swarm.manager
+- cluster.virtual-mcp11-k8s-calico.infra
+parameters:
+  _param:
+    cluster_public_host: ${_param:docker_swarm_hostname}
+  docker:
+    swarm:
+      master:
+        host: ${_param:docker_swarm_node01_address}

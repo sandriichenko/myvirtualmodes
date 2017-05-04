@@ -1,0 +1,7 @@
+parameters:
+  _param:
+    # glusterfs
+    glusterfs_service_host: ${_param:docker_swarm_address}
+
+    # prometheus
+    prometheus_control_address: ${_param:docker_swarm_address}

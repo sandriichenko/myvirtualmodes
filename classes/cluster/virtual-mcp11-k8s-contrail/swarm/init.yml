@@ -1,0 +1,36 @@
+parameters:
+  _param:
+    docker_swarm_hostname: mon
+    docker_swarm_address: 172.16.10.251
+    docker_swarm_node01_hostname: mon01
+    docker_swarm_node02_hostname: mon02
+    docker_swarm_node03_hostname: mon03
+    docker_swarm_node01_address: 172.16.10.107
+    docker_swarm_node02_address: 172.16.10.108
+    docker_swarm_node03_address: 172.16.10.109
+  linux:
+    network:
+      host:
+        mon:
+          address: ${_param:docker_swarm_address}
+          names:
+          - ${_param:docker_swarm_hostname}
+          - ${_param:docker_swarm_hostname}.${_param:cluster_domain}
+        mon01:
+          address: ${_param:docker_swarm_node01_address}
+          names:
+          - ${_param:docker_swarm_node01_hostname}
+          - ${_param:docker_swarm_node01_hostname}.${_param:cluster_domain}
+        mon02:
+          address: ${_param:docker_swarm_node02_address}
+          names:
+          - ${_param:docker_swarm_node02_hostname}
+          - ${_param:docker_swarm_node02_hostname}.${_param:cluster_domain}
+        mon03:
+          address: ${_param:docker_swarm_node03_address}
+          names:
+          - ${_param:docker_swarm_node03_hostname}
+          - ${_param:docker_swarm_node03_hostname}.${_param:cluster_domain}
+    system:
+      name: ${_param:infra_config_hostname}
+      domain: ${_param:cluster_domain}
