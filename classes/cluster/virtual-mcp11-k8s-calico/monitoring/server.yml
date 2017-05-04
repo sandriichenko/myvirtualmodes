@@ -8,6 +8,8 @@ classes:
 - service.haproxy.proxy.single
 - system.glusterfs.client.cluster
 - system.glusterfs.client.volume.prometheus
+- system.glusterfs.server.cluster
+- system.glusterfs.server.volume.prometheus
 - system.salt.minion.cert.prometheus_server
 - system.keepalived.cluster.instance.prometheus_server_vip
 - system.prometheus.server.target.etcd
