@@ -16,3 +16,7 @@ parameters:
       network:
         engine: k8s
         host: none
+  kubernetes:
+    pool:
+      network:
+        hash: a3af7a06f9382a3f54f219a63631651d
