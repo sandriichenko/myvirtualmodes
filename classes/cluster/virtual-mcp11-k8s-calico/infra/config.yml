@@ -5,6 +5,8 @@ classes:
 - system.salt.minion.ca.salt_master
 - system.salt.master.api
 - system.salt.minion.cert.k8s_server
+- system.mysql.client
+- system.mysql.client.database.grafana
 - system.reclass.storage.salt
 - system.reclass.storage.system.kubernetes_control_cluster
 - cluster.virtual-mcp11-k8s-calico.infra
@@ -52,6 +54,7 @@ parameters:
           name: ${_param:docker_swarm_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
+          - service.galera.master.cluster
           - cluster.${_param:cluster_name}.swarm.master
           - cluster.${_param:cluster_name}.monitoring.client
           - cluster.${_param:cluster_name}.monitoring.server
@@ -60,10 +63,12 @@ parameters:
             linux_system_codename: xenial
             single_address: ${_param:docker_swarm_node01_address}
             keepalived_vip_priority: 100
+            mysql_cluster_role: master
         docker_swarm_node02:
           name: ${_param:docker_swarm_node02_hostname}
           domain: ${_param:cluster_domain}
           classes:
+          - service.galera.slave.cluster
           - cluster.${_param:cluster_name}.swarm.slave
           - cluster.${_param:cluster_name}.monitoring.server
           params:
@@ -71,10 +76,12 @@ parameters:
             linux_system_codename: xenial
             single_address: ${_param:docker_swarm_node02_address}
             keepalived_vip_priority: 101
+            mysql_cluster_role: slave
         docker_swarm_node03:
           name: ${_param:docker_swarm_node03_hostname}
           domain: ${_param:cluster_domain}
           classes:
+          - service.galera.slave.cluster
           - cluster.${_param:cluster_name}.swarm.slave
           - cluster.${_param:cluster_name}.monitoring.server
           params:
@@ -82,3 +89,4 @@ parameters:
             linux_system_codename: xenial
             single_address: ${_param:docker_swarm_node03_address}
             keepalived_vip_priority: 102
+            mysql_cluster_role: slave

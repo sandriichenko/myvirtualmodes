@@ -5,3 +5,12 @@ parameters:
 
     # prometheus
     prometheus_control_address: ${_param:docker_swarm_address}
+
+    mysql_admin_user: root
+    mysql_admin_password: workshop
+
+    mysql_grafana_password: password
+    cluster_local_address: ${_param:single_address}
+    galera_server_cluster_name: monitoring_cluster
+    galera_server_maintenance_password: workshop
+    galera_server_admin_password: workshop

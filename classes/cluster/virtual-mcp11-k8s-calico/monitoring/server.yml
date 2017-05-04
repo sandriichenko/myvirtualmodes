@@ -1,5 +1,7 @@
 classes:
 - system.linux.system.repo.tcp_elastic
+# Needed to install Galera packages
+- system.linux.system.repo.mcp.openstack
 - system.elasticsearch.server.cluster
 - system.elasticsearch.server.curator
 - system.kibana.server.single
@@ -10,6 +12,8 @@ classes:
 - system.glusterfs.client.volume.prometheus
 - system.glusterfs.server.cluster
 - system.glusterfs.server.volume.prometheus
+- system.galera.server.cluster
+- system.galera.server.database.grafana
 - system.salt.minion.cert.prometheus_server
 - system.keepalived.cluster.instance.prometheus_server_vip
 - system.prometheus.server.target.etcd
@@ -38,3 +42,10 @@ parameters:
     cluster_node02_address: ${_param:docker_swarm_node02_address}
     cluster_node03_hostname: ${_param:docker_swarm_node03_hostname}
     cluster_node03_address: ${_param:docker_swarm_node03_address}
+    # Galera
+    openstack_version: newton
+  keepalived:
+    cluster:
+      instance:
+        VIP:
+          enabled: false
