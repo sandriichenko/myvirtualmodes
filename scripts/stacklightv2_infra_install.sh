@@ -28,3 +28,8 @@ for img in pushgateway alertmanager prometheus; do
 done
 salt -C 'I@docker:swarm:role:master' state.sls docker
 salt -C 'I@docker:swarm' dockerng.ps
+
+# Configure Grafana dashboards and datasources
+salt -C 'I@grafana:client' state.sls grafana.client.service
+salt -C 'I@grafana:client' --async service.restart salt-minion; sleep 10
+salt -C 'I@grafana:client' state.sls grafana.client
