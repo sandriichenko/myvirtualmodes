@@ -21,7 +21,7 @@ salt -C 'I@salt:minion' mine.update
 sleep 5
 
 # Configure the services running in Docker Swarm
-salt -C 'I@docker:swarm:role:master' state.sls prometheus.server
+salt -C 'I@docker:swarm:role:master' state.sls prometheus.server,prometheus.alertmanager
 for img in pushgateway alertmanager prometheus; do
     salt -C 'I@docker:swarm' dockerng.pull "docker-sandbox.sandbox.mirantis.net/bkupidura/$img"
     salt -C 'I@docker:swarm' dockerng.tag "docker-sandbox.sandbox.mirantis.net/bkupidura/$img:latest" "$img:latest"
