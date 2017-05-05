@@ -4,6 +4,7 @@ classes:
 - cluster.virtual-mcp11-ovs.openstack
 - system.openssh.server.team.lab
 - system.openssh.server.team.tcpcloud
+- system.openssh.server.team.stacklight
 - system.openssh.server.team.mcp_qa
 - cluster.virtual-mcp11-ovs.stacklight
 - cluster.virtual-mcp11-ovs.stacklight.client
