@@ -44,6 +44,12 @@ parameters:
     cluster_node03_address: ${_param:docker_swarm_node03_address}
     # Galera
     openstack_version: newton
+    # Grafana
+    docker_grafana_replicas: 1
+    grafana_database_type: mysql
+    grafana_database_host: ${_param:cluster_vip_address}
+    grafana_database_password: ${_param:mysql_grafana_password}
+    grafana_database_type: mysql
   keepalived:
     cluster:
       instance:
