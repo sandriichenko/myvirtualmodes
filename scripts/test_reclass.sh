@@ -12,6 +12,8 @@ RECLASS_ROOT=${RECLASS_ROOT:-$(pwd)}
 SALT_OPTS="${SALT_OPTS} --retcode-passthrough --force-color"
 DOCKER_OPTS="${DOCKER_OPTS} -e DEBIAN_FRONTEND=noninteractive"
 SKIP_CLEANUP=${SKIP_CLEANUP:-0}
+USER_ID=$(id -u)
+GROUP_ID=$(id -g)
 
 declare -a CONTAINERS
 
@@ -44,7 +46,7 @@ _atexit() {
     log_info "Cleaning up"
 
     for container in ${CONTAINERS[@]}; do
-        CONTAINER=$container docker_exec "chown -R $(id -u):$(id -g) /srv/salt/reclass" || true
+        CONTAINER=$container docker_exec "chown -R ${USER_ID}:${GROUP_ID} /srv/salt/reclass" || true
         docker rm -f $container >/dev/null || true
     done
 
@@ -98,7 +100,7 @@ EOF"
     docker_exec "for i in /usr/share/salt-formulas/reclass/service/*; do
     [ -e /srv/salt/reclass/classes/service/\$(basename \$i) ] || ln -s \$i /srv/salt/reclass/classes/service/\$(basename \$i)
     done"
-
+    docker_exec "chown -R ${USER_ID}:${GROUP_ID} /srv/salt/reclass/classes/service"
     docker_exec "[ ! -d /etc/reclass ] && mkdir /etc/reclass || true"
     docker_exec "cat << 'EOF' >> /etc/reclass/reclass-config.yml
 storage_type: yaml_fs
