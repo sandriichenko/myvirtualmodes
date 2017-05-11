@@ -148,7 +148,7 @@ EOF"
 ## Main
 trap _atexit INT TERM EXIT
 
-masters=$(find nodes -type f -name cfg*.yml)
+masters=$(find nodes -type f -name 'cfg*.yml')
 for master in ${masters[@]}; do
     master=$(basename $master .yml)
     log_info "Testing Salt master ${master}"
