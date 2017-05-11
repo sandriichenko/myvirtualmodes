@@ -14,9 +14,9 @@ classes:
 - system.glusterfs.client.volume.keystone
 - system.glusterfs.server.volume.glance
 - system.glusterfs.server.volume.keystone
+- system.glusterfs.server.volume.prometheus
 - system.glusterfs.server.cluster
 - system.glance.control.cluster
-- system.heka.alarm.openstack_control
 - system.nova.control.cluster
 - system.neutron.control.openvswitch.cluster
 - system.cinder.control.cluster

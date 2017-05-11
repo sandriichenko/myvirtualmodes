@@ -6,7 +6,6 @@ classes:
 - system.neutron.compute.cluster
 - system.linux.network.interface.single_ovs_dvr
 - cluster.virtual-mcp11-dvr
-- system.heka.alarm.openstack_compute
 parameters:
   _param:
     primary_interface: ens4

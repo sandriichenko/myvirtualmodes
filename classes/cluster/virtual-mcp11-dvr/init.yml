@@ -1,6 +1,10 @@
 classes:
+- system.heka.log_collector.single
+- system.linux.system.repo.mcp.extra
 - system.linux.system.single
 - system.rsyslog.client.single
+- system.prometheus.collector
+- system.telegraf.agent
 - system.openssh.server.team.lab
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.stacklight
@@ -8,7 +12,7 @@ classes:
 - cluster.virtual-mcp11-dvr.infra
 - cluster.virtual-mcp11-dvr.openstack
 - cluster.virtual-mcp11-dvr.stacklight
-- cluster.virtual-mcp11-dvr.stacklight.client
+- cluster.overwrite
 parameters:
   _param:
     cluster_domain: virtual-mcp11-dvr.local
@@ -37,6 +41,4 @@ parameters:
     stacklight_monitor_node01_address: 172.16.10.107
     stacklight_monitor_node02_address: 172.16.10.108
     stacklight_monitor_node03_address: 172.16.10.109
-    stacklight_telemetry_address: ${_param:stacklight_monitor_address}
     stacklight_log_address: ${_param:stacklight_monitor_address}
-
