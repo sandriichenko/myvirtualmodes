@@ -8,8 +8,7 @@ salt -C 'I@telegraf:agent' state.sls telegraf
 salt -C 'I@elasticsearch:server' state.sls elasticsearch.server -b 1
 salt -C 'I@kibana:server' state.sls kibana.server -b 1
 salt -C 'I@elasticsearch:client' state.sls elasticsearch.client.service
-salt -C 'I@kibana:client' state.sls kibana.client.service
-salt -C 'I@kibana:client or I@elasticsearch:client' --async service.restart salt-minion
+salt -C 'I@elasticsearch:client' --async service.restart salt-minion
 sleep 10
 salt -C 'I@elasticsearch:client' state.sls elasticsearch.client
 salt -C 'I@kibana:client' state.sls kibana.client
@@ -30,6 +29,4 @@ salt -C 'I@docker:swarm:role:master' state.sls docker
 salt -C 'I@docker:swarm' dockerng.ps
 
 # Configure Grafana dashboards and datasources
-salt -C 'I@grafana:client' state.sls grafana.client.service
-salt -C 'I@grafana:client' --async service.restart salt-minion; sleep 10
 salt -C 'I@grafana:client' state.sls grafana.client
