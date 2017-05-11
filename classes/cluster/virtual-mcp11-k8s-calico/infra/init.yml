@@ -7,6 +7,7 @@ classes:
 - system.openssh.server.team.stacklight
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.mcp_qa
+- system.openssh.server.team.k8s_team
 - system.rsyslog.client.single
 - system.telegraf.agent
 - system.prometheus.collector
