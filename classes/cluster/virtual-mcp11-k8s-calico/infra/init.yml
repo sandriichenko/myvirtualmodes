@@ -11,9 +11,9 @@ classes:
 - system.rsyslog.client.single
 - system.telegraf.agent
 - system.prometheus.collector
+- service.grafana.collector
 - cluster.virtual-mcp11-k8s-calico.kubernetes
-- cluster.virtual-mcp11-k8s-calico.monitoring
-- cluster.virtual-mcp11-k8s-calico.swarm
+- cluster.virtual-mcp11-k8s-calico.stacklight
 - cluster.overwrite
 parameters:
   _param:

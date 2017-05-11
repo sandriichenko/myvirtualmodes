@@ -10,14 +10,14 @@ classes:
 - system.openssh.server.team.k8s_team
 - system.rsyslog.client.single
 - system.telegraf.agent
+- system.prometheus.collector
+- service.grafana.collector
 - cluster.virtual-mcp11-k8s-contrail.kubernetes
 - cluster.virtual-mcp11-k8s-contrail.opencontrail
-- cluster.virtual-mcp11-k8s-calico.monitoring
-- cluster.virtual-mcp11-k8s-calico.swarm
+- cluster.virtual-mcp11-k8s-contrail.stacklight
 - cluster.overwrite
 parameters:
   _param:
-
     # infra service addresses
     infra_config_hostname: cfg01
     infra_config_address: 172.16.10.100

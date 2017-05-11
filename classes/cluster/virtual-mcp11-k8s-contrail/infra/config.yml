@@ -44,44 +44,44 @@ parameters:
           name: ${_param:kubernetes_proxy_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.monitoring.proxy
+          - cluster.${_param:cluster_name}.stacklight.proxy
           params:
             salt_master_host: ${_param:infra_config_deploy_address}
             linux_system_codename: xenial
             single_address: ${_param:kubernetes_proxy_node01_address}
-        docker_swarm_node01:
-          name: ${_param:docker_swarm_node01_hostname}
+        stacklight_node01:
+          name: ${_param:stacklight_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.swarm.master
-          - cluster.${_param:cluster_name}.monitoring.client
-          - cluster.${_param:cluster_name}.monitoring.server
+          - system.docker.swarm.master
+          - cluster.${_param:cluster_name}.stacklight.client
+          - cluster.${_param:cluster_name}.stacklight.server
           params:
             salt_master_host: ${_param:infra_config_deploy_address}
             linux_system_codename: xenial
-            single_address: ${_param:docker_swarm_node01_address}
+            single_address: ${_param:stacklight_node01_address}
             keepalived_vip_priority: 100
-        docker_swarm_node02:
-          name: ${_param:docker_swarm_node02_hostname}
+        stacklight_node02:
+          name: ${_param:stacklight_node02_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.swarm.slave
-          - cluster.${_param:cluster_name}.monitoring.server
+          - system.docker.swarm.manager
+          - cluster.${_param:cluster_name}.stacklight.server
           params:
             salt_master_host: ${_param:infra_config_deploy_address}
             linux_system_codename: xenial
-            single_address: ${_param:docker_swarm_node02_address}
+            single_address: ${_param:stacklight_node02_address}
             keepalived_vip_priority: 101
-        docker_swarm_node03:
-          name: ${_param:docker_swarm_node03_hostname}
+        stacklight_node03:
+          name: ${_param:stacklight_node03_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.swarm.slave
-          - cluster.${_param:cluster_name}.monitoring.server
+          - system.docker.swarm.manager
+          - cluster.${_param:cluster_name}.stacklight.server
           params:
             salt_master_host: ${_param:infra_config_deploy_address}
             linux_system_codename: xenial
-            single_address: ${_param:docker_swarm_node03_address}
+            single_address: ${_param:stacklight_node03_address}
             keepalived_vip_priority: 102
         opencontrail_control_node01:
           params:
