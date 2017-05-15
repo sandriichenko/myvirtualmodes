@@ -7,7 +7,7 @@ classes:
 - cluster.virtual-mcp11-k8s-contrail.opencontrail.compute
 parameters:
   _param:
-    kubernetes_hyperkube_image: docker-prod-virtual.sandbox.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.5.4-5
+    kubernetes_hyperkube_image: docker-prod-virtual.sandbox.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.6.2-2
 
   docker:
     host:
