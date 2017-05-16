@@ -15,6 +15,8 @@ parameters:
     opencontrail_stats_password: password
     keystone_service_token: none
     openstack_version: mitaka
+    openstack_control_address: none
+    keystone_admin_password: none
 
   linux:
     network:

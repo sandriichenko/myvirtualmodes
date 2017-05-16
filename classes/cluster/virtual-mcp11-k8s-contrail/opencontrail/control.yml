@@ -2,17 +2,17 @@ classes:
 - system.linux.system.lowmem
 - system.linux.system.repo.cassandra
 - system.linux.system.repo.mcp.contrail
-#- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.trusty
 #- system.opencontrail.client.resource.edge_router
 - system.rabbitmq.server.cluster
 - system.opencontrail.control.cluster
-#- system.opencontrail.client.cluster
-#- system.opencontrail.client.resource.control_node
-#- system.opencontrail.client.resource.config_node
-#- system.opencontrail.client.resource.database_node
-#- system.opencontrail.client.resource.analytics_node
+- system.opencontrail.client.cluster
+- system.opencontrail.client.resource.control_node
+- system.opencontrail.client.resource.config_node
+- system.opencontrail.client.resource.database_node
+- system.opencontrail.client.resource.analytics_node
 - system.haproxy.proxy.listen.opencontrail.analytics
 - cluster.virtual-mcp11-k8s-contrail.infra
 parameters:

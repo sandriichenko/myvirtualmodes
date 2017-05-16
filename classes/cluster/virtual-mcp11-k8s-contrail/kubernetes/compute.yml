@@ -8,7 +8,23 @@ classes:
 parameters:
   _param:
     kubernetes_hyperkube_image: docker-prod-virtual.sandbox.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.6.2-2
-
+  linux:
+    network:
+      interface:
+        ens4:
+          enabled: true
+          type: eth
+          proto: manual
+        vhost0:
+          enabled: true
+          type: eth
+          mtu: 1500
+          address: ${_param:single_address}
+          netmask: '255.255.255.0'
+          pre_up_cmds:
+          - /usr/lib/contrail/if-vhost0
+          use_interfaces:
+          - ens4
   docker:
     host:
       pkgs:

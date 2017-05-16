@@ -1,9 +1,12 @@
 classes:
+- system.linux.system.repo.mcp.contrail
 - system.opencontrail.compute.cluster
+- system.opencontrail.client.cluster
+- system.opencontrail.client.resource.virtual_router
 parameters:
   _param:
     opencontrail_compute_address: ${_param:single_address}
-    opencontrail_compute_iface: eth1
+    opencontrail_compute_iface: ens4
     opencontrail_compute_gateway: 172.16.10.1
     opencontrail_compute_dns: 8.8.8.8
   opencontrail:
