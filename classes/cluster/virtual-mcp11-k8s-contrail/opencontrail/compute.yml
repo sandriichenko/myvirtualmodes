@@ -22,4 +22,4 @@ parameters:
   kubernetes:
     pool:
       network:
-        hash: a3af7a06f9382a3f54f219a63631651d
+        hash: e2fe6b86c4eada54ac157fc983fcc2ed
