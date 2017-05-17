@@ -37,6 +37,13 @@ parameters:
               value_template: <<node_os>>
             salt_master_host:
               value_template: <<node_master_ip>>
+        salt_master:
+          expression: <<node_hostname>>__equals__cfg01
+          cluster_param:
+            infra_config_address:
+              value_template: <<node_ip>>
+            infra_config_deploy_address:
+              value_template: <<node_ip>>
         kubernetes_control01:
           expression: <<node_hostname>>__equals__ctl01
           cluster_param:
