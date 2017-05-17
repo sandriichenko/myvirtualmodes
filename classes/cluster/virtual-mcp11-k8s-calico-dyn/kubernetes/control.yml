@@ -5,7 +5,7 @@ classes:
 - system.salt.minion.cert.etcd_server
 - system.kubernetes.master.cluster
 - cluster.virtual-mcp11-k8s-calico-dyn.kubernetes.compute
-- cluster.virtual-mcp11-k8s-calico-dyn.infra
+- cluster.virtual-mcp11-k8s-calico-dyn
 parameters:
   _param:
     keepalived_vip_interface: ens4

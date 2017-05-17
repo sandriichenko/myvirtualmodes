@@ -12,9 +12,6 @@ classes:
 - system.telegraf.agent
 - system.prometheus.collector
 - service.grafana.collector
-- cluster.virtual-mcp11-k8s-calico-dyn.kubernetes
-- cluster.virtual-mcp11-k8s-calico-dyn.stacklight
-- cluster.overrides
 parameters:
   _param:
     # infra service addresses
