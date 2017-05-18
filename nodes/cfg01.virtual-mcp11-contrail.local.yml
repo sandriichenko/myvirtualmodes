@@ -1,5 +1,6 @@
 classes:
 - cluster.virtual-mcp11-contrail.infra.config
+- cluster.virtual-mcp11-contrail.stacklight.proxy
 parameters:
   _param:
     linux_system_codename: xenial
