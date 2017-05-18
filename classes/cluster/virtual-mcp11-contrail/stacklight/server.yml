@@ -18,7 +18,7 @@ classes:
 - system.prometheus.server.alertmanager.dns
 - system.prometheus.server.target.dns
 - system.docker.swarm.stack.monitoring
-- system.docker.swarm.service.dashboard.grafana_server
+- system.docker.swarm.stack.dashboard
 - cluster.virtual-mcp11-contrail
 parameters:
   _param:
