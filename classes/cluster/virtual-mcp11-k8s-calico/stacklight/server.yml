@@ -26,7 +26,7 @@ classes:
 - cluster.virtual-mcp11-k8s-calico.infra
 parameters:
   _param:
-    cluster_vip_address: ${_param:stacklight_address}
+    cluster_vip_address: ${_param:stacklight_monitor_address}
     cluster_public_host: mon
     docker_image_alertmanager: alertmanager:latest
     docker_image_pushgateway: pushgateway:latest

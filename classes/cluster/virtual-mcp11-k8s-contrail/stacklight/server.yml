@@ -23,7 +23,7 @@ classes:
 parameters:
   _param:
     cluster_public_host: mon
-    cluster_vip_address: ${_param:stacklight_address}
+    cluster_vip_address: ${_param:stacklight_monitor_address}
     docker_image_alertmanager: alertmanager:latest
     docker_image_pushgateway: pushgateway:latest
     docker_image_prometheus: prometheus:latest

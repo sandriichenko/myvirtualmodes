@@ -1,6 +1,6 @@
 parameters:
   _param:
-    stacklight_address: 172.16.10.252
+    stacklight_monitor_address: 172.16.10.252
     stacklight_node01_hostname: mon01
     stacklight_node02_hostname: mon02
     stacklight_node03_hostname: mon03
@@ -9,10 +9,10 @@ parameters:
     stacklight_node03_address: 172.16.10.109
 
     # Glusterfs
-    glusterfs_service_host: ${_param:stacklight_address}
+    glusterfs_service_host: ${_param:stacklight_monitor_address}
 
     # Prometheus
-    prometheus_control_address: ${_param:stacklight_address}
+    prometheus_control_address: ${_param:stacklight_monitor_address}
 
     mysql_admin_user: root
     mysql_admin_password: workshop
@@ -26,7 +26,7 @@ parameters:
     network:
       host:
         mon:
-          address: ${_param:stacklight_address}
+          address: ${_param:stacklight_monitor_address}
           names:
           - mon
           - mon.${_param:cluster_domain}

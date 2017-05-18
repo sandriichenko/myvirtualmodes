@@ -1,10 +1,12 @@
 classes:
 - system.nginx.server.single
+- system.nginx.server.proxy.stacklight.grafana
 - system.nginx.server.proxy.stacklight.kibana
 - system.salt.minion.cert.proxy
 - cluster.virtual-mcp11-contrail
 parameters:
   _param:
+    nginx_proxy_grafana_port: 15013
     nginx_proxy_ssl:
       enabled: true
       authority: ${_param:salt_minion_ca_authority}
