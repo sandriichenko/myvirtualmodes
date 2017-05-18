@@ -52,12 +52,12 @@ parameters:
         kubernetes_control02:
           expression: <<node_hostname>>__equals__ctl02
           cluster_param:
-            kubernetes_control_node01_address:
+            kubernetes_control_node02_address:
               value_template: <<node_ip>>
         kubernetes_control03:
           expression: <<node_hostname>>__equals__ctl03
           cluster_param:
-            kubernetes_control_node01_address:
+            kubernetes_control_node03_address:
               value_template: <<node_ip>>
         kubernetes_compute:
           expression: <<node_hostname>>__startswith__cmp
