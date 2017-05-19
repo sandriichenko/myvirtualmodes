@@ -37,13 +37,18 @@ parameters:
               value_template: <<node_os>>
             salt_master_host:
               value_template: <<node_master_ip>>
-        salt_master:
+        infra_config:
           expression: <<node_hostname>>__equals__cfg01
           cluster_param:
             infra_config_address:
               value_template: <<node_ip>>
             infra_config_deploy_address:
               value_template: <<node_ip>>
+        infra_proxy:
+          expression: <<node_hostname>>__startswith__prx
+          node_class:
+            value_template:
+              - cluster.<<node_cluster>>.stacklight.proxy
         kubernetes_control01:
           expression: <<node_hostname>>__equals__ctl01
           cluster_param:
@@ -64,6 +69,21 @@ parameters:
           node_class:
             value_template:
               - cluster.<<node_cluster>>.kubernetes.compute
+        stacklight_monitor01:
+          expression: <<node_hostname>>__equals__mon01
+          cluster_param:
+            stacklight_node01_address:
+              value_template: <<node_ip>>
+        stacklight_monitor02:
+          expression: <<node_hostname>>__equals__mon02
+          cluster_param:
+            stacklight_node02_address:
+              value_template: <<node_ip>>
+        stacklight_monitor03:
+          expression: <<node_hostname>>__equals__mon03
+          cluster_param:
+            stacklight_node03_address:
+              value_template: <<node_ip>>
       node:
         prx_node:
           name: ${_param:kubernetes_proxy_node01_hostname}
