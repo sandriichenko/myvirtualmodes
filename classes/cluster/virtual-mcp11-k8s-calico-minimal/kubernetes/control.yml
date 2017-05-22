@@ -1,0 +1,45 @@
+classes:
+- service.etcd.server.cluster
+- system.haproxy.proxy.listen.kubernetes.apiserver
+- system.linux.system.repo.docker
+- system.salt.minion.cert.etcd_server
+- system.kubernetes.master.cluster
+- cluster.virtual-mcp11-k8s-calico-minimal.kubernetes.compute
+- cluster.virtual-mcp11-k8s-calico-minimal
+- cluster.overrides
+parameters:
+  _param:
+    keepalived_vip_interface: ens4
+    keepalived_vip_virtual_router_id: 60
+  etcd:
+    server:
+      source:
+        engine: docker_hybrid
+      ssl:
+        enabled: true
+      setup:
+        calico:
+          key: /calico/v1/ipam/v4/pool/${_param:calico_private_network}-${_param:calico_private_netmask}
+          value: '{"masquerade":true,"cidr":"${_param:calico_private_network}/${_param:calico_private_netmask}"}'
+  kubernetes:
+    master:
+      etcd:
+        ssl:
+          enabled: true
+      network:
+        etcd:
+          ssl:
+            enabled: true
+      namespace:
+        netchecker:
+          enabled: ${_param:kubernetes_netchecker_enabled}
+      addons:
+        helm:
+          enabled: ${_param:kubernetes_helm_enabled}
+        calico_policy:
+          enabled: ${_param:kubernetes_calico_policy_enabled}
+          image: ${_param:kubernetes_calico_policy_image}
+        netchecker:
+          enabled: ${_param:kubernetes_netchecker_enabled}
+          agent_image: ${_param:kubernetes_netchecker_agent_image}
+          server_image: ${_param:kubernetes_netchecker_server_image}
