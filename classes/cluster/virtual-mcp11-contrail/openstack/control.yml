@@ -23,6 +23,8 @@ classes:
 - system.neutron.control.opencontrail.cluster
 - system.cinder.control.cluster
 - system.heat.server.cluster
+- system.opencontrail.client.cluster
+- system.heat.server.resource.contrail
 - system.designate.server.cluster
 - system.designate.server.backend.bind
 - system.ceilometer.server.cluster
