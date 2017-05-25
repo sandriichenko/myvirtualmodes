@@ -15,6 +15,7 @@ classes:
 - system.haproxy.proxy.listen.stacklight.kibana
 - service.haproxy.proxy.single
 - system.keepalived.cluster.instance.prometheus_server_vip
+- system.prometheus.server.alertmanager.dns
 - system.prometheus.server.target.dns
 - system.docker.swarm.stack.monitoring
 - system.docker.swarm.service.dashboard.grafana_server

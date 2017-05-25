@@ -13,6 +13,7 @@ classes:
 - system.glusterfs.server.volume.prometheus
 - system.salt.minion.cert.prometheus_server
 - system.keepalived.cluster.instance.prometheus_server_vip
+- system.prometheus.server.alertmanager.dns
 - system.prometheus.server.target.etcd
 - system.prometheus.server.target.kubernetes
 - system.prometheus.server.target.dns
