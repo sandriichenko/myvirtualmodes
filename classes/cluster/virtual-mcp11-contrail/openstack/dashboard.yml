@@ -6,6 +6,7 @@ classes:
 - system.horizon.server.single
 - system.horizon.server.plugin.contrail
 - system.horizon.server.plugin.overrides
+- system.horizon.server.plugin.theme
 - cluster.virtual-mcp11-contrail
 parameters:
   _param:

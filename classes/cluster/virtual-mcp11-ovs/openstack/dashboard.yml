@@ -4,6 +4,7 @@ classes:
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.xenial
 - system.horizon.server.single
+- system.horizon.server.plugin.theme
 - cluster.virtual-mcp11-ovs
 parameters:
   _param:
