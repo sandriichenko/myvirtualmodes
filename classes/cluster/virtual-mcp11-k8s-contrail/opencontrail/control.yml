@@ -5,7 +5,7 @@ classes:
 - system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.trusty
-#- system.opencontrail.client.resource.edge_router
+- system.opencontrail.client.resource.edge_router
 - system.rabbitmq.server.cluster
 - system.opencontrail.control.cluster
 - system.opencontrail.client.cluster
@@ -28,8 +28,8 @@ parameters:
     cluster_node03_address: ${_param:opencontrail_control_node03_address}
     rabbitmq_secret_key: password
     rabbitmq_admin_password: password
-    # opencontrail_router01_hostname: vsrx01.${_param:cluster_domain}
-    # opencontrail_router01_address: 172.16.10.131
+    opencontrail_router01_hostname: vsrx01.${_param:cluster_domain}
+    opencontrail_router01_address: 172.16.10.131
   linux:
     network:
       interface:
