@@ -14,7 +14,7 @@ classes:
 - service.grafana.collector
 - cluster.virtual-mcp11-k8s-calico.kubernetes
 - cluster.virtual-mcp11-k8s-calico.stacklight
-- cluster.overwrite
+- cluster.overrides
 parameters:
   _param:
     # infra service addresses

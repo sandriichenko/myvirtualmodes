@@ -6,12 +6,11 @@ classes:
 - system.kubernetes.master.cluster
 - cluster.virtual-mcp11-k8s-calico.kubernetes.compute
 - cluster.virtual-mcp11-k8s-calico.infra
+- cluster.overrides
 parameters:
   _param:
     keepalived_vip_interface: ens4
     keepalived_vip_virtual_router_id: 60
-    kubernetes_netchecker_agent_image: quay.io/l23network/k8s-netchecker-agent:v1.0
-    kubernetes_netchecker_server_image: quay.io/l23network/k8s-netchecker-server:v1.0
   etcd:
     server:
       source:

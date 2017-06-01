@@ -1,0 +1,2 @@
+# this file is used for dynamic metadata
+# `salt-call reclass.cluster_meta_set foo bar` can be used

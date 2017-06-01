@@ -15,7 +15,7 @@ classes:
 - cluster.virtual-mcp11-k8s-contrail.kubernetes
 - cluster.virtual-mcp11-k8s-contrail.opencontrail
 - cluster.virtual-mcp11-k8s-contrail.stacklight
-- cluster.overwrite
+- cluster.overrides
 parameters:
   _param:
     # infra service addresses

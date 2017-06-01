@@ -14,6 +14,14 @@ parameters:
     kubernetes_dns_token: 0S1I4iJeFjq5fopPwwCwTp3xFpEZfeUl
     etcd_initial_token: IN7KaRMSo3xkGxkjAAPtkRkAgqN4ZNRq
 
+    # component docker images
+    kubernetes_calicoctl_image: docker-prod-virtual.sandbox.mirantis.net/mirantis/projectcalico/calico/ctl:latest
+    kubernetes_calico_image: docker-prod-virtual.sandbox.mirantis.net/mirantis/projectcalico/calico/node:latest
+    kubernetes_calico_cni_image: docker-prod-virtual.sandbox.mirantis.net/mirantis/projectcalico/calico/cni:latest
+    kubernetes_hyperkube_image: docker-prod-virtual.sandbox.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.6.2-2
+    kubernetes_netchecker_agent_image: quay.io/l23network/k8s-netchecker-agent:v1.0
+    kubernetes_netchecker_server_image: quay.io/l23network/k8s-netchecker-server:v1.0
+
     # addresses and hostnames
     kubernetes_internal_api_address: 10.254.0.1
     kubernetes_control_hostname: ctl

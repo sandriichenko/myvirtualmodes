@@ -12,7 +12,7 @@ classes:
 - cluster.virtual-mcp11-dvr.infra
 - cluster.virtual-mcp11-dvr.openstack
 - cluster.virtual-mcp11-dvr.stacklight
-- cluster.overwrite
+- cluster.overrides
 parameters:
   _param:
     cluster_domain: virtual-mcp11-dvr.local

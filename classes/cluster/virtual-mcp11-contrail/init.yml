@@ -12,7 +12,7 @@ classes:
 - cluster.virtual-mcp11-contrail.infra
 - cluster.virtual-mcp11-contrail.openstack
 - cluster.virtual-mcp11-contrail.stacklight
-- cluster.overwrite
+- cluster.overrides
 parameters:
   _param:
     cluster_domain: virtual-mcp11-contrail.local
