@@ -7,7 +7,7 @@ salt -C 'I@keystone:server' state.sls keystone.server -b 1
 salt -C 'I@keystone:client' state.sls keystone.client
 # salt-minion should be restarted in case keystone.client has changed the Salt configuration
 salt -C 'I@keystone:client' --async service.restart salt-minion; sleep 5
-salt -C 'I@keystone:server' cmd.run ". /root/keystonerc; keystone service-list"
+salt -C 'I@keystone:server' cmd.run ". /root/keystonerc; openstack service list"
 
 # Install glance
 salt -C 'I@glance:server' state.sls glance -b 1
