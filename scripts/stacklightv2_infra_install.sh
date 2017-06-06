@@ -11,6 +11,8 @@ if [ ! -f "$COMMONS" ]; then
 fi
 . "$COMMONS"
 
+INFLUXDB_SERVICE=$(salt -C 'I@influxdb:server' test.ping 1>/dev/null 2>&1 && echo true)
+
 # Configure Telegraf
 salt -C 'I@telegraf:agent' state.sls telegraf
 
@@ -22,6 +24,10 @@ salt -C 'I@elasticsearch:client' --async service.restart salt-minion
 sleep 10
 salt -C 'I@elasticsearch:client' state.sls elasticsearch.client
 salt -C 'I@kibana:client' state.sls kibana.client
+
+if [[ "$INFLUXDB_SERVICE" == "true" ]]; then
+    salt -C 'I@influxdb:server' state.sls influxdb
+fi
 
 # Collect grains needed to configure the services
 salt -C 'I@salt:minion' state.sls salt.minion.grains

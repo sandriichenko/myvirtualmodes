@@ -1,4 +1,5 @@
 classes:
+- system.linux.system.repo.influxdb
 - system.linux.system.repo.tcp_elastic
 - system.docker.host
 - system.elasticsearch.server.cluster
@@ -6,11 +7,14 @@ classes:
 - system.kibana.server.single
 - system.haproxy.proxy.listen.stacklight.elasticsearch
 - system.haproxy.proxy.listen.stacklight.kibana
+- system.haproxy.proxy.listen.stacklight.influxdb
 - service.haproxy.proxy.single
 - system.glusterfs.client.cluster
 - system.glusterfs.client.volume.prometheus
 - system.glusterfs.server.cluster
 - system.glusterfs.server.volume.prometheus
+- system.influxdb.server.single
+- system.influxdb.database.stacklight
 - system.salt.minion.cert.prometheus_server
 - system.keepalived.cluster.instance.prometheus_server_vip
 - system.telegraf.agent.remote
@@ -43,3 +47,6 @@ parameters:
     cluster_node02_address: ${_param:stacklight_node02_address}
     cluster_node03_hostname: ${_param:stacklight_node03_hostname}
     cluster_node03_address: ${_param:stacklight_node03_address}
+    influxdb_port: 8086
+    influxdb_admin_password: password
+    influxdb_stacklight_password: lmapass
