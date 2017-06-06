@@ -22,6 +22,7 @@ parameters:
           image: ${_param:kubernetes_calicoctl_image}
         cni:
           image: ${_param:kubernetes_calico_cni_image}
+        mtu: ${_param:kubernetes_mtu}
     common:
       hyperkube:
         image: ${_param:kubernetes_hyperkube_image}

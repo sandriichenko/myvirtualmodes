@@ -12,6 +12,7 @@ parameters:
     kubernetes_scheduler_token: VgkUHfrW07zNxrb0ucFyX7NBnSJN9Xp6
     kubernetes_controller-manager_token: uXrdZ1YKF6qlYm3sHje2iEXMGAGDWOIU
     kubernetes_dns_token: 0S1I4iJeFjq5fopPwwCwTp3xFpEZfeUl
+    kubernetes_mtu: 1500
     etcd_initial_token: IN7KaRMSo3xkGxkjAAPtkRkAgqN4ZNRq
 
     # component docker images
