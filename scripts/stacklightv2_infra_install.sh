@@ -31,9 +31,9 @@ sleep 5
 
 # Configure the services running in Docker Swarm
 salt -C 'I@docker:swarm' state.sls prometheus.server,prometheus.alertmanager -b 1
-for img in pushgateway alertmanager prometheus; do
+for img in pushgateway alertmanager prometheus telegraf; do
     salt -C 'I@docker:swarm' dockerng.pull "docker-sandbox.sandbox.mirantis.net/bkupidura/$img"
-    salt -C 'I@docker:swarm' dockerng.tag "docker-sandbox.sandbox.mirantis.net/bkupidura/$img:latest" "$img:latest"
+    salt -C 'I@docker:swarm' dockerng.tag "docker-sandbox.sandbox.mirantis.net/bkupidura/$img:latest" "mirantis/$img:latest"
 done
 salt -C 'I@docker:swarm:role:master' state.sls docker
 salt -C 'I@docker:swarm' dockerng.ps

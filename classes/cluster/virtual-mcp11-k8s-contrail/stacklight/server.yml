@@ -13,6 +13,7 @@ classes:
 - system.glusterfs.server.volume.prometheus
 - system.salt.minion.cert.prometheus_server
 - system.keepalived.cluster.instance.prometheus_server_vip
+- system.telegraf.agent.remote
 - system.prometheus.server.alertmanager.dns
 - system.prometheus.server.target.etcd
 - system.prometheus.server.target.kubernetes
@@ -24,9 +25,10 @@ parameters:
   _param:
     cluster_public_host: mon
     cluster_vip_address: ${_param:stacklight_monitor_address}
-    docker_image_alertmanager: alertmanager:latest
-    docker_image_pushgateway: pushgateway:latest
-    docker_image_prometheus: prometheus:latest
+    docker_image_alertmanager: mirantis/alertmanager:latest
+    docker_image_pushgateway: mirantis/pushgateway:latest
+    docker_image_prometheus: mirantis/prometheus:latest
+    docker_image_remote_agent: mirantis/telegraf:latest
     docker_image_grafana: grafana/grafana:latest
     grafana_admin_password: admin
     keepalived_prometheus_vip_address: ${_param:cluster_vip_address}
