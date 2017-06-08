@@ -11,6 +11,15 @@ parameters:
     glusterfs_service_host: ${_param:stacklight_monitor_address}
     # Prometheus
     prometheus_control_address: ${_param:stacklight_monitor_address}
+
+    mysql_admin_user: root
+    mysql_admin_password: workshop
+
+    mysql_grafana_password: password
+    cluster_local_address: ${_param:single_address}
+    galera_server_cluster_name: monitoring_cluster
+    galera_server_maintenance_password: workshop
+    galera_server_admin_password: workshop
   linux:
     network:
       host:
