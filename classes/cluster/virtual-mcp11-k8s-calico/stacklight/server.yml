@@ -1,5 +1,6 @@
 classes:
 - system.docker.host
+- system.linux.system.repo.influxdb
 - system.linux.system.repo.tcp_elastic
 # Needed to install Galera packages
 - system.linux.system.repo.mcp.openstack
@@ -8,6 +9,7 @@ classes:
 - system.kibana.server.single
 - system.haproxy.proxy.listen.stacklight.elasticsearch
 - system.haproxy.proxy.listen.stacklight.kibana
+- system.haproxy.proxy.listen.stacklight.influxdb
 - service.haproxy.proxy.single
 - system.glusterfs.client.cluster
 - system.glusterfs.client.volume.prometheus
@@ -15,6 +17,8 @@ classes:
 - system.glusterfs.server.volume.prometheus
 - system.galera.server.cluster
 - system.galera.server.database.grafana
+- system.influxdb.server.single
+- system.influxdb.database.stacklight
 - system.salt.minion.cert.prometheus_server
 - system.keepalived.cluster.instance.prometheus_server_vip
 - system.telegraf.agent.remote
@@ -55,6 +59,9 @@ parameters:
     grafana_database_host: ${_param:cluster_vip_address}
     grafana_database_password: ${_param:mysql_grafana_password}
     grafana_database_type: mysql
+    influxdb_port: 8086
+    influxdb_admin_password: password
+    influxdb_stacklight_password: lmapass
   keepalived:
     cluster:
       instance:

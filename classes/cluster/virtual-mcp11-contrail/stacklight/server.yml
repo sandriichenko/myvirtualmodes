@@ -1,6 +1,7 @@
 classes:
 - system.docker.host
 - system.linux.system.repo.glusterfs
+- system.linux.system.repo.influxdb
 - system.linux.system.repo.mcp.salt
 - system.linux.system.repo.tcp_elastic
 - system.heka.remote_collector
@@ -13,7 +14,10 @@ classes:
 - system.kibana.server.single
 - system.haproxy.proxy.listen.stacklight.elasticsearch
 - system.haproxy.proxy.listen.stacklight.kibana
+- system.haproxy.proxy.listen.stacklight.influxdb
 - service.haproxy.proxy.single
+- system.influxdb.server.single
+- system.influxdb.database.stacklight
 - system.keepalived.cluster.instance.prometheus_server_vip
 - system.telegraf.agent.remote
 - system.prometheus.server.alertmanager.dns
@@ -47,6 +51,9 @@ parameters:
     glusterfs_node01_address: ${_param:openstack_control_node01_address}
     glusterfs_node02_address: ${_param:openstack_control_node02_address}
     glusterfs_node03_address: ${_param:openstack_control_node03_address}
+    influxdb_port: 8086
+    influxdb_admin_password: password
+    influxdb_stacklight_password: lmapass
   linux:
     network:
       interface:
