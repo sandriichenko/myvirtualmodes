@@ -15,6 +15,7 @@ classes:
 - system.keystone.client.service.nova21
 - system.keystone.client.service.glare
 - system.keystone.client.service.cinder3
+- system.keystone.client.service.designate
 - system.mysql.client.single
 - system.reclass.storage.system.openstack_control_cluster
 - system.reclass.storage.system.opencontrail_control_cluster
