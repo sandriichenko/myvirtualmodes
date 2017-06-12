@@ -46,6 +46,7 @@ parameters:
     docker_image_pushgateway: mirantis/pushgateway:latest
     docker_image_prometheus: mirantis/prometheus:latest
     docker_image_remote_agent: mirantis/telegraf:latest
+    docker_image_remote_storage_adapter: mirantis/remote_storage_adapter:latest
     docker_image_grafana: grafana/grafana:latest
     prometheus_glusterfs_service_host: ${_param:openstack_control_address}
     glusterfs_node01_address: ${_param:openstack_control_node01_address}
@@ -54,6 +55,10 @@ parameters:
     influxdb_port: 8086
     influxdb_admin_password: password
     influxdb_stacklight_password: lmapass
+    prometheus_influxdb_url: "http://${_param:stacklight_monitor_address}:${_param:influxdb_port}/"
+    prometheus_influxdb_db: lma
+    prometheus_influxdb_username: lma
+    prometheus_influxdb_password: ${_param:influxdb_stacklight_password}
   linux:
     network:
       interface:
