@@ -20,6 +20,7 @@ classes:
 - system.influxdb.database.stacklight
 - system.keepalived.cluster.instance.prometheus_server_vip
 - system.telegraf.agent.remote
+- system.prometheus.server.remote_write.docker
 - system.prometheus.server.alertmanager.dns
 - system.prometheus.server.target.dns
 - system.docker.swarm.stack.monitoring
