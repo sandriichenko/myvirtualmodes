@@ -43,6 +43,9 @@ parameters:
     cluster_node03_hostname: mon03
     cluster_node03_address: ${_param:stacklight_monitor_node03_address}
     grafana_admin_password: admin
+    grafana_database_type: mysql
+    grafana_database_host: ${_param:openstack_database_address}
+    grafana_database_password: ${_param:mysql_grafana_password}
     docker_image_alertmanager: mirantis/alertmanager:latest
     docker_image_pushgateway: mirantis/pushgateway:latest
     docker_image_prometheus: mirantis/prometheus:latest

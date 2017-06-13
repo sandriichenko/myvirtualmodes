@@ -1,6 +1,8 @@
 classes:
 - system.linux.system.repo.influxdb
 - system.linux.system.repo.tcp_elastic
+# Needed to install Galera packages
+- system.linux.system.repo.mcp.openstack
 - system.docker.host
 - system.elasticsearch.server.cluster
 - system.elasticsearch.server.curator
@@ -9,6 +11,8 @@ classes:
 - system.haproxy.proxy.listen.stacklight.kibana
 - system.haproxy.proxy.listen.stacklight.influxdb
 - service.haproxy.proxy.single
+- system.galera.server.cluster
+- system.galera.server.database.grafana
 - system.glusterfs.client.cluster
 - system.glusterfs.client.volume.prometheus
 - system.glusterfs.server.cluster
@@ -40,6 +44,12 @@ parameters:
     keepalived_prometheus_vip_address: ${_param:cluster_vip_address}
     keepalived_prometheus_vip_password: password
     keepalived_prometheus_vip_interface: ens4
+    # Galera
+    openstack_version: newton
+    # Grafana
+    grafana_database_type: mysql
+    grafana_database_host: ${_param:cluster_vip_address}
+    grafana_database_password: ${_param:mysql_grafana_password}
     # Kibana
     kibana_elasticsearch_host: ${_param:cluster_vip_address}
     # Docker/Elasticsearch
@@ -56,3 +66,8 @@ parameters:
     prometheus_influxdb_db: lma
     prometheus_influxdb_username: lma
     prometheus_influxdb_password: ${_param:influxdb_stacklight_password}
+  keepalived:
+    cluster:
+      instance:
+        VIP:
+          enabled: false
