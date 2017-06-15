@@ -22,7 +22,7 @@ classes:
 - system.cinder.control.cluster
 - system.heat.server.cluster
 - system.designate.server.cluster
-- system.designate.server.backend.bind
+- system.designate.server.backend.pdns
 - system.galera.server.cluster
 - system.galera.server.database.ceilometer
 - system.galera.server.database.cinder
@@ -57,20 +57,13 @@ parameters:
       instance:
         VIP:
           virtual_router_id: 150
-  bind:
+  powerdns:
     server:
-      control:
-        mgmt:
-          enabled: true
-          bind:
-            address: ${_param:single_address}
-            port: 953
-          allow:
-            - ${_param:openstack_control_node01_address}
-            - ${_param:openstack_control_node02_address}
-            - ${_param:openstack_control_node03_address}
-          keys:
-            - designate
+      axfr_ips:
+        - ${_param:openstack_control_node01_address}
+        - ${_param:openstack_control_node02_address}
+        - ${_param:openstack_control_node03_address}
+        - 127.0.0.1
   keystone:
     server:
       admin_email: ${_param:admin_email}
@@ -92,9 +85,8 @@ parameters:
               options:
                 host: ${_param:openstack_control_node02_address}
                 port: 53
-                rndc_host: ${_param:openstack_control_node02_address}
-                rndc_port: 953
-                rndc_key_file: /etc/designate/rndc.key
+                api_endpoint: "http://${_param:openstack_control_node02_address}:${_param:powerdns_webserver_port}"
+                api_token: ${_param:designate_pdns_api_key}
             default2:
               type: ${_param:designate_pool_target_type}
               description: 'test target3'
@@ -102,9 +94,8 @@ parameters:
               options:
                 host: ${_param:openstack_control_node03_address}
                 port: 53
-                rndc_host: ${_param:openstack_control_node03_address}
-                rndc_port: 953
-                rndc_key_file: /etc/designate/rndc.key
+                api_endpoint: "http://${_param:openstack_control_node03_address}:${_param:powerdns_webserver_port}"
+                api_token: ${_param:designate_pdns_api_key}
   glance:
     server:
       storage:
