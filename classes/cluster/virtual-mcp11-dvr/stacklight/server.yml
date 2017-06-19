@@ -53,7 +53,7 @@ parameters:
     docker_image_prometheus: mirantis/prometheus:latest
     docker_image_remote_agent: mirantis/telegraf:latest
     docker_image_remote_storage_adapter: mirantis/remote_storage_adapter:latest
-    docker_image_grafana: grafana/grafana:latest
+    docker_image_grafana: grafana/grafana:4.3.2
     prometheus_glusterfs_service_host: ${_param:openstack_control_address}
     glusterfs_node01_address: ${_param:openstack_control_node01_address}
     glusterfs_node02_address: ${_param:openstack_control_node02_address}
