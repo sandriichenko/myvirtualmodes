@@ -9,7 +9,6 @@ classes:
 - system.heka.remote_collector.output.elasticsearch
 - system.glusterfs.client.cluster
 - system.glusterfs.client.volume.prometheus
-- system.glusterfs.client.volume.grafana
 - system.elasticsearch.server.cluster
 - system.elasticsearch.server.curator
 - system.kibana.server.single
@@ -47,7 +46,6 @@ parameters:
     grafana_database_type: mysql
     grafana_database_host: ${_param:openstack_database_address}
     grafana_database_password: ${_param:mysql_grafana_password}
-    docker_grafana_replicas: 3
     docker_image_alertmanager: mirantis/alertmanager:latest
     docker_image_pushgateway: mirantis/pushgateway:latest
     docker_image_prometheus: mirantis/prometheus:latest

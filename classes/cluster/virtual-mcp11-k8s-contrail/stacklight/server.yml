@@ -15,10 +15,8 @@ classes:
 - system.galera.server.database.grafana
 - system.glusterfs.client.cluster
 - system.glusterfs.client.volume.prometheus
-- system.glusterfs.client.volume.grafana
 - system.glusterfs.server.cluster
 - system.glusterfs.server.volume.prometheus
-- system.glusterfs.server.volume.grafana
 - system.influxdb.server.single
 - system.influxdb.database.stacklight
 - system.salt.minion.cert.prometheus_server
@@ -42,7 +40,6 @@ parameters:
     docker_image_remote_agent: mirantis/telegraf:latest
     docker_image_remote_storage_adapter: mirantis/remote_storage_adapter:latest
     docker_image_grafana: grafana/grafana:4.3.2
-    docker_grafana_replicas: 3
     grafana_admin_password: admin
     keepalived_prometheus_vip_address: ${_param:cluster_vip_address}
     keepalived_prometheus_vip_password: password
