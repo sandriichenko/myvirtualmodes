@@ -7,6 +7,7 @@ classes:
 - system.opencontrail.compute.cluster
 - system.opencontrail.client.cluster
 - system.opencontrail.client.resource.virtual_router
+- system.prometheus.exporters.libvirt
 - service.opencontrail.compute.cluster
 - cluster.virtual-mcp11-contrail
 parameters:
