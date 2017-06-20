@@ -44,5 +44,6 @@ parameters:
         public_ip_range: 185.22.97.128/26
         public_network: default-domain:default-project:Public
         private_ip_range: 10.150.0.0/16
-        opencontrail:
-          address: ${_param:opencontrail_control_address}
+        config:
+          api:
+            address: ${_param:opencontrail_control_address}
