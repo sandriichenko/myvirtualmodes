@@ -15,13 +15,22 @@ parameters:
     kubernetes_mtu: 1500
     etcd_initial_token: IN7KaRMSo3xkGxkjAAPtkRkAgqN4ZNRq
 
+    # docker package version
+    kubernetes_docker_package: docker-engine=1.12.6-0~ubuntu-xenial
+
     # component docker images
     kubernetes_calicoctl_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/ctl:latest
     kubernetes_calico_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/node:latest
     kubernetes_calico_cni_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/cni:latest
+    kubernetes_calico_policy_image: calico/kube-policy-controller:v0.5.4
     kubernetes_hyperkube_image: docker-prod-virtual.docker.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.6.2-2
     kubernetes_netchecker_agent_image: quay.io/l23network/k8s-netchecker-agent:v1.0
     kubernetes_netchecker_server_image: quay.io/l23network/k8s-netchecker-server:v1.0
+
+    # switches of addons
+    kubernetes_helm_enabled: true
+    kubernetes_netchecker_enabled: true
+    kubernetes_calico_policy_enabled: false
 
     # addresses and hostnames
     kubernetes_internal_api_address: 10.254.0.1

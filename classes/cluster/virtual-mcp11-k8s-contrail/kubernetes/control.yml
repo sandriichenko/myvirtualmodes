@@ -32,13 +32,16 @@ parameters:
       namespace:
         netchecker:
           enabled: true
-      addons:
+      namespace:
         netchecker:
-          enabled: true
+          enabled: ${_param:kubernetes_netchecker_enabled}
+      addons:
+        helm:
+          enabled: ${_param:kubernetes_helm_enabled}
+        netchecker:
+          enabled: ${_param:kubernetes_netchecker_enabled}
           agent_image: ${_param:kubernetes_netchecker_agent_image}
           server_image: ${_param:kubernetes_netchecker_server_image}
-        helm:
-          enabled: true
       network:
         engine: opencontrail
         public_ip_range: 185.22.97.128/26

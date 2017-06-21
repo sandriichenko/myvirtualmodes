@@ -9,7 +9,7 @@ parameters:
   docker:
     host:
       pkgs:
-        - docker-engine=1.12.6-0~ubuntu-xenial
+        - ${_param:kubernetes_docker_package}
         - python-docker
   kubernetes:
     pool:

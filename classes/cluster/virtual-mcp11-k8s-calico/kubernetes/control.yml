@@ -32,11 +32,14 @@ parameters:
             enabled: true
       namespace:
         netchecker:
-          enabled: true
+          enabled: ${_param:kubernetes_netchecker_enabled}
       addons:
+        helm:
+          enabled: ${_param:kubernetes_helm_enabled}
+        calico_policy:
+          enabled: ${_param:kubernetes_calico_policy_enabled}
+          image: ${_param:kubernetes_calico_policy_image}
         netchecker:
-          enabled: true
+          enabled: ${_param:kubernetes_netchecker_enabled}
           agent_image: ${_param:kubernetes_netchecker_agent_image}
           server_image: ${_param:kubernetes_netchecker_server_image}
-        helm:
-          enabled: true
