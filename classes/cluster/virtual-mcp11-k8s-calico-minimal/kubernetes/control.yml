@@ -43,3 +43,4 @@ parameters:
           enabled: ${_param:kubernetes_netchecker_enabled}
           agent_image: ${_param:kubernetes_netchecker_agent_image}
           server_image: ${_param:kubernetes_netchecker_server_image}
+          agent_probeurls: ${_param:kubernetes_netchecker_agent_probeurls}
