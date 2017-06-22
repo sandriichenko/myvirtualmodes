@@ -1,0 +1,41 @@
+parameters:
+  _param:
+    cicd_control_address: 172.16.10.90
+    cicd_control_node01_address: 172.16.10.91
+    cicd_control_node02_address: 172.16.10.92
+    cicd_control_node03_address: 172.16.10.93
+    cicd_control_hostname: cid
+    cicd_control_node01_hostname: cid01
+    cicd_control_node02_hostname: cid02
+    cicd_control_node03_hostname: cid03
+  linux:
+    network:
+      host:
+        ci:
+          params:
+            single_address: 172.16.10.90
+          address: ${_param:cicd_control_address}
+          names:
+          - ${_param:cicd_control_hostname}
+          - ${_param:cicd_control_hostname}.${_param:cluster_domain}
+        ci01:
+          params:
+            single_address: 172.16.10.91
+          address: ${_param:cicd_control_node01_address}
+          names:
+          - ${_param:cicd_control_node01_hostname}
+          - ${_param:cicd_control_node01_hostname}.${_param:cluster_domain}
+        ci02:
+          params:
+            single_address: 172.16.10.92
+          address: ${_param:cicd_control_node02_address}
+          names:
+          - ${_param:cicd_control_node02_hostname}
+          - ${_param:cicd_control_node02_hostname}.${_param:cluster_domain}
+        ci03:
+          params:
+            single_address: 172.16.10.93
+          address: ${_param:cicd_control_node03_address}
+          names:
+          - ${_param:cicd_control_node03_hostname}
+          - ${_param:cicd_control_node03_hostname}.${_param:cluster_domain}

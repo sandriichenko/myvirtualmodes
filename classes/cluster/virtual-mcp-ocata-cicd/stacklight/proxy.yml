@@ -1,0 +1,16 @@
+classes:
+- system.nginx.server.single
+- system.nginx.server.proxy.grafana_web
+- system.nginx.server.proxy.kibana_web
+- system.nginx.server.proxy.nagios_web
+- system.salt.minion.cert.proxy
+- cluster.virtual-mcp-ocata-cicd
+parameters:
+  _param:
+    linux_system_codename: xenial
+    nginx_proxy_ssl:
+      enabled: true
+      authority: ${_param:salt_minion_ca_authority}
+      engine: salt
+      mode: secure
+    salt_minion_ca_host: cfg01.${_param:cluster_domain}
