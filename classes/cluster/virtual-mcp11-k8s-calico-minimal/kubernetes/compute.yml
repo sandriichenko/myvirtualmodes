@@ -31,8 +31,6 @@ parameters:
       resolv:
         dns:
           - 10.254.0.10
-          - 172.18.176.4
-          - 172.18.176.7
       interface:
         ens4:
           route:
