@@ -112,6 +112,10 @@ parameters:
           - ${_param:kubernetes_proxy_node01_hostname}
           - ${_param:kubernetes_proxy_node01_hostname}.${_param:cluster_domain}
     system:
+      user:
+        root:
+          name: root
+          password: false
       rc:
         local: |
           #!/bin/sh -e
