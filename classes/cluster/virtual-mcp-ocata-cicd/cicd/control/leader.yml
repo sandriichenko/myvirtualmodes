@@ -26,6 +26,24 @@ classes:
   - system.gerrit.client
   - system.gerrit.client.project.ci
 
+  # DevOps Portal
+  - service.devops_portal.config
+
+  # Rundeck
+  - system.rundeck.server.docker
+  - system.rundeck.client
+  # Rundeck Projects
+  - system.rundeck.client.project.cicd
+
   - system.docker.swarm.master
   - cluster.virtual-mcp-ocata-cicd.infra
   - cluster.virtual-mcp-ocata-cicd.cicd.control
+
+parameters:
+  _param:
+    # Rundeck
+    rundeck_db_user: ${_param:rundeck_postgresql_username}
+    rundeck_db_password: ${_param:rundeck_postgresql_password}
+    rundeck_db_host: ${_param:cluster_vip_address}
+    rundeck_postgresql_host: ${_param:cluster_vip_address}
+    rundeck_postgresql_port: ${_param:haproxy_postgresql_bind_port}
