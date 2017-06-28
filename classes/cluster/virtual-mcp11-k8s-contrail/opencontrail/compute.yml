@@ -22,4 +22,4 @@ parameters:
   kubernetes:
     pool:
       network:
-        hash: 2276df10feae8f09fb50dce3a96fff6c
+        hash: ${_param:opencontrail_network_hash}
