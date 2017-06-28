@@ -45,7 +45,7 @@ parameters:
     # Kibana
     kibana_elasticsearch_host: ${_param:cluster_vip_address}
     # Galera
-    openstack_version: newton
+    openstack_version: ocata
     # Grafana
     docker_grafana_replicas: 1
     grafana_database_type: mysql

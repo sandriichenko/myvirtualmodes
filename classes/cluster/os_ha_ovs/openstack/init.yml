@@ -1,4 +1,4 @@
-arameters:
+parameters:
   _param:
     openstack_proxy_address: 172.16.10.121
     openstack_proxy_node01_address: 172.16.10.121
@@ -12,7 +12,7 @@ arameters:
     openstack_message_queue_node02_address: ${_param:openstack_control_node02_address}
     openstack_message_queue_node03_address: ${_param:openstack_control_node03_address}
 
-    openstack_version: newton
+    openstack_version: ocata
     apt_mk_version: nightly
     mcp_repo_version: 1.1
     openstack_region: RegionOne
@@ -128,11 +128,6 @@ arameters:
           names:
           - ctl03
           - ctl03.${_param:cluster_domain}
-        gtw01:
-          address: ${_param:openstack_gateway_address}
-          names:
-          - gtw01
-          - gtw01.${_param:cluster_domain}
         cmp01:
           address: 172.16.10.105
           names:

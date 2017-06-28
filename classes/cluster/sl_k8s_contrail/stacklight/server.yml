@@ -45,7 +45,7 @@ parameters:
     keepalived_prometheus_vip_password: password
     keepalived_prometheus_vip_interface: ens4
     # Galera
-    openstack_version: newton
+    openstack_version: ocata
     # Grafana
     grafana_database_type: mysql
     grafana_database_host: ${_param:cluster_vip_address}
