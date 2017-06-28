@@ -3,8 +3,6 @@ classes:
 - system.linux.system.repo.cassandra
 - system.linux.system.repo.mcp.contrail
 - system.linux.system.repo.mcp.openstack
-- system.linux.system.repo.mos10
-- system.linux.system.repo.ubuntu
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.trusty
 - system.opencontrail.client.resource.edge_router

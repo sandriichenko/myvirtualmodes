@@ -46,6 +46,10 @@ parameters:
           # - /usr/lib/contrail/if-vhost0
           # use_interfaces:
           # - ens4
+    system:
+      package:
+        liburcu4:
+          version: 0.9.1-3
   nova:
     compute:
       vncproxy_url: http://${_param:cluster_vip_address}:6080
@@ -70,3 +74,4 @@ parameters:
     common:
       network:
         host: ${_param:openstack_control_address}
+

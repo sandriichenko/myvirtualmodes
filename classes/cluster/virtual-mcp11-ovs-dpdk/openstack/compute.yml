@@ -70,10 +70,16 @@ parameters:
         #   use_interfaces:
         #   - ${_param:tenant_interface}
 ###
+        # dpdkbond1:
+        #   enabled: true
+        #   bridge: br-prv
+        #   type: dpdk_ovs_bond
+        #   mode: active-backup
         dpdk0:
           name: ${_param:dpdk0_name}
           pci: ${_param:dpdk0_pci}
           driver: igb_uio
+#          bond: dpdkbond1
           enabled: true
           type: dpdk_ovs_port
           n_rxq: 2
