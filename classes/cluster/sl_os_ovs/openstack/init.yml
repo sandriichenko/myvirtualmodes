@@ -129,11 +129,6 @@ parameters:
           names:
           - ctl03
           - ctl03.${_param:cluster_domain}
-        gtw01:
-          address: ${_param:openstack_gateway_address}
-          names:
-          - gtw01
-          - gtw01.${_param:cluster_domain}
         cmp01:
           address: 172.16.10.105
           names:
