@@ -33,8 +33,9 @@ parameters:
     pool:
       network:
         engine: opencontrail
-        opencontrail:
-          address: ${_param:opencontrail_control_address}
+        config:
+          api:
+            address: ${_param:opencontrail_control_address}
         etcd:
           ssl:
             enabled: true
