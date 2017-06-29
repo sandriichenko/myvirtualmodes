@@ -24,16 +24,16 @@ parameters:
     cluster_vip_address: 172.16.10.254
     cluster_local_address: ${_param:single_address}
 
-    nova_cpu_pinning: "2,3"
-    compute_hugepages_size: 1G
-    compute_hugepages_count: 3
-    compute_hugepages_mount: /mnt/hugepages_1G
+    nova_cpu_pinning: "3"
+    compute_hugepages_size: 2M
+    compute_hugepages_count: 600
+    compute_hugepages_mount: /mnt/hugepages_2M
     compute_kernel_isolcpu: ${_param:nova_cpu_pinning}
     compute_dpdk_driver: uio
-    compute_ovs_pmd_cpu_mask: "0x6"
+    compute_ovs_pmd_cpu_mask: "0x2"
     compute_ovs_dpdk_socket_mem: "1024"
     compute_ovs_dpdk_lcore_mask: "0x1"
-    compute_ovs_memory_channels: "2"
+    compute_ovs_memory_channels: "1"
 
     cluster_node01_hostname: ctl01
     cluster_node01_address: 172.16.10.101
