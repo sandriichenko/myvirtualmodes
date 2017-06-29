@@ -22,6 +22,10 @@ parameters:
     galera_server_cluster_name: monitoring_cluster
     galera_server_maintenance_password: workshop
     galera_server_admin_password: workshop
+
+    heka_elasticsearch_host: ${_param:stacklight_monitor_address}
+    elasticsearch_port: 9200
+    stacklight_environment: ${_param:cluster_domain}
   linux:
     network:
       host:
