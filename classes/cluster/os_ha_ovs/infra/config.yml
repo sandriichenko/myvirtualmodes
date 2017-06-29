@@ -16,8 +16,6 @@ classes:
 - system.keystone.client.service.cinder3
 - system.mysql.client.single
 - system.reclass.storage.system.openstack_control_cluster
-- system.reclass.storage.system.openstack_compute_multi
-- system.reclass.storage.system.openstack_dashboard_single
 - cluster.os_ha_ovs.openstack.proxy
 - cluster.os_ha_ovs
 parameters:
@@ -26,8 +24,8 @@ parameters:
     reclass_data_revision: master
     salt_master_environment_repository: "https://github.com/tcpcloud"
     salt_master_environment_revision: master
-    reclass_config_master: 192.168.10.100
-    single_address: 172.16.10.100
+    reclass_config_master: ${_param:infra_config_deploy_address}
+    single_address: ${_param:infra_config_address}
     salt_master_host: 127.0.0.1
     salt_master_base_environment: prd
     salt_minion_ca_host: ${linux:network:fqdn}
@@ -49,8 +47,50 @@ parameters:
             host: prx
         nginx_proxy_openstack_api_heat_cfn:
           enabled: false
+  salt:
+    master:
+      reactor:
+        reclass/minion/classify:
+        - salt://reclass/reactor/node_register.sls
   reclass:
     storage:
+      class_mapping:
+        common_node:
+          expression: all
+          node_param:
+            single_address:
+              value_template: <<node_ip>>
+            linux_system_codename:
+              value_template: <<node_os>>
+            salt_master_host:
+              value_template: <<node_master_ip>>
+        infra_config:
+          expression: <<node_hostname>>__startswith__cfg
+          cluster_param:
+            infra_config_address:
+              value_template: <<node_ip>>
+            infra_config_deploy_address:
+              value_template: <<node_ip>>
+        openstack_control01:
+          expression: <<node_hostname>>__equals__ctl01
+          cluster_param:
+            openstack_control_node01_address:
+              value_template: <<node_ip>>
+        openstack_control02:
+          expression: <<node_hostname>>__equals__ctl02
+          cluster_param:
+            openstack_control_node02_address:
+              value_template: <<node_ip>>
+        openstack_control03:
+          expression: <<node_hostname>>__equals__ctl03
+          cluster_param:
+            openstack_control_node03_address:
+              value_template: <<node_ip>>
+        openstack_compute:
+          expression: <<node_hostname>>__startswith__cmp
+          node_class:
+            value_template:
+              - cluster.<<node_cluster>>.openstack.compute
       node:
         openstack_control_node01:
           classes:
@@ -69,19 +109,4 @@ parameters:
           - service.galera.slave.cluster
           params:
             mysql_cluster_role: slave
-            linux_system_codename: xenial
-        openstack_compute_node01:
-          params:
-            single_address: 172.16.10.105
-            tenant_address: 10.1.0.105
-            external_address: 10.16.0.105
-        openstack_compute_node02:
-          params:
-            single_address: 172.16.10.106
-            tenant_address: 10.1.0.106
-            external_address: 10.16.0.106
-        openstack_proxy_node01:
-          classes:
-          - cluster.os_ha_ovs.openstack.proxy
-          params:
             linux_system_codename: xenial
