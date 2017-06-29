@@ -19,6 +19,7 @@ classes:
 - service.haproxy.proxy.single
 - system.influxdb.server.single
 - system.influxdb.database.stacklight
+- system.influxdb.database.ceilometer
 - system.keepalived.cluster.instance.prometheus_server_vip
 - system.telegraf.agent.remote
 - system.prometheus.server.remote_write.docker

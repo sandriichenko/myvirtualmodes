@@ -60,6 +60,8 @@ parameters:
     stacklight_monitor_node03_address: 172.16.10.109
 
     stacklight_log_address: ${_param:stacklight_monitor_address}
+    stacklight_telemetry_address: ${_param:stacklight_monitor_address}
+    stacklight_telemetry_node01_address: ${_param:stacklight_monitor_node01_address}
 
   linux:
     network:
