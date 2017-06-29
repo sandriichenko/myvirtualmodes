@@ -19,6 +19,7 @@ classes:
 - system.glusterfs.client.volume.keystone
 - system.glance.control.cluster
 - system.nova.control.cluster
+- system.haproxy.proxy.listen.openstack.nova-placement
 - system.neutron.control.opencontrail.cluster
 - system.cinder.control.cluster
 - system.heat.server.cluster
