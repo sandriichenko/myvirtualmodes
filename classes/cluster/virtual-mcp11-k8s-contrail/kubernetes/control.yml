@@ -42,6 +42,15 @@ parameters:
           enabled: ${_param:kubernetes_netchecker_enabled}
           agent_image: ${_param:kubernetes_netchecker_agent_image}
           server_image: ${_param:kubernetes_netchecker_server_image}
+        virtlet:
+          enabled: ${_param:kubernetes_virtlet_enabled}
+          namespace: kube-system
+          hosts:
+          - ${_param:kubernetes_compute_node01_hostname}
+          - ${_param:kubernetes_compute_node02_hostname}
+          image: ${_param:kubernetes_netchecker_server_image}
+        kube_network_manager:
+          enabled: ${_param:kubernetes_virtlet_image}
       network:
         engine: opencontrail
         public_ip_range: 185.22.97.128/26

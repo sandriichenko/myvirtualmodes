@@ -26,11 +26,14 @@ parameters:
     kubernetes_hyperkube_image: docker-prod-virtual.docker.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.6.2-2
     kubernetes_netchecker_agent_image: quay.io/l23network/k8s-netchecker-agent:v1.0
     kubernetes_netchecker_server_image: quay.io/l23network/k8s-netchecker-server:v1.0
+    kubernetes_virtlet_image: mirantis/virtlet:latest
 
     # switches of addons
     kubernetes_helm_enabled: true
     kubernetes_netchecker_enabled: true
     kubernetes_calico_policy_enabled: false
+    kubernetes_virtlet_enabled: false
+    kubernetes_kube_network_manager_enabled: true
 
     # addresses and hostnames
     kubernetes_internal_api_address: 10.254.0.1

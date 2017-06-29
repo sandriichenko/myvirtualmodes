@@ -18,6 +18,8 @@ parameters:
     openstack_control_address: none
     keystone_admin_password: none
 
+    opencontrail_network_hash: 2276df10feae8f09fb50dce3a96fff6c
+
   linux:
     network:
       host:
