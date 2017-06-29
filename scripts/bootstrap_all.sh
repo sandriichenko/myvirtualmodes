@@ -16,9 +16,6 @@ fi
 if [[ "$K8S_BOOTSTRAP" == "true" ]]; then
     "$CWD"/kubernetes_install.sh
 fi
-if [[ "$STACKLIGHTV2_BOOTSTRAP" == "true" ]]; then
-    "$CWD"/stacklightv2_infra_install.sh
-fi
 if [[ "$OPENSTACK_BOOTSTRAP" == "true" ]]; then
     "$CWD"/openstack_control_install.sh
     "$CWD"/stacklight_infra_install.sh
@@ -29,4 +26,7 @@ if [[ "$OPENSTACK_BOOTSTRAP" == "true" ]]; then
         "$CWD"/ovs_compute_install.sh
     fi
     "$CWD"/stacklight_monitor_install.sh
+fi
+if [[ "$STACKLIGHTV2_BOOTSTRAP" == "true" ]]; then
+    "$CWD"/stacklightv2_infra_install.sh
 fi
