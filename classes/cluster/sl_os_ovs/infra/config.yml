@@ -93,6 +93,11 @@ parameters:
           node_class:
             value_template:
               - cluster.<<node_cluster>>.openstack.compute
+          node_param:
+            tenant_address:
+              value_template: <<node_tenant_ip>>
+            external_address:
+              value_template: <<node_external_ip>>
         stacklight_monitor01:
           expression: <<node_hostname>>__equals__mon01
           cluster_param:
