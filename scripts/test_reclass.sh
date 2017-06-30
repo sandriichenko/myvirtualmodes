@@ -66,7 +66,8 @@ run_container() {
 }
 
 test_master() {
-    MASTER_HOSTNAME=$1
+    local MASTER_HOSTNAME=$1 CLUSTER_DOMAIN
+    CLUSTER_DOMAIN=${MASTER_HOSTNAME#*.}
     log_info "Installing packages"
     docker_exec "which wget >/dev/null || (apt-get update; apt-get install -y wget)"
     docker_exec "echo 'deb [arch=amd64] http://apt-mk.mirantis.com/${DIST}/ nightly salt salt-latest' > /etc/apt/sources.list.d/apt-mk.list"
@@ -136,7 +137,7 @@ EOF"
         docker_exec "salt-call ${SALT_OPTS} state.sls reclass.storage.node" || true
     fi
 
-    NODES=$(docker_exec "find /srv/salt/reclass/nodes -type f -name *.yml ! -name cfg*")
+    NODES=$(docker_exec "find /srv/salt/reclass/nodes -type f -name *${CLUSTER_DOMAIN}.yml ! -name cfg*")
     for node in ${NODES}; do
         node=$(basename $node .yml)
         log_info "Testing node ${node}"
@@ -146,16 +147,38 @@ EOF"
     done
 }
 
+run_tests() {
+    local master=$1
 
-## Main
-trap _atexit INT TERM EXIT
-
-masters=$(find nodes -type f -name 'cfg*.yml')
-for master in ${masters[@]}; do
-    master=$(basename $master .yml)
     log_info "Testing Salt master ${master}"
     log_info "Creating docker container from image ${DOCKER_IMAGE}"
     CONTAINER=$(run_container $master)
     CONTAINERS+=(${CONTAINER})
     test_master $master
-done
+}
+
+find_all_and_run_tests() {
+    local masters
+
+    masters=$(find nodes -type f -name cfg*.yml)
+    for master in ${masters[@]}; do
+        master=$(basename $master .yml)
+        echo "$master"
+        continue
+        run_tests $master
+    done
+}
+
+## Main
+trap _atexit INT TERM EXIT
+
+case $1 in
+    "" | all)
+        find_all_and_run_tests
+        ;;
+    *)
+        for master; do
+            run_tests $master
+        done
+        ;;
+esac

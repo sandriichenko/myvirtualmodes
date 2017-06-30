@@ -3,11 +3,18 @@ classes:
   - system.linux.system.haveged
   - system.glusterfs.client.cluster
   - system.glusterfs.client.volume.aptly
+  - system.glusterfs.client.volume.devops_portal
+  - system.glusterfs.client.volume.elasticsearch
   - system.glusterfs.client.volume.gerrit
   - system.glusterfs.client.volume.jenkins
-  - system.glusterfs.client.volume.registry
-  - system.glusterfs.client.volume.salt_pki
+  - system.glusterfs.client.volume.mysql
   - system.glusterfs.client.volume.openldap
+  - system.glusterfs.client.volume.postgresql
+  - system.glusterfs.client.volume.pushkin
+  - system.glusterfs.client.volume.registry
+  - system.glusterfs.client.volume.rundeck
+  - system.glusterfs.client.volume.salt_pki
+  - system.glusterfs.client.volume.security_monkey
  #- system.glusterfs.client.volume.salt
   # Docker
   - system.docker.host
@@ -17,10 +24,18 @@ classes:
 
   # Docker services
   - system.docker.swarm.stack.aptly
+  - system.docker.swarm.stack.devops_portal
   - system.docker.swarm.stack.docker
+  - system.docker.swarm.stack.elasticsearch
   - system.docker.swarm.stack.gerrit
   - system.docker.swarm.stack.jenkins
   - system.docker.swarm.stack.ldap
+  - system.docker.swarm.stack.postgresql
+  - system.docker.swarm.stack.pushkin
+  - system.docker.swarm.stack.rundeck
+  - system.docker.swarm.stack.security_monkey
+  # Docker networks
+  - system.docker.swarm.network.runbook
 
   # Keepalived
   - system.keepalived.cluster.instance.cicd_control_vip
@@ -34,9 +49,31 @@ classes:
   - system.haproxy.proxy.listen.docker.registry
   - system.haproxy.proxy.listen.docker.visualizer
   - system.haproxy.proxy.listen.openldap
+  - system.haproxy.proxy.listen.oss.devops_portal
+  - system.haproxy.proxy.listen.oss.elasticsearch
+  - system.haproxy.proxy.listen.oss.postgresql
+  - system.haproxy.proxy.listen.oss.pushkin
+  - system.haproxy.proxy.listen.oss.rundeck
+  - system.haproxy.proxy.listen.oss.security_monkey
   - system.haproxy.proxy.listen.phpldapadmin
   - system.haproxy.proxy.listen.mysql
   - system.haproxy.proxy.listen.stats
+
+  # PostgreSQL
+  - system.postgresql.client.pushkin
+  - system.postgresql.client.rundeck
+  - system.postgresql.client.security_monkey
+
+  # DevOps Portal
+  - system.devops_portal.service.elasticsearch
+  - system.devops_portal.service.gerrit
+  - system.devops_portal.service.jenkins
+  - system.devops_portal.service.pushkin
+  - system.devops_portal.service.rundeck
+  - system.devops_portal.service.security_monkey
+
+  # Rundeck
+  - system.rundeck.client.runbook
 
   - cluster.virtual-mcp-ocata-cicd
 
@@ -75,6 +112,7 @@ parameters:
     aptly_server_secure: false
     aptly_gpg_public_key: none
     aptly_gpg_private_key: none
+
     # OpenLDAP
     openldap_organisation: "${_param:cluster_name}"
     openldap_dn: "virtual-mcp-ocata-cicd,dc=local"
@@ -82,6 +120,12 @@ parameters:
     openldap_admin_password: UdTuP7GPPTaCoPSV
     openldap_config_password: RQK8h0F3aNdvv26U
     openldap_readonly_password: myMSnD6mn8ziUP2S
+
+    # PostgreSQL
+    postgresql_client_user: ${_param:postgresql_admin_user}
+    postgresql_client_password: ${_param:postgresql_admin_user_password}
+    postgresql_client_host: ${_param:haproxy_postgresql_bind_host}
+    postgresql_client_port: ${_param:haproxy_postgresql_bind_port}
 
     # Jenkins
     jenkins_slave_user: admin
@@ -139,6 +183,49 @@ parameters:
     gerrit_ldap_bind_password: ${_param:openldap_admin_password}
     gerrit_ldap_account_base: ou=people,${_param:openldap_dn}
     gerrit_ldap_group_base: ou=groups,${_param:openldap_dn}
+
+    # Rundeck
+    rundeck_cis_os_auth_url: http://172.16.10.254:5000/v3/auth/tokens
+    rundeck_cis_os_username: admin
+    rundeck_cis_os_password: workshop
+    rundeck_cis_os_project_name: admin
+    rundeck_runbook_public_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBPHRctBuN16hVe05HxKeN1AqPqbjvWvqQ1zcr/sbJJXHgVBTACRD6G+DAi7SSJr7dLzyeNo042szJclsH/qf9h0tcytINATzye//x6MtzXZ4YIDkcd1Yhz1LRgCXk1PvIensJAdClYOymx+SRaJxEEzbLxgqhSnYOUY3xVGbUrgfXI9+ZG9hs9zfq5JEMRjQay5p+xuYv/wCoU+pbFPDmsW0hQ99O+XBHcwrpU3crkImetTM2WfnRlBkoJypLv/HicTJtnL91/BWcebvW50oxrEq1QQ82T1Wl3pQsJw24M48fXyl/HbF2QVP6O1Ptqr3O7cIByxJWHih3paZncVEj
+    rundeck_runbook_private_key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEpAIBAAKCAQEAwTx0XLQbjdeoVXtOR8SnjdQKj6m471r6kNc3K/7GySVx4FQU
+      wAkQ+hvgwIu0kia+3S88njaNONrMyXJbB/6n/YdLXMrSDQE88nv/8ejLc12eGCA5
+      HHdWIc9S0YAl5NT7yHp7CQHQpWDspsfkkWicRBM2y8YKoUp2DlGN8VRm1K4H1yPf
+      mRvYbPc36uSRDEY0GsuafsbmL/8AqFPqWxTw5rFtIUPfTvlwR3MK6VN3K5CJnrUz
+      Nln50ZQZKCcqS7/x4nEybZy/dfwVnHm71udKMaxKtUEPNk9Vpd6ULCcNuDOPH18p
+      fx2xdkFT+jtT7aq9zu3CAcsSVh4od6WmZ3FRIwIDAQABAoIBAQCsnUNY2G7Quzec
+      /KQFyi7eq+6vPK596ihwIEAhpdqPLkrWWGWc0bx/n02a0nGAKOpQjPS6ZAKtKg7L
+      WMLmll4cRLJWdrtCcLuv5ILS5uBu8s7ZwFckDZo8Y4YYrT+sdXFhOcAUYLGwOa/M
+      oD2WgvsseHl3eDZgtDJXQhTo4jtleW4/ZETmduUBx2djSfwx2vv8N6V7+5bH2kvL
+      3PgR3PYp1uD+dPDy00SwuiWDDwljubQzpres8K4ikIWWaU4/t9TUBv+PJt3Kbavi
+      0ca+jdpRdPCW4QmEhNT+D10B3DCN9uVt9leCrYzvcrT1ElqiL4ODBefG0clKq64d
+      Zc59IVypAoGBAO2PX2qApylv+uuVe2dscH10qUjgYIuXeszJYtSCiPbu7yMcuFWo
+      c6sqU2/l/4vdd8qeHvS75VPzmX2QfF9p1EsL+LE5tzc3m54WfJ884LLI+nx8ynKU
+      HrbaLCGCK09bLNXM7XkFTe9s+XrJzgqdff/rF2nZHHyoqPObSgaG//HnAoGBANA8
+      TusN74PUX4ABLwGCLEd4/qRa0kgFtwngrcUY9XMWhrJUqi9tKJLN2URhqTbOzFA0
+      qv3n6TgZQSVH4ojmgL8EElSU2qKjDQ/jk/kEr5A+sBLdzXWZWdGv/BdB2yn95JH4
+      qoD4E9PWkNwz+e6I5PivXrVVIA0PEZ2cthutR/dlAoGBAORHzvfoEzpliijSZ1h2
+      Qw67iWUngH8DnJSnvRnbKkSoTBJgqd5eVnCX5r/zs4Ky2kdRdQvWd0QaJVgc/Pcv
+      GjrXkS60+JPOEvNyRmU6ue3z5Yi03lIGdhFeS+QTUw0Z31bAaz7NUxwNixtsS1u2
+      Bftj7QbhBFfiNyCJDDSDi/XnAoGAbsd2sIO0ZSypNZ7rk+Ddj5Rl26fZcKlhq+aU
+      a2OQyI42UE7MTvjCef760+8kp1yywwSR5wvmPYrp5lxsvqnp2jTfT5H1Ekqt20MV
+      6Ic+ov1GjHLlJ+fSKcR21ySY5KkGXUWt53iSi8L9Q7h/ARBgx4/8UXmc2HWoyHGj
+      S+wOeiUCgYA2EMH3QOP+LewScNkdgDr9e20+NxmZs+b0ZOk6JAUE+/YLSNDlRQZV
+      fL0f0cjIyCdKfv+nR4gdMnm8RDHBiAqrKK3X9tiZ0fGmPHB+OLwYV8wE1u9jkJDA
+      IJA5GNU+Uj6+WbPO+hGn3NBWfb7/tR3ojSv7cBf2eEUh/vLSE9joKA==
+      -----END RSA PRIVATE KEY-----
+
+    # SecurityMonkey
+    security_monkey_openstack:
+      username: admin
+      password: workshop
+      auth_url: http://172.16.10.254:5000/v3/
+      project_name: admin
+
 
   linux:
     system:
