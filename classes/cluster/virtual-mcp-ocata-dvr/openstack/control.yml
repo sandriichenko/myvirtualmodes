@@ -63,13 +63,6 @@ parameters:
       instance:
         VIP:
           virtual_router_id: 150
-  powerdns:
-    server:
-      axfr_ips:
-        - ${_param:openstack_control_node01_address}
-        - ${_param:openstack_control_node02_address}
-        - ${_param:openstack_control_node03_address}
-        - 127.0.0.1
   keystone:
     server:
       admin_email: ${_param:admin_email}
@@ -77,6 +70,9 @@ parameters:
         driver: messagingv2
         topics: "notifications,${_param:stacklight_notification_topic}"
   designate:
+    pool_manager:
+      enabled: ${_param:designate_pool_manager_enabled}
+      periodic_sync_interval: ${_param:designate_pool_manager_periodic_sync_interval}
     server:
       pools:
         default:
@@ -89,18 +85,9 @@ parameters:
               description: 'test target2'
               masters: ${_param:designate_pool_target_masters}
               options:
-                host: ${_param:openstack_control_node02_address}
+                host: ${_param:openstack_dns_node02_address}
                 port: 53
-                api_endpoint: "http://${_param:openstack_control_node02_address}:${_param:powerdns_webserver_port}"
-                api_token: ${_param:designate_pdns_api_key}
-            default2:
-              type: ${_param:designate_pool_target_type}
-              description: 'test target3'
-              masters: ${_param:designate_pool_target_masters}
-              options:
-                host: ${_param:openstack_control_node03_address}
-                port: 53
-                api_endpoint: "http://${_param:openstack_control_node03_address}:${_param:powerdns_webserver_port}"
+                api_endpoint: "http://${_param:openstack_dns_node02_address}:${_param:powerdns_webserver_port}"
                 api_token: ${_param:designate_pdns_api_key}
   glance:
     server:
