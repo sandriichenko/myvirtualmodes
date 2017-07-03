@@ -36,6 +36,8 @@ parameters:
         netchecker:
           enabled: ${_param:kubernetes_netchecker_enabled}
       addons:
+        dashboard:
+          enabled: false
         helm:
           enabled: ${_param:kubernetes_helm_enabled}
         netchecker:
