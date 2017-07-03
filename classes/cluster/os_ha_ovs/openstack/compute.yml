@@ -28,6 +28,9 @@ parameters:
   linux:
     network:
       bridge: openvswitch
+      concat_iface_files:
+      - src: '/etc/network/interfaces.d/50-cloud-init.cfg'
+        dst: '/etc/network/interfaces'
       interface:
         dhcp_int:
           enabled: true
