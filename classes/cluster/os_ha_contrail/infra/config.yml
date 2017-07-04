@@ -23,6 +23,7 @@ classes:
 - system.reclass.storage.system.openstack_dashboard_single
 - system.reclass.storage.system.openstack_proxy_single
 - cluster.os_ha_contrail.openstack.proxy
+- cluster.os_ha_contrail.openstack.dashboard
 - cluster.os_ha_contrail
 parameters:
   _param:

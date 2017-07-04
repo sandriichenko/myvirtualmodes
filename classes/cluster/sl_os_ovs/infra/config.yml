@@ -19,6 +19,7 @@ classes:
 - system.reclass.storage.system.stacklight_server_cluster
 - cluster.sl_os_ovs.openstack.proxy
 - cluster.sl_os_ovs.stacklight.proxy
+- cluster.sl_os_ovs.openstack.dashboard
 - cluster.sl_os_ovs
 parameters:
   _param:

@@ -17,6 +17,7 @@ classes:
 - system.mysql.client.single
 - system.reclass.storage.system.openstack_control_cluster
 - cluster.os_ha_ovs.openstack.proxy
+- cluster.os_ha_ovs.openstack.dashboard
 - cluster.os_ha_ovs
 parameters:
   _param:
