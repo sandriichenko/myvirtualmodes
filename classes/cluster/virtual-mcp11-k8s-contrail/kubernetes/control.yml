@@ -50,9 +50,9 @@ parameters:
           hosts:
           - ${_param:kubernetes_compute_node01_hostname}
           - ${_param:kubernetes_compute_node02_hostname}
-          image: ${_param:kubernetes_netchecker_server_image}
+          image: ${_param:kubernetes_virtlet_image}
         kube_network_manager:
-          enabled: ${_param:kubernetes_virtlet_image}
+          enabled: ${_param:kubernetes_kube_network_manager_enabled}
       network:
         engine: opencontrail
         public_ip_range: 185.22.97.128/26
