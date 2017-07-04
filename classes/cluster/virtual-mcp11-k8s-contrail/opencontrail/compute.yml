@@ -3,6 +3,7 @@ classes:
 - system.opencontrail.compute.cluster
 - system.opencontrail.client.cluster
 - system.opencontrail.client.resource.virtual_router
+- system.opencontrail.client.resource.k8s_api
 parameters:
   _param:
     opencontrail_compute_address: ${_param:single_address}
