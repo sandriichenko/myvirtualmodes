@@ -2,6 +2,10 @@ parameters:
   _param:
     openstack_proxy_address: 172.16.10.121
     openstack_proxy_node01_address: 172.16.10.121
+    openstack_control_hostname: ctl
+    openstack_control_node01_hostname: ctl01
+    openstack_control_node02_hostname: ctl02
+    openstack_control_node03_hostname: ctl03
     openstack_control_address: 172.16.10.254
     openstack_control_node01_address: 172.16.10.101
     openstack_control_node02_address: 172.16.10.102
@@ -35,12 +39,12 @@ parameters:
     galera_server_admin_password: workshop
     cluster_vip_address: 172.16.10.254
     cluster_local_address: ${_param:single_address}
-    cluster_node01_hostname: ctl01
-    cluster_node01_address: 172.16.10.101
-    cluster_node02_hostname: ctl02
-    cluster_node02_address: 172.16.10.102
-    cluster_node03_hostname: ctl03
-    cluster_node03_address: 172.16.10.103
+    cluster_node01_hostname: ${_param:openstack_control_node01_hostname}
+    cluster_node01_address: ${_param:openstack_control_node01_address}
+    cluster_node02_hostname: ${_param:openstack_control_node02_hostname}
+    cluster_node02_address: ${_param:openstack_control_node02_address}
+    cluster_node03_hostname: ${_param:openstack_control_node03_hostname}
+    cluster_node03_address: ${_param:openstack_control_node03_address}
     rabbitmq_secret_key: workshop
     rabbitmq_admin_password: workshop
     rabbitmq_openstack_password: workshop
