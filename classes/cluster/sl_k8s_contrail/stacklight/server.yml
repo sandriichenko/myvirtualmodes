@@ -29,7 +29,7 @@ classes:
 - system.prometheus.server.target.dns
 - system.docker.swarm.stack.monitoring
 - system.docker.swarm.stack.dashboard
-- cluster.k8s_ha_contrail.infra
+- cluster.sl_k8s_contrail.infra
 parameters:
   _param:
     cluster_public_host: mon

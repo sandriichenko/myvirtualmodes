@@ -5,7 +5,7 @@ classes:
 - system.salt.minion.cert.etcd_server
 - system.kubernetes.master.cluster
 - cluster.k8s_ha_contrail.kubernetes.compute
-- cluster.overrides
+- cluster.k8s_ha_contrail
 parameters:
   _param:
     keepalived_vip_interface: vhost0

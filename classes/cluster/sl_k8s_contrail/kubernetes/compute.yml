@@ -3,9 +3,8 @@ classes:
 - system.kubernetes.pool.cluster
 - system.salt.minion.cert.k8s_client
 - system.salt.minion.cert.etcd_client
-- cluster.k8s_ha_contrail.infra
-- cluster.k8s_ha_contrail.opencontrail.compute
-- cluster.overrides
+- cluster.sl_k8s_contrail.opencontrail.compute
+- cluster.sl_k8s_contrail
 parameters:
   linux:
     network:

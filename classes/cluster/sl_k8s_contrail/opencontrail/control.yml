@@ -14,7 +14,7 @@ classes:
 - system.opencontrail.client.resource.database_node
 - system.opencontrail.client.resource.analytics_node
 - system.haproxy.proxy.listen.opencontrail.analytics
-- cluster.k8s_ha_contrail.infra
+- cluster.sl_k8s_contrail
 parameters:
   _param:
     keepalived_vip_interface: eth1

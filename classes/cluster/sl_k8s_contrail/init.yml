@@ -1,9 +1,9 @@
 classes:
 - system.linux.system.single
-- cluster.k8s_ha_contrail.kubernetes
-- cluster.k8s_ha_contrail.opencontrail
-- cluster.k8s_ha_contrail.stacklight
-- cluster.k8s_ha_contrail.infra
+- cluster.sl_k8s_contrail.kubernetes
+- cluster.sl_k8s_contrail.opencontrail
+- cluster.sl_k8s_contrail.stacklight
+- cluster.sl_k8s_contrail.infra
 - system.openssh.server.team.lab
 - system.openssh.server.team.stacklight
 - system.openssh.server.team.tcpcloud

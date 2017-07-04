@@ -4,8 +4,8 @@ classes:
 - system.linux.system.repo.docker
 - system.salt.minion.cert.etcd_server
 - system.kubernetes.master.cluster
-- cluster.k8s_ha_contrail.kubernetes.compute
-- cluster.overrides
+- cluster.sl_k8s_contrail.kubernetes.compute
+- cluster.sl_k8s_contrail
 parameters:
   _param:
     keepalived_vip_interface: vhost0
