@@ -1,5 +1,10 @@
 classes:
+- system.linux.system.single
 - cluster.k8s_ha_contrail.kubernetes
 - cluster.k8s_ha_contrail.opencontrail
 - cluster.k8s_ha_contrail.infra
+- system.openssh.server.team.lab
+- system.openssh.server.team.tcpcloud
+- system.openssh.server.team.mcp_qa
+- system.openssh.server.team.k8s_team
 - cluster.overrides

@@ -1,13 +1,7 @@
-alasses:
-- system.linux.system.single
+classes:
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.mcp.salt
 - system.linux.system.repo.ubuntu
-- system.openssh.server.team.lab
-- system.openssh.server.team.tcpcloud
-- system.openssh.server.team.mcp_qa
-- system.openssh.server.team.k8s_team
-- system.rsyslog.client.single
 parameters:
   _param:
     # infra service addresses
