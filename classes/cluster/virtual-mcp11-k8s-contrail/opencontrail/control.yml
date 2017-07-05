@@ -14,6 +14,7 @@ classes:
 - system.opencontrail.client.resource.database_node
 - system.opencontrail.client.resource.analytics_node
 - system.haproxy.proxy.listen.opencontrail.analytics
+- system.prometheus.exporters.jmx
 - cluster.virtual-mcp11-k8s-contrail.infra
 parameters:
   _param:
