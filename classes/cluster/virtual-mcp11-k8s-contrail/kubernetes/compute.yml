@@ -35,7 +35,7 @@ parameters:
         engine: opencontrail
         config:
           api:
-            address: ${_param:opencontrail_control_address}
+            host: ${_param:opencontrail_control_address}
         etcd:
           ssl:
             enabled: true
