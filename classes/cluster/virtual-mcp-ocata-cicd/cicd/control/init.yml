@@ -219,6 +219,13 @@ parameters:
       IJA5GNU+Uj6+WbPO+hGn3NBWfb7/tR3ojSv7cBf2eEUh/vLSE9joKA==
       -----END RSA PRIVATE KEY-----
 
+    # Pushkin
+    webhook_from: pushkin@example.com
+    webhook_recipients: alerts@example.com
+    webhook_application_id: "1"
+    webhook_login_id: "1"
+    webhook_sfdc_username: pushkin
+
     # SecurityMonkey
     security_monkey_openstack:
       username: admin
