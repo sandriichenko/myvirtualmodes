@@ -33,7 +33,6 @@ parameters:
     kubernetes_netchecker_enabled: true
     kubernetes_calico_policy_enabled: false
     kubernetes_virtlet_enabled: false
-    kubernetes_kube_network_manager_enabled: true
 
     # addresses and hostnames
     kubernetes_internal_api_address: 10.254.0.1
