@@ -34,7 +34,7 @@ classes:
 - system.galera.server.database.nova
 - system.galera.server.database.designate
 - system.haproxy.proxy.listen.openstack.nova-placement
-- cluster.virtual-mcp-ocata-cicd
+- cluster.virtual-mcp-ocata-cicd.infra
 parameters:
   _param:
     keepalived_vip_interface: ens4

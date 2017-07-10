@@ -76,7 +76,7 @@ classes:
   # Rundeck
   - system.rundeck.client.runbook
 
-  - cluster.virtual-mcp-ocata-cicd
+  - cluster.virtual-mcp-ocata-cicd.infra
 
 parameters:
   _param:
@@ -116,13 +116,15 @@ parameters:
 
     # OpenLDAP
     openldap_organisation: "${_param:cluster_name}"
-    openldap_dn: "virtual-mcp-ocata-cicd,dc=local"
+    openldap_dn: "dc=virtual-mcp-ocata-cicd,dc=local"
     openldap_domain: "virtual-mcp-ocata-cicd.local"
     openldap_admin_password: UdTuP7GPPTaCoPSV
     openldap_config_password: RQK8h0F3aNdvv26U
     openldap_readonly_password: myMSnD6mn8ziUP2S
 
     # PostgreSQL
+    docker_image_postgresql: "library/postgres:9.6"
+    postgresql_admin_user_password: faeRpEA4uye2Sj2s
     postgresql_client_user: ${_param:postgresql_admin_user}
     postgresql_client_password: ${_param:postgresql_admin_user_password}
     postgresql_client_host: ${_param:haproxy_postgresql_bind_host}
@@ -186,10 +188,26 @@ parameters:
     gerrit_ldap_group_base: ou=groups,${_param:openldap_dn}
 
     # Rundeck
+    docker_image_rundeck: "docker-prod-local.artifactory.mirantis.com/mirantis/oss/rundeck:latest"
+    rundeck_db_user: rundeck
+    rundeck_db_user_password: password
+    rundeck_db_host: ${_param:haproxy_postgresql_bind_host}
+    rundeck_postgresql_username: ${_param:rundeck_db_user}
+    rundeck_postgresql_password: ${_param:rundeck_db_user_password}
+    rundeck_postgresql_database: rundeck
+    rundeck_postgresql_host: ${_param:rundeck_db_host}
+
+    rundeck_cis_enabled: True
     rundeck_cis_os_auth_url: http://172.16.10.254:5000/v3/auth/tokens
-    rundeck_cis_os_username: admin
-    rundeck_cis_os_password: workshop
-    rundeck_cis_os_project_name: admin
+    rundeck_cis_os_username: "${_param:oss_openstack_username}"
+    rundeck_cis_os_password: "${_param:oss_openstack_password}"
+    rundeck_cis_os_project_name: "${_param:oss_openstack_project}"
+    rundeck_cis_os_domain_id: "${_param:oss_openstack_domain_id}"
+    rundeck_cis_jobs_repository: "https://gerrit.mcp.mirantis.net/oss/rundeck-cis-jobs"
+    rundeck_cis_jobs_revision: "master"
+    rundeck_cis_os_docker_image: "docker-prod-local.artifactory.mirantis.com/mirantis/oss/cis-openstack:latest"
+    rundeck_cis_elasticsearch_url: http://${_param:haproxy_elasticsearch_bind_host}:${_param:haproxy_elasticsearch_http_bind_port}
+
     rundeck_runbook_public_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBPHRctBuN16hVe05HxKeN1AqPqbjvWvqQ1zcr/sbJJXHgVBTACRD6G+DAi7SSJr7dLzyeNo042szJclsH/qf9h0tcytINATzye//x6MtzXZ4YIDkcd1Yhz1LRgCXk1PvIensJAdClYOymx+SRaJxEEzbLxgqhSnYOUY3xVGbUrgfXI9+ZG9hs9zfq5JEMRjQay5p+xuYv/wCoU+pbFPDmsW0hQ99O+XBHcwrpU3crkImetTM2WfnRlBkoJypLv/HicTJtnL91/BWcebvW50oxrEq1QQ82T1Wl3pQsJw24M48fXyl/HbF2QVP6O1Ptqr3O7cIByxJWHih3paZncVEj
     rundeck_runbook_private_key: |
       -----BEGIN RSA PRIVATE KEY-----
@@ -221,18 +239,42 @@ parameters:
       -----END RSA PRIVATE KEY-----
 
     # Pushkin
+    docker_image_pushkin: "docker-sandbox.sandbox.mirantis.net/vstoiko/oss/pushkin:latest"
+    pushkin_db_user: pushkin
+    pushkin_db_user_password: kRQaFJWiqhQfy6sN
+    pushkin_db_host: ${_param:haproxy_postgresql_bind_host}
+    #..WebHook notification senders
     webhook_from: pushkin@example.com
     webhook_recipients: alerts@example.com
-    webhook_application_id: "1"
-    webhook_login_id: "1"
+    webhook_application_id: "23"
+    webhook_login_id: "11"
     webhook_sfdc_username: pushkin
 
     # SecurityMonkey
+    docker_image_security_monkey_api: "docker-sandbox.sandbox.mirantis.net/vstoiko/oss/security-monkey-api:6700"
+    docker_image_security_monkey_scheduler: "docker-sandbox.sandbox.mirantis.net/vstoiko/oss/security-monkey-scheduler:6700"
+    secmonkey_db_user: secmonkey
+    secmonkey_db_user_password: rt7HoJbb36eR9wWe
+    secmonkey_db_host: ${_param:haproxy_postgresql_bind_host}
     security_monkey_openstack:
       username: admin
       password: workshop
       auth_url: http://172.16.10.254:5000/v3/
       project_name: admin
+      user_domain_name: "${_param:oss_openstack_domain_id}"
+      project_domain_name: "${_param:oss_openstack_domain_id}"
+
+    # OSS OpenStack
+    oss_openstack_username: "admin"
+    oss_openstack_password: "password"
+    oss_openstack_project: "admin"
+    oss_openstack_domain_id: "default"
+
+    # DevOps Portal
+    docker_image_devops_portal: "docker-prod-local.artifactory.mirantis.com/mirantis/oss/devops-portal:latest"
+
+    # ElasticSearch
+    docker_image_elasticsearch: "docker.elastic.co/elasticsearch/elasticsearch:5.4.1"
 
 
   linux:

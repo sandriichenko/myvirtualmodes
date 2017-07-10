@@ -5,7 +5,7 @@ classes:
 - system.nova.compute.cluster
 - system.neutron.compute.cluster
 - system.heka.alarm.openstack_compute
-- cluster.virtual-mcp-ocata-cicd
+- cluster.virtual-mcp-ocata-cicd.infra
 parameters:
   _param:
     primary_interface: ens4

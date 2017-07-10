@@ -4,7 +4,7 @@ classes:
 - system.nginx.server.proxy.openstack_vnc
 - system.nginx.server.proxy.openstack_web
 - system.salt.minion.cert.proxy
-- cluster.virtual-mcp-ocata-cicd
+- cluster.virtual-mcp-ocata-cicd.infra
 parameters:
   _param:
     linux_system_codename: xenial

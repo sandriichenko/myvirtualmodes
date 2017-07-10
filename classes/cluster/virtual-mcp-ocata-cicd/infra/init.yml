@@ -1,6 +1,33 @@
+classes:
+- system.linux.system.single
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.mcp.salt
+- system.linux.system.repo.ubuntu
+- system.openssh.server.team.lab
+- system.openssh.server.team.stacklight
+- system.openssh.server.team.tcpcloud
+- system.openssh.server.team.mcp_qa
+- system.rsyslog.client.single
+- cluster.virtual-mcp-ocata-cicd.cicd
+- cluster.virtual-mcp-ocata-cicd.openstack
+- cluster.virtual-mcp-ocata-cicd.stacklight
+- cluster.overrides
 parameters:
+  _param:
+    cluster_domain: virtual-mcp-ocata-cicd.local
+    cluster_name: virtual-mcp-ocata-cicd
+    # infra service addresses
+    infra_config_hostname: cfg01
+    infra_config_address: 172.16.10.100
+
+    salt_minion_ca_host: ${_param:infra_config_hostname}.${_param:cluster_domain}
+    salt_minion_ca_authority: salt_master_ca
   linux:
     network:
+      resolv:
+        dns:
+          - 172.18.176.4
+          - 172.18.208.44
       host:
         cfg01:
           address: ${_param:infra_config_address}
