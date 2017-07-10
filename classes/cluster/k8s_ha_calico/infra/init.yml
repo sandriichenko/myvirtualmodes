@@ -7,7 +7,6 @@ classes:
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.mcp_qa
 - system.openssh.server.team.k8s_team
-- system.rsyslog.client.single
 parameters:
   _param:
     # infra service addresses
