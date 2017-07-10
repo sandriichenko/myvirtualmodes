@@ -1,11 +1,10 @@
-alasses:
+classes:
 - system.linux.system.repo.ubuntu
 - system.openssh.client.lab
 - system.salt.master.pkg
 - system.salt.minion.ca.salt_master
 - system.salt.master.api
 - system.salt.minion.cert.k8s_server
-- system.mysql.client
 - system.reclass.storage.salt
 - system.reclass.storage.system.kubernetes_control_cluster
 - cluster.k8s_ha_calico
