@@ -32,7 +32,7 @@ parameters:
       resolv:
         dns:
           - 172.18.176.4
-          - 172.18.176.7
+          - 172.18.208.44
       host:
         cfg01:
           address: ${_param:infra_config_address}
