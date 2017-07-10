@@ -24,3 +24,8 @@ parameters:
     pool:
       network:
         hash: ${_param:opencontrail_network_hash}
+  linux:
+    network:
+      concat_iface_files:
+      - src: '/etc/network/interfaces.d/50-cloud-init.cfg'
+        dst: '/etc/network/interfaces'
