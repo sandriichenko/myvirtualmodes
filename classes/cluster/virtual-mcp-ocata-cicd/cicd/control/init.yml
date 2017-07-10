@@ -15,6 +15,7 @@ classes:
   - system.glusterfs.client.volume.rundeck
   - system.glusterfs.client.volume.salt_pki
   - system.glusterfs.client.volume.security_monkey
+  - cluster.virtual-mcp-ocata-cicd.cicd.gluster
  #- system.glusterfs.client.volume.salt
   # Docker
   - system.docker.host

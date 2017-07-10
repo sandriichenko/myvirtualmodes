@@ -12,4 +12,5 @@ classes:
   - system.glusterfs.server.volume.pushkin
   - system.glusterfs.server.volume.registry
   - system.glusterfs.server.volume.rundeck
+  - system.glusterfs.server.volume.salt_pki
   - system.glusterfs.server.volume.security_monkey
