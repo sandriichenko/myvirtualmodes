@@ -66,6 +66,10 @@ parameters:
     prometheus_influxdb_db: lma
     prometheus_influxdb_username: lma
     prometheus_influxdb_password: ${_param:influxdb_stacklight_password}
+  elasticsearch:
+    server:
+      heap:
+        size: 1
   keepalived:
     cluster:
       instance:
