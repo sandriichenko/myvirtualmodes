@@ -1,0 +1,4 @@
+classes:
+- cluster.aaa_ha_freeipa.aaa.freeipa
+- cluster.aaa_ha_freeipa.infra
+- cluster.overrides
