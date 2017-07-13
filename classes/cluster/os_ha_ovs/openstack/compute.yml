@@ -40,12 +40,14 @@ parameters:
           mtu: ${_param:interface_mtu}
         primary_interface:
           enabled: true
+          ipflush_onchange: true
           name: ${_param:primary_interface}
           mtu: ${_param:interface_mtu}
           proto: manual
           type: eth
         tenant_interface:
           enabled: true
+          ipflush_onchange: true
           name: ${_param:tenant_interface}
           mtu: ${_param:interface_mtu}
           proto: manual
@@ -66,3 +68,4 @@ parameters:
           netmask: 255.255.255.0
           use_interfaces:
           - ${_param:tenant_interface}
+
