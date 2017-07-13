@@ -120,17 +120,17 @@ parameters:
         stacklight_monitor01:
           expression: <<node_hostname>>__equals__mon01
           cluster_param:
-            stacklight_node01_address:
+            stacklight_monitor_node01_address:
               value_template: <<node_control_ip>>
         stacklight_monitor02:
           expression: <<node_hostname>>__equals__mon02
           cluster_param:
-            stacklight_node02_address:
+            stacklight_monitor_node02_address:
               value_template: <<node_control_ip>>
         stacklight_monitor03:
           expression: <<node_hostname>>__equals__mon03
           cluster_param:
-            stacklight_node03_address:
+            stacklight_monitor_node03_address:
               value_template: <<node_control_ip>>
       node:
         openstack_control_node01:

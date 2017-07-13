@@ -41,12 +41,12 @@ parameters:
     keepalived_prometheus_vip_password: password
     keepalived_prometheus_vip_interface: ${_param:primary_interface}
     # Docker/Elasticsearch
-    cluster_node01_hostname: ${_param:stacklight_node01_hostname}
-    cluster_node01_address: ${_param:stacklight_node01_address}
-    cluster_node02_hostname: ${_param:stacklight_node02_hostname}
-    cluster_node02_address: ${_param:stacklight_node02_address}
-    cluster_node03_hostname: ${_param:stacklight_node03_hostname}
-    cluster_node03_address: ${_param:stacklight_node03_address}
+    cluster_node01_hostname: ${_param:stacklight_monitor_node01_hostname}
+    cluster_node01_address: ${_param:stacklight_monitor_node01_address}
+    cluster_node02_hostname: ${_param:stacklight_monitor_node02_hostname}
+    cluster_node02_address: ${_param:stacklight_monitor_node02_address}
+    cluster_node03_hostname: ${_param:stacklight_monitor_node03_hostname}
+    cluster_node03_address: ${_param:stacklight_monitor_node03_address}
     # Kibana
     kibana_elasticsearch_host: ${_param:cluster_vip_address}
     # Galera
