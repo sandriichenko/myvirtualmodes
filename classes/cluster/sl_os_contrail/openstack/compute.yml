@@ -56,13 +56,6 @@ parameters:
         topics: "notifications,${_param:stacklight_notification_topic}"
         notify_on:
           state_change: vm_and_task_state
-  ceilometer:
-    agent:
-      message_queue:
-        members:
-          - host: ${_param:openstack_control_node01_address}
-          - host: ${_param:openstack_control_node02_address}
-          - host: ${_param:openstack_control_node03_address}
   opencontrail:
     common:
       network:
