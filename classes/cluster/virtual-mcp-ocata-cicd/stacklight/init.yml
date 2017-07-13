@@ -16,10 +16,6 @@ parameters:
     stacklight_log_address: ${_param:stacklight_monitor_address}
     stacklight_telemetry_address: ${_param:stacklight_monitor_address}
 
-
-    # Glusterfs
-    glusterfs_service_host: ${_param:stacklight_monitor_address}
-
     # Prometheus
     prometheus_control_address: ${_param:stacklight_monitor_address}
 

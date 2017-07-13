@@ -8,7 +8,7 @@ classes:
 - cluster.virtual-mcp-ocata-cicd.infra
 parameters:
   _param:
-    cluster_public_host: ${_param:prometheus_control_address}
+    #cluster_public_host: ${_param:prometheus_control_address}
     nginx_proxy_grafana_port: 15013
     nginx_proxy_ssl:
       enabled: true

@@ -89,8 +89,9 @@ parameters:
     keepalived_vip_virtual_router_id: 180
     keepalived_vip_password: TLrAYaAbAEZwXsp1
     keepalived_vip_interface: ens3
-    cluster_vip_address: ${_param:control_vip_address}
     control_vip_address: ${_param:cicd_control_address}
+    cluster_vip_address: ${_param:control_vip_address}
+    glusterfs_service_host: ${_param:control_vip_address}
     cluster_public_host: ${_param:control_vip_address}
     salt_api_password: Dnx3fapzHIcGuURdDck3DPv78V3ehwue
     # Docker images and versions
