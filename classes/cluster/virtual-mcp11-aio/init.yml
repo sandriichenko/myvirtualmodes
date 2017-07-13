@@ -1,0 +1,72 @@
+classes:
+- service.git.client
+- system.linux.system.single
+- system.linux.system.repo.mcp.salt
+- system.openssh.client.lab
+- system.salt.master.api
+- system.salt.master.pkg
+- system.salt.minion.ca.salt_master
+- system.salt.minion.cert.proxy
+- system.reclass.storage.salt
+- service.mysql.server.single
+- system.mysql.client
+- system.memcached.server.single
+- system.rabbitmq.server.single
+- cluster.virtual-mcp11-aio.openstack
+parameters:
+  _param:
+    reclass_data_repository: https://gerrit.mcp.mirantis.net/salt-models/mcp-virtual-lab
+    reclass_data_revision: master
+    salt_master_environment_repository: "https://github.com/tcpcloud"
+    salt_master_environment_revision: master
+    reclass_config_master: 192.168.10.100
+    single_address: 172.16.10.100
+
+    mysql_admin_user: root
+    mysql_admin_password: workshop
+    rabbitmq_secret_key: workshop
+    rabbitmq_admin_password: workshop
+    loopback_device_size: 10
+    salt_master_host: 192.168.10.100
+    salt_master_base_environment: prd
+    salt_minion_ca_host: ${linux:network:fqdn}
+    salt_api_password_hash: "$6$sGnRlxGf$al5jMCetLP.vfI/fTl3Z0N7Za1aeiexL487jAtyRABVfT3NlwZxQGVhO7S1N8OwS/34VHYwZQA8lkXwKMN/GS1"
+  openssh:
+    server:
+      password_auth: true
+      permit_root_login: true
+  linux:
+    system:
+      user:
+        root:
+          enabled: true
+          # r00tme
+          password: $6$9ojWyyN.$26Vj46JtCUL6C7XBQ8RmQTZLwo8/8SkqTRElXh0X2YBLrt7E/aVe2AYQ5gguYUwUknZNOSn5q7M9M3Jyf2gof/
+    network:
+      bridge: openvswitch
+      interface:
+        br-floating:
+          enabled: true
+          type: ovs_bridge
+  mysql:
+    server:
+      version: '5.6'
+      max_connections: 20000
+# override on this level
+  nova:
+    compute:
+      cache:
+        members:
+        - host: ${_param:single_address}
+          port: 11211
+  cinder:
+    volume:
+      cache:
+        members:
+        - host: ${_param:single_address}
+          port: 11211
+  neutron:
+    server:
+      message_queue:
+        members:
+          - host: ${_param:single_address}

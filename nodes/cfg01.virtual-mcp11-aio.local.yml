@@ -1,0 +1,13 @@
+classes:
+- system.linux.system.single
+- cluster.virtual-mcp11-aio
+parameters:
+  _param:
+    linux_system_codename: xenial
+    apt_mk_version: nightly
+    salt_master_host: 127.0.0.1
+    single_address: 127.0.0.1
+  linux:
+    system:
+      name: cfg01
+      domain: virtual-mcp11-aio.local
