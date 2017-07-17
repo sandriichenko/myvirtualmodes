@@ -15,6 +15,11 @@ parameters:
   linux:
     network:
       host:
+        self:
+          address: ${_param:single_address}
+          names:
+          - ${linux:system:name}
+          - ${linux:system:name}.${linux:system:domain}
         cfg01:
           address: ${_param:infra_config_address}
           names:
