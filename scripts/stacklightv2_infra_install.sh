@@ -16,6 +16,9 @@ INFLUXDB_SERVICE=$(salt -C 'I@influxdb:server' test.ping 1>/dev/null 2>&1 && ech
 # Configure Telegraf
 salt -C 'I@telegraf:agent or I@telegraf:remote_agent' state.sls telegraf
 
+# Configure Prometheus exporters
+salt -C 'I@prometheus:exporters' state.sls prometheus
+
 # Configure log_collector
 salt -C 'I@heka:log_collector' state.sls heka.log_collector
 
