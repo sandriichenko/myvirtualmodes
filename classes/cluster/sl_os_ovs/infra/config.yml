@@ -107,6 +107,19 @@ parameters:
               value_template: <<node_tenant_ip>>
             external_address:
               value_template: <<node_external_ip>>
+        openstack_gateway:
+          expression: <<node_hostname>>__startswith__gtw
+          node_class:
+            value_template:
+              - cluster.<<node_cluster>>.openstack.gateway
+          node_param:
+            tenant_address:
+              value_template: <<node_tenant_ip>>
+            external_address:
+              value_template: <<node_external_ip>>
+          cluster_param:
+            openstack_gateway_node01_address:
+              value_template: <<node_control_ip>>
         stacklight_monitor01:
           expression: <<node_hostname>>__equals__mon01
           cluster_param:
