@@ -1,7 +1,9 @@
 parameters:
   _param:
-    openstack_proxy_address: 172.16.10.121
-    openstack_proxy_node01_address: 172.16.10.121
+    openstack_proxy_hostname: prx
+    openstack_proxy_address: ${_param:openstack_proxy_node01_address}
+    openstack_proxy_node01_hostname: prx01
+    openstack_proxy_node01_address: ${_param:infra_config_address}
     openstack_control_hostname: ctl
     openstack_control_node01_hostname: ctl01
     openstack_control_node02_hostname: ctl02
@@ -10,6 +12,10 @@ parameters:
     openstack_control_node01_address: 172.16.10.101
     openstack_control_node02_address: 172.16.10.102
     openstack_control_node03_address: 172.16.10.103
+    openstack_gateway_hostname: gtw
+    openstack_gateway_address: ${_param:openstack_gateway_node01_address}
+    openstack_gateway_node01_hostname: gtw01
+    openstack_gateway_node01_address: 172.16.10.110
     openstack_database_address: ${_param:openstack_control_address}
     openstack_message_queue_address: ${_param:openstack_control_address}
     openstack_message_queue_node01_address: ${_param:openstack_control_node01_address}
@@ -94,40 +100,41 @@ parameters:
         prx:
           address: ${_param:openstack_proxy_address}
           names:
-          - prx
-          - prx.${_param:cluster_domain}
+          - ${_param:openstack_proxy_hostname}
+          - ${_param:openstack_proxy_hostname}.${_param:cluster_domain}
         prx01:
           address: ${_param:openstack_proxy_node01_address}
           names:
-          - prx01
-          - prx01.${_param:cluster_domain}
+          - ${_param:openstack_proxy_node01_hostname}
+          - ${_param:openstack_proxy_node01_hostname}.${_param:cluster_domain}
         ctl:
           address: ${_param:openstack_control_address}
           names:
-          - ctl
-          - ctl.${_param:cluster_domain}
+          - ${_param:openstack_control_hostname}
+          - ${_param:openstack_control_hostname}.${_param:cluster_domain}
         ctl01:
           address: ${_param:openstack_control_node01_address}
           names:
-          - ctl01
-          - ctl01.${_param:cluster_domain}
+          - ${_param:openstack_control_node01_hostname}
+          - ${_param:openstack_control_node01_hostname}.${_param:cluster_domain}
         ctl02:
           address: ${_param:openstack_control_node02_address}
           names:
-          - ctl02
-          - ctl02.${_param:cluster_domain}
+          - ${_param:openstack_control_node02_hostname}
+          - ${_param:openstack_control_node02_hostname}.${_param:cluster_domain}
         ctl03:
           address: ${_param:openstack_control_node03_address}
           names:
-          - ctl03
-          - ctl03.${_param:cluster_domain}
-        cmp01:
-          address: 172.16.10.105
+          - ${_param:openstack_control_node03_hostname}
+          - ${_param:openstack_control_node03_hostname}.${_param:cluster_domain}
+        gtw:
+          address: ${_param:openstack_gateway_address}
           names:
-          - cmp01
-          - cmp01.${_param:cluster_domain}
-        cmp02:
-          address: 172.16.10.106
+          - ${_param:openstack_gateway_hostname}
+          - ${_param:openstack_gateway_hostname}.${_param:cluster_domain}
+        gtw01:
+          address: ${_param:openstack_gateway_address}
           names:
-          - cmp02
-          - cmp02.${_param:cluster_domain}
+          - ${_param:openstack_gateway_hostname}
+          - ${_param:openstack_gateway_hostname}.${_param:cluster_domain}
+
