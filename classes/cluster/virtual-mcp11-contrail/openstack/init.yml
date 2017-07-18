@@ -5,6 +5,8 @@ parameters:
     openstack_region: RegionOne
     admin_email: root@localhost
     cluster_public_host: 172.16.10.254
+    neutron_public_protocol: http
+    cluster_public_protocol: http
     opencontrail_version: 3.0
     opencontrail_compute_dns: 8.8.8.8
     opencontrail_stats_password: contrail123
