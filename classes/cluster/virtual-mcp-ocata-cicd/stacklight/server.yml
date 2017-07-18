@@ -53,6 +53,8 @@ parameters:
     kibana_elasticsearch_host: ${_param:cluster_vip_address}
     # Galera
     openstack_version: newton
+    # Glusterfs
+    glusterfs_service_host: ${_param:stacklight_monitor_address}
     # Grafana
     grafana_database_type: mysql
     grafana_database_host: ${_param:cluster_vip_address}
