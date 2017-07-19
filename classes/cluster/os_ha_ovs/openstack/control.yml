@@ -26,6 +26,7 @@ classes:
 - system.galera.server.database.heat
 - system.galera.server.database.keystone
 - system.galera.server.database.nova
+- cluster.os_ha_ovs.openstack.dashboard
 - cluster.os_ha_ovs
 parameters:
   _param:
