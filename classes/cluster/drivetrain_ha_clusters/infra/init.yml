@@ -1,0 +1,33 @@
+classes:
+- system.linux.system.single
+- system.rsyslog.client.single
+- system.linux.system.haveged
+- system.linux.system.prompt
+- system.linux.system.motd.dynamic
+- system.openssh.server.team.lab
+- system.openssh.server.team.tcpcloud
+- system.openssh.server.team.mcp_qa
+- system.openssh.server.team.oss_team
+parameters:
+  _param:
+    cluster_domain: drivetrain_ha_clusters.local
+    cluster_name: drivetrain_ha_clusters
+    apt_mk_version: nightly
+    admin_email: root@localhosti
+    infra_config_hostname: cfg01
+    infra_config_address: 172.16.10.100
+    infra_config_deploy_address: 192.168.10.100
+    salt_minion_ca_host: ci01.${_param:cluster_domain}
+    salt_minion_ca_authority: salt_master_ca
+  linux:
+    network:
+      host:
+        cfg01:
+          address: ${_param:infra_config_address}
+          names:
+          - ${_param:infra_config_hostname}
+          - ${_param:infra_config_hostname}.${_param:cluster_domain}
+    system:
+      name: ${_param:infra_config_hostname}
+      domain: ${_param:cluster_domain}
+
