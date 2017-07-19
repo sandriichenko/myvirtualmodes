@@ -9,6 +9,7 @@ classes:
 parameters:
   _param:
     nginx_proxy_grafana_port: 15013
+    cluster_public_host: ${_param:prometheus_control_address}
     nginx_proxy_ssl:
       enabled: true
       authority: ${_param:salt_minion_ca_authority}
