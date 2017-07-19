@@ -3,7 +3,7 @@ classes:
 - system.openssh.server.team.lab
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.mcp_qa
-- cluster.os_ha_ovs.infra
-- cluster.os_ha_ovs.model_manager
+- cluster.model_manager.infra
+- cluster.model_manager.model_manager
 - cluster.overrides
 
