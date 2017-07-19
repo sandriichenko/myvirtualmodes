@@ -1,0 +1,37 @@
+parameters:
+  _param:
+    cicd_control_address: 172.16.10.254
+    cicd_control_node01_address: 172.16.10.11
+    cicd_control_node02_address: 172.16.10.12
+    cicd_control_node03_address: 172.16.10.13
+
+    # CI/CD control infrastructure
+    control_node01_address: ${_param:cicd_control_node01_address}
+    control_node02_address: ${_param:cicd_control_node02_address}
+    control_node03_address: ${_param:cicd_control_node03_address}
+    control_vip_address: ${_param:cicd_control_address}
+    control_public_host: ${_param:control_vip_address}
+  linux:
+    network:
+      host:
+        cid:
+          address: ${_param:cicd_control_address}
+          names:
+          - ${_param:cicd_control_hostname}
+          - ${_param:cicd_control_hostname}.${_param:cluster_domain}
+        cid01:
+          address: ${_param:cicd_control_node01_address}
+          names:
+          - ${_param:cicd_control_node01_hostname}
+          - ${_param:cicd_control_node01_hostname}.${_param:cluster_domain}
+        cid02:
+          address: ${_param:cicd_control_node02_address}
+          names:
+          - ${_param:cicd_control_node02_hostname}
+          - ${_param:cicd_control_node02_hostname}.${_param:cluster_domain}
+        cid03:
+          address: ${_param:cicd_control_node03_address}
+          names:
+          - ${_param:cicd_control_node03_hostname}
+          - ${_param:cicd_control_node03_hostname}.${_param:cluster_domain}
+
