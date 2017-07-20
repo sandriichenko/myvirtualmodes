@@ -1,5 +1,4 @@
 classes:
-- system.docker.host
 - system.linux.system.repo.influxdb
 - system.linux.system.repo.tcp_elastic
 # Needed to install Galera packages
@@ -25,6 +24,8 @@ classes:
 - system.prometheus.server.remote_write.docker
 - system.prometheus.server.alertmanager.dns
 - system.prometheus.server.target.dns
+- system.docker.host
+- system.docker.client
 - system.docker.swarm.stack.monitoring
 - system.docker.swarm.stack.dashboard
 - cluster.virtual-mcp-ocata-cicd.infra
