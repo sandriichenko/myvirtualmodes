@@ -13,6 +13,7 @@ parameters:
           enabled: true
           type: eth
           proto: manual
+          ipflush_onchange: true
         vhost0:
           enabled: true
           type: eth
