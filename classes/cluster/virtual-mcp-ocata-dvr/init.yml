@@ -1,13 +1,19 @@
 classes:
+- service.grafana.collector
+- system.heka.log_collector.single
+- system.heka.log_collector.output.telegraf
+- system.linux.system.repo.mcp.extra
 - system.linux.system.single
 - system.rsyslog.client.single
+- system.prometheus.collector
+- system.telegraf.agent
 - system.openssh.server.team.lab
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.mcp_qa
 - cluster.virtual-mcp-ocata-dvr.infra
 - cluster.virtual-mcp-ocata-dvr.openstack
 - cluster.virtual-mcp-ocata-dvr.stacklight
-- cluster.virtual-mcp-ocata-dvr.stacklight.client
+- cluster.overrides
 parameters:
   _param:
     cluster_domain: virtual-mcp-ocata-dvr.local
@@ -38,4 +44,4 @@ parameters:
     stacklight_monitor_node03_address: 172.16.10.109
     stacklight_telemetry_address: ${_param:stacklight_monitor_address}
     stacklight_log_address: ${_param:stacklight_monitor_address}
-
+    stacklight_telemetry_node01_address: ${_param:stacklight_monitor_node01_address}
