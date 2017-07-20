@@ -7,7 +7,7 @@ parameters:
     model_manager_identity_host: vpc.tcpisek.cz
     model_manager_jenkins_host: ci.mcp.mirantis.net
     model_manager_jenkins_user: model-manager
-    model_manager_jenkins_password: password
+    model_manager_jenkins_password: 't&2FLaB]2!'
     model_manager_template_url: https://gerrit.mcp.mirantis.net/gitweb?p=mk/cookiecutter-templates.git;a=blob_plain;f=workflow_definition.yml;hb=HEAD
     model_manager_template_job: generate-salt-model-separated-products
 
