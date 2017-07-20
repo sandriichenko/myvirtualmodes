@@ -9,13 +9,13 @@ classes:
 - system.salt.minion.ca.salt_master
 - system.salt.minion.cert.proxy
 - system.sphinx.server.doc.reclass
-#- system.reclass.storage.system.model_manager
+- cluster.model_manager.model_manager.proxy
 - cluster.model_manager
 parameters:
   _param:
     reclass_data_repository: https://gerrit.mcp.mirantis.net/salt-models/mcp-virtual-lab
     reclass_data_revision: master
-    salt_master_environment_repository: "https://github.com/tcpcloud"
+    salt_master_environment_repository: "https://github.com/salt-formulas"
     salt_master_environment_revision: master
     reclass_config_master: ${_param:infra_config_deploy_address}
     single_address: ${_param:infra_config_address}
@@ -37,6 +37,13 @@ parameters:
       reactor:
         reclass/minion/classify:
         - salt://reclass/reactor/node_register.sls
+      environment:
+        prd:
+          formula:
+            model_manager:
+              source: git
+              address: '${_param:salt_master_environment_repository}/salt-formula-model-manager.git'
+              revision: ${_param:salt_master_environment_revision}
   reclass:
     storage:
       class_mapping:
@@ -63,4 +70,10 @@ parameters:
           node_class:
             value_template:
               - cluster.<<node_cluster>>.model_manager.dashboard
+        model_manager_node00:
+          expression: <<node_hostname>>__equals__web0
+          cluster_param:
+            model_manager_node00_address:
+              value_template:
+                - <<node_control_ip>>
 

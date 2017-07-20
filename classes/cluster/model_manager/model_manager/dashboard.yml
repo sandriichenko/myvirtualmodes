@@ -2,9 +2,13 @@ classes:
 - system.linux.system.repo.ubuntu
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.xenial
-#- system.model_manager.single
+- system.model_manager.server.integration
 - cluster.model_manager
 parameters:
+  model_manager:
+    server:
+      source:
+        commit_id: '5042e433f21d965d61e0251d56210680e1d0211e'
   linux:
     network:
       interface:
