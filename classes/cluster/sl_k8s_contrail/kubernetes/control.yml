@@ -8,7 +8,7 @@ classes:
 - cluster.sl_k8s_contrail
 parameters:
   _param:
-    keepalived_vip_interface: vhost0
+    keepalived_vip_interface: ens3
     keepalived_vip_virtual_router_id: 60
   etcd:
     server:
