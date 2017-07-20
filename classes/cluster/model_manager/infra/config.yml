@@ -74,6 +74,5 @@ parameters:
           expression: <<node_hostname>>__equals__web0
           cluster_param:
             model_manager_node00_address:
-              value_template:
-                - <<node_control_ip>>
+              value_template: <<node_control_ip>>
 
