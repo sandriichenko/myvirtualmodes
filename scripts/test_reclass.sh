@@ -164,7 +164,6 @@ find_all_and_run_tests() {
     for master in ${masters[@]}; do
         master=$(basename $master .yml)
         echo "$master"
-        continue
         run_tests $master
     done
 }
