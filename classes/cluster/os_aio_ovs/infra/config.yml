@@ -14,11 +14,9 @@ classes:
 - system.keystone.client.service.nova21
 - system.keystone.client.service.glare
 - system.keystone.client.service.cinder3
-- system.mysql.client.single
 - system.reclass.storage.system.openstack_control_single
 - system.reclass.storage.system.openstack_compute_multi
 - system.reclass.storage.system.openstack_gateway_single
-- system.reclass.storage.system.openstack_dashboard_single
 - cluster.os_aio_ovs.openstack.proxy
 - cluster.os_aio_ovs
 parameters:
@@ -47,7 +45,7 @@ parameters:
       site:
         nginx_proxy_openstack_web:
           proxy:
-            host: ${_param:cluster_node01_address}
+            host: ${_param:openstack_control_address}
         nginx_proxy_openstack_api_heat_cfn:
           enabled: false
   salt:
@@ -104,10 +102,10 @@ parameters:
           cluster_param:
             openstack_gateway_node01_address:
               value_template: <<node_control_ip>>
-      node:
-        openstack_control_node01:
-          params:
-            mysql_cluster_role: master
+      # node:
+      #   openstack_control_node01:
+      #     params:
+      #       mysql_cluster_role: master
 
 
   # nginx:

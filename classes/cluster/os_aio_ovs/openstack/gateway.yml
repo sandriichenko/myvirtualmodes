@@ -2,7 +2,7 @@ classes:
 - system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.xenial
-- system.neutron.gateway.cluster
+- service.neutron.gateway.single
 - cluster.os_aio_ovs
 parameters:
   _param:
@@ -76,3 +76,10 @@ parameters:
           - ${_param:external_interface}
           use_ovs_ports:
           - float-to-ex
+  neutron:
+    gateway:
+      dvr: ${_param:neutron_gateway_dvr}
+      qos: ${_param:neutron_enable_qos}
+      agent_mode: ${_param:neutron_gateway_agent_mode}
+      backend:
+        tenant_network_types: ${_param:neutron_tenant_network_types}"

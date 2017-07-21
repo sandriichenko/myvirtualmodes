@@ -9,9 +9,9 @@ parameters:
     opencontrail_control_node01_hostname: ntw01
     opencontrail_control_node02_hostname: ntw02
     opencontrail_control_node03_hostname: ntw03
-    opencontrail_control_node01_address: 172.16.10.111
-    opencontrail_control_node02_address: 172.16.10.112
-    opencontrail_control_node03_address: 172.16.10.113
+    opencontrail_control_node01_address: 172.16.10.92
+    opencontrail_control_node02_address: 172.16.10.93
+    opencontrail_control_node03_address: 172.16.10.94
   linux:
     network:
       host:

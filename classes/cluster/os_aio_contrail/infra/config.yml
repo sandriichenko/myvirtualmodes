@@ -15,13 +15,11 @@ classes:
 - system.keystone.client.service.nova21
 - system.keystone.client.service.glare
 - system.keystone.client.service.cinder3
-- system.keystone.client.service.designate
-- system.mysql.client.single
-- system.reclass.storage.system.openstack_control_cluster
+# system.keystone.client.service.designate
+#- system.mysql.client.single
+- system.reclass.storage.system.openstack_control_single
 - system.reclass.storage.system.opencontrail_control_cluster
 - system.reclass.storage.system.openstack_compute_multi
-- system.reclass.storage.system.openstack_dashboard_single
-- system.reclass.storage.system.openstack_proxy_single
 - cluster.os_aio_contrail.openstack.proxy
 - cluster.os_aio_contrail
 parameters:
@@ -48,32 +46,62 @@ parameters:
       site:
         nginx_proxy_openstack_web:
           proxy:
-            host: prx
+            host: ${_param:openstack_control_address}
         nginx_proxy_openstack_api_heat_cfn:
           enabled: false
+  salt:
+    master:
+      reactor:
+        reclass/minion/classify:
+        - salt://reclass/reactor/node_register.sls
   reclass:
     storage:
-      node:
-        openstack_control_node01:
-          classes:
-          - service.galera.master.cluster
-          params:
-            mysql_cluster_role: master
-            linux_system_codename: xenial
-        openstack_control_node02:
-          classes:
-          - service.galera.slave.cluster
-          params:
-            mysql_cluster_role: slave
-            linux_system_codename: xenial
-        openstack_control_node03:
-          classes:
-          - service.galera.slave.cluster
-          params:
-            mysql_cluster_role: slave
-            linux_system_codename: xenial
-        openstack_proxy_node01:
-          classes:
-          - cluster.os_aio_contrail.openstack.proxy
-          params:
-            linux_system_codename: xenial
+      class_mapping:
+        common_node:
+          expression: all
+          node_param:
+            single_address:
+              value_template: <<node_control_ip>>
+            linux_system_codename:
+              value_template: <<node_os>>
+            salt_master_host:
+              value_template: <<node_master_ip>>
+        infra_config:
+          expression: <<node_hostname>>__startswith__cfg
+          cluster_param:
+            infra_config_address:
+              value_template: <<node_control_ip>>
+            infra_config_deploy_address:
+              value_template: <<node_deploy_ip>>
+            cluster_domain:
+              value_template: <<node_domain>>
+        openstack_control01:
+          expression: <<node_hostname>>__equals__ctl01
+          cluster_param:
+            openstack_control_node01_address:
+              value_template: <<node_control_ip>>
+        opencontrail_control01:
+          expression: <<node_hostname>>__equals__ntw01
+          cluster_param:
+            opencontrail_control_node01_address:
+              value_template: <<node_control_ip>>
+        opencontrail_control02:
+          expression: <<node_hostname>>__equals__ntw02
+          cluster_param:
+            opencontrail_control_node02_address:
+              value_template: <<node_control_ip>>
+        opencontrail_control03:
+          expression: <<node_hostname>>__equals__ntw03
+          cluster_param:
+            opencontrail_control_node03_address:
+              value_template: <<node_control_ip>>  
+        openstack_compute:
+          expression: <<node_hostname>>__startswith__cmp
+          node_class:
+            value_template:
+              - cluster.<<node_cluster>>.openstack.compute
+          node_param:
+            tenant_address:
+              value_template: <<node_tenant_ip>>
+            external_address:
+              value_template: <<node_external_ip>>
