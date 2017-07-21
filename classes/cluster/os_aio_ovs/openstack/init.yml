@@ -1,11 +1,15 @@
-arameters:
+parameters:
   _param:
-    # openstack_proxy_address: 172.16.10.121
-    # openstack_proxy_node01_address: 172.16.10.121
+    openstack_control_address: ${_param:openstack_control_node01_address}
     openstack_control_node01_address: 172.16.10.101
     openstack_database_address: ${_param:openstack_control_node01_address}
     openstack_message_queue_address: ${_param:openstack_control_node01_address}
     openstack_message_queue_node01_address: ${_param:openstack_control_node01_address}
+
+    openstack_gateway_address: ${_param:openstack_gateway_node01_address}
+    openstack_gateway_node01_hostname: gtw01
+    openstack_gateway_node01_address: 172.16.10.110
+
 
     openstack_version: ocata
     apt_mk_version: nightly
@@ -28,7 +32,7 @@ arameters:
     galera_server_cluster_name: openstack_cluster
     galera_server_maintenance_password: workshop
     galera_server_admin_password: workshop
-#    cluster_vip_address: 172.16.10.254
+    cluster_vip_address: ${_param:openstack_control_node01_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: ctl01
     cluster_node01_address: 172.16.10.101

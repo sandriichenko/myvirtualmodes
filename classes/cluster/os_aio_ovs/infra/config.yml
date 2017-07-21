@@ -106,11 +106,8 @@ parameters:
               value_template: <<node_control_ip>>
       node:
         openstack_control_node01:
-          classes:
-          - service.galera.master.cluster
           params:
             mysql_cluster_role: master
-            linux_system_codename: xenial
 
 
   # nginx:
