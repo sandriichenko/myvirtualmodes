@@ -1,16 +1,11 @@
 arameters:
   _param:
-    openstack_proxy_address: 172.16.10.121
-    openstack_proxy_node01_address: 172.16.10.121
-    openstack_control_address: 172.16.10.254
+    # openstack_proxy_address: 172.16.10.121
+    # openstack_proxy_node01_address: 172.16.10.121
     openstack_control_node01_address: 172.16.10.101
-    openstack_control_node02_address: 172.16.10.102
-    openstack_control_node03_address: 172.16.10.103
-    openstack_database_address: ${_param:openstack_control_address}
-    openstack_message_queue_address: ${_param:openstack_control_address}
+    openstack_database_address: ${_param:openstack_control_node01_address}
+    openstack_message_queue_address: ${_param:openstack_control_node01_address}
     openstack_message_queue_node01_address: ${_param:openstack_control_node01_address}
-    openstack_message_queue_node02_address: ${_param:openstack_control_node02_address}
-    openstack_message_queue_node03_address: ${_param:openstack_control_node03_address}
 
     openstack_version: ocata
     apt_mk_version: nightly
@@ -18,7 +13,7 @@ arameters:
     openstack_region: RegionOne
     admin_email: root@localhost
     cluster_public_protocol: http
-    cluster_public_host: 172.16.10.254
+    cluster_public_host: ${_param:openstack_control_node01_address}
     neutron_public_protocol: http
     neutron_control_dvr: False
     neutron_tenant_network_types: "flat,vxlan"
@@ -33,37 +28,33 @@ arameters:
     galera_server_cluster_name: openstack_cluster
     galera_server_maintenance_password: workshop
     galera_server_admin_password: workshop
-    cluster_vip_address: 172.16.10.254
+#    cluster_vip_address: 172.16.10.254
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: ctl01
     cluster_node01_address: 172.16.10.101
-    cluster_node02_hostname: ctl02
-    cluster_node02_address: 172.16.10.102
-    cluster_node03_hostname: ctl03
-    cluster_node03_address: 172.16.10.103
     rabbitmq_secret_key: workshop
     rabbitmq_admin_password: workshop
     rabbitmq_openstack_password: workshop
     rabbitmq_cold_password: workshop
     glance_version: ${_param:openstack_version}
-    glance_service_host: ${_param:cluster_vip_address}
+    glance_service_host: ${_param:openstack_control_node01_address}
     keystone_version: ${_param:openstack_version}
-    keystone_service_host: ${_param:cluster_vip_address}
+    keystone_service_host: ${_param:openstack_control_node01_address}
     heat_version: ${_param:openstack_version}
-    heat_service_host: ${_param:cluster_vip_address}
+    heat_service_host: ${_param:openstack_control_node01_address}
     heat_domain_admin_password: workshop
     ceilometer_version: ${_param:openstack_version}
     ceilometer_service_host: 172.16.10.108
     cinder_version: ${_param:openstack_version}
-    cinder_service_host: ${_param:cluster_vip_address}
+    cinder_service_host: ${_param:openstack_control_node01_address}
     ceilometer_graphite_publisher_host: 172.16.10.107
     ceilometer_graphite_publisher_port: 2013
     nova_version: ${_param:openstack_version}
-    nova_service_host: ${_param:cluster_vip_address}
-    nova_vncproxy_url: http://${_param:cluster_vip_address}:8060
+    nova_service_host: ${_param:openstack_control_node01_address}
+    nova_vncproxy_url: http://${_param:openstack_control_node01_address}:8060
     neutron_version: ${_param:openstack_version}
-    neutron_service_host: ${_param:cluster_vip_address}
-    glusterfs_service_host: ${_param:cluster_vip_address}
+    neutron_service_host: ${_param:openstack_control_node01_address}
+    glusterfs_service_host: ${_param:openstack_control_node01_address}
     metadata_password: password
     mysql_admin_user: root
     mysql_admin_password: workshop
@@ -88,7 +79,7 @@ arameters:
     metadata_password: workshop
     horizon_version: ${_param:openstack_version}
     horizon_secret_key: opaesee8Que2yahJoh9fo0eefo1Aeyo6ahyei8zeiboh3aeth5loth7ieNa5xi5e
-    horizon_identity_host: ${_param:cluster_vip_address}
+    horizon_identity_host: ${_param:openstack_control_node01_address}
     horizon_identity_encryption: none
     horizon_identity_version: 2
     mongodb_server_replica_set: ceilometer
@@ -98,36 +89,11 @@ arameters:
   linux:
     network:
       host:
-        prx:
-          address: ${_param:openstack_proxy_address}
-          names:
-          - prx
-          - prx.${_param:cluster_domain}
-        prx01:
-          address: ${_param:openstack_proxy_node01_address}
-          names:
-          - prx01
-          - prx01.${_param:cluster_domain}
-        ctl:
-          address: ${_param:openstack_control_address}
-          names:
-          - ctl
-          - ctl.${_param:cluster_domain}
         ctl01:
           address: ${_param:openstack_control_node01_address}
           names:
           - ctl01
           - ctl01.${_param:cluster_domain}
-        ctl02:
-          address: ${_param:openstack_control_node02_address}
-          names:
-          - ctl02
-          - ctl02.${_param:cluster_domain}
-        ctl03:
-          address: ${_param:openstack_control_node03_address}
-          names:
-          - ctl03
-          - ctl03.${_param:cluster_domain}
         gtw01:
           address: ${_param:openstack_gateway_address}
           names:
