@@ -14,6 +14,10 @@ parameters:
     elasticsearch_port: 9200
     stacklight_environment: ${_param:cluster_domain}
     stacklight_notification_topic: stacklight_notifications
+    grafana_admin_password: admin
+    grafana_database_type: mysql
+    grafana_database_host: ${_param:openstack_database_address}
+    grafana_database_password: ${_param:mysql_grafana_password}
   linux:
     network:
       host:
