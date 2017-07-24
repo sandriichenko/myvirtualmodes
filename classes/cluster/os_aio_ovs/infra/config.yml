@@ -15,8 +15,6 @@ classes:
 - system.keystone.client.service.glare
 - system.keystone.client.service.cinder3
 - system.reclass.storage.system.openstack_control_single
-- system.reclass.storage.system.openstack_compute_multi
-- system.reclass.storage.system.openstack_gateway_single
 - cluster.os_aio_ovs.openstack.proxy
 - cluster.os_aio_ovs
 parameters:

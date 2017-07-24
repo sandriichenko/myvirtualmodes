@@ -19,7 +19,6 @@ classes:
 #- system.mysql.client.single
 - system.reclass.storage.system.openstack_control_single
 - system.reclass.storage.system.opencontrail_control_cluster
-- system.reclass.storage.system.openstack_compute_multi
 - cluster.os_aio_contrail.openstack.proxy
 - cluster.os_aio_contrail
 parameters:
