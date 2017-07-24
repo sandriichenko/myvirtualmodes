@@ -30,6 +30,7 @@ parameters:
     rabbitmq_admin_password: workshop
     rabbitmq_openstack_password: workshop
     rabbitmq_cold_password: workshop
+    cluster_node01_address: ${_param:openstack_control_address}
     cluster_vip_address: ${_param:openstack_control_address}
     glance_version: ${_param:openstack_version}
     glance_service_host: ${_param:openstack_control_address}
@@ -88,7 +89,8 @@ parameters:
     mongodb_shared_key: eoTh1AwahlahqueingeejooLughah4tei9feing0eeVaephooDi2li1TaeV1ooth
     ceilometer_database_host: ${_param:openstack_control_node01_address}
     stacklight_monitor_address: ${_param:openstack_control_node01_address}
-
+    stacklight_monitor_node01_address: ${_param:openstack_control_node01_address}
+    ceilometer_influxdb_password: workshop
   linux:
     network:
       host:
