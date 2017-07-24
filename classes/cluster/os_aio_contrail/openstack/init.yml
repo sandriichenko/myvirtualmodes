@@ -54,6 +54,7 @@ parameters:
     neutron_service_host: ${_param:openstack_control_address}
     glusterfs_service_host: ${_param:openstack_control_address}
     designate_service_host: ${_param:openstack_control_address}
+    cluster_local_address: ${_param:single_address}
     mysql_admin_user: root
     mysql_admin_password: workshop
     mysql_aodh_password: workshop
@@ -91,6 +92,7 @@ parameters:
     stacklight_monitor_address: ${_param:openstack_control_node01_address}
     stacklight_monitor_node01_address: ${_param:openstack_control_node01_address}
     ceilometer_influxdb_password: workshop
+    neutron_enable_qos: false
   linux:
     network:
       host:
