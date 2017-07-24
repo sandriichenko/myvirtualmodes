@@ -14,7 +14,7 @@ classes:
 parameters:
   _param:
     primary_interface: ens4
-    tenant_interface: ens5
+    #tenant_interface: ens5
     external_interface: ens6
     interface_mtu: 9000
     linux_system_codename: xenial
@@ -47,12 +47,12 @@ parameters:
           mtu: ${_param:interface_mtu}
           proto: manual
           type: eth
-        tenant_interface:
-          enabled: true
-          name: ${_param:tenant_interface}
-          mtu: ${_param:interface_mtu}
-          proto: manual
-          type: eth
+        #tenant_interface:
+        #  enabled: true
+        #  name: ${_param:tenant_interface}
+        #  mtu: ${_param:interface_mtu}
+        #  proto: manual
+        #  type: eth
         br-mgmt:
           enabled: true
           type: bridge
@@ -79,6 +79,7 @@ parameters:
           name: ${_param:dpdk0_name}
           pci: ${_param:dpdk0_pci}
           driver: igb_uio
+          bridge: br-prv
 #          bond: dpdkbond1
           enabled: true
           type: dpdk_ovs_port
