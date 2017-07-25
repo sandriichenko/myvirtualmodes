@@ -3,7 +3,6 @@ classes:
 - system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.xenial
-#- system.nova.compute.cluster
 - system.opencontrail.compute.cluster
 - system.opencontrail.client.cluster
 - system.opencontrail.client.resource.virtual_router
@@ -15,7 +14,10 @@ parameters:
     opencontrail_compute_gateway: 172.16.10.1
     opencontrail_compute_iface: ens4
     linux_system_codename: xenial
+    control_address: ${_param:single_address}
+    nova_vncproxy_url: https://${_param:cluster_public_host}:6080
     nova_compute_ssh_public: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCltIn93BcTMzNK/n2eBze6PyTkmIgdDkeXNR9X4DqE48Va80ojv2pq8xuaBxiNITJzyl+4p4UvTTXo+HmuX8qbHvqgMGXvuPUCpndEfb2r67f6vpMqPwMgBrUg2ZKgN4OsSDHU+H0dia0cEaTjz5pvbUy9lIsSyhrqOUVF9reJq+boAvVEedm8fUqiZuiejAw2D27+rRtdEPgsKMnh3626YEsr963q4rjU/JssV/iKMNu7mk2a+koOrJ+aHvcVU8zJjfA0YghoeVT/I3GLU/MB/4tD/RyR8GM+UYbI4sgAC7ZOCdQyHdJgnEzx3SJIwcS65U0T2XYvn2qXHXqJ9iGZ root@mirantis.com
+    nova_compute_avail_zone:
     nova_compute_ssh_private: |
       -----BEGIN RSA PRIVATE KEY-----
       MIIEpAIBAAKCAQEApbSJ/dwXEzMzSv59ngc3uj8k5JiIHQ5HlzUfV+A6hOPFWvNK
@@ -44,6 +46,68 @@ parameters:
       7xDyBz85icFU0rceYQetwFH2p5tRL0GcUQhJmJFgIL0OXdCQvRNJrT3iS00N1aUo
       SG9MrLHCd5l60aCUQg0UA5ed7Hd6SA314k+HwxJno9/wJ+voBeacMg==
       -----END RSA PRIVATE KEY-----
+  openssh:
+    client:
+      enabled: True
+      user: {}
+      stricthostkeychecking: False
+  nova:
+    compute:
+      version: ${_param:nova_version}
+      enabled: true
+      virtualization: ${_param:nova_compute_virtualization}
+      availability_zone: ${_param:nova_compute_avail_zone}
+      aggregates: ${_param:nova_aggregates}
+      heal_instance_info_cache_interval: 60
+      vncproxy_url: ${_param:nova_vncproxy_url}
+      bind:
+        vnc_address: ${_param:cluster_local_address}
+        vnc_port: 6080
+        vnc_name: 0.0.0.0
+      database:
+        engine: mysql
+        host: ${_param:openstack_database_address}
+        port: 3306
+        name: nova
+        user: nova
+        password: ${_param:mysql_nova_password}
+      identity:
+        engine: keystone
+        region: ${_param:openstack_region}
+        host: ${_param:cluster_vip_address}
+        port: 35357
+        user: nova
+        password: ${_param:keystone_nova_password}
+        tenant: service
+      message_queue:
+        engine: rabbitmq
+        port: 5672
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'
+        host: ${_param:openstack_message_queue_node01_address}
+      image:
+        engine: glance
+        host: ${_param:cluster_vip_address}
+        port: 9292
+      network:
+        engine: neutron
+        region: ${_param:openstack_region}
+        host: ${_param:neutron_service_host}
+        port: 9696
+        user: neutron
+        tenant: service
+        password: ${_param:keystone_neutron_password}
+      user:
+        public_key: ${_param:nova_compute_ssh_public}
+        private_key: ${_param:nova_compute_ssh_private}
+      virtualization: kvm
+      heal_instance_info_cache_interval: 60
+      cache:
+        engine: memcached
+        members:
+        - host: ${_param:cluster_node01_address}
+          port: 11211
   linux:
     network:
       interface:
@@ -61,70 +125,6 @@ parameters:
           - /usr/lib/contrail/if-vhost0
           use_interfaces:
           - ens4
-  nova:
-    compute:
-      vncproxy_url: http://${_param:cluster_vip_address}:6080
-      notification:
-        driver: messagingv2
-        topics: "notifications"
-        notify_on:
-          state_change: vm_and_task_state
-      version: ${_param:nova_version}
-      enabled: true
-      virtualization: kvm
-      heal_instance_info_cache_interval: 60
-      vncproxy_url: http://${_param:cluster_vip_address}:6080
-      bind:
-        vnc_address: ${_param:cluster_local_address}
-        vnc_port: 6080
-        vnc_name: 0.0.0.0
-      database:
-        engine: mysql
-        host: ${_param:cluster_vip_address}
-        port: 3306
-        name: nova
-        user: nova
-        password: ${_param:mysql_nova_password}
-      identity:
-        engine: keystone
-        region: RegionOne
-        host: ${_param:cluster_vip_address}
-        port: 35357
-        user: nova
-        password: ${_param:keystone_nova_password}
-        tenant: service
-      message_queue:
-        engine: rabbitmq
-        host: ${_param:cluster_vip_address}
-        port: 5672
-        user: openstack
-        password: ${_param:rabbitmq_openstack_password}
-        virtual_host: '/openstack'
-      image:
-        engine: glance
-        host: ${_param:cluster_vip_address}
-        port: 9292
-      network:
-        engine: neutron
-        region: RegionOne
-        host: ${_param:cluster_vip_address}
-        port: 9696
-        user: neutron
-        tenant: service
-        password: ${_param:keystone_neutron_password}
-      cache:
-        engine: memcached
-        members:
-        - host: ${_param:cluster_node01_address}
-          port: 11211
-      user:
-        public_key: ${_param:nova_compute_ssh_public}
-        private_key: ${_param:nova_compute_ssh_private}
-  openssh:
-    client:
-      enabled: True
-      user: {}
-      stricthostkeychecking: False
   ceilometer:
     agent:
       message_queue:
