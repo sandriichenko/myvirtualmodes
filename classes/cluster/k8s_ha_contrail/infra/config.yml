@@ -69,6 +69,21 @@ parameters:
           cluster_param:
             kubernetes_control_node03_address:
               value_template: <<node_control_ip>>
+        etcd_control01:
+          expression: <<node_hostname>>__equals__ctl01
+          cluster_param:
+            etcd_control_node01_address:
+              value_template: <<node_deploy_ip>>
+        etcd_control02:
+          expression: <<node_hostname>>__equals__ctl02
+          cluster_param:
+            etcd_control_node02_address:
+              value_template: <<node_deploy_ip>>
+        etcd_control03:
+          expression: <<node_hostname>>__equals__ctl03
+          cluster_param:
+            etcd_control_node03_address:
+              value_template: <<node_deploy_ip>>
         opencontrail_control01:
           expression: <<node_hostname>>__equals__ntw01
           cluster_param:
