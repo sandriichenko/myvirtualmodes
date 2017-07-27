@@ -26,8 +26,8 @@ classes:
 - system.galera.server.database.heat
 - system.galera.server.database.keystone
 - system.galera.server.database.nova
-- cluster.os_ha_ovs.openstack.dashboard
-- cluster.os_ha_ovs
+- cluster.os_ha_ovs_syndic.openstack.dashboard
+- cluster.os_ha_ovs_syndic
 parameters:
   _param:
     keepalived_vip_interface: ens4

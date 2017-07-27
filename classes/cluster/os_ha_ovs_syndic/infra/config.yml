@@ -22,8 +22,8 @@ classes:
 - system.mysql.client.database.nova_api
 - system.mysql.client.database.neutron
 - system.reclass.storage.system.openstack_control_cluster
-- cluster.os_ha_ovs.openstack.proxy
-- cluster.os_ha_ovs
+- cluster.os_ha_ovs_syndic.openstack.proxy
+- cluster.os_ha_ovs_syndic
 parameters:
   _param:
     reclass_data_repository: https://gerrit.mcp.mirantis.net/salt-models/mcp-virtual-lab
@@ -75,7 +75,10 @@ parameters:
             salt_master_host:
               value_template: <<node_master_ip>>
         infra_config:
-          expression: <<node_hostname>>__startswith__cfg
+        infra_config:
+          expression:
+          - <<node_hostname>>__startswith__cfg
+          - <<node_cluster>>__equals__os_ha_ovs_syndic
           cluster_param:
             infra_config_address:
               value_template: <<node_control_ip>>
