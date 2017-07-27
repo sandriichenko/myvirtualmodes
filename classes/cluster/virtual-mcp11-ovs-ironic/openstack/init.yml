@@ -90,6 +90,7 @@ parameters:
     mongodb_ceilometer_password: cloudlab
     mongodb_admin_password: cloudlab
     mongodb_shared_key: eoTh1AwahlahqueingeejooLughah4tei9feing0eeVaephooDi2li1TaeV1ooth
+    linux_system_repo: 'deb [arch=amd64] http://mirror.fuel-infra.org/mcp-repos/ocata/xenial ocata main'
   linux:
     network:
       host:

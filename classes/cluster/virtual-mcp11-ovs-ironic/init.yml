@@ -44,3 +44,11 @@ parameters:
     openstack_baremeta_neutron_subnet_allocation_start: 192.168.90.100
     openstack_baremeta_neutron_subnet_allocation_end: 192.168.90.150
     openstack_baremetal_node01_hostname: bmt01
+  linux:
+    system:
+      repo:
+        linux_system_repo:
+          source: ${_param:linux_system_repo}
+          architectures: amd64
+          clean_file: true
+

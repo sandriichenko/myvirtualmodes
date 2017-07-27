@@ -98,6 +98,7 @@ parameters:
     designate_pool_target_options:
       host: ${_param:single_address}
       port: 53
+    linux_system_repo: 'deb [arch=amd64] http://mirror.fuel-infra.org/mcp-repos/ocata/xenial ocata main'
   neutron:
     server:
       message_queue:
