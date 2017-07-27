@@ -8,7 +8,7 @@ classes:
 - system.openssh.server.team.mcp_qa
 - cluster.virtual-mcp11-ovs-ironic.stacklight
 - cluster.virtual-mcp11-ovs-ironic.stacklight.client
-
+- cluster.overrides
 parameters:
   _param:
     cluster_domain: virtual-mcp11-ovs-ironic.local

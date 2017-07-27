@@ -13,6 +13,7 @@ classes:
 - system.memcached.server.single
 - system.rabbitmq.server.single
 - cluster.virtual-mcp11-aio.openstack
+- cluster.overrides
 parameters:
   _param:
     reclass_data_repository: https://gerrit.mcp.mirantis.net/salt-models/mcp-virtual-lab
