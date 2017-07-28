@@ -1,1 +1,1 @@
-export EXTRA_FORMULAS="$EXTRA_FORMULAS mysql grafana libvirt rsyslog memcached rabbitmq apache keystone glance nova neutron cinder heat horizon ironic tftpd-hpa bind powerdns designate"
+FORMULAS_SALT_MASTER+=(mysql grafana libvirt rsyslog memcached rabbitmq apache keystone glance nova neutron cinder heat horizon ironic tftpd-hpa bind powerdns designate)
