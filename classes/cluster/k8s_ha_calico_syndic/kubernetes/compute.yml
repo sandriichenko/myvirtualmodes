@@ -3,7 +3,7 @@ classes:
 - system.kubernetes.pool.cluster
 - system.salt.minion.cert.k8s_client
 - system.salt.minion.cert.etcd_client
-- cluster.k8s_ha_calico
+- cluster.k8s_ha_calico_syndic
 parameters:
   _param:
     kubernetes_calicoctl_image: docker-prod-virtual.sandbox.mirantis.net/mirantis/projectcalico/calico/ctl:latest

@@ -4,8 +4,8 @@ classes:
 - system.linux.system.repo.docker
 - system.salt.minion.cert.etcd_server
 - system.kubernetes.master.cluster
-- cluster.k8s_ha_calico.kubernetes.compute
-- cluster.k8s_ha_calico
+- cluster.k8s_ha_calico_syndic.kubernetes.compute
+- cluster.k8s_ha_calico_syndic
 parameters:
   _param:
     keepalived_vip_interface: ${_param:primary_interface}

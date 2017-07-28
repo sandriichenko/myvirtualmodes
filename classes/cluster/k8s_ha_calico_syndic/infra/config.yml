@@ -7,7 +7,7 @@ classes:
 - system.salt.minion.cert.k8s_server
 - system.reclass.storage.salt
 - system.reclass.storage.system.kubernetes_control_cluster
-- cluster.k8s_ha_calico
+- cluster.k8s_ha_calico_syndic
 parameters:
   _param:
     salt_master_base_environment: prd
@@ -40,7 +40,9 @@ parameters:
             salt_master_host:
               value_template: <<node_master_ip>>
         infra_config:
-          expression: <<node_hostname>>__startswith__cfg
+          expression:
+          - <<node_hostname>>__startswith__cfg
+          - <<node_cluster>>__equals__k8s_ha_calico_syndic
           cluster_param:
             infra_config_address:
               value_template: <<node_control_ip>>

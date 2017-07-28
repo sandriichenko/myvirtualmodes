@@ -46,7 +46,9 @@ parameters:
             salt_master_host:
               value_template: <<node_master_ip>>
         infra_config:
-          expression: <<node_hostname>>__startswith__cfg
+          expression:
+          - <<node_hostname>>__startswith__cfg
+          - <<node_cluster>>__equals__drivetrain_ha_clusters
           cluster_param:
             infra_config_address:
               value_template: <<node_control_ip>>
