@@ -10,10 +10,6 @@ classes:
 - system.haproxy.proxy.listen.stacklight.kibana
 - system.haproxy.proxy.listen.stacklight.influxdb
 - service.haproxy.proxy.single
-- system.glusterfs.client.cluster
-- system.glusterfs.client.volume.prometheus
-- system.glusterfs.server.cluster
-- system.glusterfs.server.volume.prometheus
 - system.galera.server.cluster
 - system.galera.server.database.grafana
 - system.influxdb.server.single
@@ -54,8 +50,6 @@ parameters:
     kibana_elasticsearch_host: ${_param:cluster_vip_address}
     # Galera
     openstack_version: newton
-    # Glusterfs
-    glusterfs_service_host: ${_param:stacklight_monitor_address}
     # Grafana
     grafana_database_type: mysql
     grafana_database_host: ${_param:cluster_vip_address}
