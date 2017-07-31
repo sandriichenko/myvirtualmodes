@@ -75,7 +75,6 @@ parameters:
             salt_master_host:
               value_template: <<node_master_ip>>
         infra_config:
-        infra_config:
           expression:
           - <<node_hostname>>__startswith__cfg
           - <<node_cluster>>__equals__os_ha_ovs_syndic
@@ -87,22 +86,30 @@ parameters:
             cluster_domain:
               value_template: <<node_domain>>
         openstack_control01:
-          expression: <<node_hostname>>__equals__ctl01
+          expression:
+          - <<node_hostname>>__equals__ctl01
+          - <<node_cluster>>__equals__os_ha_ovs_syndic
           cluster_param:
             openstack_control_node01_address:
               value_template: <<node_control_ip>>
         openstack_control02:
-          expression: <<node_hostname>>__equals__ctl02
+          expression:
+          - <<node_hostname>>__equals__ctl02
+          - <<node_cluster>>__equals__os_ha_ovs_syndic
           cluster_param:
             openstack_control_node02_address:
               value_template: <<node_control_ip>>
         openstack_control03:
-          expression: <<node_hostname>>__equals__ctl03
+          expression:
+          - <<node_hostname>>__equals__ctl03
+          - <<node_cluster>>__equals__os_ha_ovs_syndic
           cluster_param:
             openstack_control_node03_address:
               value_template: <<node_control_ip>>
         openstack_compute:
-          expression: <<node_hostname>>__startswith__cmp
+          expression:
+          - <<node_hostname>>__startswith__cmp
+          - <<node_cluster>>__equals__os_ha_ovs_syndic
           node_class:
             value_template:
               - cluster.<<node_cluster>>.openstack.compute
@@ -112,7 +119,9 @@ parameters:
             external_address:
               value_template: <<node_external_ip>>
         openstack_gateway:
-          expression: <<node_hostname>>__startswith__gtw
+          expression:
+          - <<node_hostname>>__startswith__gtw
+          - <<node_cluster>>__equals__os_ha_ovs_syndic
           node_class:
             value_template:
               - cluster.<<node_cluster>>.openstack.gateway

@@ -51,22 +51,31 @@ parameters:
             cluster_domain:
               value_template: <<node_domain>>
         kubernetes_control01:
-          expression: <<node_hostname>>__equals__ctl01
+          expression:
+          - <<node_hostname>>__equals__ctl01
+          - <<node_cluster>>__equals__k8s_ha_calico_syndic
           cluster_param:
             kubernetes_control_node01_address:
               value_template: <<node_control_ip>>
         kubernetes_control02:
-          expression: <<node_hostname>>__equals__ctl02
+          expression:
+          - <<node_hostname>>__equals__ctl02
+          - <<node_cluster>>__equals__k8s_ha_calico_syndic
           cluster_param:
             kubernetes_control_node02_address:
               value_template: <<node_control_ip>>
         kubernetes_control03:
-          expression: <<node_hostname>>__equals__ctl03
+          expression:
+          - <<node_hostname>>__equals__ctl03
+          - <<node_cluster>>__equals__k8s_ha_calico_syndic
           cluster_param:
             kubernetes_control_node03_address:
               value_template: <<node_control_ip>>
         kubernetes_compute:
-          expression: <<node_hostname>>__startswith__cmp
+          expression:
+          - <<node_hostname>>__startswith__cmp
+          - <<node_cluster>>__equals__k8s_ha_calico_syndic
           node_class:
             value_template:
               - cluster.<<node_cluster>>.kubernetes.compute
+
