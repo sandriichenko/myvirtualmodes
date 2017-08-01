@@ -1,9 +1,9 @@
 parameters:
   _param:
     stacklight_monitor_address: 172.16.10.253
-    stacklight_node01_address: 172.16.10.107
-    stacklight_node02_address: 172.16.10.108
-    stacklight_node03_address: 172.16.10.109
+    stacklight_monitor_node01_address: 172.16.10.107
+    stacklight_monitor_node02_address: 172.16.10.108
+    stacklight_monitor_node03_address: 172.16.10.109
     stacklight_telemetry_node01_address: ${_param:stacklight_monitor_node01_address}
     stacklight_log_address: ${_param:stacklight_monitor_address}
     stacklight_telemetry_address: ${_param:stacklight_monitor_address}
@@ -40,17 +40,17 @@ parameters:
           - mon
           - mon.${_param:cluster_domain}
         mon01:
-          address: ${_param:stacklight_node01_address}
+          address: ${_param:stacklight_monitor_node01_address}
           names:
           - mon01
           - mon01.${_param:cluster_domain}
         mon02:
-          address: ${_param:stacklight_node02_address}
+          address: ${_param:stacklight_monitor_node02_address}
           names:
           - mon02
           - mon02.${_param:cluster_domain}
         mon03:
-          address: ${_param:stacklight_node03_address}
+          address: ${_param:stacklight_monitor_node03_address}
           names:
           - mon03
           - mon03.${_param:cluster_domain}
