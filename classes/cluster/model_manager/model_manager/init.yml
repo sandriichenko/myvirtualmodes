@@ -1,5 +1,6 @@
 parameters:
   _param:
+    # app params
     model_manager_node00_hostname: web0
     model_manager_node00_address: 172.16.10.90
     cluster_vip_address: ${_param:model_manager_node00_address}
@@ -10,4 +11,12 @@ parameters:
     model_manager_jenkins_password: 't&2FLaB]2!'
     model_manager_template_url: https://gerrit.mcp.mirantis.net/gitweb?p=mk/cookiecutter-templates.git;a=blob_plain;f=workflow_definition.yml;hb=HEAD
     model_manager_template_job: generate-salt-model-separated-products
+    # identity params
+    openstack_region: RegionOne
+    admin_email: root@localhost
+    keystone_version: mitaka
+    keystone_service_token: qzWYJmNiiXYRSipdWda0
+    rabbitmq_openstack_password: workshop
+    keystone_service_host: ${_param:model_manager_node00_address}
+    nginx_proxy_openstack_api_host: ${_param:cluster_public_host}
 
