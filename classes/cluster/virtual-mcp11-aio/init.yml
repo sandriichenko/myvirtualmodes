@@ -20,15 +20,17 @@ parameters:
     reclass_data_revision: master
     salt_master_environment_repository: "https://github.com/tcpcloud"
     salt_master_environment_revision: master
-    reclass_config_master: 192.168.10.100
-    single_address: 172.16.10.100
+    reclass_config_master: 192.168.10.90
+    single_address: 172.16.10.90
+    infra_config_address: ${_param:single_address}
+    cluster_domain: virtual-mcp11-aio.local
 
     mysql_admin_user: root
     mysql_admin_password: workshop
     rabbitmq_secret_key: workshop
     rabbitmq_admin_password: workshop
     loopback_device_size: 10
-    salt_master_host: 192.168.10.100
+    salt_master_host: 192.168.10.90
     salt_master_base_environment: prd
     salt_minion_ca_host: ${linux:network:fqdn}
     salt_api_password_hash: "$6$sGnRlxGf$al5jMCetLP.vfI/fTl3Z0N7Za1aeiexL487jAtyRABVfT3NlwZxQGVhO7S1N8OwS/34VHYwZQA8lkXwKMN/GS1"
