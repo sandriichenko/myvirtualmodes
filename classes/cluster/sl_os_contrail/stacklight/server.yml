@@ -72,3 +72,12 @@ parameters:
           proto: static
           address: ${_param:single_address}
           netmask: 255.255.255.0
+  elasticsearch:
+    server:
+      heap:
+        size: 1
+  keepalived:
+    cluster:
+      instance:
+        VIP:
+          enabled: false
