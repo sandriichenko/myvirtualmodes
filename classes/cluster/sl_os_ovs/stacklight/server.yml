@@ -9,7 +9,6 @@ classes:
 - system.elasticsearch.server.curator
 - system.kibana.server.single
 - system.grafana.server.single
-- system.nagios.server.cluster
 - cluster.sl_os_ovs
 - system.haproxy.proxy.listen.stacklight.elasticsearch
 - system.haproxy.proxy.listen.stacklight.kibana
@@ -42,12 +41,7 @@ parameters:
     docker_image_remote_agent: docker-prod-virtual.docker.mirantis.net/openstack-docker/telegraf:latest
     docker_image_remote_storage_adapter: docker-prod-virtual.docker.mirantis.net/openstack-docker/remote_storage_adapter:latest
     docker_image_grafana: grafana/grafana:4.3.2
-  linux:
-    network:
-      interface:
-        ens4:
-          enabled: true
-          type: eth
-          proto: static
-          address: ${_param:single_address}
-          netmask: 255.255.255.0
+  elasticsearch:
+    server:
+      heap:
+        size: 1
