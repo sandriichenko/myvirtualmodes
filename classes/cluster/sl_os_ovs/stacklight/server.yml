@@ -16,6 +16,8 @@ classes:
 - system.haproxy.proxy.listen.stacklight.grafana
 - service.haproxy.proxy.single
 - system.keepalived.cluster.instance.stacklight_monitor_vip
+- system.docker.swarm.stack.monitoring
+- system.docker.swarm.stack.dashboard
 parameters:
   _param:
     collectd_remote_collector_host: ${_param:stacklight_monitor_address}
@@ -34,6 +36,12 @@ parameters:
     cluster_node02_address: ${_param:stacklight_monitor_node02_address}
     cluster_node03_name: mon03
     cluster_node03_address: ${_param:stacklight_monitor_node03_address}
+    docker_image_alertmanager: docker-prod-virtual.docker.mirantis.net/openstack-docker/alertmanager:latest
+    docker_image_pushgateway: docker-prod-virtual.docker.mirantis.net/openstack-docker/pushgateway:latest
+    docker_image_prometheus: docker-prod-virtual.docker.mirantis.net/openstack-docker/prometheus:latest
+    docker_image_remote_agent: docker-prod-virtual.docker.mirantis.net/openstack-docker/telegraf:latest
+    docker_image_remote_storage_adapter: docker-prod-virtual.docker.mirantis.net/openstack-docker/remote_storage_adapter:latest
+    docker_image_grafana: grafana/grafana:4.3.2
   linux:
     network:
       interface:
