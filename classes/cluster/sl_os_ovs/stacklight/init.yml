@@ -1,35 +1,31 @@
 parameters:
   _param:
-    stacklight_monitor_address: 172.16.10.253
+    stacklight_monitor_address: 172.16.10.252
+    stacklight_monitor_node01_hostname: mon01
+    stacklight_monitor_node02_hostname: mon02
+    stacklight_monitor_node03_hostname: mon03
     stacklight_monitor_node01_address: 172.16.10.107
     stacklight_monitor_node02_address: 172.16.10.108
     stacklight_monitor_node03_address: 172.16.10.109
-    stacklight_telemetry_node01_address: ${_param:stacklight_monitor_node01_address}
-    stacklight_log_address: ${_param:stacklight_monitor_address}
-    stacklight_telemetry_address: ${_param:stacklight_monitor_address}
+
+    # Glusterfs
+    glusterfs_service_host: ${_param:stacklight_monitor_address}
+
+    # Prometheus
+    prometheus_control_address: ${_param:stacklight_monitor_address}
+
+    mysql_admin_user: root
+    mysql_admin_password: workshop
+
+    mysql_grafana_password: password
+    cluster_local_address: ${_param:single_address}
+    galera_server_cluster_name: monitoring_cluster
+    galera_server_maintenance_password: workshop
+    galera_server_admin_password: workshop
+
     heka_elasticsearch_host: ${_param:stacklight_monitor_address}
-    heka_influxdb_host: ${_param:stacklight_monitor_node01_address}
-    heka_aggregator_host: ${_param:stacklight_monitor_address}
-    aggregator_port: 5565
-    grafana_user: admin
-    grafana_password: password
-    grafana_influxdb_host: ${_param:stacklight_monitor_node01_address}
     elasticsearch_port: 9200
-    influxdb_stacklight_password: lmapass
-    influxdb_admin_password: password
-    influxdb_port: 8086
-    influxdb_database: lma
-    influxdb_user: lma
-    influxdb_password: lmapass
-    nagios_host: ${_param:stacklight_monitor_address}
-    nagios_status_port: 8001
-    nagios_username: nagiosadmin
-    nagios_password: secret
-    nagios_notification_smtp_server: 127.0.0.1
-    nagios_notification_from: 'nagios@localhost'
-    nagios_notification_email: 'root@localhost'
     stacklight_environment: ${_param:cluster_domain}
-    stacklight_notification_topic: stacklight_notifications
   linux:
     network:
       host:
@@ -41,15 +37,15 @@ parameters:
         mon01:
           address: ${_param:stacklight_monitor_node01_address}
           names:
-          - mon01
-          - mon01.${_param:cluster_domain}
+          - ${_param:stacklight_monitor_node01_hostname}
+          - ${_param:stacklight_monitor_node01_hostname}.${_param:cluster_domain}
         mon02:
           address: ${_param:stacklight_monitor_node02_address}
           names:
-          - mon02
-          - mon02.${_param:cluster_domain}
+          - ${_param:stacklight_monitor_node02_hostname}
+          - ${_param:stacklight_monitor_node02_hostname}.${_param:cluster_domain}
         mon03:
           address: ${_param:stacklight_monitor_node03_address}
           names:
-          - mon03
-          - mon03.${_param:cluster_domain}
+          - ${_param:stacklight_monitor_node03_hostname}
+          - ${_param:stacklight_monitor_node03_hostname}.${_param:cluster_domain}
