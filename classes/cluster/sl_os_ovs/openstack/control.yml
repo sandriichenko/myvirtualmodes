@@ -28,6 +28,7 @@ classes:
 - system.galera.server.database.heat
 - system.galera.server.database.keystone
 - system.galera.server.database.nova
+- system.haproxy.proxy.listen.openstack.nova-placement
 - cluster.sl_os_ovs
 parameters:
   _param:

@@ -32,6 +32,7 @@ classes:
 - system.galera.server.database.keystone
 - system.galera.server.database.nova
 - system.galera.server.database.designate
+- system.haproxy.proxy.listen.openstack.nova-placement
 - cluster.sl_os_contrail
 parameters:
   _param:
