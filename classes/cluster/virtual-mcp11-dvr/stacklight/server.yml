@@ -18,7 +18,7 @@ classes:
 - system.haproxy.proxy.listen.stacklight.influxdb
 - service.haproxy.proxy.single
 - system.influxdb.server.single
-- system.influxdb.database.stacklight
+- system.influxdb.database.prometheus
 - system.influxdb.database.ceilometer
 - system.keepalived.cluster.instance.prometheus_server_vip
 - system.telegraf.agent.remote
@@ -60,7 +60,7 @@ parameters:
     influxdb_admin_password: password
     influxdb_stacklight_password: lmapass
     prometheus_influxdb_url: "http://${_param:stacklight_monitor_address}:${_param:influxdb_port}/"
-    prometheus_influxdb_db: lma
+    prometheus_influxdb_db: prometheus
     prometheus_influxdb_username: lma
     prometheus_influxdb_password: ${_param:influxdb_stacklight_password}
     remote_collector_telegraf_host: monitoring_remote_agent

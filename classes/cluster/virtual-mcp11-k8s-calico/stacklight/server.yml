@@ -18,7 +18,7 @@ classes:
 - system.galera.server.cluster
 - system.galera.server.database.grafana
 - system.influxdb.client
-- system.influxdb.client.database.stacklight
+- system.influxdb.client.database.prometheus
 - system.salt.minion.cert.prometheus_server
 - system.keepalived.cluster.instance.prometheus_server_vip
 - system.telegraf.agent.remote
@@ -68,7 +68,7 @@ parameters:
     influxdb_client_port: ${_param:influxdb_port}
     influxdb_client_password: ${_param:influxdb_admin_password}
     prometheus_influxdb_url: "http://${_param:stacklight_monitor_address}:${_param:influxdb_port}/"
-    prometheus_influxdb_db: lma
+    prometheus_influxdb_db: prometheus
     prometheus_influxdb_username: lma
     prometheus_influxdb_password: ${_param:influxdb_stacklight_password}
     telegraf_remote_agent_influxdb_address: ${_param:stacklight_monitor_address}

@@ -56,7 +56,7 @@ parameters:
     grafana_database_password: ${_param:mysql_grafana_password}
     grafana_database_type: mysql
     prometheus_influxdb_url: "http://${_param:stacklight_address}:8086/"
-    prometheus_influxdb_db: lma
+    prometheus_influxdb_db: prometheus
     prometheus_influxdb_username: lma
     prometheus_influxdb_password: lmapass
   keepalived:
