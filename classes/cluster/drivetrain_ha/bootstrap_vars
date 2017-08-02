@@ -1,0 +1,1 @@
+FORMULAS_SALT_MASTER+=(glusterfs docker aptly keepalived rundeck)

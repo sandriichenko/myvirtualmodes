@@ -90,7 +90,8 @@ classes:
   # Rundeck
   - system.rundeck.client.runbook
 
-  - cluster.drivetrain_ha
+ # - cluster.drivetrain_ha.cicd
+ # - cluster.drivetrain_ha
 parameters:
   _param:
     cluster_node01_name: ci01

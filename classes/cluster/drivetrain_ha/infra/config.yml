@@ -22,6 +22,12 @@ parameters:
       reactor:
         reclass/minion/classify:
         - salt://reclass/reactor/node_register.sls
+      environment:
+        prd:
+          formula:
+            glusterfs:
+              source: pkg
+              name: salt-formula-glusterfs
   linux:
     network:
       interface:
