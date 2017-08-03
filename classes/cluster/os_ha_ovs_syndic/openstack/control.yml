@@ -26,6 +26,7 @@ classes:
 - system.galera.server.database.heat
 - system.galera.server.database.keystone
 - system.galera.server.database.nova
+- system.haproxy.proxy.listen.openstack.nova-placement
 - cluster.os_ha_ovs_syndic.openstack.dashboard
 - cluster.os_ha_ovs_syndic
 parameters:
