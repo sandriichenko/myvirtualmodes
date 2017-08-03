@@ -56,6 +56,13 @@ parameters:
         br-floating:
           enabled: true
           type: ovs_bridge
+        phy-public:
+          enabled: true
+          type: ovs_port
+          bridge: br-floating
+          proto: static
+          address: ${_param:openstack_public_neutron_subnet_gateway}
+          netmask: 255.255.255.0
   mysql:
     server:
       version: '5.6'

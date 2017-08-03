@@ -21,6 +21,7 @@ classes:
 - system.glance.control.single
 - system.nova.control.single
 - system.neutron.control.openvswitch.single
+- system.neutron.client.service.public
 - system.heat.server.single
 - system.nova.compute.single
 - service.neutron.gateway.single
@@ -99,7 +100,11 @@ parameters:
       rndc_host: ${_param:single_address}
       rndc_port: 953
       rndc_key_file: /etc/designate/rndc.key
-    linux_system_repo: 'deb [arch=amd64] http://mirror.fuel-infra.org/mcp-repos/ocata/xenial ocata main'
+    linux_system_repo: deb [arch=amd64] http://mirror.fuel-infra.org/mcp-repos/${_param:openstack_version}/xenial ${_param:openstack_version} main
+    openstack_public_neutron_subnet_gateway:  192.168.130.1
+    openstack_public_neutron_subnet_cidr: 192.168.130.0/24
+    openstack_public_neutron_subnet_allocation_start: 192.168.130.10
+    openstack_public_neutron_subnet_allocation_end: 192.168.130.254
   neutron:
     server:
       message_queue:
