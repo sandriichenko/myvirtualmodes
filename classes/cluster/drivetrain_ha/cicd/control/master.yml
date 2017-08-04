@@ -43,4 +43,4 @@ classes:
   # ..projects
   - system.rundeck.client.project.cicd
   # At last
-  - cluster.drivetrain_ha.cicd.control
+  - cluster.drivetrain_ha

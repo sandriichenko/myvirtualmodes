@@ -90,7 +90,7 @@ classes:
   # Rundeck
   - system.rundeck.client.runbook
 
- # - cluster.drivetrain_ha.cicd
+  - cluster.drivetrain_ha.cicd
  # - cluster.drivetrain_ha
 parameters:
   _param:
@@ -109,6 +109,8 @@ parameters:
     cluster_vip_address: ${_param:control_vip_address}
     cluster_public_host: ${_param:control_public_host}
     glusterfs_service_host: ${_param:control_vip_address}
+
+    admin_email: root@localhost
 
     # Haproxy SSL configuration
     cluster_ssl_certificate:
