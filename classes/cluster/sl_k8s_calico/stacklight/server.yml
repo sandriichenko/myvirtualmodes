@@ -24,7 +24,6 @@ classes:
 - system.telegraf.agent.remote
 - system.prometheus.server.remote_write.docker
 - system.prometheus.server.alertmanager.dns
-- system.prometheus.server.target.etcd
 - system.prometheus.server.target.kubernetes
 - system.prometheus.server.target.dns
 - system.docker.swarm.stack.monitoring

@@ -19,7 +19,6 @@ classes:
 - system.keepalived.cluster.instance.prometheus_server_vip
 - system.telegraf.agent.remote
 - system.prometheus.server.alertmanager.dns
-- system.prometheus.server.target.etcd
 - system.prometheus.server.target.kubernetes
 - system.prometheus.server.target.dns
 - system.docker.swarm.stack.monitoring
