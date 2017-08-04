@@ -50,7 +50,7 @@ parameters:
             salt_master_host:
               value_template: <<node_master_ip>>
         infra_config:
-          expression: <<node_hostname>>__startswith__cfg
+          expression: <<node_hostname>>__equals__cid01
           cluster_param:
             infra_config_address:
               value_template: <<node_control_ip>>
@@ -58,19 +58,50 @@ parameters:
               value_template: <<node_deploy_ip>>
             cluster_domain:
               value_template: <<node_domain>>
-        cicd_control01:
-          expression: <<node_hostname>>__equals__cid01
-          cluster_param:
-            cicd_control_node01_address:
+            cicd_control_node_node01_address:
               value_template: <<node_control_ip>>
-        cicd_control02:
+        cicd_control_node02:
           expression: <<node_hostname>>__equals__cid02
           cluster_param:
-            cicd_control_node02_address:
+            cicd_control_node_node02_address:
               value_template: <<node_control_ip>>
-        cicd_control03:
+        cicd_control_node03:
           expression: <<node_hostname>>__equals__cid03
           cluster_param:
             cicd_control_node03_address:
               value_template: <<node_control_ip>>
+      node:
+        cicd_control_node01:
+          name: ${_param:cicd_control_node01_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.infra.config
+          - cluster.${_param:cluster_name}.cicd.control.master
+          params:
+            salt_master_host: 127.0.0.1
+            linux_system_codename: xenial
+            single_address: ${_param:cicd_control_node01_address}
+            keepalived_vip_priority: 103
+        cicd_control_node02:
+          name: ${_param:cicd_control_node02_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.cicd.control.slave
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: xenial
+            single_address: ${_param:cicd_control_node02_address}
+            keepalived_vip_priority: 102
+            docker_swarm_role: worker
+        cicd_control_node03:
+          name: ${_param:cicd_control_node03_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.cicd.control.slave
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: xenial
+            single_address: ${_param:cicd_control_node03_address}
+            keepalived_vip_priority: 101
+            docker_swarm_role: worker
 
