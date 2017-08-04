@@ -1,6 +1,6 @@
 classes:
-- cluster.drivetrain_ha.infra
-- cluster.drivetrain_ha.cicd
 - cluster.drivetrain_ha.cicd.control
+- cluster.drivetrain_ha.infra
+#- cluster.drivetrain_ha.cicd
 - cluster.overrides
 
