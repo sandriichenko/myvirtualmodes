@@ -1,7 +1,7 @@
 parameters:
   _param:
     cicd_control_hostname: cid
-    cicd_control_address: 172.16.10.254
+    cicd_control_address: 172.16.10.252
     cicd_control_node01_hostname: cid01
     cicd_control_node01_address: 172.16.10.11
     cicd_control_node02_hostname: cid02
