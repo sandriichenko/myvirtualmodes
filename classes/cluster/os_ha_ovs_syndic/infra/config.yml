@@ -10,9 +10,6 @@ classes:
 - system.salt.minion.cert.proxy
 - system.sphinx.server.doc.reclass
 - system.keystone.client.core
-- system.keystone.client.service.aodh
-- system.keystone.client.service.ceilometer
-- system.keystone.client.service.designate
 - system.keystone.client.service.cinder
 - system.keystone.client.service.cinder2
 - system.keystone.client.service.cinder3
