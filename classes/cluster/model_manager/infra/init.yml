@@ -4,7 +4,7 @@ parameters:
     cluster_name: model_manager
     infra_config_deploy_address: 192.168.10.100
     infra_config_address: 172.16.10.100
-    cluster_public_host: ${_param:infra_config_address}
+    cluster_public_host: mm.mcp.mirantis.net
   linux:
     network:
       host:
@@ -13,6 +13,7 @@ parameters:
           names:
           - cfg01
           - cfg01.${_param:cluster_domain}
+          - mm.mcp.mirantis.net
         cfg:
           address: ${_param:infra_config_address}
           names:
