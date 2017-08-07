@@ -8,8 +8,11 @@ classes:
 parameters:
   model_manager:
     server:
+      identity:
+        protocol: http
+        endpoint: internalURL
       source:
-        commit_id: '5042e433f21d965d61e0251d56210680e1d0211e'
+        commit_id: 'd39884f86cb5517c2d058a6772abbb21f87baf73'
   linux:
     network:
       interface:

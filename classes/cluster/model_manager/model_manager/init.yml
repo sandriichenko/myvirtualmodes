@@ -5,7 +5,7 @@ parameters:
     model_manager_node00_address: 172.16.10.90
     cluster_vip_address: ${_param:model_manager_node00_address}
     model_manager_secret_key: '_0&dq4cr4j7o-3m6+h3silkb8tb5^1*3)2sya5%w8$0xzcx7)5'
-    model_manager_identity_host: vpc.tcpisek.cz
+    model_manager_identity_host: ${_param:model_manager_node00_address}
     model_manager_jenkins_host: ci.mcp.mirantis.net
     model_manager_jenkins_user: model-manager
     model_manager_jenkins_password: 't&2FLaB]2!'
@@ -18,5 +18,5 @@ parameters:
     keystone_service_token: qzWYJmNiiXYRSipdWda0
     rabbitmq_openstack_password: workshop
     keystone_service_host: ${_param:model_manager_node00_address}
-    nginx_proxy_openstack_api_host: ${_param:cluster_public_host}
+    nginx_proxy_keystone_api_host: ${_param:cluster_public_host}
 
