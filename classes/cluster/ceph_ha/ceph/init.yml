@@ -1,0 +1,72 @@
+parameters:
+  _param:
+    linux_repo_ceph_component: kraken
+    ceph_monitor_keepalived_password: tv0jeM4m4neum1s0p3nSt4cK3m
+
+
+    ceph_monitor_hostname: cmn
+    ceph_monitor_node01_hostname: cmn01
+    ceph_monitor_node02_hostname: cmn02
+    ceph_monitor_node03_hostname: cmn03
+
+    ceph_monitor_address: 172.16.10.89
+    ceph_monitor_node01_address: ${_param:ceph_monitor_01_address}
+    ceph_monitor_node02_address: ${_param:ceph_monitor_02_address}
+    ceph_monitor_node03_address: ${_param:ceph_monitor_03_address}
+
+
+
+    ceph_osd_node01_hostname: osd01
+    ceph_osd_node02_hostname: osd02
+    ceph_osd_node03_hostname: osd03
+    ceph_osd_node01_address: 172.16.10.94
+    ceph_osd_node02_address: 172.16.10.95
+    ceph_osd_node03_address: 172.16.10.96
+
+
+    ceph_cfs_node01_hostname: cfs01
+    ceph_cfs_node01_address: 172.16.10.97
+  linux:
+    network:
+      host:
+        cmn:
+          address: ${_param:ceph_monitor_address}
+          names:
+          - ${_param:ceph_monitor_hostname}
+          - ${_param:ceph_monitor_hostname}.${_param:cluster_domain}
+        cmn01:
+          address: ${_param:ceph_monitor_node01_address}
+          names:
+          - ${_param:ceph_monitor_node01_hostname}
+          - ${_param:ceph_monitor_node01_hostname}.${_param:cluster_domain}
+        cmn02:
+          address: ${_param:ceph_monitor_node02_address}
+          names:
+          - ${_param:ceph_monitor_node02_hostname}
+          - ${_param:ceph_monitor_node02_hostname}.${_param:cluster_domain}
+        cmn03:
+          address: ${_param:ceph_monitor_node03_address}
+          names:
+          - ${_param:ceph_monitor_node03_hostname}
+          - ${_param:ceph_monitor_node03_hostname}.${_param:cluster_domain}
+        osd01:
+          address: ${_param:ceph_osd_node01_address}
+          names:
+          - ${_param:ceph_osd_node01_hostname}
+          - ${_param:ceph_osd_node01_hostname}.${_param:cluster_domain}
+        osd02:
+          address: ${_param:ceph_osd_node02_address}
+          names:
+          - ${_param:ceph_osd_node02_hostname}
+          - ${_param:ceph_osd_node02_hostname}.${_param:cluster_domain}
+        osd03:
+          address: ${_param:ceph_osd_node03_address}
+          names:
+          - ${_param:ceph_osd_node03_hostname}
+          - ${_param:ceph_osd_node03_hostname}.${_param:cluster_domain}
+        cfs01:
+          address: ${_param:ceph_cfs_node01_address}
+          names:
+          - ${_param:ceph_cfs_node01_hostname}
+          - ${_param:ceph_cfs_node01_hostname}.${_param:cluster_domain}
+
