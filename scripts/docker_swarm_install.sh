@@ -10,6 +10,8 @@ salt -C 'I@docker:swarm' state.sls salt.minion.grains
 salt -C 'I@docker:swarm' mine.update
 salt -C 'I@docker:swarm' saltutil.refresh_modules
 sleep 5
+# Rerun Swarm state on master node to properly push Swarm tokens into grains
+salt -C 'I@docker:swarm:role:master' state.sls docker.swarm
 # Configure Swarm slave nodes
 salt -C 'I@docker:swarm:role:manager' state.sls docker.swarm -b 1
 
