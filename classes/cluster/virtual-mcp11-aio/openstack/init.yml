@@ -82,6 +82,7 @@ parameters:
     horizon_secret_key: workshop
     horizon_identity_encryption: none
     horizon_identity_version: 2
+    horizon_identity_host: ${_param:single_address}
     designate_bind9_rndc_key: 4pc+X4PDqb2q+5o72dISm72LM1Ds9X2EYZjqg+nmsS7FhdTwzFFY8l/iEDmHxnyjkA33EQC8H+z0fLLBunoitw==
     designate_pool_target_type: bind9
     designate_domain_id: 5186883b-91fb-4891-bd49-e6769234a8fc
