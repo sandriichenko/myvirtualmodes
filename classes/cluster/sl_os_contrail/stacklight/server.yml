@@ -36,11 +36,11 @@ parameters:
     cluster_vip_address: ${_param:stacklight_monitor_address}
     cluster_elasticsearch_port: 9200
     cluster_kibana_port: 5601
-    cluster_node01_hostname: mon01
+    cluster_node01_hostname: ${_param:stacklight_monitor_node01_hostname}
     cluster_node01_address: ${_param:stacklight_monitor_node01_address}
-    cluster_node02_hostname: mon02
+    cluster_node02_hostname: ${_param:stacklight_monitor_node02_hostname}
     cluster_node02_address: ${_param:stacklight_monitor_node02_address}
-    cluster_node03_hostname: mon03
+    cluster_node03_hostname: ${_param:stacklight_monitor_node03_hostname}
     cluster_node03_address: ${_param:stacklight_monitor_node03_address}
     grafana_admin_password: admin
     grafana_database_type: mysql
@@ -56,13 +56,18 @@ parameters:
     glusterfs_node01_address: ${_param:openstack_control_node01_address}
     glusterfs_node02_address: ${_param:openstack_control_node02_address}
     glusterfs_node03_address: ${_param:openstack_control_node03_address}
-    influxdb_port: 8086
-    influxdb_admin_password: password
-    influxdb_stacklight_password: lmapass
+    grafana_admin_password: admin
+    grafana_database_type: mysql
+    grafana_database_host: ${_param:cluster_vip_address}
+    grafana_database_password: ${_param:mysql_grafana_password}
     prometheus_influxdb_url: "http://${_param:stacklight_monitor_address}:${_param:influxdb_port}/"
     prometheus_influxdb_db: prometheus
     prometheus_influxdb_username: lma
     prometheus_influxdb_password: ${_param:influxdb_stacklight_password}
+    influxdb_port: 8086
+    influxdb_admin_password: password
+    influxdb_stacklight_password: lmapass
+    openstack_version: newton
   linux:
     network:
       interface:
@@ -72,3 +77,12 @@ parameters:
           proto: static
           address: ${_param:single_address}
           netmask: 255.255.255.0
+  elasticsearch:
+    server:
+      heap:
+        size: 1
+  keepalived:
+    cluster:
+      instance:
+        VIP:
+          enabled: false
