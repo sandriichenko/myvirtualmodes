@@ -44,6 +44,8 @@ parameters:
           image: ${_param:kubernetes_calicoctl_image}
         cni:
           image: ${_param:kubernetes_calico_cni_image}
+        contrail_cni:
+          image: ${_param:kubernetes_opencontrail_cni_image}
     common:
       hyperkube:
         image: ${_param:kubernetes_hyperkube_image}
