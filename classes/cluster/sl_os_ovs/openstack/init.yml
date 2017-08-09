@@ -96,6 +96,8 @@ parameters:
     horizon_identity_version: 2
     aodh_version: ${_param:openstack_version}
     aodh_service_host: ${_param:cluster_vip_address}
+    ceilometer_version: ${_param:openstack_version}
+    ceilometer_service_host: ${_param:cluster_vip_address}
   linux:
     network:
       host:
