@@ -26,6 +26,7 @@ parameters:
     heka_elasticsearch_host: ${_param:stacklight_monitor_address}
     elasticsearch_port: 9200
     stacklight_environment: ${_param:cluster_domain}
+    stacklight_notification_topic: stacklight_notifications
   linux:
     network:
       host:
