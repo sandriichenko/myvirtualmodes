@@ -1,3 +1,7 @@
+classes:
+- system.linux.system.repo.mcp.extra
+- system.prometheus.collector
+- system.telegraf.agent
 parameters:
   _param:
     stacklight_monitor_address: 172.16.10.252

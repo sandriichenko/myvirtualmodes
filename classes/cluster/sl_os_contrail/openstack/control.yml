@@ -33,6 +33,7 @@ classes:
 - system.galera.server.database.nova
 - system.galera.server.database.designate
 - system.haproxy.proxy.listen.openstack.nova-placement
+- system.prometheus.exporters.jmx
 - cluster.sl_os_contrail
 parameters:
   _param:

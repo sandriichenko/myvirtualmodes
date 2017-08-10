@@ -8,6 +8,7 @@ classes:
 - system.opencontrail.client.cluster
 - system.opencontrail.client.resource.virtual_router
 - service.opencontrail.compute.cluster
+- system.prometheus.exporters.libvirt
 - cluster.sl_os_contrail
 parameters:
   _param:

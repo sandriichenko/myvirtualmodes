@@ -1,5 +1,7 @@
 classes:
 - service.git.client
+- system.docker.client
+- system.docker.host
 - system.linux.system.single
 - system.linux.system.repo.mcp.salt
 - system.openssh.client.lab

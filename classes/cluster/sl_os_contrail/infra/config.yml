@@ -1,5 +1,7 @@
 classes:
 - service.git.client
+- system.docker.client
+- system.docker.host
 - system.linux.system.single
 - system.linux.system.repo.mcp.salt
 - system.openssh.client.lab
@@ -149,21 +151,66 @@ parameters:
             stacklight_monitor_node03_address:
               value_template: <<node_control_ip>>
       node:
-        openstack_control_node01:
+        prx_node:
+          name: ${_param:openstack_proxy_node01_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.stacklight.proxy
+          params:
+            salt_master_host: ${_param:infra_config_deploy_address}
+            linux_system_codename: xenial
+            single_address: ${_param:openstack_proxy_node01_address}
+        stacklight_monitor_node01:
+          name: ${_param:stacklight_monitor_node01_hostname}
+          domain: ${_param:cluster_domain}
           classes:
           - service.galera.master.cluster
+          - system.docker.swarm.master
+          - cluster.${_param:cluster_name}.stacklight.client
+          - cluster.${_param:cluster_name}.stacklight.server
           params:
+            salt_master_host: ${_param:infra_config_deploy_address}
+            linux_system_codename: xenial
+            single_address: ${_param:stacklight_monitor_node01_address}
+            keepalived_vip_priority: 100
             mysql_cluster_role: master
+        openstack_control_node01:
+          name: ${_param:stacklight_monitor_node01_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - service.galera.master.cluster
+          - system.docker.swarm.master
+          - cluster.${_param:cluster_name}.stacklight.client
+          - cluster.${_param:cluster_name}.stacklight.server
+          params:
+            salt_master_host: ${_param:infra_config_deploy_address}
             linux_system_codename: xenial
+            single_address: ${_param:stacklight_monitor_node01_address}
+            keepalived_vip_priority: 100
+            mysql_cluster_role: master
         openstack_control_node02:
+          name: ${_param:stacklight_monitor_node02_hostname}
+          domain: ${_param:cluster_domain}
           classes:
           - service.galera.slave.cluster
+          - system.docker.swarm.manager
+          - cluster.${_param:cluster_name}.stacklight.server
           params:
-            mysql_cluster_role: slave
+            salt_master_host: ${_param:infra_config_deploy_address}
             linux_system_codename: xenial
+            single_address: ${_param:stacklight_monitor_node02_address}
+            keepalived_vip_priority: 101
+            mysql_cluster_role: slave
         openstack_control_node03:
+          name: ${_param:stacklight_monitor_node03_hostname}
+          domain: ${_param:cluster_domain}
           classes:
           - service.galera.slave.cluster
+          - system.docker.swarm.manager
+          - cluster.${_param:cluster_name}.stacklight.server
           params:
-            mysql_cluster_role: slave
+            salt_master_host: ${_param:infra_config_deploy_address}
             linux_system_codename: xenial
+            single_address: ${_param:stacklight_monitor_node03_address}
+            keepalived_vip_priority: 102
+            mysql_cluster_role: slave

@@ -1,6 +1,5 @@
 classes:
 - service.grafana.collector
-- system.heka.log_collector.single
 - system.linux.system.repo.mcp.extra
 - system.linux.system.single
 - system.rsyslog.client.single
