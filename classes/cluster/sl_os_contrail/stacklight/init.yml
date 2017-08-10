@@ -1,9 +1,9 @@
 parameters:
   _param:
     stacklight_monitor_address: 172.16.10.253
-    stacklight_node01_hostname: mon01
-    stacklight_node02_hostname: mon02
-    stacklight_node03_hostname: mon03
+    stacklight_monitor_node01_hostname: mon01
+    stacklight_monitor_node02_hostname: mon02
+    stacklight_monitor_node03_hostname: mon03
     stacklight_monitor_node01_address: 172.16.10.107
     stacklight_monitor_node02_address: 172.16.10.108
     stacklight_monitor_node03_address: 172.16.10.109
