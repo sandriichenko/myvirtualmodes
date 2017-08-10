@@ -1,22 +1,36 @@
 classes:
-- system.collectd.remote_client.cluster
-- system.heka.remote_collector.cluster
+- system.docker.host
 - system.linux.system.repo.influxdb
-- system.heka.remote_collector.input.amqp
-- system.heka.aggregator.cluster
-- system.linux.system.repo.tcp_elastic 
+- system.linux.system.repo.tcp_elastic
+- system.linux.system.repo.mcp.openstack
 - system.elasticsearch.server.cluster
 - system.elasticsearch.server.curator
 - system.kibana.server.single
-- system.grafana.server.single
-- cluster.sl_os_ovs
 - system.haproxy.proxy.listen.stacklight.elasticsearch
 - system.haproxy.proxy.listen.stacklight.kibana
-- system.haproxy.proxy.listen.stacklight.grafana
+- system.haproxy.proxy.listen.stacklight.influxdb
 - service.haproxy.proxy.single
-- system.keepalived.cluster.instance.stacklight_monitor_vip
+- system.heka.remote_collector.cluster
+- system.heka.remote_collector.input.amqp
+- system.heka.aggregator.cluster
+- system.glusterfs.client.cluster
+- system.glusterfs.client.volume.prometheus
+- system.glusterfs.server.cluster
+- system.glusterfs.server.volume.prometheus
+- system.galera.server.cluster
+- system.galera.server.database.grafana
+- system.influxdb.server.single
+- system.influxdb.database.prometheus
+- system.salt.minion.cert.prometheus_server
+- system.keepalived.cluster.instance.prometheus_server_vip
+- system.telegraf.agent.remote
+- system.prometheus.server.remote_write.docker
+- system.prometheus.server.alertmanager.dns
+- system.prometheus.server.target.kubernetes
+- system.prometheus.server.target.dns
 - system.docker.swarm.stack.monitoring
 - system.docker.swarm.stack.dashboard
+- cluster.sl_os_ovs
 parameters:
   _param:
     collectd_remote_collector_host: ${_param:stacklight_monitor_address}
