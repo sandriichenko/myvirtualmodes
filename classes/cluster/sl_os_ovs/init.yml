@@ -7,5 +7,4 @@ classes:
 - cluster.sl_os_ovs.infra
 - cluster.sl_os_ovs.openstack
 - cluster.sl_os_ovs.stacklight
-- cluster.sl_os_ovs.stacklight.client
 - cluster.overrides
