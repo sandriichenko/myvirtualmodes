@@ -22,17 +22,7 @@ parameters:
           key: /calico/v1/ipam/v4/pool/${_param:calico_private_network}-${_param:calico_private_netmask}
           value: '{"masquerade":true,"cidr":"${_param:calico_private_network}/${_param:calico_private_netmask}"}'
   kubernetes:
-    master:
-      etcd:
-        ssl:
-          enabled: true
-      network:
-        etcd:
-          ssl:
-            enabled: true
-      namespace:
-        netchecker:
-          enabled: ${_param:kubernetes_netchecker_enabled}
+    common:
       addons:
         helm:
           enabled: ${_param:kubernetes_helm_enabled}
@@ -44,3 +34,15 @@ parameters:
           agent_image: ${_param:kubernetes_netchecker_agent_image}
           server_image: ${_param:kubernetes_netchecker_server_image}
           agent_probeurls: ${_param:kubernetes_netchecker_agent_probeurls}
+    master:
+      etcd:
+        ssl:
+          enabled: true
+      network:
+        etcd:
+          ssl:
+            enabled: true
+      namespace:
+        netchecker:
+          enabled: ${_param:kubernetes_netchecker_enabled}
+

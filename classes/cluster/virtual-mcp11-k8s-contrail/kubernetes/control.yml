@@ -21,6 +21,27 @@ parameters:
           key: /calico/v1/ipam/v4/pool/${_param:calico_private_network}-${_param:calico_private_netmask}
           value: '{"masquerade":true,"cidr":"${_param:calico_private_network}/${_param:calico_private_netmask}"}'
   kubernetes:
+    common:
+      addons:
+        dashboard:
+          enabled: false
+        helm:
+          enabled: ${_param:kubernetes_helm_enabled}
+        netchecker:
+          enabled: ${_param:kubernetes_netchecker_enabled}
+          agent_image: ${_param:kubernetes_netchecker_agent_image}
+          server_image: ${_param:kubernetes_netchecker_server_image}
+        virtlet:
+          enabled: ${_param:kubernetes_virtlet_enabled}
+          namespace: kube-system
+          image: ${_param:kubernetes_virtlet_image}
+          hosts:
+          - ${_param:kubernetes_compute_node01_hostname}
+          - ${_param:kubernetes_compute_node02_hostname}
+        contrail_network_controller:
+          namespace: kube-system
+          enabled: true
+          image: ${_param:kubernetes_contrail_network_controller_image}
     master:
       etcd:
         ssl:
@@ -35,26 +56,6 @@ parameters:
       namespace:
         netchecker:
           enabled: ${_param:kubernetes_netchecker_enabled}
-      addons:
-        dashboard:
-          enabled: false
-        helm:
-          enabled: ${_param:kubernetes_helm_enabled}
-        netchecker:
-          enabled: ${_param:kubernetes_netchecker_enabled}
-          agent_image: ${_param:kubernetes_netchecker_agent_image}
-          server_image: ${_param:kubernetes_netchecker_server_image}
-        virtlet:
-          enabled: ${_param:kubernetes_virtlet_enabled}
-          namespace: kube-system
-          hosts:
-          - ${_param:kubernetes_compute_node01_hostname}
-          - ${_param:kubernetes_compute_node02_hostname}
-          image: ${_param:kubernetes_virtlet_image}
-        contrail_network_controller:
-          namespace: kube-system
-          enabled: true
-          image: ${_param:kubernetes_contrail_network_controller_image}
       network:
         engine: opencontrail
         public_ip_range: 185.22.97.128/26

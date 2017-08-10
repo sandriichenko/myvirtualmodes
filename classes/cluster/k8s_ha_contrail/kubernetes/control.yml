@@ -21,6 +21,14 @@ parameters:
           key: /calico/v1/ipam/v4/pool/${_param:calico_private_network}-${_param:calico_private_netmask}
           value: '{"masquerade":true,"cidr":"${_param:calico_private_network}/${_param:calico_private_netmask}"}'
   kubernetes:
+    common:
+      addons:
+        netchecker:
+          enabled: true
+          agent_image: ${_param:kubernetes_netchecker_agent_image}
+          server_image: ${_param:kubernetes_netchecker_server_image}
+        helm:
+          enabled: true
     master:
       etcd:
         ssl:
@@ -31,13 +39,6 @@ parameters:
             enabled: true
       namespace:
         netchecker:
-          enabled: true
-      addons:
-        netchecker:
-          enabled: true
-          agent_image: ${_param:kubernetes_netchecker_agent_image}
-          server_image: ${_param:kubernetes_netchecker_server_image}
-        helm:
           enabled: true
       network:
         engine: opencontrail
