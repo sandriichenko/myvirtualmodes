@@ -136,6 +136,7 @@ parameters:
           params:
             mysql_cluster_role: master
             linux_system_codename: xenial
+            horizon_identity_host: ${_param:openstack_control_address}
         openstack_control_node02:
           classes:
           - service.galera.slave.cluster
@@ -143,6 +144,7 @@ parameters:
           params:
             mysql_cluster_role: slave
             linux_system_codename: xenial
+            horizon_identity_host: ${_param:openstack_control_address}
         openstack_control_node03:
           classes:
           - service.galera.slave.cluster
@@ -150,3 +152,5 @@ parameters:
           params:
             mysql_cluster_role: slave
             linux_system_codename: xenial
+            horizon_identity_host: ${_param:openstack_control_address}
+
