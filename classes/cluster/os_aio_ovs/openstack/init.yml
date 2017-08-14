@@ -41,6 +41,7 @@ parameters:
     rabbitmq_openstack_password: workshop
     rabbitmq_cold_password: workshop
     glance_version: ${_param:openstack_version}
+    designate_service_host: ${_param:openstack_control_node01_address}
     glance_service_host: ${_param:openstack_control_node01_address}
     keystone_version: ${_param:openstack_version}
     keystone_service_host: ${_param:openstack_control_node01_address}
@@ -59,6 +60,8 @@ parameters:
     neutron_version: ${_param:openstack_version}
     neutron_service_host: ${_param:openstack_control_node01_address}
     glusterfs_service_host: ${_param:openstack_control_node01_address}
+    aodh_service_host: ${_param:openstack_control_node01_address}
+    keystone_designate_password: workshop
     metadata_password: password
     mysql_admin_user: root
     mysql_admin_password: workshop
@@ -70,6 +73,7 @@ parameters:
     mysql_neutron_password: workshop
     mysql_nova_password: workshop
     mysql_aodh_password: workshop
+    keystone_aodh_password: workshop
     keystone_service_token: workshop
     keystone_admin_password: workshop
     keystone_ceilometer_password: workshop
