@@ -1,33 +1,58 @@
 classes:
-- system.linux.system.repo.ceph
-- system.linux.system.repo.ubuntu
-- cluster.ceph_ha.infra
+- service.ceph.osd.cluster
+- cluster.ceph_ha.ceph.common
 parameters:
-  _param:
-    keepalived_ceph_monitor_vip_address: ${_param:ceph_monitor_address}
-    keepalived_ceph_monitor_vip_password: ${_param:ceph_monitor_keepalived_password}
-    keepalived_ceph_monitor_vip_interface: ens3
-    cluster_vip_address: ${_param:ceph_monitor_address}
-    cluster_local_address: ${_param:single_address}
-    cluster_node01_hostname: cmn01
-    cluster_node01_address: ${_param:ceph_monitor_node01_address}
-    cluster_node02_hostname: cmn02
-    cluster_node02_address: ${_param:ceph_monitor_node02_address}
-    cluster_node03_hostname: cmn03
-    cluster_node03_address: ${_param:ceph_monitor_node03_address}
-    ceph_frondend_network: 10.1.0.0/24
-    ceph_backend_network: 10.16.0.0/24
-    nova_storage_keyring: novakeyring
-    cinder_storage_keyring: cinderkeyrinig
   ceph:
     osd:
+      enabled: true
       copy_admin_key: true
       journal_type: raw
-      disks:
-        - /dev/sda:
-          journal: yes
-          journal_device: /dev/sdd
-        - /dev/sdb:
-          journal_device: /dev/sde
       dmcrypt: disable
       osd_scenario: raw_journal_devices
+      fs_type: xfs
+      disk:
+        '00':
+          rule: hdd
+          dev: /dev/vdb2
+          journal: /dev/vdb1
+          class: bestssd
+          weight: 1.5
+        '01':
+          rule: hdd
+          dev: /dev/vdc2
+          journal: /dev/vdc1
+          class: bestssd
+          weight: 1.5
+        '02':
+          rule: hdd
+          dev: /dev/vdd2
+          journal: /dev/vdd1
+          class: bestssd
+          weight: 1.5
+  linux:
+   storage:
+     disk:
+       first_drive:
+         name: /dev/vdb
+         type: gpt
+         partitions:
+         - size: 4000
+           type: xfs
+         - size: 6000
+           type: xfs
+       second_drive:
+         name: /dev/vdc
+         type: gpt
+         partitions:
+         - size: 4000
+           type: xfs
+         - size: 6000
+           type: xfs
+       third_drive:
+         name: /dev/vdd
+         type: gpt
+         partitions:
+         - size: 4000
+           type: xfs
+         - size: 6000
+           type: xfs

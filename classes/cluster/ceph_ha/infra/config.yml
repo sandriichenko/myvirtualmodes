@@ -5,7 +5,7 @@ classes:
 - system.salt.minion.ca.salt_master
 - system.salt.master.api
 - system.reclass.storage.salt
-- system.reclass.storage.system.ceph_monitor_cluster
+- system.reclass.storage.system.ceph_mon_cluster
 - cluster.ceph_ha.ceph
 - cluster.ceph_ha.infra
 parameters:
@@ -40,6 +40,28 @@ parameters:
         - salt://reclass/reactor/node_register.sls
   reclass:
     storage:
+      node:
+        infra_storage_rack01:
+          name: osd<<count>>
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.ceph.osd
+          repeat:
+            count: 3
+            start: 0
+            digits: 1
+            params:
+              ceph_host_id:
+                value: <<count>>
+                start: 1
+              single_address:
+                value: ceph_osd_node<<count>>_address
+                start: 1
+                digits: 2
+                interpolate: true
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: xenial
       class_mapping:
         common_node:
           expression: all
@@ -59,25 +81,35 @@ parameters:
               value_template: <<node_deploy_ip>>
             cluster_domain:
               value_template: <<node_domain>>
-        ceph_osd:
-          expression: <<node_hostname>>__startswith__osd
-          node_class:
-            value_template:
-              - cluster.<<node_cluster>>.ceph.osd
-        ceph_monitor_01:
-          expression: <<node_hostname>>__equals__cmn01
+        ceph_osd_01:
+          expression: <<node_hostname>>__equals__osd0
           cluster_param:
-            ceph_monitor_01_address:
+            ceph_osd_node01_address:
               value_template: <<node_control_ip>>
-        ceph_monitor_02:
-          expression: <<node_hostname>>__equals__cmn02
+        ceph_osd_02:
+          expression: <<node_hostname>>__equals__osd1
           cluster_param:
-            ceph_monitor_02_address:
+            ceph_osd_node02_address:
               value_template: <<node_control_ip>>
-        ceph_monitor_03:
+        ceph_osd_03:
+          expression: <<node_hostname>>__equals__osd2
+          cluster_param:
+            ceph_osd_node03_address:
+              value_template: <<node_control_ip>>
+        ceph_mon_01:
           expression: <<node_hostname>>__equals__cmn03
           cluster_param:
-            ceph_monitor_03_address:
+            ceph_mon_node01_address:
+              value_template: <<node_control_ip>>
+        ceph_mon_02:
+          expression: <<node_hostname>>__equals__cmn02
+          cluster_param:
+            ceph_mon_node02_address:
+              value_template: <<node_control_ip>>
+        ceph_mon_03:
+          expression: <<node_hostname>>__equals__cmn03
+          cluster_param:
+            ceph_mon_node03_address:
               value_template: <<node_control_ip>>
         ceph_cfs:
           expression: <<node_hostname>>__startswith__cfs
