@@ -41,13 +41,13 @@ parameters:
 
     # etcd stuff
     cluster_node01_hostname: ${_param:kubernetes_control_node01_hostname}
-    cluster_node01_address: ${_param:kubernetes_control_node01_address}
+    cluster_node01_address: ${_param:etcd_control_node01_address}
     cluster_node01_port: 4001
     cluster_node02_hostname: ${_param:kubernetes_control_node02_hostname}
-    cluster_node02_address: ${_param:kubernetes_control_node02_address}
+    cluster_node02_address: ${_param:etcd_control_node02_address}
     cluster_node02_port: 4001
     cluster_node03_hostname: ${_param:kubernetes_control_node03_hostname}
-    cluster_node03_address: ${_param:kubernetes_control_node03_address}
+    cluster_node03_address: ${_param:etcd_control_node03_address}
     cluster_node03_port: 4001
 
     # calico
