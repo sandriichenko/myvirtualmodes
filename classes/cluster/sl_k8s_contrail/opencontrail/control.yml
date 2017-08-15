@@ -29,6 +29,7 @@ parameters:
     cluster_node03_address: ${_param:opencontrail_control_node03_address}
     rabbitmq_secret_key: password
     rabbitmq_admin_password: password
+    rabbitmq_openstack_password: workshop
     opencontrail_router01_hostname: vsrx01.${_param:cluster_domain}
     opencontrail_router01_address: 172.16.10.131
   linux:
