@@ -14,6 +14,10 @@ classes:
 - service.haproxy.proxy.single
 - system.glusterfs.client.cluster
 - system.glusterfs.client.volume.prometheus
+- system.glusterfs.client.volume.influxdb
+- system.glusterfs.server.cluster
+- system.glusterfs.server.volume.prometheus
+- system.glusterfs.server.volume.influxdb
 - system.galera.server.cluster
 - system.galera.server.database.grafana
 - system.influxdb.server.single
@@ -27,7 +31,6 @@ classes:
 - system.prometheus.server.target.dns
 - system.docker.swarm.stack.monitoring
 - system.docker.swarm.stack.dashboard
-- system.docker.swarm.stack.monitoring.remote_collector
 - cluster.sl_k8s_calico
 parameters:
   _param:
@@ -40,6 +43,7 @@ parameters:
     docker_image_remote_collector: docker-prod-virtual.docker.mirantis.net/openstack-docker/heka:latest
     docker_image_remote_storage_adapter: docker-prod-virtual.docker.mirantis.net/openstack-docker/remote_storage_adapter:latest
     docker_image_grafana: grafana/grafana:4.3.2
+    docker_influxdb_image: influxdb:1.2
     grafana_admin_password: admin
     keepalived_prometheus_vip_address: ${_param:cluster_vip_address}
     keepalived_prometheus_vip_password: password
@@ -62,6 +66,9 @@ parameters:
     influxdb_port: 8086
     influxdb_admin_password: password
     influxdb_stacklight_password: lmapass
+    influxdb_client_host: ${_param:stacklight_monitor_address}
+    influxdb_client_port: ${_param:influxdb_port}
+    influxdb_client_password: ${_param:influxdb_admin_password}
     prometheus_influxdb_url: "http://${_param:stacklight_monitor_address}:${_param:influxdb_port}/"
     prometheus_influxdb_db: prometheus
     prometheus_influxdb_username: lma

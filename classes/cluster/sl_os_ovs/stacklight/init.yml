@@ -11,7 +11,7 @@ parameters:
     stacklight_monitor_node01_address: 172.16.10.107
     stacklight_monitor_node02_address: 172.16.10.108
     stacklight_monitor_node03_address: 172.16.10.109
-
+    salt_minion_ca_host: cfg01.${_param:cluster_domain}
     # Glusterfs
     glusterfs_service_host: ${_param:stacklight_monitor_address}
 
