@@ -1,4 +1,4 @@
-alasses:
+classes:
 - system.linux.system.single
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.mcp.salt

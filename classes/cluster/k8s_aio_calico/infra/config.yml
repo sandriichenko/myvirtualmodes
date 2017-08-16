@@ -1,4 +1,4 @@
-alasses:
+classes:
 - system.linux.system.repo.ubuntu
 - system.openssh.client.lab
 - system.salt.master.pkg
