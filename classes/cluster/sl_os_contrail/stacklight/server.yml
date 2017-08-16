@@ -67,6 +67,7 @@ parameters:
     influxdb_stacklight_password: lmapass
     openstack_version: newton
     remote_collector_telegraf_host: monitoring_remote_agent
+    heka_amqp_host: ${_param:openstack_control_address}
   linux:
     network:
       interface:

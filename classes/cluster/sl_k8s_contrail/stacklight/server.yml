@@ -67,6 +67,8 @@ parameters:
     prometheus_influxdb_username: lma
     prometheus_influxdb_password: ${_param:influxdb_stacklight_password}
     remote_collector_telegraf_host: monitoring_remote_agent
+    rabbitmq_openstack_password: workshop
+    heka_amqp_host: ${_param:kubernetes_control_address}
   elasticsearch:
     server:
       heap:
