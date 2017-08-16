@@ -1,17 +1,18 @@
 classes:
-- system.docker.client
-- system.elasticsearch.client.single
-- system.grafana.client
-- system.grafana.client.datasource.prometheus
-- system.kibana.client.single
+- system.nginx.server.single
+- system.nginx.server.proxy.stacklight.grafana
+- system.nginx.server.proxy.stacklight.kibana
+- system.nginx.server.proxy.monitoring.prometheus_server
+- system.nginx.server.proxy.monitoring.prometheus_alertmanager
+- system.salt.minion.cert.proxy
+- cluster.sl_k8s_calico
 parameters:
   _param:
-    # Elasticsearch/Kibana client parameters
-    stacklight_log_address: ${_param:stacklight_monitor_address}
-    # Grafana client parameters
-    grafana_address: ${_param:stacklight_monitor_address}
-    grafana_port: 15013
-    grafana_user: admin
-    grafana_password: ${_param:grafana_admin_password}
-    grafana_prometheus_address: ${_param:stacklight_monitor_address}
-    grafana_prometheus_port: 15010
+    cluster_public_host: ${_param:prometheus_control_address}
+    nginx_proxy_grafana_port: 15013
+    nginx_proxy_ssl:
+      enabled: true
+      authority: ${_param:salt_minion_ca_authority}
+      engine: salt
+      mode: secure
+    salt_minion_ca_host: cfg01.${_param:cluster_domain}
