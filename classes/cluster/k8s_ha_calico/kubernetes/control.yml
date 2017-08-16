@@ -6,10 +6,24 @@ classes:
 - system.kubernetes.master.cluster
 - cluster.k8s_ha_calico.kubernetes.compute
 - cluster.k8s_ha_calico
+# FIXME: replace service.helm to system.helm (once properly in reclass)
+- service.helm.client
 parameters:
   _param:
     keepalived_vip_interface: ${_param:primary_interface}
     keepalived_vip_virtual_router_id: 60
+  helm:
+    client:
+      repos:
+        mirantisworkloads: https://mirantisworkloads.storage.googleapis.com/
+      #releases:
+      # TODO: configure custom application stacks below
+      #  grafana:
+      #    chart: mirantisworkloads/grafana
+      #    version: 0.4.1
+      #    values:
+      #      replicas: 1
+      #      logLevel: INFO
   etcd:
     server:
       source:

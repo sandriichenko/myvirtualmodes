@@ -23,6 +23,14 @@ parameters:
       reactor:
         reclass/minion/classify:
         - salt://reclass/reactor/node_register.sls
+      environment:
+      # TODO: remove formulas in development once they are stable and part of shared the system-level reclass
+        dev:
+          formula:
+            helm:
+              source: git
+              address: '${_param:salt_master_environment_repository}/salt-formula-helm.git'
+              revision: ${_param:salt_master_environment_revision}
   reclass:
     storage:
       class_mapping:
