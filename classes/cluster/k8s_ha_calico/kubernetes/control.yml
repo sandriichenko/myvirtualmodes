@@ -26,7 +26,7 @@ parameters:
         netchecker:
           enabled: true
         helm:
-          enabled: true
+          enabled: false
     master:
       etcd:
         ssl:
