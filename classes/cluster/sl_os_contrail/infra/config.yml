@@ -160,7 +160,7 @@ parameters:
             salt_master_host: ${_param:infra_config_deploy_address}
             linux_system_codename: xenial
             single_address: ${_param:openstack_proxy_node01_address}
-        openstack_control_node01:
+        stacklight_monitor_node01:
           name: ${_param:stacklight_monitor_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
@@ -174,7 +174,7 @@ parameters:
             single_address: ${_param:stacklight_monitor_node01_address}
             keepalived_vip_priority: 100
             mysql_cluster_role: master
-        openstack_control_node02:
+        stacklight_monitor_node02:
           name: ${_param:stacklight_monitor_node02_hostname}
           domain: ${_param:cluster_domain}
           classes:
@@ -187,7 +187,7 @@ parameters:
             single_address: ${_param:stacklight_monitor_node02_address}
             keepalived_vip_priority: 101
             mysql_cluster_role: slave
-        openstack_control_node03:
+        stacklight_monitor_node03:
           name: ${_param:stacklight_monitor_node03_hostname}
           domain: ${_param:cluster_domain}
           classes:
