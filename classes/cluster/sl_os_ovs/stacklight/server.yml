@@ -21,11 +21,11 @@ classes:
 - system.telegraf.agent.remote
 - system.prometheus.server.remote_write.docker
 - system.prometheus.server.alertmanager.dns
-- system.prometheus.server.target.kubernetes
 - system.prometheus.server.target.dns
 - system.docker.swarm.stack.monitoring
 - system.docker.swarm.stack.dashboard
 - system.docker.swarm.stack.monitoring.remote_collector
+- cluster.sl_os_ovs.stacklight.client
 - cluster.sl_os_ovs
 parameters:
   _param:
