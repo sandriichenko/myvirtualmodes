@@ -9,9 +9,14 @@ classes:
 - system.openssh.server.team.mcp_qa
 - system.openssh.server.team.k8s_team
 - system.rsyslog.client.single
+- system.heka.log_collector.single
+- system.heka.log_collector.output.telegraf
 - system.telegraf.agent
 - system.prometheus.collector
 - service.grafana.collector
+- cluster.sl_k8s_calico.kubernetes
+- cluster.sl_k8s_calico.stacklight
+- cluster.overrides
 parameters:
   _param:
     # infra service addresses
@@ -19,12 +24,15 @@ parameters:
     infra_config_address: 172.16.10.100
     infra_config_deploy_address: 192.168.10.100
 
-    cluster_domain: virtual-mcp11-k8s-calico.local
-    cluster_name: virtual-mcp11-k8s-calico
+    cluster_domain: sl_k8s_calico.local
+    cluster_name: sl_k8s_calico
     apt_mk_version: nightly
-    primary_interface: ens3
   linux:
     network:
+      resolv:
+        dns:
+          - 172.18.176.4
+          - 172.18.208.44
       host:
         cfg01:
           address: ${_param:infra_config_address}
@@ -32,14 +40,12 @@ parameters:
           - ${_param:infra_config_hostname}
           - ${_param:infra_config_hostname}.${_param:cluster_domain}
       interface:
-        primary_interface:
+        ens4:
           enabled: true
           type: eth
-          proto: dhcp
-          #proto: static
-          #name: ${_param:primary_interface}
-          #address: ${_param:single_address}
-          #netmask: 255.255.255.0
+          proto: static
+          address: ${_param:single_address}
+          netmask: 255.255.255.0
     system:
       name: ${_param:infra_config_hostname}
       domain: ${_param:cluster_domain}

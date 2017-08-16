@@ -5,10 +5,11 @@ classes:
 - system.salt.minion.cert.etcd_server
 - system.kubernetes.master.cluster
 - cluster.sl_k8s_calico.kubernetes.compute
-- cluster.sl_k8s_calico
+- cluster.sl_k8s_calico.infra
+- cluster.overrides
 parameters:
   _param:
-    keepalived_vip_interface: ${_param:primary_interface}
+    keepalived_vip_interface: ens3
     keepalived_vip_virtual_router_id: 60
   etcd:
     server:
@@ -23,10 +24,15 @@ parameters:
   kubernetes:
     common:
       addons:
-        netchecker:
-          enabled: true
         helm:
-          enabled: true
+          enabled: ${_param:kubernetes_helm_enabled}
+        calico_policy:
+          enabled: ${_param:kubernetes_calico_policy_enabled}
+          image: ${_param:kubernetes_calico_policy_image}
+        netchecker:
+          enabled: ${_param:kubernetes_netchecker_enabled}
+          agent_image: ${_param:kubernetes_netchecker_agent_image}
+          server_image: ${_param:kubernetes_netchecker_server_image}
     master:
       etcd:
         ssl:
@@ -37,4 +43,5 @@ parameters:
             enabled: true
       namespace:
         netchecker:
-          enabled: true
+          enabled: ${_param:kubernetes_netchecker_enabled}
+
