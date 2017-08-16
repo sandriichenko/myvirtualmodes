@@ -96,43 +96,8 @@ parameters:
   linux:
     network:
       host:
-        ctl:
-          address: ${_param:openstack_control_address}
-          names:
-          - ctl
-          - ctl.${_param:cluster_domain}
         ctl01:
           address: ${_param:openstack_control_node01_address}
           names:
           - ${_param:openstack_control_node01_hostname}
           - ${_param:openstack_control_node01_hostname}.${_param:cluster_domain}
-        msg:
-          address: ${_param:openstack_message_queue_address}
-          names:
-          - msg
-          - msg.${_param:cluster_domain}
-        msg01:
-          address: ${_param:openstack_message_queue_node01_address}
-          names:
-          - ${_param:openstack_message_queue_node01_hostname}
-          - ${_param:openstack_message_queue_node01_hostname}.${_param:cluster_domain}
-        dbs:
-          address: ${_param:openstack_database_address}
-          names:
-          - dbs
-          - dbs.${_param:cluster_domain}
-        dbs01:
-          address: ${_param:openstack_database_node01_address}
-          names:
-          - ${_param:openstack_database_node01_hostname}
-          - ${_param:openstack_database_node01_hostname}.${_param:cluster_domain}
-        cmp01:
-          address: ${_param:openstack_compute_node01_address}
-          names:
-          - ${_param:openstack_compute_node01_hostname}
-          - ${_param:openstack_compute_node01_hostname}.${_param:cluster_domain}
-        cmp02:
-          address: ${_param:openstack_compute_node02_address}
-          names:
-          - ${_param:openstack_compute_node02_hostname}
-          - ${_param:openstack_compute_node02_hostname}.${_param:cluster_domain}
