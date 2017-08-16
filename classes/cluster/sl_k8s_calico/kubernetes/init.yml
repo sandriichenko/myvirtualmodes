@@ -12,26 +12,7 @@ parameters:
     kubernetes_scheduler_token: VgkUHfrW07zNxrb0ucFyX7NBnSJN9Xp6
     kubernetes_controller-manager_token: uXrdZ1YKF6qlYm3sHje2iEXMGAGDWOIU
     kubernetes_dns_token: 0S1I4iJeFjq5fopPwwCwTp3xFpEZfeUl
-    kubernetes_mtu: 1500
     etcd_initial_token: IN7KaRMSo3xkGxkjAAPtkRkAgqN4ZNRq
-
-    # docker package version
-    kubernetes_docker_package: docker-engine=1.12.6-0~ubuntu-xenial
-
-    # component docker images
-    kubernetes_calicoctl_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/ctl:latest
-    kubernetes_calico_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/node:latest
-    kubernetes_calico_cni_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/cni:latest
-    kubernetes_calico_policy_image: calico/kube-policy-controller:v0.5.4
-    kubernetes_hyperkube_image: docker-prod-virtual.docker.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.6.2-2
-    kubernetes_netchecker_agent_image: mirantis/k8s-netchecker-agent:v1.1.0
-    kubernetes_netchecker_server_image: mirantis/k8s-netchecker-server:v1.1.0
-    kubernetes_netchecker_agent_probeurls: "http://ipinfo.io"
-
-    # switches of addons
-    kubernetes_helm_enabled: true
-    kubernetes_netchecker_enabled: true
-    kubernetes_calico_policy_enabled: false
 
     # addresses and hostnames
     kubernetes_internal_api_address: 10.254.0.1
@@ -70,12 +51,6 @@ parameters:
 
   linux:
     network:
-      resolv:
-        domain: sl_k8s_calico.local
-        options:
-          - ndots:5
-          - timeout:2
-          - attempts:2
       host:
         ctl:
           address: ${_param:kubernetes_control_address}
@@ -113,10 +88,6 @@ parameters:
           - ${_param:kubernetes_proxy_node01_hostname}
           - ${_param:kubernetes_proxy_node01_hostname}.${_param:cluster_domain}
     system:
-      user:
-        root:
-          name: root
-          password: false
       rc:
         local: |
           #!/bin/sh -e
@@ -128,5 +99,5 @@ parameters:
           # Make sure that the script will "exit 0" on success or any other
           # value on error.
           #
-          ip r a 10.254.0.0/16 dev ens4
+          ip r a 10.254.0.0/16 dev ens3
           exit 0
