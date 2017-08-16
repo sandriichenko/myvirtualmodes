@@ -5,6 +5,7 @@ classes:
 - system.salt.minion.cert.etcd_server
 - system.kubernetes.master.cluster
 - cluster.sl_k8s_calico.kubernetes.compute
+- cluster.sl_k8s_calico.infra
 - cluster.sl_k8s_calico
 parameters:
   _param:

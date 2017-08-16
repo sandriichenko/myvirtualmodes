@@ -32,7 +32,9 @@ classes:
 - system.docker.swarm.stack.monitoring
 - system.docker.swarm.stack.dashboard
 - system.docker.swarm.stack.monitoring.remote_collector
-- system.heka.ceilometer_collector.single
+- system.heka.remote_collector.container
+- system.heka.remote_collector.output.elasticsearch
+- system.heka.remote_collector.output.telegraf
 - cluster.sl_k8s_calico
 parameters:
   _param:
