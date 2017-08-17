@@ -1,0 +1,18 @@
+classes:
+- cluster.virtual-mcp11-ovs-ironic.infra.config
+parameters:
+  _param:
+    linux_system_codename: xenial
+    reclass_data_revision: master
+  linux:
+    system:
+      domain: virtual-mcp11-ovs-ironic.local
+      name: cfg01
+  salt:
+    master:
+      environment:
+        prd:
+          formula:
+            baremetal_simulator:
+              name: salt-formula-baremetal-simulator
+              source: pkg
