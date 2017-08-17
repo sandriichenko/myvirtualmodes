@@ -18,6 +18,8 @@ parameters:
     linux_system_codename: xenial
     salt_api_password_hash: "$6$WV0P1shnoDh2gI/Z$22/Bcd7ffMv0jDlFpT63cAU4PiXHz9pjXwngToKwqAsgoeK4HNR3PiKaushjxp3JsQ8hNoJmAC6TxzVqfV8WH/"
     salt_master_host: 127.0.0.1
+    salt_master_environment_revision: master
+    salt_master_environment_repository: 'https://github.com/salt-formulas'
   salt:
     master:
       reactor:
@@ -25,12 +27,14 @@ parameters:
         - salt://reclass/reactor/node_register.sls
       environment:
       # TODO: remove formulas in development once they are stable and part of shared the system-level reclass
-        dev:
+        prd:
           formula:
             helm:
-              source: git
-              address: '${_param:salt_master_environment_repository}/salt-formula-helm.git'
-              revision: ${_param:salt_master_environment_revision}
+              source: pkg
+              name: salt-formula-helm
+              #source: git
+              #address: '${_param:salt_master_environment_repository}/salt-formula-helm.git'
+              #revision: ${_param:salt_master_environment_revision}
   reclass:
     storage:
       class_mapping:
