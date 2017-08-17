@@ -166,4 +166,5 @@ parameters:
           classes:
           - system.influxdb.server.single
           - system.influxdb.database.stacklight
+          params:
             linux_system_codename: xenial
