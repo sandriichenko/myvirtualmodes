@@ -19,6 +19,9 @@ classes:
 - system.mysql.client.single
 - system.reclass.storage.system.openstack_control_cluster
 - system.reclass.storage.system.stacklightv2_server_cluster
+- system.reclass.storage.system.openstack_compute_multi
+- system.reclass.storage.system.openstack_dashboard_single
+- system.reclass.storage.system.openstack_proxy_single
 - cluster.virtual-mcp11-dvr.openstack.proxy
 - cluster.virtual-mcp11-dvr.stacklight.proxy
 - cluster.virtual-mcp11-dvr

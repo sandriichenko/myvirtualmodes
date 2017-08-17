@@ -20,6 +20,9 @@ classes:
 - system.keystone.client.service.designate
 - system.mysql.client.single
 - system.reclass.storage.system.openstack_control_cluster
+- system.reclass.storage.system.openstack_compute_multi
+- system.reclass.storage.system.openstack_gateway_single
+- system.reclass.storage.system.openstack_dashboard_single
 - system.reclass.storage.system.stacklightv2_server_cluster
 - cluster.virtual-mcp-ocata-dvr.openstack.proxy
 - cluster.virtual-mcp-ocata-dvr.stacklight.proxy

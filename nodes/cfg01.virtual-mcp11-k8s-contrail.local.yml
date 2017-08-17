@@ -1,0 +1,8 @@
+classes:
+- cluster.virtual-mcp11-k8s-contrail.infra.config
+- cluster.virtual-mcp11-k8s-contrail.stacklight.proxy
+parameters:
+  linux:
+    system:
+      name: cfg01
+      domain: virtual-mcp11-k8s-contrail.local

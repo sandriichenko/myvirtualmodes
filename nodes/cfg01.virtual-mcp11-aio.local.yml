@@ -1,0 +1,6 @@
+classes:
+- system.linux.system.single
+- cluster.virtual-mcp11-aio.infra.config
+parameters:
+  _param:
+    linux_system_codename: xenial
