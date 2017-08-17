@@ -3,6 +3,7 @@ classes:
 - system.nova.compute.cluster
 - system.neutron.compute.cluster
 - system.linux.network.interface.single_ovs_dvr
+- system.linux.network.hosts
 - system.heka.alarm.openstack_compute
 - cluster.virtual-mcp05-ovs
 parameters:

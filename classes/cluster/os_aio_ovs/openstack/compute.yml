@@ -2,6 +2,7 @@ classes:
 - system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.xenial
+- system.linux.network.hosts
 - service.neutron.compute.single
 - cluster.os_aio_ovs
 parameters:

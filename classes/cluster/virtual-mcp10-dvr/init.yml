@@ -13,24 +13,30 @@ parameters:
     cluster_domain: virtual-mcp10-dvr.local
     cluster_name: virtual-mcp10-dvr
     # infra service addresses
-    infra_config_address: 172.16.10.100
+    infra_config_address: 172.16.10.90
     # openstack service addresses
-    openstack_database_address: 172.16.10.254
-    openstack_proxy_address: 172.16.10.121
-    openstack_proxy_node01_address: 172.16.10.121
+    openstack_proxy_hostname: prx
+    openstack_proxy_address: ${_param:openstack_proxy_node01_address}
+    openstack_proxy_node01_hostname: prx01
+    openstack_proxy_node01_address: ${_param:infra_config_address}
+    openstack_control_hostname: ctl
+    openstack_control_node01_hostname: ctl01
+    openstack_control_node02_hostname: ctl02
+    openstack_control_node03_hostname: ctl03
     openstack_control_address: 172.16.10.254
-    openstack_control_node01_address: 172.16.10.101
-    openstack_control_node02_address: 172.16.10.102
-    openstack_control_node03_address: 172.16.10.103
+    openstack_control_node01_address: 172.16.10.91
+    openstack_control_node02_address: 172.16.10.92
+    openstack_control_node03_address: 172.16.10.93
+    openstack_gateway_hostname: gtw
+    openstack_gateway_address: ${_param:openstack_gateway_node01_address}
+    openstack_gateway_node01_hostname: gtw01
+    openstack_gateway_node01_address: 172.16.10.94
     openstack_database_address: ${_param:openstack_control_address}
-    openstack_database_node01_address: ${_param:openstack_control_node01_address}
-    openstack_database_node02_address: ${_param:openstack_control_node02_address}
-    openstack_database_node03_address: ${_param:openstack_control_node03_address}
     openstack_message_queue_address: ${_param:openstack_control_address}
     openstack_message_queue_node01_address: ${_param:openstack_control_node01_address}
     openstack_message_queue_node02_address: ${_param:openstack_control_node02_address}
     openstack_message_queue_node03_address: ${_param:openstack_control_node03_address}
-    openstack_gateway_address: 172.16.10.110
+
     # stacklight service addresses
     stacklight_monitor_address: 172.16.10.253
     stacklight_monitor_node01_address: 172.16.10.107
