@@ -1,5 +1,5 @@
 classes:
-- cluster.aaa_ha_freeipa.aaa
+#- cluster.aaa_ha_freeipa.aaa
 - system.linux.system.single
 - system.openssh.server.team.lab
 - system.openssh.server.team.tcpcloud
@@ -36,11 +36,19 @@ parameters:
     cluster_node03_hostname: ${_param:identity_control_node03_hostname}
     cluster_node03_address: ${_param:identity_control_node03_address}
 
+    # FIXME
+    # temporarily - fix on reclass model or here
     freeipa_node01_hostname: ${_param:cluster_node01_address}
     freeipa_node02_hostname: ${_param:cluster_node02_address}
     freeipa_node03_hostname: ${_param:cluster_node03_address}
     freeipa_client_nsupdate_01_address: ${_param:cluster_node01_address}
-
+    # temporarily - fix on reclass model or here
+    infra_freeipa_node01_hostname: ${_param:freeipa_node01_hostname}
+    infra_freeipa_node02_hostname: ${_param:freeipa_node02_hostname}
+    infra_freeipa_node03_hostname: ${_param:freeipa_node03_hostname}
+    infra_idm_node01_address: ${_param:identity_control_node01_address}
+    infra_idm_node02_address: ${_param:identity_control_node02_address}
+    infra_idm_node03_address: ${_param:identity_control_node03_address}
 
   linux:
     network:
@@ -71,21 +79,16 @@ parameters:
           names:
           - ${_param:identity_control_node03_hostname}
           - ${_param:identity_control_node03_hostname}.${_param:cluster_domain}
-        cmp01:
-          address: ${_param:identity_compute_node01_address}
-          names:
-          - ${_param:identity_compute_node01_hostname}
-          - ${_param:identity_compute_node01_hostname}.${_param:cluster_domain}
-        cmp02:
-          address: ${_param:identity_compute_node02_address}
-          names:
-          - ${_param:identity_compute_node02_hostname}
-          - ${_param:identity_compute_node02_hostname}.${_param:cluster_domain}
         prx01:
           address: ${_param:identity_proxy_node01_address}
           names:
           - ${_param:identity_proxy_node01_hostname}
           - ${_param:identity_proxy_node01_hostname}.${_param:cluster_domain}
+        prx02:
+          address: ${_param:identity_proxy_node02_address}
+          names:
+          - ${_param:identity_proxy_node02_hostname}
+          - ${_param:identity_proxy_node02_hostname}.${_param:cluster_domain}
     system:
       rc:
         local: |

@@ -3,6 +3,7 @@ classes:
 #- system.linux.system.repo.saltstack.rhel7
 #- system.haproxy.proxy.listen.
 #- system.salt.minion.cert.
+- system.mysql.client
 - system.freeipa.server.cluster
 - cluster.aaa_ha_freeipa.aaa
 parameters:
@@ -10,6 +11,13 @@ parameters:
     linux_system_codename: centos
     keepalived_vip_interface: ${_param:primary_interface}
     keepalived_vip_virtual_router_id: 99
+
+    freeipa_admin_password: password
+    freeipa_ldap_password: password
+    mysql_admin_user: admin
+    mysql_admin_password: password
+    freeipa_principal_user: principal
+    freeipa_dns_zone: aaa-freeipa.local
 
   freeipa:
     server:
@@ -20,9 +28,9 @@ parameters:
         - idm02.${_param:cluster_domain}
         - idm03.${_param:cluster_domain}
       admin:
-        password: password
+        password: ${_param:freeipa_admin_password}
       ldap:
-        password: password
+        password: ${_param:freeipa_ldap_password}
       dns:
         key:
           axfrkey:

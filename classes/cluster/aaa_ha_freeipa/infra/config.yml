@@ -1,13 +1,15 @@
 classes:
 - system.linux.system.repo.ubuntu
 - system.openssh.client.lab
+- system.salt.master.single
 - system.salt.master.pkg
 - system.salt.minion.ca.salt_master
 - system.salt.master.api
-- system.salt.minion.cert.k8s_server
 - system.mysql.client
 - system.reclass.storage.salt
-- system.reclass.storage.system.kubernetes_control_cluster
+- system.reclass.storage.system.infra_idm_cluster
+- cluster.aaa_ha_freeipa.infra
+- cluster.aaa_ha_freeipa.aaa
 - cluster.aaa_ha_freeipa
 parameters:
   _param:
@@ -21,6 +23,7 @@ parameters:
     salt_master_host: 127.0.0.1
   salt:
     master:
+      enabled: true
       reactor:
         reclass/minion/classify:
         - salt://reclass/reactor/node_register.sls
