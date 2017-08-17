@@ -20,27 +20,71 @@ parameters:
     linux_system_codename: xenial
     salt_api_password_hash: "$6$WV0P1shnoDh2gI/Z$22/Bcd7ffMv0jDlFpT63cAU4PiXHz9pjXwngToKwqAsgoeK4HNR3PiKaushjxp3JsQ8hNoJmAC6TxzVqfV8WH/"
     salt_master_host: ${_param:infra_config_deploy_address}
+  salt:
+    master:
+      reactor:
+        reclass/minion/classify:
+        - salt://reclass/reactor/node_register.sls
   reclass:
     storage:
+      class_mapping:
+        common_node:
+          expression: all
+          node_param:
+            single_address:
+              value_template: <<node_control_ip>>
+            linux_system_codename:
+              value_template: <<node_os>>
+            salt_master_host:
+              value_template: <<node_master_ip>>
+        infra_config:
+          expression: <<node_hostname>>__equals__cfg01
+          cluster_param:
+            infra_config_address:
+              value_template: <<node_control_ip>>
+            infra_config_deploy_address:
+              value_template: <<node_deploy_ip>>
+        infra_proxy:
+          expression: <<node_hostname>>__startswith__prx
+          node_class:
+            value_template:
+              - cluster.<<node_cluster>>.stacklight.proxy
+        kubernetes_control01:
+          expression: <<node_hostname>>__equals__ctl01
+          cluster_param:
+            kubernetes_control_node01_address:
+              value_template: <<node_control_ip>>
+        kubernetes_control02:
+          expression: <<node_hostname>>__equals__ctl02
+          cluster_param:
+            kubernetes_control_node02_address:
+              value_template: <<node_control_ip>>
+        kubernetes_control03:
+          expression: <<node_hostname>>__equals__ctl03
+          cluster_param:
+            kubernetes_control_node03_address:
+              value_template: <<node_control_ip>>
+        kubernetes_compute:
+          expression: <<node_hostname>>__startswith__cmp
+          node_class:
+            value_template:
+              - cluster.<<node_cluster>>.kubernetes.compute
+        stacklight_monitor01:
+          expression: <<node_hostname>>__equals__mon01
+          cluster_param:
+            stacklight_node01_address:
+              value_template: <<node_control_ip>>
+        stacklight_monitor02:
+          expression: <<node_hostname>>__equals__mon02
+          cluster_param:
+            stacklight_node02_address:
+              value_template: <<node_control_ip>>
+        stacklight_monitor03:
+          expression: <<node_hostname>>__equals__mon03
+          cluster_param:
+            stacklight_node03_address:
+              value_template: <<node_control_ip>>
       node:
-        kubernetes_compute_node01:
-          name: ${_param:kubernetes_compute_node01_hostname}
-          domain: ${_param:cluster_domain}
-          classes:
-          - cluster.${_param:cluster_name}.kubernetes.compute
-          params:
-            salt_master_host: ${_param:infra_config_deploy_address}
-            linux_system_codename: xenial
-            single_address: ${_param:kubernetes_compute_node01_address}
-        kubernetes_compute_node02:
-          name: ${_param:kubernetes_compute_node02_hostname}
-          domain: ${_param:cluster_domain}
-          classes:
-          - cluster.${_param:cluster_name}.kubernetes.compute
-          params:
-            salt_master_host: ${_param:infra_config_deploy_address}
-            linux_system_codename: xenial
-            single_address: ${_param:kubernetes_compute_node02_address}
         prx_node:
           name: ${_param:kubernetes_proxy_node01_hostname}
           domain: ${_param:cluster_domain}

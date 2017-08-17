@@ -10,8 +10,6 @@ parameters:
     openstack_message_queue_address: ${_param:openstack_control_node01_address}
     openstack_message_queue_node01_hostname: msg01
     openstack_message_queue_node01_address: ${_param:openstack_control_node01_address}
-    openstack_compute_node01_hostname: cmp01
-    openstack_compute_node02_hostname: cmp02
     openstack_compute_node01_address: 172.16.10.95
     openstack_compute_node02_address: 172.16.10.96
 
