@@ -15,7 +15,7 @@ parameters:
     infra_config_address: 172.16.10.100
     infra_config_deploy_address: 192.168.10.100
 
-    cluster_domain: k8s_aio_contrail.local
+    cluster_domain: k8s-aio-contrail.local
     cluster_name: k8s_aio_contrail
     apt_mk_version: nightly
   linux:

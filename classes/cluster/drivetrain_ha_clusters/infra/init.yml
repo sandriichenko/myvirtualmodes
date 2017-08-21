@@ -10,7 +10,7 @@ classes:
 - system.openssh.server.team.oss_team
 parameters:
   _param:
-    cluster_domain: drivetrain_ha_clusters.local
+    cluster_domain: drivetrain-ha-clusters.local
     cluster_name: drivetrain_ha_clusters
     apt_mk_version: nightly
     admin_email: root@localhosti
