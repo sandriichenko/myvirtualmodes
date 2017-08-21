@@ -1,0 +1,5 @@
+classes:
+- cluster.sl-k8s-calico.kubernetes
+- cluster.sl-k8s-calico.stacklight
+- cluster.sl-k8s-calico.infra
+- cluster.overrides

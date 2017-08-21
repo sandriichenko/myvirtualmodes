@@ -1,4 +1,0 @@
-classes:
-- system.ceph.mon.cluster
-- cluster.ceph_ha.ceph.common
-- system.linux.network.hosts

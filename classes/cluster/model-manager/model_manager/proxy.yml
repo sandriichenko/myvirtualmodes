@@ -1,0 +1,181 @@
+classes:
+- system.nginx.server.single
+- system.nginx.server.proxy.model_manager_web
+- system.salt.minion.cert.proxy
+- cluster.model-manager
+parameters:
+  _param:
+    nginx_proxy_ssl:
+      enabled: true
+      key: |
+        -----BEGIN RSA PRIVATE KEY-----
+        MIIEpAIBAAKCAQEAvqIj4HTX8RksNH1fmJgs4ySVg9uyikBpuNcIgNCxDiJ5uNIB
+        ES+73AKxfq9GNhsSG7nDpJ4j28Nku1Ez8GL9F/QxE3PUr6isxVi3KAzkfLlxgsHz
+        jFHkPguU/h9X0CEzjItVAamHL7NETx9YmUAVpc2awcAZCE8OyMDSSL1eOfkb2LEG
+        SAHoCRACoIm29x2BhTf2W6H4fvyAirneBT7Zp9Yz+D9Asd2nF8tesn4nmW2NccnV
+        lp3mwfzhA8LoqamBm4wfYXJcS4wSKuzYTz0PBVcwpDHfm6+zE6vHcXm1KazkEJuw
+        amFgbsHer17YfKvTovwvK9MVv/6f/PTYE90hQwIDAQABAoIBAHj6vxf4Lv7EAejB
+        1AQsNvhjxDstFu5kGHQEi1HsnyCgQm1HYQP+LhNe5jPGmiFGJsTPrFhxP8J9CxVR
+        YEvjFkm4X9i/fq+HtTV8qqfRHsQEkAPygFSBt/6kLQbk7z6Xg3ZjCiyG4NMlymkI
+        NJr1L4fMprTk6z35piFDNXCSNRVGZsso57CJH269cJpyP5jBkbBePd9gZFVI035o
+        Bt9kfbi/bqGtBwviFE7EVbq2UJYbNpApGUL3qCcXiEgSmgZVFqdiCSeNuRPiKoCg
+        V2FL5AEtrhyMsYEgPc6CUHaui+eQc/On/DwBbtORUhuWEKLI4YK3ZmXgnWhewkWO
+        enbOnLkCgYEA+Ja8/Ij5Yh3vGq8amLPorhiyr8GlDk62zLQVVtd0+UXAEBaU6iRm
+        ncWRCiNllWgR56KCZ9Qzttb0AsGPO0kEKBxfAoFbGdlYVs/KZiQ07HlY/qle95Qn
+        2vbY+B3tVFMtFl0wnUPBwB4TjKI/lFKclRrnmFYdGx3bfZ87alNo3j8CgYEAxFEU
+        Eg8k4uln52Vft7rDdQKQ2JYSViu8JExbdU04iJi2djTS7VMAmOj+tuAV5duIDAnq
+        UquK62/ojRx1gy8mwyXDCYz1tCvtSiUkbYqoLhZek88LFAPzLCUFfFFR8yCX0vHD
+        sp6I2/icm5/qeNENcGDwsQX8X8HBX66a2xcxQ/0CgYEAhLDBc/MRWsQrqwyon7X4
+        j2Vzi8lLd1Wg0aeWdGJRd/U5Td0f49NGSxT4FHdMc/G3DPN7tDxa1k/qs8Xp1HVn
+        GJn8RPQTUrrnIn+Lw/Wzoj4ruNNjc7fLhl+Y9OfUlNxJBtT7bBaMxyXGvZylX2Cx
+        YA2abYAZzS2kyWtDZb/cDDUCgYAa59nOV9EAYGjjJ9ukfK5JHR7o8Dh3IutYNjba
+        rsiuv+9R6A94g0Wzr0spmTCnHh1ZOQqqZeRWPDItFNduMUoouMYwSudp2BNfdBO4
+        B6bhGiPAMkIcbiYnyLMlxKdsoOzt9kCR/HRZYYtlMNeb01r6Ke8S8/UQ0qdEC9Qh
+        bt5LqQKBgQDpBEU2cgkB3UX+G398h0zCG/k8XukWTCk4UO/QWsJ9TftUFepNaZse
+        +j+c4OOgjX6vrHzeLzFDtKMtnd1XsPFU3Dy7pLwvNr9f48X4rj7PVmrHgjS0Bbun
+        HLHMOcuFsQy3x7DIn1PmWeKM1qNPp9DtGz+8MAkBqpSOadxhS7zwug==
+        -----END RSA PRIVATE KEY-----
+      cert: |
+        -----BEGIN CERTIFICATE-----
+        MIIFRTCCBC2gAwIBAgIJAK3vGTSmyLrEMA0GCSqGSIb3DQEBCwUAMIG0MQswCQYD
+        VQQGEwJVUzEQMA4GA1UECBMHQXJpem9uYTETMBEGA1UEBxMKU2NvdHRzZGFsZTEa
+        MBgGA1UEChMRR29EYWRkeS5jb20sIEluYy4xLTArBgNVBAsTJGh0dHA6Ly9jZXJ0
+        cy5nb2RhZGR5LmNvbS9yZXBvc2l0b3J5LzEzMDEGA1UEAxMqR28gRGFkZHkgU2Vj
+        dXJlIENlcnRpZmljYXRlIEF1dGhvcml0eSAtIEcyMB4XDTE3MDgwNDEyMjkwMVoX
+        DTE4MDgwNDEyMjkwMVowQTEhMB8GA1UECxMYRG9tYWluIENvbnRyb2wgVmFsaWRh
+        dGVkMRwwGgYDVQQDExNtbS5tY3AubWlyYW50aXMubmV0MIIBIjANBgkqhkiG9w0B
+        AQEFAAOCAQ8AMIIBCgKCAQEAvqIj4HTX8RksNH1fmJgs4ySVg9uyikBpuNcIgNCx
+        DiJ5uNIBES+73AKxfq9GNhsSG7nDpJ4j28Nku1Ez8GL9F/QxE3PUr6isxVi3KAzk
+        fLlxgsHzjFHkPguU/h9X0CEzjItVAamHL7NETx9YmUAVpc2awcAZCE8OyMDSSL1e
+        Ofkb2LEGSAHoCRACoIm29x2BhTf2W6H4fvyAirneBT7Zp9Yz+D9Asd2nF8tesn4n
+        mW2NccnVlp3mwfzhA8LoqamBm4wfYXJcS4wSKuzYTz0PBVcwpDHfm6+zE6vHcXm1
+        KazkEJuwamFgbsHer17YfKvTovwvK9MVv/6f/PTYE90hQwIDAQABo4IByjCCAcYw
+        DAYDVR0TAQH/BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYD
+        VR0PAQH/BAQDAgWgMDcGA1UdHwQwMC4wLKAqoCiGJmh0dHA6Ly9jcmwuZ29kYWRk
+        eS5jb20vZ2RpZzJzMS02MzIuY3JsMF0GA1UdIARWMFQwSAYLYIZIAYb9bQEHFwEw
+        OTA3BggrBgEFBQcCARYraHR0cDovL2NlcnRpZmljYXRlcy5nb2RhZGR5LmNvbS9y
+        ZXBvc2l0b3J5LzAIBgZngQwBAgEwdgYIKwYBBQUHAQEEajBoMCQGCCsGAQUFBzAB
+        hhhodHRwOi8vb2NzcC5nb2RhZGR5LmNvbS8wQAYIKwYBBQUHMAKGNGh0dHA6Ly9j
+        ZXJ0aWZpY2F0ZXMuZ29kYWRkeS5jb20vcmVwb3NpdG9yeS9nZGlnMi5jcnQwHwYD
+        VR0jBBgwFoAUQMK9J47MNIMwojPX+2yz8LQsgM4wNwYDVR0RBDAwLoITbW0ubWNw
+        Lm1pcmFudGlzLm5ldIIXd3d3Lm1tLm1jcC5taXJhbnRpcy5uZXQwHQYDVR0OBBYE
+        FAdMeMil3y0GpcksElRP3Mr0gDu0MA0GCSqGSIb3DQEBCwUAA4IBAQA+jn1c29r5
+        ap5cq2+EqL8HyH648YdZZXKpWMF+5jN0MTLCaG1OAVClnrcb78YlKpdOblpihUwo
+        9K8zcRRWIsnI0X71BNoeV6OB1P+XAMaTvbO+SYRjM77T/JFGfzTkL/3CcqccIAen
+        5s+b1xMfWna0ghdyWd1peyrfF84AbxhVdVDxj0Ww9Ij6400AObgNbikfylN+0EUd
+        EZtYk6FLlHnMjs8VDWbsbjz2r8UgDN6uO2OppgdxVboAAL3fMMLTBEIElArtyQMh
+        0kEgLk5bQhQQiIfxLA2VZvptyByo8TWTIkNG/oh6uLRAlbCTBXNaJJHBKrdr3k8H
+        cpr7lyWNC5yu
+        -----END CERTIFICATE-----
+      chain: |
+        -----BEGIN CERTIFICATE-----
+        MIIE0DCCA7igAwIBAgIBBzANBgkqhkiG9w0BAQsFADCBgzELMAkGA1UEBhMCVVMx
+        EDAOBgNVBAgTB0FyaXpvbmExEzARBgNVBAcTClNjb3R0c2RhbGUxGjAYBgNVBAoT
+        EUdvRGFkZHkuY29tLCBJbmMuMTEwLwYDVQQDEyhHbyBEYWRkeSBSb290IENlcnRp
+        ZmljYXRlIEF1dGhvcml0eSAtIEcyMB4XDTExMDUwMzA3MDAwMFoXDTMxMDUwMzA3
+        MDAwMFowgbQxCzAJBgNVBAYTAlVTMRAwDgYDVQQIEwdBcml6b25hMRMwEQYDVQQH
+        EwpTY290dHNkYWxlMRowGAYDVQQKExFHb0RhZGR5LmNvbSwgSW5jLjEtMCsGA1UE
+        CxMkaHR0cDovL2NlcnRzLmdvZGFkZHkuY29tL3JlcG9zaXRvcnkvMTMwMQYDVQQD
+        EypHbyBEYWRkeSBTZWN1cmUgQ2VydGlmaWNhdGUgQXV0aG9yaXR5IC0gRzIwggEi
+        MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC54MsQ1K92vdSTYuswZLiBCGzD
+        BNliF44v/z5lz4/OYuY8UhzaFkVLVat4a2ODYpDOD2lsmcgaFItMzEUz6ojcnqOv
+        K/6AYZ15V8TPLvQ/MDxdR/yaFrzDN5ZBUY4RS1T4KL7QjL7wMDge87Am+GZHY23e
+        cSZHjzhHU9FGHbTj3ADqRay9vHHZqm8A29vNMDp5T19MR/gd71vCxJ1gO7GyQ5HY
+        pDNO6rPWJ0+tJYqlxvTV0KaudAVkV4i1RFXULSo6Pvi4vekyCgKUZMQWOlDxSq7n
+        eTOvDCAHf+jfBDnCaQJsY1L6d8EbyHSHyLmTGFBUNUtpTrw700kuH9zB0lL7AgMB
+        AAGjggEaMIIBFjAPBgNVHRMBAf8EBTADAQH/MA4GA1UdDwEB/wQEAwIBBjAdBgNV
+        HQ4EFgQUQMK9J47MNIMwojPX+2yz8LQsgM4wHwYDVR0jBBgwFoAUOpqFBxBnKLbv
+        9r0FQW4gwZTaD94wNAYIKwYBBQUHAQEEKDAmMCQGCCsGAQUFBzABhhhodHRwOi8v
+        b2NzcC5nb2RhZGR5LmNvbS8wNQYDVR0fBC4wLDAqoCigJoYkaHR0cDovL2NybC5n
+        b2RhZGR5LmNvbS9nZHJvb3QtZzIuY3JsMEYGA1UdIAQ/MD0wOwYEVR0gADAzMDEG
+        CCsGAQUFBwIBFiVodHRwczovL2NlcnRzLmdvZGFkZHkuY29tL3JlcG9zaXRvcnkv
+        MA0GCSqGSIb3DQEBCwUAA4IBAQAIfmyTEMg4uJapkEv/oV9PBO9sPpyIBslQj6Zz
+        91cxG7685C/b+LrTW+C05+Z5Yg4MotdqY3MxtfWoSKQ7CC2iXZDXtHwlTxFWMMS2
+        RJ17LJ3lXubvDGGqv+QqG+6EnriDfcFDzkSnE3ANkR/0yBOtg2DZ2HKocyQetawi
+        DsoXiWJYRBuriSUBAA/NxBti21G00w9RKpv0vHP8ds42pM3Z2Czqrpv1KrKQ0U11
+        GIo/ikGQI31bS/6kA1ibRrLDYGCD+H1QQc7CoZDDu+8CL9IVVO5EFdkKrqeKM+2x
+        LXY2JtwE65/3YR8V3Idv7kaWKK2hJn0KCacuBKONvPi8BDAB
+        -----END CERTIFICATE-----
+        -----BEGIN CERTIFICATE-----
+        MIIEfTCCA2WgAwIBAgIDG+cVMA0GCSqGSIb3DQEBCwUAMGMxCzAJBgNVBAYTAlVT
+        MSEwHwYDVQQKExhUaGUgR28gRGFkZHkgR3JvdXAsIEluYy4xMTAvBgNVBAsTKEdv
+        IERhZGR5IENsYXNzIDIgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkwHhcNMTQwMTAx
+        MDcwMDAwWhcNMzEwNTMwMDcwMDAwWjCBgzELMAkGA1UEBhMCVVMxEDAOBgNVBAgT
+        B0FyaXpvbmExEzARBgNVBAcTClNjb3R0c2RhbGUxGjAYBgNVBAoTEUdvRGFkZHku
+        Y29tLCBJbmMuMTEwLwYDVQQDEyhHbyBEYWRkeSBSb290IENlcnRpZmljYXRlIEF1
+        dGhvcml0eSAtIEcyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv3Fi
+        CPH6WTT3G8kYo/eASVjpIoMTpsUgQwE7hPHmhUmfJ+r2hBtOoLTbcJjHMgGxBT4H
+        Tu70+k8vWTAi56sZVmvigAf88xZ1gDlRe+X5NbZ0TqmNghPktj+pA4P6or6KFWp/
+        3gvDthkUBcrqw6gElDtGfDIN8wBmIsiNaW02jBEYt9OyHGC0OPoCjM7T3UYH3go+
+        6118yHz7sCtTpJJiaVElBWEaRIGMLKlDliPfrDqBmg4pxRyp6V0etp6eMAo5zvGI
+        gPtLXcwy7IViQyU0AlYnAZG0O3AqP26x6JyIAX2f1PnbU21gnb8s51iruF9G/M7E
+        GwM8CetJMVxpRrPgRwIDAQABo4IBFzCCARMwDwYDVR0TAQH/BAUwAwEB/zAOBgNV
+        HQ8BAf8EBAMCAQYwHQYDVR0OBBYEFDqahQcQZyi27/a9BUFuIMGU2g/eMB8GA1Ud
+        IwQYMBaAFNLEsNKR1EwRcbNhyz2h/t2oatTjMDQGCCsGAQUFBwEBBCgwJjAkBggr
+        BgEFBQcwAYYYaHR0cDovL29jc3AuZ29kYWRkeS5jb20vMDIGA1UdHwQrMCkwJ6Al
+        oCOGIWh0dHA6Ly9jcmwuZ29kYWRkeS5jb20vZ2Ryb290LmNybDBGBgNVHSAEPzA9
+        MDsGBFUdIAAwMzAxBggrBgEFBQcCARYlaHR0cHM6Ly9jZXJ0cy5nb2RhZGR5LmNv
+        bS9yZXBvc2l0b3J5LzANBgkqhkiG9w0BAQsFAAOCAQEAWQtTvZKGEacke+1bMc8d
+        H2xwxbhuvk679r6XUOEwf7ooXGKUwuN+M/f7QnaF25UcjCJYdQkMiGVnOQoWCcWg
+        OJekxSOTP7QYpgEGRJHjp2kntFolfzq3Ms3dhP8qOCkzpN1nsoX+oYggHFCJyNwq
+        9kIDN0zmiN/VryTyscPfzLXs4Jlet0lUIDyUGAzHHFIYSaRt4bNYC8nY7NmuHDKO
+        KHAN4v6mF56ED71XcLNa6R+ghlO773z/aQvgSMO3kwvIClTErF0UZzdsyqUvMQg3
+        qm5vjLyb4lddJIGvl5echK1srDdMZvNhkREg5L4wn3qkKQmw4TRfZHcYQFHfjDCm
+        rw==
+        -----END CERTIFICATE-----
+        -----BEGIN CERTIFICATE-----
+        MIIEADCCAuigAwIBAgIBADANBgkqhkiG9w0BAQUFADBjMQswCQYDVQQGEwJVUzEh
+        MB8GA1UEChMYVGhlIEdvIERhZGR5IEdyb3VwLCBJbmMuMTEwLwYDVQQLEyhHbyBE
+        YWRkeSBDbGFzcyAyIENlcnRpZmljYXRpb24gQXV0aG9yaXR5MB4XDTA0MDYyOTE3
+        MDYyMFoXDTM0MDYyOTE3MDYyMFowYzELMAkGA1UEBhMCVVMxITAfBgNVBAoTGFRo
+        ZSBHbyBEYWRkeSBHcm91cCwgSW5jLjExMC8GA1UECxMoR28gRGFkZHkgQ2xhc3Mg
+        MiBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eTCCASAwDQYJKoZIhvcNAQEBBQADggEN
+        ADCCAQgCggEBAN6d1+pXGEmhW+vXX0iG6r7d/+TvZxz0ZWizV3GgXne77ZtJ6XCA
+        PVYYYwhv2vLM0D9/AlQiVBDYsoHUwHU9S3/Hd8M+eKsaA7Ugay9qK7HFiH7Eux6w
+        wdhFJ2+qN1j3hybX2C32qRe3H3I2TqYXP2WYktsqbl2i/ojgC95/5Y0V4evLOtXi
+        EqITLdiOr18SPaAIBQi2XKVlOARFmR6jYGB0xUGlcmIbYsUfb18aQr4CUWWoriMY
+        avx4A6lNf4DD+qta/KFApMoZFv6yyO9ecw3ud72a9nmYvLEHZ6IVDd2gWMZEewo+
+        YihfukEHU1jPEX44dMX4/7VpkI+EdOqXG68CAQOjgcAwgb0wHQYDVR0OBBYEFNLE
+        sNKR1EwRcbNhyz2h/t2oatTjMIGNBgNVHSMEgYUwgYKAFNLEsNKR1EwRcbNhyz2h
+        /t2oatTjoWekZTBjMQswCQYDVQQGEwJVUzEhMB8GA1UEChMYVGhlIEdvIERhZGR5
+        IEdyb3VwLCBJbmMuMTEwLwYDVQQLEyhHbyBEYWRkeSBDbGFzcyAyIENlcnRpZmlj
+        YXRpb24gQXV0aG9yaXR5ggEAMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQAD
+        ggEBADJL87LKPpH8EsahB4yOd6AzBhRckB4Y9wimPQoZ+YeAEW5p5JYXMP80kWNy
+        OO7MHAGjHZQopDH2esRU1/blMVgDoszOYtuURXO1v0XJJLXVggKtI3lpjbi2Tc7P
+        TMozI+gciKqdi0FuFskg5YmezTvacPd+mSYgFFQlq25zheabIZ0KbIIOqPjCDPoQ
+        HmyW74cNxA9hi63ugyuV+I6ShHI56yDqg+2DzZduCLzrTia2cyvk0/ZM/iZx4mER
+        dEr/VxqHD3VILs9RaRegAhJhldXRQLIQTO7ErBBDpqWeCtWVYpoNz4iCxTIM5Cuf
+        ReYNnyicsbkqWletNw+vHX/bvZ8=
+        -----END CERTIFICATE-----
+      mode: secure
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_keystone_api:
+          enabled: true
+          type: nginx_proxy
+          name: keystone_api
+          check: false
+          proxy:
+            host: ${_param:keystone_service_host}
+            port: 5000
+            protocol: http
+          host:
+            name: ${_param:nginx_proxy_keystone_api_host}
+            port: 5000
+          ssl: ${_param:nginx_proxy_ssl}
+        nginx_proxy_openstack_api_keystone_private:
+          enabled: true
+          type: nginx_proxy
+          name: openstack_api_keystone_private
+          check: false
+          proxy:
+            host: ${_param:keystone_service_host}
+            port: 35357
+            protocol: http
+          host:
+            name: ${_param:nginx_proxy_keystone_api_host}
+            port: 35357
+          ssl: ${_param:nginx_proxy_ssl}
+

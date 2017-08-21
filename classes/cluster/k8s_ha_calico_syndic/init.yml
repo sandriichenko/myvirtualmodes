@@ -1,4 +1,0 @@
-classes:
-- cluster.k8s_ha_calico_syndic.kubernetes
-- cluster.k8s_ha_calico_syndic.infra
-- cluster.overrides

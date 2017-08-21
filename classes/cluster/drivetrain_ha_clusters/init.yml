@@ -1,5 +1,0 @@
-classes:
-- cluster.drivetrain_ha_clusters.infra
-- cluster.drivetrain_ha_clusters.cicd
-- cluster.overrides
-

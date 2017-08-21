@@ -1,0 +1,26 @@
+classes:
+- service.mysql.server.single
+- system.mysql.client
+- system.mysql.client.database.keystone
+- system.keystone.server.single
+- system.keystone.client.core
+- system.keystone.client.service.keystone
+- cluster.model-manager
+parameters:
+  keystone:
+    server:
+      backend: ldap
+      assignment:
+        backend: sql
+      ldap:
+        url: "ldap://ldap-scc.scc.mirantis.net"
+        suffix: "dc=mirantis,dc=net"
+        query_scope: "sub"
+        user_tree_dn: "ou=people,o=mirantis,dc=mirantis,dc=net"
+        group_tree_dn: "ou=groups,o=mirantis,dc=mirantis,dc=net"
+        read_only: true
+        auth: false
+  mysql:
+    server:
+      version: "5.7"
+

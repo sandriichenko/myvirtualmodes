@@ -1,0 +1,3 @@
+classes:
+- system.docker.swarm.manager
+- cluster.drivetrain-ha

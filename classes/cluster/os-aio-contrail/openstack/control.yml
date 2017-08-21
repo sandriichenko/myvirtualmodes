@@ -1,0 +1,146 @@
+classes:
+- system.linux.system.lowmem
+- system.linux.system.repo.mcp.contrail
+- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.saltstack.xenial
+- system.memcached.server.single
+- system.rabbitmq.server.single
+- system.rabbitmq.server.vhost.openstack
+- system.keystone.server.wsgi
+- system.keystone.server.single
+- system.glance.control.single
+- system.nova.control.single
+- system.neutron.control.opencontrail.single
+- system.cinder.control.single
+- system.heat.server.single
+- system.ceilometer.server.single
+- system.aodh.server.single
+- system.mysql.client.database.keystone
+- system.mysql.client.database.glance
+- system.mysql.client.database.nova
+- system.mysql.client.database.nova_api
+- system.mysql.client.database.cinder
+- system.mysql.client.database.heat
+- service.mysql.server.single
+- system.mysql.client
+- cluster.os-aio-contrail.openstack.dashboard
+- cluster.os-aio-contrail
+parameters:
+  mysql:
+    server:
+      version: '5.6'
+      max_connections: 20000
+  linux:
+    system:
+      package:
+        python-msgpack:
+          version: latest
+    network:
+      interface:
+        ens4:
+          enabled: true
+          type: eth
+          proto: static
+          address: ${_param:single_address}
+          netmask: 255.255.255.0
+  # bind:
+  #   server:
+  #     control:
+  #       mgmt:
+  #         enabled: true
+  #         bind:
+  #           address: ${_param:single_address}
+  #           port: 953
+  #         allow:
+  #           - ${_param:openstack_control_node01_address}
+  #           - ${_param:openstack_control_node02_address}
+  #           - ${_param:openstack_control_node03_address}
+  #         keys:
+  #           - designate
+  keystone:
+    server:
+      admin_email: ${_param:admin_email}
+      notification:
+        driver: messagingv2
+        topics: "notifications"
+  # designate:
+  #   server:
+  #     pools:
+  #       default:
+  #         description: 'test pool'
+  #         targets:
+  #           default:
+  #             description: 'test target1'
+  #           default1:
+  #             type: ${_param:designate_pool_target_type}
+  #             description: 'test target2'
+  #             masters: ${_param:designate_pool_target_masters}
+  #             options:
+  #               host: ${_param:openstack_control_node02_address}
+  #               port: 53
+  #               rndc_host: ${_param:openstack_control_node02_address}
+  #               rndc_port: 953
+  #               rndc_key_file: /etc/designate/rndc.key
+  #           default2:
+  #             type: ${_param:designate_pool_target_type}
+  #             description: 'test target3'
+  #             masters: ${_param:designate_pool_target_masters}
+  #             options:
+  #               host: ${_param:openstack_control_node03_address}
+  #               port: 53
+  #               rndc_host: ${_param:openstack_control_node03_address}
+  #               rndc_port: 953
+  #               rndc_key_file: /etc/designate/rndc.key
+  glance:
+    server:
+      storage:
+        engine: file
+      images: []
+      workers: 1
+      notification:
+        driver: messagingv2
+        topics: "notifications"
+  heat:
+    server:
+      notification:
+        driver: messagingv2
+        topics: "notifications"
+  nova:
+    controller:
+      networking: contrail
+      cpu_allocation: 54
+      bind:
+        private_address: ${_param:cluster_local_address}
+        public_address: ${_param:openstack_control_node01_address}
+        novncproxy_port: 6080
+      vncproxy_url: http://${_param:openstack_control_node01_address}:6080
+      cache:
+        engine: memcached
+        prefix: CACHE_NOVA
+        members:
+        - host: 127.0.0.1
+          port: 11211
+      workers: 1
+      notification:
+        driver: messagingv2
+        topics: "notifications"
+  neutron:
+    server:
+      plugin: contrail
+      tunnel_type: vxlan
+      public_networks: []
+      contrail:
+        version: ${_param:opencontrail_version}
+      notification:
+        driver: messagingv2
+        topics: "notifications"
+  cinder:
+    volume:
+      notification:
+        driver: messagingv2
+        topics: "notifications"
+    controller:
+      notification:
+        driver: messagingv2
+        topics: "notifications"

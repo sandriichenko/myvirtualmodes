@@ -1,0 +1,10 @@
+classes:
+- system.linux.system.single
+- system.openssh.server.team.lab
+- system.openssh.server.team.tcpcloud
+- system.openssh.server.team.stacklight
+- system.openssh.server.team.mcp_qa
+- cluster.sl-os-ovs.infra
+- cluster.sl-os-ovs.openstack
+- cluster.sl-os-ovs.stacklight
+- cluster.overrides

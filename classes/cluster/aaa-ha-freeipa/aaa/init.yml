@@ -1,0 +1,105 @@
+classes:
+#- cluster.aaa-ha-freeipa.aaa
+- system.linux.system.single
+- system.openssh.server.team.lab
+- system.openssh.server.team.tcpcloud
+- system.openssh.server.team.mcp_qa
+- system.openssh.server.team.mmo_devops
+parameters:
+  _param:
+    salt_minion_ca_host: ${_param:infra_config_hostname}.${_param:cluster_domain}
+    salt_minion_ca_authority: salt_master_ca
+
+    # freeipa settings
+
+    # addresses and hostnames
+    identity_control_hostname: idm
+    identity_control_address: 172.16.10.240
+    identity_control_node01_hostname: idm01
+    identity_control_node02_hostname: idm02
+    identity_control_node03_hostname: idm03
+    identity_control_node01_address: 172.16.10.241
+    identity_control_node02_address: 172.16.10.242
+    identity_control_node03_address: 172.16.10.243
+    identity_proxy_node01_hostname: prx01
+    identity_proxy_node02_hostname: prx02
+    identity_proxy_node01_address: 172.16.10.244
+    identity_proxy_node02_address: 172.16.10.245
+
+    # cluster meta
+    cluster_vip_address: ${_param:identity_control_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ${_param:identity_control_node01_hostname}
+    cluster_node01_address: ${_param:identity_control_node01_address}
+    cluster_node02_hostname: ${_param:identity_control_node02_hostname}
+    cluster_node02_address: ${_param:identity_control_node02_address}
+    cluster_node03_hostname: ${_param:identity_control_node03_hostname}
+    cluster_node03_address: ${_param:identity_control_node03_address}
+
+    # FIXME
+    # temporarily - fix on reclass model or here
+    freeipa_node01_hostname: ${_param:cluster_node01_address}
+    freeipa_node02_hostname: ${_param:cluster_node02_address}
+    freeipa_node03_hostname: ${_param:cluster_node03_address}
+    freeipa_client_nsupdate_01_address: ${_param:cluster_node01_address}
+    # temporarily - fix on reclass model or here
+    infra_freeipa_node01_hostname: ${_param:freeipa_node01_hostname}
+    infra_freeipa_node02_hostname: ${_param:freeipa_node02_hostname}
+    infra_freeipa_node03_hostname: ${_param:freeipa_node03_hostname}
+    infra_idm_node01_address: ${_param:identity_control_node01_address}
+    infra_idm_node02_address: ${_param:identity_control_node02_address}
+    infra_idm_node03_address: ${_param:identity_control_node03_address}
+
+  linux:
+    network:
+      resolv:
+        domain: virtual-aaa-freeipa.local
+        options:
+          - ndots:5
+          - timeout:2
+          - attempts:2
+      host:
+        idm:
+          address: ${_param:identity_control_address}
+          names:
+          - ${_param:identity_control_hostname}
+          - ${_param:identity_control_hostname}.${_param:cluster_domain}
+        idm01:
+          address: ${_param:identity_control_node01_address}
+          names:
+          - ${_param:identity_control_node01_hostname}
+          - ${_param:identity_control_node01_hostname}.${_param:cluster_domain}
+        idm02:
+          address: ${_param:identity_control_node02_address}
+          names:
+          - ${_param:identity_control_node02_hostname}
+          - ${_param:identity_control_node02_hostname}.${_param:cluster_domain}
+        idm03:
+          address: ${_param:identity_control_node03_address}
+          names:
+          - ${_param:identity_control_node03_hostname}
+          - ${_param:identity_control_node03_hostname}.${_param:cluster_domain}
+        prx01:
+          address: ${_param:identity_proxy_node01_address}
+          names:
+          - ${_param:identity_proxy_node01_hostname}
+          - ${_param:identity_proxy_node01_hostname}.${_param:cluster_domain}
+        prx02:
+          address: ${_param:identity_proxy_node02_address}
+          names:
+          - ${_param:identity_proxy_node02_hostname}
+          - ${_param:identity_proxy_node02_hostname}.${_param:cluster_domain}
+    system:
+      rc:
+        local: |
+          #!/bin/sh -e
+          #
+          # rc.local
+          #
+          ######### This file is managed by Salt! ##########
+          # This script is executed at the end of each multiuser runlevel.
+          # Make sure that the script will "exit 0" on success or any other
+          # value on error.
+          #
+          ip r a 10.254.0.0/16 dev ens3
+          exit 0
