@@ -171,3 +171,7 @@ parameters:
             single_address: 172.16.10.106
             tenant_address: 10.1.0.106
             external_address: 10.16.0.106
+        openstack_gateway_node01:
+          params:
+            tenant_address: 10.1.0.110
+            external_address: 10.16.0.110

@@ -151,3 +151,21 @@ parameters:
         opencontrail_control_node03:
           params:
             rabbitmq_cluster_role: slave
+        kubernetes_compute_node01:
+          name: ${_param:kubernetes_compute_node01_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.kubernetes.compute
+          params:
+            salt_master_host: ${_param:infra_config_deploy_address}
+            linux_system_codename: xenial
+            single_address: ${_param:kubernetes_compute_node01_address}
+        kubernetes_compute_node02:
+          name: ${_param:kubernetes_compute_node02_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.kubernetes.compute
+          params:
+            salt_master_host: ${_param:infra_config_deploy_address}
+            linux_system_codename: xenial
+            single_address: ${_param:kubernetes_compute_node02_address}
