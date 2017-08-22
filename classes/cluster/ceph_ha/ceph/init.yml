@@ -1,14 +1,17 @@
 parameters:
   _param:
-    linux_repo_ceph_component: kraken
-    ceph_version: kraken
+    linux_repo_ceph_component: jewel
+    ceph_version: jewel
     ceph_mon_keepalived_password: tv0jeM4m4neum1s0p3nSt4cK3m
 
     ceph_mon_hostname: cmn
     ceph_mon_node01_hostname: cmn01
     ceph_mon_node02_hostname: cmn02
     ceph_mon_node03_hostname: cmn03
-    
+    ceph_mon_node01_address: 172.16.10.91
+    ceph_mon_node02_address: 172.16.10.92
+    ceph_mon_node03_address: 172.16.10.93
+
     ceph_osd_node01_hostname: osd01
     ceph_osd_node02_hostname: osd02
     ceph_osd_node03_hostname: osd03
@@ -25,12 +28,12 @@ parameters:
 
   linux:
     network:
-      host:
-        cmn:
-          address: ${_param:ceph_mon_address}
-          names:
-          - ${_param:ceph_mon_hostname}
-          - ${_param:ceph_mon_hostname}.${_param:cluster_domain}
+      # host:
+      #   cmn:
+      #     address: ${_param:ceph_mon_address}
+      #     names:
+      #     - ${_param:ceph_mon_hostname}
+      #     - ${_param:ceph_mon_hostname}.${_param:cluster_domain}
         cmn01:
           address: ${_param:ceph_mon_node01_address}
           names:
