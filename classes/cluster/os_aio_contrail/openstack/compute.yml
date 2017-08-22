@@ -139,3 +139,5 @@ parameters:
     common:
       network:
         host: ${_param:openstack_control_address}
+applications:
+- nova
