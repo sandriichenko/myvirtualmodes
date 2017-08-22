@@ -187,3 +187,5 @@ parameters:
         openstack_proxy_node01:
           classes:
           - cluster.virtual-mcp11-contrail-nfv.openstack.proxy
+          params:
+            linux_system_codename: xenial
