@@ -8,10 +8,7 @@ parameters:
     ceph_mon_node01_hostname: cmn01
     ceph_mon_node02_hostname: cmn02
     ceph_mon_node03_hostname: cmn03
-    ceph_mon_node01_address: ${_param:ceph_mon_node01_address}
-    ceph_mon_node02_address: ${_param:ceph_mon_node02_address}
-    ceph_mon_node03_address: ${_param:ceph_mon_node03_address}
-
+    
     ceph_osd_node01_hostname: osd01
     ceph_osd_node02_hostname: osd02
     ceph_osd_node03_hostname: osd03

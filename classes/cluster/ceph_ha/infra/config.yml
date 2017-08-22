@@ -54,11 +54,11 @@ parameters:
               ceph_host_id:
                 value: <<count>>
                 start: 1
-              single_address:
-                value: ceph_osd_node<<count>>_address
-                start: 1
-                digits: 2
-                interpolate: true
+              # single_address:
+              #   value: ceph_osd_node<<count>>_address
+              #   start: 1
+              #   digits: 2
+              #   interpolate: true
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial

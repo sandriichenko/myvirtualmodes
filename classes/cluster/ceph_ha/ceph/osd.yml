@@ -32,7 +32,7 @@ parameters:
   linux:
    storage:
      disk:
-       first_drive:
+       disk01:
          name: /dev/vdb
          type: gpt
          partitions:
@@ -40,7 +40,8 @@ parameters:
            type: xfs
          - size: 6000
            type: xfs
-       second_drive:
+           mkfs: true
+       disk02:
          name: /dev/vdc
          type: gpt
          partitions:
@@ -48,7 +49,8 @@ parameters:
            type: xfs
          - size: 6000
            type: xfs
-       third_drive:
+           mkfs: true
+       disk03:
          name: /dev/vdd
          type: gpt
          partitions:
@@ -56,3 +58,4 @@ parameters:
            type: xfs
          - size: 6000
            type: xfs
+           mkfs: true
