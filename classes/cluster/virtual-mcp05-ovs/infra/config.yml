@@ -15,6 +15,9 @@ classes:
 - system.mysql.client.single
 - system.reclass.storage.system.openstack_control_cluster
 - system.reclass.storage.system.stacklight_server_cluster
+- system.reclass.storage.system.openstack_compute_multi
+- system.reclass.storage.system.openstack_gateway_single
+- system.reclass.storage.system.openstack_dashboard_single
 - cluster.virtual-mcp05-ovs.openstack.proxy
 - cluster.virtual-mcp05-ovs.stacklight.proxy
 - cluster.virtual-mcp05-ovs
@@ -168,3 +171,7 @@ parameters:
             single_address: 172.16.10.106
             tenant_address: 10.1.0.106
             external_address: 10.16.0.106
+        openstack_gateway_node01:
+          params:
+            tenant_address: 10.1.0.110
+            external_address: 10.16.0.110

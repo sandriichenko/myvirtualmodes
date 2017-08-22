@@ -148,7 +148,7 @@ parameters:
           name: ${_param:cicd_control_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.cicd.control.master
+          - cluster.${_param:cluster_name}.cicd.control.leader
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
@@ -204,3 +204,12 @@ parameters:
             single_address: 172.16.10.106
             tenant_address: 10.1.0.106
             external_address: 10.16.0.106
+        openstack_gateway_node01:
+          params:
+            tenant_address: 10.1.0.110
+            external_address: 10.16.0.110
+        openstack_proxy_node01:
+          classes:
+          - cluster.virtual-mcp-ocata-cicd.openstack.proxy
+          params:
+            linux_system_codename: xenial

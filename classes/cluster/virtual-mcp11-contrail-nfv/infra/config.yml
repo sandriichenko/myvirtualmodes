@@ -184,3 +184,6 @@ parameters:
           params:
             compute_vrouter_dpdk_mac_address: 02:de:aa:e6:12:81 #must be manually changed to mac of ens4
             compute_vrouter_dpdk_pci: "'0000:00:04.0'"
+        openstack_proxy_node01:
+          classes:
+          - cluster.virtual-mcp11-contrail-nfv.openstack.proxy
