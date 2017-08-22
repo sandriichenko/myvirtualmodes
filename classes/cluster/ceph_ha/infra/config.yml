@@ -22,19 +22,6 @@ parameters:
     salt_master_host: 127.0.0.1
   salt:
     master:
-      environment:
-        prd:
-          formula:
-            ceph:
-              source: git
-              address: 'https://github.com/LotharKAtt/salt-formula-ceph.git'
-              revision: master
-        dev:
-          formula:
-            ceph:
-              source: git
-              address: 'https://github.com/LotharKAtt/salt-formula-ceph.git'
-              revision: master
       reactor:
         reclass/minion/classify:
         - salt://reclass/reactor/node_register.sls
@@ -53,6 +40,9 @@ parameters:
             params:
               ceph_host_id:
                 value: <<count>>
+                start: 1
+              ceph_crush_parent:
+                value: rack<<count>>
                 start: 1
               # single_address:
               #   value: ceph_osd_node<<count>>_address
