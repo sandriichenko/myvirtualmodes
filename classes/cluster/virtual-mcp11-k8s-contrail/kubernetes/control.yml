@@ -31,13 +31,6 @@ parameters:
           enabled: ${_param:kubernetes_netchecker_enabled}
           agent_image: ${_param:kubernetes_netchecker_agent_image}
           server_image: ${_param:kubernetes_netchecker_server_image}
-        virtlet:
-          enabled: ${_param:kubernetes_virtlet_enabled}
-          namespace: kube-system
-          image: ${_param:kubernetes_virtlet_image}
-          hosts:
-          - ${_param:kubernetes_compute_node01_hostname}
-          - ${_param:kubernetes_compute_node02_hostname}
         contrail_network_controller:
           namespace: kube-system
           enabled: true

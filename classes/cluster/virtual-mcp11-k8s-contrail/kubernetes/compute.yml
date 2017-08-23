@@ -47,5 +47,13 @@ parameters:
         contrail_cni:
           image: ${_param:kubernetes_opencontrail_cni_image}
     common:
+      addons:
+        virtlet:
+          enabled: ${_param:kubernetes_virtlet_enabled}
+          namespace: kube-system
+          image: ${_param:kubernetes_virtlet_image}
+          hosts:
+          - ${_param:kubernetes_compute_node01_hostname}
+          - ${_param:kubernetes_compute_node02_hostname}
       hyperkube:
         image: ${_param:kubernetes_hyperkube_image}
