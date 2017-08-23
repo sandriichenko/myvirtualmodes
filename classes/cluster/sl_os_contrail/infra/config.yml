@@ -150,7 +150,6 @@ parameters:
           cluster_param:
             stacklight_monitor_node03_address:
               value_template: <<node_control_ip>>
-      node:
         prx_node:
           name: ${_param:openstack_proxy_node01_hostname}
           domain: ${_param:cluster_domain}
