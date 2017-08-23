@@ -28,7 +28,7 @@ parameters:
 
   linux:
     network:
-      # host:
+      host:
       #   cmn:
       #     address: ${_param:ceph_mon_address}
       #     names:
