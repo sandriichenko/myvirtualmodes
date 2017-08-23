@@ -39,6 +39,9 @@ parameters:
   _param:
     keepalived_vip_interface: ens4
     keepalived_openstack_telemetry_vip_interface: ens4
+    cluster_vip_address: ${_param:openstack_control_address}
+    cluster_local_address: ${_param:single_address}
+    keepalived_openstack_telemetry_vip_interface: ens4
   linux:
     system:
       package:
