@@ -75,6 +75,7 @@ parameters:
 
   linux:
     network:
+      purge_hosts: true
       host:
         ctl:
           address: ${_param:kubernetes_control_address}

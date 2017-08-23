@@ -83,6 +83,7 @@ parameters:
     mongodb_shared_key: eoTh1AwahlahqueingeejooLughah4tei9feing0eeVaephooDi2li1TaeV1ooth
   linux:
     network:
+      purge_hosts: true
       host:
         prx:
           address: ${_param:openstack_proxy_address}

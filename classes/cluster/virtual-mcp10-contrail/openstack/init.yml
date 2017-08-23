@@ -72,6 +72,7 @@ parameters:
     ceilometer_influxdb_password: lmapass
   linux:
     network:
+      purge_hosts: true
       host:
         prx:
           address: ${_param:openstack_proxy_address}

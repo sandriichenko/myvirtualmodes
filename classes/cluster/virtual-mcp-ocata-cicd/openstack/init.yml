@@ -131,6 +131,7 @@ parameters:
 
   linux:
     network:
+      purge_hosts: true
       host:
         prx:
           address: ${_param:openstack_proxy_address}

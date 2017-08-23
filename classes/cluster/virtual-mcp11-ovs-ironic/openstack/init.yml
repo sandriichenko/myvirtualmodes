@@ -93,6 +93,7 @@ parameters:
     linux_system_repo: 'deb [arch=amd64] http://mirror.fuel-infra.org/mcp-repos/ocata/xenial ocata main'
   linux:
     network:
+      purge_hosts: true
       host:
         prx:
           address: ${_param:openstack_proxy_address}

@@ -76,6 +76,7 @@ parameters:
           - ndots:5
           - timeout:2
           - attempts:2
+      purge_hosts: true
       host:
         ctl:
           address: ${_param:kubernetes_control_address}
