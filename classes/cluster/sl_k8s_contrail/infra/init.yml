@@ -1,11 +1,8 @@
 classes:
-- service.grafana.collector
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.mcp.salt
 - system.linux.system.repo.ubuntu
 - system.rsyslog.client.single
-- system.telegraf.agent
-- system.prometheus.collector
 parameters:
   _param:
     # infra service addresses

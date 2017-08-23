@@ -9,9 +9,6 @@ classes:
 - system.openssh.server.team.mcp_qa
 - system.openssh.server.team.k8s_team
 - system.rsyslog.client.single
-- system.telegraf.agent
-- system.prometheus.collector
-- service.grafana.collector
 parameters:
   _param:
     # infra service addresses
