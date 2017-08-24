@@ -30,8 +30,9 @@ parameters:
   linux:
     network:
       interface:
-        ens4:
+        iface:
           enabled: true
+          name: ${_param:opencontrail_control_interface_name}
           type: eth
           proto: static
           address: ${_param:single_address}
