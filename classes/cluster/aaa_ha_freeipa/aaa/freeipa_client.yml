@@ -2,6 +2,7 @@ classes:
 #- system.haproxy.proxy.listen.
 #- system.linux.system.repo.freeipa
 #- system.salt.minion.cert.
+- system.linux.network.hosts
 - system.freeipa.client.cluster
 - system.freeipa.client.dns
 - system.freeipa.client.nsupdate

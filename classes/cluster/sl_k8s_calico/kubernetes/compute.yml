@@ -1,6 +1,7 @@
 classes:
 - system.linux.system.repo.docker
 - system.kubernetes.pool.cluster
+- system.linux.network.hosts
 - system.salt.minion.cert.k8s_client
 - system.salt.minion.cert.etcd_client
 - cluster.sl_k8s_calico
