@@ -81,8 +81,3 @@ parameters:
     server:
       heap:
         size: 1
-  keepalived:
-    cluster:
-      instance:
-        VIP:
-          enabled: false

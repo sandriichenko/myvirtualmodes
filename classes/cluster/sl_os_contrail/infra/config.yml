@@ -37,7 +37,6 @@ classes:
 - system.mysql.client.database.neutron
 - system.reclass.storage.system.openstack_control_cluster
 - system.reclass.storage.system.opencontrail_control_cluster
-- system.reclass.storage.system.stacklightv2_server_cluster
 - cluster.sl_os_contrail.openstack.proxy
 - cluster.sl_os_contrail.stacklight.proxy
 - cluster.sl_os_contrail.openstack.dashboard
@@ -150,6 +149,7 @@ parameters:
           cluster_param:
             stacklight_monitor_node03_address:
               value_template: <<node_control_ip>>
+      node:
         prx_node:
           name: ${_param:openstack_proxy_node01_hostname}
           domain: ${_param:cluster_domain}
@@ -163,7 +163,6 @@ parameters:
           name: ${_param:stacklight_monitor_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - service.galera.master.cluster
           - system.docker.swarm.master
           - cluster.${_param:cluster_name}.stacklight.client
           - cluster.${_param:cluster_name}.stacklight.server
@@ -172,12 +171,10 @@ parameters:
             linux_system_codename: xenial
             single_address: ${_param:stacklight_monitor_node01_address}
             keepalived_vip_priority: 100
-            mysql_cluster_role: master
         stacklight_monitor_node02:
           name: ${_param:stacklight_monitor_node02_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - service.galera.slave.cluster
           - system.docker.swarm.manager
           - cluster.${_param:cluster_name}.stacklight.server
           params:
@@ -185,12 +182,10 @@ parameters:
             linux_system_codename: xenial
             single_address: ${_param:stacklight_monitor_node02_address}
             keepalived_vip_priority: 101
-            mysql_cluster_role: slave
         stacklight_monitor_node03:
           name: ${_param:stacklight_monitor_node03_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - service.galera.slave.cluster
           - system.docker.swarm.manager
           - cluster.${_param:cluster_name}.stacklight.server
           params:
@@ -198,7 +193,6 @@ parameters:
             linux_system_codename: xenial
             single_address: ${_param:stacklight_monitor_node03_address}
             keepalived_vip_priority: 102
-            mysql_cluster_role: slave
         opencontrail_control_node01:
           params:
             rabbitmq_cluster_role: master
@@ -208,3 +202,21 @@ parameters:
         opencontrail_control_node03:
           params:
             rabbitmq_cluster_role: slave
+        openstack_control_node01:
+          classes:
+          - service.galera.master.cluster
+          params:
+            linux_system_codename: xenial
+            mysql_cluster_role: master
+        openstack_control_node02:
+          classes:
+          - service.galera.slave.cluster
+          params:
+            linux_system_codename: xenial
+            mysql_cluster_role: slave
+        openstack_control_node03:
+          classes:
+          - service.galera.slave.cluster
+          params:
+            linux_system_codename: xenial
+            mysql_cluster_role: slave
