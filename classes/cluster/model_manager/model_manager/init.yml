@@ -14,6 +14,7 @@ parameters:
     # identity params
     openstack_region: RegionOne
     admin_email: root@localhost
+    openstack_version: mitaka
     keystone_version: mitaka
     keystone_service_token: qzWYJmNiiXYRSipdWda0
     rabbitmq_openstack_password: workshop
