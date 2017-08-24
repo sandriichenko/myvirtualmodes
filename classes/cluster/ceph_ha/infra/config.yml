@@ -87,7 +87,7 @@ parameters:
             ceph_osd_node03_address:
               value_template: <<node_control_ip>>
         ceph_mon_01:
-          expression: <<node_hostname>>__equals__cmn03
+          expression: <<node_hostname>>__equals__cmn01
           cluster_param:
             ceph_mon_node01_address:
               value_template: <<node_control_ip>>
