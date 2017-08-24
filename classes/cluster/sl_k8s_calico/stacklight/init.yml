@@ -1,5 +1,8 @@
 classes:
+- service.grafana.collector
 - system.linux.system.repo.mcp.extra
+- system.heka.log_collector.single
+- system.heka.log_collector.output.telegraf
 - system.prometheus.collector
 - system.telegraf.agent
 parameters:
