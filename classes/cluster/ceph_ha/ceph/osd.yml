@@ -1,5 +1,6 @@
 classes:
 - service.ceph.osd.cluster
+- system.linux.network.hosts
 - cluster.ceph_ha.ceph.common
 parameters:
   ceph:
