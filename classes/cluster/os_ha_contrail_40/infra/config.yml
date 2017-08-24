@@ -103,6 +103,13 @@ parameters:
           cluster_param:
             openstack_control_node03_address:
               value_template: <<node_control_ip>>
+        opencontrail_control:
+          expression: <<node_hostname>>__startswith__ntw
+          cluster_param:
+            opencontrail_control_system_codename:
+              value_template: <<node_os>>
+            opencontrail_control_interface_name:
+              value_template: <<node_control_iface>>
         opencontrail_control01:
           expression: <<node_hostname>>__equals__ntw01
           cluster_param:
@@ -153,9 +160,3 @@ parameters:
             mysql_cluster_role: slave
             linux_system_codename: xenial
             horizon_identity_host: ${_param:openstack_control_address}
-        opencontrail_control_node01:
-            linux_system_codename: xenial
-        opencontrail_control_node02:
-            linux_system_codename: xenial
-        opencontrail_control_node03:
-            linux_system_codename: xenial
