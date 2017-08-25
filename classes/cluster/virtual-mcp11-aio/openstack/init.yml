@@ -98,7 +98,7 @@ parameters:
     designate_pool_target_options:
       host: ${_param:single_address}
       port: 53
-      rndc_host: ${_param:single_address}
+      rndc_host: 127.0.0.1
       rndc_port: 953
       rndc_key_file: /etc/designate/rndc.key
     linux_system_repo: deb [arch=amd64] http://mirror.fuel-infra.org/mcp-repos/${_param:openstack_version}/xenial ${_param:openstack_version} main
