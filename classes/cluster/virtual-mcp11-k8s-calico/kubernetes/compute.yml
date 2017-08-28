@@ -24,6 +24,14 @@ parameters:
           image: ${_param:kubernetes_calico_cni_image}
         mtu: ${_param:kubernetes_mtu}
     common:
+      addons:
+        virtlet:
+          enabled: ${_param:kubernetes_virtlet_enabled}
+          namespace: kube-system
+          image: ${_param:kubernetes_virtlet_image}
+          hosts:
+          - ${_param:kubernetes_compute_node01_hostname}
+          - ${_param:kubernetes_compute_node02_hostname}
       hyperkube:
         image: ${_param:kubernetes_hyperkube_image}
   linux:
