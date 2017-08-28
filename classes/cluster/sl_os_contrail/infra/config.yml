@@ -4,6 +4,7 @@ classes:
 - system.docker.host
 - system.linux.system.single
 - system.linux.system.repo.mcp.salt
+- system.linux.system.repo.mcp.openstack
 - system.openssh.client.lab
 - system.salt.master.api
 - system.salt.master.pkg
@@ -65,7 +66,7 @@ parameters:
       site:
         nginx_proxy_openstack_web:
           proxy:
-            host: prx
+            host: cfg
         nginx_proxy_openstack_api_heat_cfn:
           enabled: false
   salt:
