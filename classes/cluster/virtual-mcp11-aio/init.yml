@@ -12,6 +12,7 @@ classes:
 - system.mysql.client
 - system.memcached.server.single
 - system.rabbitmq.server.single
+- cluster.virtual-mcp11-aio.infra
 - cluster.virtual-mcp11-aio.openstack
 - cluster.overrides
 parameters:

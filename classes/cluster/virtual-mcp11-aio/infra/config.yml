@@ -3,7 +3,6 @@ classes:
 parameters:
   _param:
     linux_system_codename: xenial
-    apt_mk_version: stable
   linux:
     system:
       name: cfg01
