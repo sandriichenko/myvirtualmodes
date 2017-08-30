@@ -29,6 +29,8 @@ parameters:
       pkgs:
         - ${_param:kubernetes_docker_package}
         - python-docker
+      options:
+        bip: 172.31.255.1/24
   kubernetes:
     pool:
       network:
