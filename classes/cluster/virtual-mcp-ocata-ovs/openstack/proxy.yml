@@ -7,7 +7,6 @@ classes:
 - cluster.virtual-mcp-ocata-ovs
 parameters:
   _param:
-    linux_system_codename: xenial
     nginx_proxy_ssl:
       enabled: true
       authority: ${_param:salt_minion_ca_authority}

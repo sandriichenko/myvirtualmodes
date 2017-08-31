@@ -5,7 +5,8 @@ classes:
 - system.linux.network.hosts
 - system.nova.compute.cluster
 - system.neutron.compute.cluster
-- system.heka.alarm.openstack_compute
+- system.ceilometer.agent.cluster
+- system.prometheus.exporters.libvirt
 - cluster.virtual-mcp-ocata-ovs
 parameters:
   _param:

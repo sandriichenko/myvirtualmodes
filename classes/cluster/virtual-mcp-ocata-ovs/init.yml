@@ -1,12 +1,17 @@
 classes:
+- system.heka.log_collector.output.telegraf
+- system.linux.system.repo.mcp.extra
 - system.linux.system.single
-- cluster.virtual-mcp-ocata-ovs.infra
-- cluster.virtual-mcp-ocata-ovs.openstack
+- system.rsyslog.client.single
+- system.prometheus.collector
+- system.telegraf.agent
 - system.openssh.server.team.lab
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.mcp_qa
+- cluster.virtual-mcp-ocata-ovs.infra
+- cluster.virtual-mcp-ocata-ovs.openstack
 - cluster.virtual-mcp-ocata-ovs.stacklight
-- cluster.virtual-mcp-ocata-ovs.stacklight.client
+
 
 parameters:
   _param:
@@ -21,6 +26,7 @@ parameters:
     openstack_control_node01_address: 172.16.10.101
     openstack_control_node02_address: 172.16.10.102
     openstack_control_node03_address: 172.16.10.103
+    openstack_gateway_address: 172.16.10.110
     openstack_database_address: ${_param:openstack_control_address}
     openstack_message_queue_address: ${_param:openstack_control_address}
     openstack_message_queue_node01_address: ${_param:openstack_control_node01_address}
