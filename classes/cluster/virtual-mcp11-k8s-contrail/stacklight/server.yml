@@ -9,7 +9,7 @@ classes:
 - system.kibana.server.single
 - system.haproxy.proxy.listen.stacklight.elasticsearch
 - system.haproxy.proxy.listen.stacklight.kibana
-- system.haproxy.proxy.listen.stacklight.influxdb
+- system.haproxy.proxy.listen.stacklight.influxdb_relay
 - service.haproxy.proxy.single
 - system.galera.server.cluster
 - system.galera.server.database.grafana
@@ -17,6 +17,7 @@ classes:
 - system.glusterfs.client.volume.prometheus
 - system.glusterfs.server.cluster
 - system.glusterfs.server.volume.prometheus
+- system.influxdb.relay.cluster
 - system.influxdb.server.single
 - system.influxdb.database.prometheus
 - system.salt.minion.cert.prometheus_server
@@ -32,6 +33,7 @@ parameters:
   _param:
     cluster_public_host: mon
     cluster_vip_address: ${_param:stacklight_monitor_address}
+    cluster_local_address: ${_param:single_address}
     docker_image_alertmanager: docker-prod-virtual.docker.mirantis.net/openstack-docker/alertmanager:latest
     docker_image_pushgateway: docker-prod-virtual.docker.mirantis.net/openstack-docker/pushgateway:latest
     docker_image_prometheus: docker-prod-virtual.docker.mirantis.net/openstack-docker/prometheus:latest
