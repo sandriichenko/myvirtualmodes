@@ -1,0 +1,74 @@
+classes:
+- system.linux.system.single
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.mcp.salt
+- system.linux.system.repo.ubuntu
+- system.openssh.server.team.all
+parameters:
+  _param:
+    # infra service addresses
+    infra_config_hostname: cfg01
+    infra_config_address: 172.16.10.100
+    infra_config_deploy_address: 192.168.10.100
+
+    cluster_domain: virtual-mcp11-k8s-calico.local
+    cluster_name: virtual-mcp11-k8s-calico
+    apt_mk_version: nightly
+    primary_interface: ens3
+  linux:
+    network:
+      host:
+        cfg01:
+          address: ${_param:infra_config_address}
+          names:
+          - ${_param:infra_config_hostname}
+          - ${_param:infra_config_hostname}.${_param:cluster_domain}
+      interface:
+        primary_interface:
+          enabled: true
+          type: eth
+          proto: dhcp
+          #proto: static
+          #name: ${_param:primary_interface}
+          #address: ${_param:single_address}
+          #netmask: 255.255.255.0
+    system:
+      name: ${_param:infra_config_hostname}
+      domain: ${_param:cluster_domain}
+      ca_certificates:
+        devcloud: |
+           -----BEGIN CERTIFICATE-----
+           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
+           -----END CERTIFICATE-----
