@@ -48,6 +48,8 @@ parameters:
     kibana_elasticsearch_host: ${_param:cluster_vip_address}
     # Galera
     openstack_version: newton
+    galera_innodb_buffer_pool_size: 1024M
+    galera_max_connections: 200
     # Grafana
     docker_grafana_replicas: 1
     grafana_database_type: mysql
