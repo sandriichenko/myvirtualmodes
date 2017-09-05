@@ -1,4 +1,9 @@
 parameters:
+parameters:
+  _param:
+    cluster_domain: virtual-mcp11-dvr.local
+    cluster_name: virtual-mcp11-dvr
+    infra_config_address: 172.16.10.100
   linux:
     network:
       host:
