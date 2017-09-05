@@ -16,7 +16,7 @@ classes:
 - cluster.os_ha_contrail_40
 parameters:
   _param:
-    keepalived_vip_interface: eth1
+    keepalived_vip_interface: ${_param:opencontrail_control_interface_name}
     cluster_vip_address: ${_param:opencontrail_control_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: ntw01
@@ -27,7 +27,6 @@ parameters:
     cluster_node03_address: ${_param:opencontrail_control_node03_address}
     opencontrail_router01_hostname: vsrx01.${_param:cluster_domain}
     opencontrail_router01_address: 172.16.10.131
-    opencontrail_control_interface_name: eth1
   linux:
     network:
       interface:

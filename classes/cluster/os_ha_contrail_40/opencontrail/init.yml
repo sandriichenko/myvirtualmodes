@@ -12,6 +12,7 @@ parameters:
     opencontrail_control_node01_address: 172.16.10.111
     opencontrail_control_node02_address: 172.16.10.112
     opencontrail_control_node03_address: 172.16.10.113
+    opencontrail_control_interface_name: eth1
   linux:
     network:
       host:
