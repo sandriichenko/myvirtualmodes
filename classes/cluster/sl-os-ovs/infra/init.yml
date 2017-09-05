@@ -2,7 +2,7 @@ parameters:
   _param:
     cluster_domain: sl-os-ovs.local
     cluster_name: sl_os_ovs
-    infra_config_deploy_address: 192.168.10.100
+    infra_config_deploy_address: 192.168.10.90
     infra_config_address: 172.16.10.100
   linux:
     network:

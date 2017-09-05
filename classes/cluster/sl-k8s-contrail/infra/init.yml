@@ -8,7 +8,7 @@ parameters:
     # infra service addresses
     infra_config_hostname: cfg01
     infra_config_address: 172.16.10.100
-    infra_config_deploy_address: 192.168.10.100
+    infra_config_deploy_address: 192.168.10.90
 
     cluster_domain: sl-k8s-contrail.local
     cluster_name: sl_k8s_contrail
