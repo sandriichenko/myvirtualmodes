@@ -28,7 +28,7 @@ parameters:
   docker:
     host:
       pkgs:
-        - docker-engine=1.12.6-0~ubuntu-xenial
+        - ${_param:kubernetes_docker_package}
         - python-docker
       options:
         bip: 172.31.255.1/24
@@ -50,5 +50,13 @@ parameters:
         contrail_cni:
           image: ${_param:kubernetes_opencontrail_cni_image}
     common:
+      addons:
+        virtlet:
+          enabled: ${_param:kubernetes_virtlet_enabled}
+          namespace: ${_param:kubernetes_addon_namespace}
+          image: ${_param:kubernetes_virtlet_image}
+          hosts:
+          - ${_param:kubernetes_compute_node01_hostname}
+          - ${_param:kubernetes_compute_node02_hostname}
       hyperkube:
         image: ${_param:kubernetes_hyperkube_image}
