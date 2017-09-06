@@ -123,12 +123,12 @@ parameters:
         stacklight_monitor_node01:
           expression: <<node_hostname>>__equals__mon01
           cluster_param:
-            stacklight_monitor_node03_address:
+            stacklight_monitor_node01_address:
               value_template: <<node_control_ip>>
         stacklight_monitor_node02:
           expression: <<node_hostname>>__equals__mon02
           cluster_param:
-            stacklight_monitor_node03_address:
+            stacklight_monitor_node02_address:
               value_template: <<node_control_ip>>
         stacklight_monitor_node03:
           expression: <<node_hostname>>__equals__mon03
