@@ -1,5 +1,12 @@
 parameters:
   _param:
+    stacklight_monitor_address: 172.16.10.253
+    stacklight_monitor_node01_address: 172.16.10.107
+    stacklight_monitor_node02_address: 172.16.10.108
+    stacklight_monitor_node03_address: 172.16.10.109
+    stacklight_telemetry_node01_address: ${_param:stacklight_monitor_node01_address}
+    stacklight_log_address: ${_param:stacklight_monitor_address}
+    stacklight_telemetry_address: ${_param:stacklight_monitor_address}
     heka_elasticsearch_host: ${_param:stacklight_monitor_address}
     heka_influxdb_host: ${_param:stacklight_monitor_node01_address}
     heka_aggregator_host: ${_param:stacklight_monitor_address}
