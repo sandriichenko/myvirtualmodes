@@ -23,10 +23,10 @@ parameters:
     salt_master_host: 127.0.0.1
   salt:
     master:
-      enabled: true
       reactor:
         reclass/minion/classify:
         - salt://reclass/reactor/node_register.sls
+
   reclass:
     storage:
       class_mapping:
