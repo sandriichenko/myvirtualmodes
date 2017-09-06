@@ -7,3 +7,4 @@ parameters:
     system:
       name: cfg01
       domain: ${_param:cluster_domain}
+      purge_repos: ${_param:linux_system_purge_repos}
