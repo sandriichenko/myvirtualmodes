@@ -16,7 +16,7 @@ parameters:
 #    infra_config_address: 172.16.10.100
 #    infra_config_deploy_address: 192.168.10.100
 
-    cluster_domain: ceph_ha.local
+    cluster_domain: ceph-ha.local
     cluster_name: ceph_ha
     apt_mk_version: nightly
     primary_interface: ens3

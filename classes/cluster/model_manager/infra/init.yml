@@ -1,6 +1,6 @@
 parameters:
   _param:
-    cluster_domain: model_manager.local
+    cluster_domain: model-manager.local
     cluster_name: model_manager
     infra_config_deploy_address: 192.168.10.100
     infra_config_address: 172.16.10.100

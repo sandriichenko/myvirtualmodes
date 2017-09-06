@@ -10,7 +10,7 @@ classes:
 - system.openssh.server.team.oss_team
 parameters:
   _param:
-    cluster_domain: drivetrain_ha.local
+    cluster_domain: drivetrain-ha.local
     cluster_name: drivetrain_ha
     apt_mk_version: nightly
     infra_config_hostname: cid01
