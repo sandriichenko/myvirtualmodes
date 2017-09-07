@@ -1,4 +1,6 @@
 classes:
+- service.grafana.collector
+- system.heka.log_collector.single
 - system.heka.log_collector.output.telegraf
 - system.linux.system.repo.mcp.extra
 - system.linux.system.single
