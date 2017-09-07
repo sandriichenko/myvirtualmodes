@@ -4,7 +4,7 @@ classes:
 - system.linux.system.repo.influxdb
 - system.heka.remote_collector.input.amqp
 - system.heka.aggregator.cluster
-- system.linux.system.repo.tcp_elastic 
+- system.linux.system.repo.elasticsearch
 - system.elasticsearch.server.cluster
 - system.elasticsearch.server.curator
 - system.kibana.server.single
