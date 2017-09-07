@@ -51,6 +51,10 @@ parameters:
           source: ${_param:linux_system_repo}
           architectures: amd64
           clean_file: true
+          pin:
+          - pin: ${_param:linux_system_repo_pin}
+            priority: ${_param:linux_system_repo_priority}
+            package: '*'
     network:
       bridge: openvswitch
       interface:
