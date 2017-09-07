@@ -1,4 +1,8 @@
 parameters:
+  _param:
+    cluster_domain: virtual-mcp11-contrail.local
+    cluster_name: virtual-mcp11-contrail
+    infra_config_address: 172.16.10.100
   linux:
     network:
       host:
