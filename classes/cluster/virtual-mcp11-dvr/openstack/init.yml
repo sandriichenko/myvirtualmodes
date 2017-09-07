@@ -1,6 +1,5 @@
 parameters:
   _param:
-    openstack_database_address: 172.16.10.254
     openstack_proxy_address: 172.16.10.121
     openstack_proxy_node01_address: 172.16.10.121
     openstack_control_address: 172.16.10.254
