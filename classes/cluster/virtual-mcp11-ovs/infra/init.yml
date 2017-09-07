@@ -1,4 +1,8 @@
 parameters:
+  _param:
+    cluster_domain: virtual-mcp11-ovs.local
+    cluster_name: virtual-mcp11-ovs
+    infra_config_address: 172.16.10.100
   linux:
     network:
       host:
