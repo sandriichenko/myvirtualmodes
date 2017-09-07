@@ -9,6 +9,8 @@ classes:
 - system.opencontrail.client.cluster
 - system.opencontrail.client.resource.virtual_router
 - service.opencontrail.compute.cluster
+- service.opencontrail.compute.lbaas.barbican
+- service.barbican.client.cluster
 - cluster.os-ha-contrail
 parameters:
   _param:

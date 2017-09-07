@@ -12,6 +12,7 @@ classes:
 - system.opencontrail.client.resource.config_node
 - system.opencontrail.client.resource.database_node
 - system.opencontrail.client.resource.analytics_node
+- system.opencontrail.client.resource.openstack_metadata
 - system.haproxy.proxy.listen.opencontrail.analytics
 - cluster.os-ha-contrail
 parameters:

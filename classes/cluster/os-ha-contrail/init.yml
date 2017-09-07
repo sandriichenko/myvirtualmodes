@@ -9,3 +9,8 @@ classes:
 - cluster.os-ha-contrail.opencontrail
 - cluster.os-ha-contrail.openstack
 - cluster.overrides
+parameters:
+  salt:
+    minion:
+      trusted_ca_minions:
+        - cfg01
