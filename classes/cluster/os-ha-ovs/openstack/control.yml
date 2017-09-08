@@ -61,6 +61,8 @@ parameters:
         driver: messagingv2
         topics: "notifications"
   designate:
+    worker:
+      enabled: ${_param:designate_worker_enabled}
     server:
       pools:
         default:

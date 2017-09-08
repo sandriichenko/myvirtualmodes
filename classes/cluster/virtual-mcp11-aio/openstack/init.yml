@@ -101,6 +101,7 @@ parameters:
       rndc_host: 127.0.0.1
       rndc_port: 953
       rndc_key_file: /etc/designate/rndc.key
+    designate_worker_enabled: true
     linux_system_repo: deb [arch=amd64] http://mirror.fuel-infra.org/mcp-repos/${_param:openstack_version}/xenial ${_param:openstack_version} main
     openstack_public_neutron_subnet_gateway:  192.168.130.1
     openstack_public_neutron_subnet_cidr: 192.168.130.0/24
@@ -128,3 +129,6 @@ parameters:
   horizon:
     server:
       secure: False
+  designate:
+    worker:
+      enabled: ${_param:designate_worker_enabled}

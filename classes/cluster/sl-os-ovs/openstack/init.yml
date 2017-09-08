@@ -103,6 +103,7 @@ parameters:
     ceilometer_service_host: ${_param:cluster_vip_address}
     designate_version: ${_param:openstack_version}
     designate_service_host: ${_param:cluster_vip_address}
+    designate_worker_enabled: true
   linux:
     network:
       host:

@@ -72,6 +72,7 @@ parameters:
       rndc_port: 953
       rndc_key_file: /etc/designate/rndc.key
     designate_version: ${_param:openstack_version}
+    designate_worker_enabled: true
     glance_version: ${_param:openstack_version}
     glance_service_host: ${_param:cluster_vip_address}
     keystone_version: ${_param:openstack_version}

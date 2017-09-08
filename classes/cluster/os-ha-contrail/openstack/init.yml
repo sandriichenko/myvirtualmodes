@@ -77,6 +77,7 @@ parameters:
       rndc_key_file: /etc/designate/rndc.key
     barbican_version: ${_param:openstack_version}
     designate_version: ${_param:openstack_version}
+    designate_worker_enabled: true
     cluster_vip_address: ${_param:openstack_control_address}
     glance_version: ${_param:openstack_version}
     glance_service_host: ${_param:openstack_control_address}
