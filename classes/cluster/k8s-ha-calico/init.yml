@@ -1,4 +1,5 @@
 classes:
+- system.linux.network.dynamic_hosts
 - cluster.k8s-ha-calico.kubernetes
 - cluster.k8s-ha-calico.infra
 - cluster.overrides

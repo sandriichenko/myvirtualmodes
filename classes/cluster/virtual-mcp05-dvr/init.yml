@@ -1,4 +1,5 @@
 classes:
+- system.linux.network.dynamic_hosts
 - system.linux.system.single
 - system.rsyslog.client.single
 - system.openssh.server.team.lab

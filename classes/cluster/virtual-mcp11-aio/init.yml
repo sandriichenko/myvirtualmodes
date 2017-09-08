@@ -1,4 +1,5 @@
 classes:
+- system.linux.network.dynamic_hosts
 - service.git.client
 - system.linux.system.single
 - system.linux.system.repo.mcp.salt

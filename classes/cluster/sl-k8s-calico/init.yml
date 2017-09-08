@@ -1,4 +1,5 @@
 classes:
+- system.linux.network.dynamic_hosts
 - cluster.sl-k8s-calico.kubernetes
 - cluster.sl-k8s-calico.stacklight
 - cluster.sl-k8s-calico.infra

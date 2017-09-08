@@ -1,4 +1,5 @@
 classes:
+- system.linux.network.dynamic_hosts
 - system.linux.system.single
 - system.openssh.server.team.lab
 - system.openssh.server.team.tcpcloud

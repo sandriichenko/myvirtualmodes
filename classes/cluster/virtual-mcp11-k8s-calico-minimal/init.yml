@@ -1,4 +1,5 @@
 classes:
+- system.linux.network.dynamic_hosts
 - cluster.virtual-mcp11-k8s-calico-minimal.kubernetes
 - cluster.virtual-mcp11-k8s-calico-minimal.infra
 - cluster.overrides

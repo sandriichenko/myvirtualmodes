@@ -1,4 +1,5 @@
 classes:
+- system.linux.network.dynamic_hosts
 - system.linux.system.single
 - cluster.os-ha-ovs-syndic.infra
 - cluster.os-ha-ovs-syndic.openstack

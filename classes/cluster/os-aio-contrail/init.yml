@@ -1,4 +1,5 @@
 classes:
+- system.linux.network.dynamic_hosts
 - system.linux.system.repo.mcp.extra
 - system.linux.system.single
 - system.rsyslog.client.single

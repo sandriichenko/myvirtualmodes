@@ -1,4 +1,5 @@
 classes:
+- system.linux.network.dynamic_hosts
 - system.linux.system.single
 - cluster.os-aio-ovs.infra
 - cluster.os-aio-ovs.openstack

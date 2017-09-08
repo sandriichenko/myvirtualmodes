@@ -1,4 +1,5 @@
 classes:
+- system.linux.network.dynamic_hosts
 - cluster.drivetrain-ha.cicd.control
 - cluster.drivetrain-ha.infra
 #- cluster.drivetrain-ha.cicd

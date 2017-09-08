@@ -1,4 +1,5 @@
 classes:
+- system.linux.network.dynamic_hosts
 - system.linux.system.single
 - cluster.k8s-ha-contrail.kubernetes
 - cluster.k8s-ha-contrail.opencontrail
