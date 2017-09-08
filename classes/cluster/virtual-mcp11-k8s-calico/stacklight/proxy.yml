@@ -5,7 +5,7 @@ classes:
 - system.nginx.server.proxy.monitoring.prometheus_server
 - system.nginx.server.proxy.monitoring.prometheus_alertmanager
 - system.salt.minion.cert.proxy
-- cluster.virtual-mcp11-k8s-calico.infra
+- cluster.virtual-mcp11-k8s-calico
 parameters:
   _param:
     cluster_public_host: ${_param:prometheus_control_address}

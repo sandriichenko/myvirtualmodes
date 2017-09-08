@@ -9,7 +9,8 @@ classes:
 - system.mysql.client.database.grafana
 - system.reclass.storage.salt
 - system.reclass.storage.system.kubernetes_control_cluster
-- cluster.virtual-mcp11-k8s-calico.infra
+- cluster.virtual-mcp11-k8s-calico.stacklight.proxy
+- cluster.virtual-mcp11-k8s-calico
 parameters:
   _param:
     salt_master_base_environment: prd
@@ -44,6 +45,8 @@ parameters:
               value_template: <<node_control_ip>>
             infra_config_deploy_address:
               value_template: <<node_deploy_ip>>
+            cluster_domain:
+              value_template: <<node_domain>>
         infra_proxy:
           expression: <<node_hostname>>__startswith__prx
           node_class:

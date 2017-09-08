@@ -9,14 +9,6 @@ classes:
 - system.openssh.server.team.mcp_qa
 - system.openssh.server.team.k8s_team
 - system.rsyslog.client.single
-- system.heka.log_collector.single
-- system.heka.log_collector.output.telegraf
-- system.telegraf.agent
-- system.prometheus.collector
-- service.grafana.collector
-- cluster.virtual-mcp11-k8s-calico.kubernetes
-- cluster.virtual-mcp11-k8s-calico.stacklight
-- cluster.overrides
 parameters:
   _param:
     # infra service addresses

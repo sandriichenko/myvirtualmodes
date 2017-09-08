@@ -1,0 +1,6 @@
+classes:
+- system.linux.network.dynamic_hosts
+- cluster.virtual-mcp11-k8s-calico.kubernetes
+- cluster.virtual-mcp11-k8s-calico.stacklight
+- cluster.virtual-mcp11-k8s-calico.infra
+- cluster.overrides
