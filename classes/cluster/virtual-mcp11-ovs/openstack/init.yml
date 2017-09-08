@@ -1,18 +1,31 @@
 parameters:
   _param:
-    openstack_proxy_address: 172.16.10.121
+    openstack_proxy_hostname: prx
+    openstack_proxy_address: ${_param:openstack_proxy_node01_address}
+    openstack_proxy_node01_hostname: prx01
     openstack_proxy_node01_address: 172.16.10.121
+    openstack_control_hostname: ctl
+    openstack_control_node01_hostname: ctl01
+    openstack_control_node02_hostname: ctl02
+    openstack_control_node03_hostname: ctl03
     openstack_control_address: 172.16.10.254
-    openstack_control_node01_address: 172.16.10.101
-    openstack_control_node02_address: 172.16.10.102
-    openstack_control_node03_address: 172.16.10.103
+    openstack_control_node01_address: 172.16.10.91
+    openstack_control_node02_address: 172.16.10.92
+    openstack_control_node03_address: 172.16.10.93
+    openstack_gateway_hostname: gtw
+    openstack_gateway_address: ${_param:openstack_gateway_node01_address}
+    openstack_gateway_node01_hostname: gtw01
+    openstack_gateway_node01_address: 172.16.10.94
+    openstack_compute_node01_hostname: cmp01
+    openstack_compute_node02_hostname: cmp02
+    openstack_compute_node01_address: 172.16.10.95
+    openstack_compute_node02_address: 172.16.10.96
     openstack_database_address: ${_param:openstack_control_address}
     openstack_message_queue_address: ${_param:openstack_control_address}
     openstack_message_queue_node01_address: ${_param:openstack_control_node01_address}
     openstack_message_queue_node02_address: ${_param:openstack_control_node02_address}
     openstack_message_queue_node03_address: ${_param:openstack_control_node03_address}
-    openstack_gateway_address: 172.16.10.110
-    openstack_gateway_node01_address: ${_param:openstack_gateway_address}
+
     openstack_version: newton
     apt_mk_version: nightly
     mcp_repo_version: 1.1
@@ -34,14 +47,14 @@ parameters:
     galera_server_cluster_name: openstack_cluster
     galera_server_maintenance_password: workshop
     galera_server_admin_password: workshop
-    cluster_vip_address: 172.16.10.254
+    cluster_vip_address: ${_param:openstack_control_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: ctl01
-    cluster_node01_address: 172.16.10.101
+    cluster_node01_address: ${_param:openstack_control_node01_address}
     cluster_node02_hostname: ctl02
-    cluster_node02_address: 172.16.10.102
+    cluster_node02_address: ${_param:openstack_control_node02_address}
     cluster_node03_hostname: ctl03
-    cluster_node03_address: 172.16.10.103
+    cluster_node03_address: ${_param:openstack_control_node03_address}
     rabbitmq_secret_key: workshop
     rabbitmq_admin_password: workshop
     rabbitmq_openstack_password: workshop
@@ -104,48 +117,53 @@ parameters:
         prx:
           address: ${_param:openstack_proxy_address}
           names:
-          - prx
-          - prx.${_param:cluster_domain}
+          - ${_param:openstack_proxy_hostname}
+          - ${_param:openstack_proxy_hostname}.${_param:cluster_domain}
         prx01:
           address: ${_param:openstack_proxy_node01_address}
           names:
-          - prx01
-          - prx01.${_param:cluster_domain}
+          - ${_param:openstack_proxy_node01_hostname}
+          - ${_param:openstack_proxy_node01_hostname}.${_param:cluster_domain}
         ctl:
           address: ${_param:openstack_control_address}
           names:
-          - ctl
-          - ctl.${_param:cluster_domain}
+          - ${_param:openstack_control_hostname}
+          - ${_param:openstack_control_hostname}.${_param:cluster_domain}
         ctl01:
           address: ${_param:openstack_control_node01_address}
           names:
-          - ctl01
-          - ctl01.${_param:cluster_domain}
+          - ${_param:openstack_control_node01_hostname}
+          - ${_param:openstack_control_node01_hostname}.${_param:cluster_domain}
         ctl02:
           address: ${_param:openstack_control_node02_address}
           names:
-          - ctl02
-          - ctl02.${_param:cluster_domain}
+          - ${_param:openstack_control_node02_hostname}
+          - ${_param:openstack_control_node02_hostname}.${_param:cluster_domain}
         ctl03:
           address: ${_param:openstack_control_node03_address}
           names:
-          - ctl03
-          - ctl03.${_param:cluster_domain}
+          - ${_param:openstack_control_node03_hostname}
+          - ${_param:openstack_control_node03_hostname}.${_param:cluster_domain}
+        gtw:
+          address: ${_param:openstack_gateway_address}
+          names:
+          - ${_param:openstack_gateway_hostname}
+          - ${_param:openstack_gateway_hostname}.${_param:cluster_domain}
         gtw01:
           address: ${_param:openstack_gateway_address}
           names:
-          - gtw01
-          - gtw01.${_param:cluster_domain}
+          - ${_param:openstack_gateway_hostname}
+          - ${_param:openstack_gateway_hostname}.${_param:cluster_domain}
         cmp01:
-          address: 172.16.10.105
+          address: ${_param:openstack_control_node01_address}
           names:
-          - cmp01
-          - cmp01.${_param:cluster_domain}
+          - ${_param:openstack_compute_node01_hostname}
+          - ${_param:openstack_compute_node01_hostname}.${_param:cluster_domain}
         cmp02:
-          address: 172.16.10.106
+          address: ${_param:openstack_control_node02_address}
           names:
-          - cmp02
-          - cmp02.${_param:cluster_domain}
+          - ${_param:openstack_compute_node02_hostname}
+          - ${_param:openstack_compute_node02_hostname}.${_param:cluster_domain}
     system:
       user:
         root:
