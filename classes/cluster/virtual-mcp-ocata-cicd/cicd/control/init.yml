@@ -10,7 +10,6 @@ classes:
   - system.glusterfs.client.volume.mysql
   - system.glusterfs.client.volume.openldap
   - system.glusterfs.client.volume.postgresql
-  - system.glusterfs.client.volume.prometheus
   - system.glusterfs.client.volume.pushkin
   - system.glusterfs.client.volume.registry
   - system.glusterfs.client.volume.rundeck

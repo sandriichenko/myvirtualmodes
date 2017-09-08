@@ -10,8 +10,6 @@ classes:
 - system.haproxy.proxy.listen.stacklight.kibana
 - system.haproxy.proxy.listen.stacklight.influxdb_relay
 - service.haproxy.proxy.single
-- system.glusterfs.client.cluster
-- system.glusterfs.client.volume.prometheus
 - system.galera.server.cluster
 - system.galera.server.database.grafana
 - system.influxdb.relay.cluster
@@ -66,10 +64,6 @@ parameters:
     influxdb_admin_password: password
     influxdb_stacklight_password: lmapass
     openstack_version: newton
-    prometheus_glusterfs_service_host: ${_param:openstack_control_address}
-    glusterfs_node01_address: ${_param:openstack_control_node01_address}
-    glusterfs_node02_address: ${_param:openstack_control_node02_address}
-    glusterfs_node03_address: ${_param:openstack_control_node03_address}
     remote_collector_telegraf_host: monitoring_remote_agent
   linux:
     network:
