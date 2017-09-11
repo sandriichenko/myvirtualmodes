@@ -15,9 +15,6 @@ parameters:
     stacklight_monitor_node02_address: 172.16.10.108
     stacklight_monitor_node03_address: 172.16.10.109
 
-    # Glusterfs
-    glusterfs_service_host: ${_param:stacklight_monitor_address}
-
     # Prometheus
     prometheus_control_address: ${_param:stacklight_monitor_address}
 

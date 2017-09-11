@@ -1,7 +1,6 @@
 classes:
 - system.linux.system.repo.influxdb
 - system.linux.system.repo.tcp_elastic
-- system.linux.system.repo.glusterfs
 # Needed to install Galera packages
 - system.linux.system.repo.mcp.openstack
 - system.docker.host
@@ -14,8 +13,6 @@ classes:
 - service.haproxy.proxy.single
 - system.galera.server.cluster
 - system.galera.server.database.grafana
-- system.glusterfs.client.cluster
-- system.glusterfs.client.volume.prometheus
 - system.influxdb.relay.cluster
 - system.influxdb.server.single
 - system.influxdb.database.prometheus

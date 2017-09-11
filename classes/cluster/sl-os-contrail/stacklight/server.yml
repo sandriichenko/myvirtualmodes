@@ -1,11 +1,8 @@
 classes:
 - system.docker.host
-- system.linux.system.repo.glusterfs
 - system.linux.system.repo.influxdb
 - system.linux.system.repo.mcp.salt
 - system.linux.system.repo.tcp_elastic
-- system.glusterfs.client.cluster
-- system.glusterfs.client.volume.prometheus
 - system.elasticsearch.server.cluster
 - system.elasticsearch.server.curator
 - system.kibana.server.single
@@ -52,10 +49,6 @@ parameters:
     docker_image_remote_collector: docker-prod-virtual.docker.mirantis.net/openstack-docker/heka:latest
     docker_image_remote_storage_adapter: docker-prod-virtual.docker.mirantis.net/openstack-docker/remote_storage_adapter:latest
     docker_image_grafana: grafana/grafana:4.3.2
-    prometheus_glusterfs_service_host: ${_param:openstack_control_address}
-    glusterfs_node01_address: ${_param:openstack_control_node01_address}
-    glusterfs_node02_address: ${_param:openstack_control_node02_address}
-    glusterfs_node03_address: ${_param:openstack_control_node03_address}
     grafana_admin_password: admin
     grafana_database_type: mysql
     grafana_database_host: ${_param:cluster_vip_address}

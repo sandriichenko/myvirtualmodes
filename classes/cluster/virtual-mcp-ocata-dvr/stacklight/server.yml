@@ -1,6 +1,5 @@
 classes:
 - system.docker.host
-- system.linux.system.repo.glusterfs
 - system.linux.system.repo.influxdb
 - system.linux.system.repo.mcp.salt
 - system.linux.system.repo.tcp_elastic
@@ -8,8 +7,6 @@ classes:
 - system.heka.remote_collector.input.amqp
 - system.heka.remote_collector.output.elasticsearch
 - system.heka.remote_collector.output.telegraf
-- system.glusterfs.client.cluster
-- system.glusterfs.client.volume.prometheus
 - system.elasticsearch.server.cluster
 - system.elasticsearch.server.curator
 - system.kibana.server.single
@@ -54,10 +51,6 @@ parameters:
     docker_image_remote_storage_adapter: docker-prod-virtual.docker.mirantis.net/openstack-docker/remote_storage_adapter:latest
     docker_image_remote_collector: docker-prod-virtual.docker.mirantis.net/openstack-docker/heka:latest
     docker_image_grafana: grafana/grafana:4.3.2
-    prometheus_glusterfs_service_host: ${_param:openstack_control_address}
-    glusterfs_node01_address: ${_param:openstack_control_node01_address}
-    glusterfs_node02_address: ${_param:openstack_control_node02_address}
-    glusterfs_node03_address: ${_param:openstack_control_node03_address}
     influxdb_port: 8086
     influxdb_admin_password: password
     influxdb_stacklight_password: lmapass
