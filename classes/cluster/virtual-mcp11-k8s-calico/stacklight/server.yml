@@ -24,7 +24,7 @@ classes:
 - system.prometheus.server.target.dns
 - system.docker.swarm.stack.monitoring
 - system.docker.swarm.stack.dashboard
-- cluster.virtual-mcp11-k8s-calico.infra
+- cluster.virtual-mcp11-k8s-calico
 parameters:
   _param:
     cluster_vip_address: ${_param:stacklight_monitor_address}

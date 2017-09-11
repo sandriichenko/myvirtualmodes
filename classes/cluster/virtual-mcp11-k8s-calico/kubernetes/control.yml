@@ -6,7 +6,7 @@ classes:
 - system.kubernetes.master.cluster
 - cluster.virtual-mcp11-k8s-calico.kubernetes.compute
 - cluster.virtual-mcp11-k8s-calico.infra
-- cluster.overrides
+- cluster.virtual-mcp11-k8s-calico
 parameters:
   _param:
     keepalived_vip_interface: ens3

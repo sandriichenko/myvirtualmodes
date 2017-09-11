@@ -3,8 +3,7 @@ classes:
 - system.kubernetes.pool.cluster
 - system.salt.minion.cert.k8s_client
 - system.salt.minion.cert.etcd_client
-- cluster.virtual-mcp11-k8s-calico.infra
-- cluster.overrides
+- cluster.virtual-mcp11-k8s-calico
 parameters:
   docker:
     host:
