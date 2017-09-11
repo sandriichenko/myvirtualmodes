@@ -1,0 +1,4 @@
+classes:
+- cluster.k8s-ha-calico-cloudprovider.kubernetes
+- cluster.k8s-ha-calico-cloudprovider.infra
+- cluster.overrides
