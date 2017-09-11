@@ -31,7 +31,7 @@ parameters:
     reclass_data_revision: master
     salt_master_environment_repository: "https://github.com/tcpcloud"
     salt_master_environment_revision: master
-    reclass_config_master: 192.168.10.100
+    reclass_config_master: 192.168.10.90
     single_address: 172.16.10.100
     salt_master_host: 127.0.0.1
     salt_master_base_environment: prd

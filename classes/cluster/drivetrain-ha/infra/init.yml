@@ -15,7 +15,7 @@ parameters:
     apt_mk_version: nightly
     infra_config_hostname: cid01
     infra_config_address: 172.16.10.100
-    infra_config_deploy_address: 192.168.10.100
+    infra_config_deploy_address: 192.168.10.90
     salt_minion_ca_host: cid01.${_param:cluster_domain}
     salt_minion_ca_authority: salt_master_ca
   linux:
