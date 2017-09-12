@@ -11,7 +11,7 @@ parameters:
     infra_config_deploy_address: 192.168.10.90
 
     cluster_domain: sl-k8s-contrail.local
-    cluster_name: sl_k8s_contrail
+    cluster_name: sl-k8s-contrail
     apt_mk_version: nightly
   linux:
     network:

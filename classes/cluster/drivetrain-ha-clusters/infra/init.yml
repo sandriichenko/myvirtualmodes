@@ -11,7 +11,7 @@ classes:
 parameters:
   _param:
     cluster_domain: drivetrain-ha-clusters.local
-    cluster_name: drivetrain_ha_clusters
+    cluster_name: drivetrain-ha-clusters
     apt_mk_version: nightly
     admin_email: root@localhosti
     infra_config_hostname: cfg01

@@ -11,7 +11,7 @@ classes:
 parameters:
   _param:
     cluster_domain: drivetrain-ha.local
-    cluster_name: drivetrain_ha
+    cluster_name: drivetrain-ha
     apt_mk_version: nightly
     infra_config_hostname: cid01
     infra_config_address: 172.16.10.100
