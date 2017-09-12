@@ -244,6 +244,10 @@ parameters:
     pushkin_db_user: pushkin
     pushkin_db_user_password: kRQaFJWiqhQfy6sN
     pushkin_db_host: ${_param:haproxy_postgresql_bind_host}
+    pushkin_smtp_host: 127.0.0.1
+    pushkin_smtp_port: 25
+    pushkin_email_sender_password: ''
+
     #..WebHook notification senders
     webhook_from: pushkin@example.com
     webhook_recipients: alerts@example.com
