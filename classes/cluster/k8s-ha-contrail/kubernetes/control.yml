@@ -25,12 +25,18 @@ parameters:
   kubernetes:
     common:
       addons:
+        dashboard:
+          enabled: ${_param:kubernetes_dashboard}
+        helm:
+          enabled: ${_param:kubernetes_helm_enabled}
         netchecker:
-          enabled: true
+          enabled: ${_param:kubernetes_netchecker_enabled}
           agent_image: ${_param:kubernetes_netchecker_agent_image}
           server_image: ${_param:kubernetes_netchecker_server_image}
-        helm:
-          enabled: true
+        contrail_network_controller:
+          namespace: ${_param:kubernetes_addon_namespace}
+          enabled: {_param:kubernetes_contrail_network_controller}
+          image: ${_param:kubernetes_contrail_network_controller_image}
     master:
       etcd:
         ssl:
