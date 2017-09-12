@@ -321,6 +321,9 @@ parameters:
     webhook_login_id: 11
     webhook_application_id: 23
     webhook_sfdc_username: janeroe@mirantis.com
+    pushkin_smtp_host: 127.0.0.1
+    pushkin_smtp_port: 25
+    pushkin_email_sender_password: ''
 
     # SecurityMonkey
     secmonkey_db_user: secmonkey
