@@ -46,6 +46,9 @@ parameters:
           proto: static
           address: ${_param:single_address}
           netmask: 255.255.255.0
+  designate:
+    worker:
+      enabled: ${_param:designate_worker_enabled}
   keepalived:
     cluster:
       instance:
