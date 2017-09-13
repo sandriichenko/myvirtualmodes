@@ -35,7 +35,7 @@ parameters:
           server_image: ${_param:kubernetes_netchecker_server_image}
         contrail_network_controller:
           namespace: ${_param:kubernetes_addon_namespace}
-          enabled: {_param:kubernetes_contrail_network_controller}
+          enabled: ${_param:kubernetes_contrail_network_controller}
           image: ${_param:kubernetes_contrail_network_controller_image}
     master:
       etcd:
