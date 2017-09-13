@@ -117,12 +117,15 @@ parameters:
       dvr: True
   nova:
     compute:
+      vncproxy_url: http://${_param:single_address}:6080
       network:
         user: neutron
         password: ${_param:keystone_neutron_password}
         tenant: service
       cache:
         members: ~
+    controller:
+      vncproxy_url: http://${_param:single_address}:6080
   cinder:
     volume:
       cache:
