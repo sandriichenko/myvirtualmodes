@@ -2,7 +2,7 @@ classes:
 - system.docker.host
 - system.linux.system.repo.influxdb
 - system.linux.system.repo.mcp.salt
-- system.linux.system.repo.tcp_elastic
+- system.linux.system.repo.elasticsearch
 - system.heka.remote_collector.container
 - system.heka.remote_collector.input.amqp
 - system.heka.remote_collector.output.elasticsearch

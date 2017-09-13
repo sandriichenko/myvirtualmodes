@@ -1,6 +1,6 @@
 classes:
 - system.docker.host
-- system.linux.system.repo.tcp_elastic
+- system.linux.system.repo.elasticsearch
 # Needed to install Galera packages
 - system.linux.system.repo.mcp.openstack
 - system.elasticsearch.server.cluster
