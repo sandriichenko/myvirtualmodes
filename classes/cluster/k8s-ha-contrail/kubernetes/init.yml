@@ -26,8 +26,8 @@ parameters:
 
     kubernetes_hyperkube_image: docker-prod-virtual.docker.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.7.5-2
     kubernetes_virtlet_image: mirantis/virtlet:latest
-    kubernetes_netchecker_agent_image: mirantis/k8s-netchecker-agent:v1.1.0
-    kubernetes_netchecker_server_image: mirantis/k8s-netchecker-server:v1.1.0
+    kubernetes_netchecker_agent_image: mirantis/k8s-netchecker-agent:stable
+    kubernetes_netchecker_server_image: mirantis/k8s-netchecker-server:stable
     kubernetes_netchecker_agent_probeurls: "http://ipinfo.io"
     kubernetes_virtlet_image: mirantis/virtlet:v0.7.0
     kubernetes_externaldns_image: mirantis/external-dns:latest
@@ -47,7 +47,7 @@ parameters:
     # addresses and hostnames
     kubernetes_internal_api_address: 10.254.0.1
     kubernetes_control_hostname: ctl
-    kubernetes_control_address: 192.168.10.253
+    kubernetes_control_address: 172.16.10.253
     kubernetes_control_node01_hostname: ctl01
     kubernetes_control_node02_hostname: ctl02
     kubernetes_control_node03_hostname: ctl03
