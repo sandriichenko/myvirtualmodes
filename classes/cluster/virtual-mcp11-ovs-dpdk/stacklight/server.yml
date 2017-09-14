@@ -5,6 +5,7 @@ classes:
 - system.heka.remote_collector.input.amqp
 - system.heka.aggregator.cluster
 - system.linux.system.repo.elasticsearch
+- system.linux.system.repo.kibana
 - system.elasticsearch.server.cluster
 - system.elasticsearch.server.curator
 - system.kibana.server.single

@@ -1,6 +1,7 @@
 classes:
 - system.docker.host
 - system.linux.system.repo.elasticsearch
+- system.linux.system.repo.kibana
 - system.linux.system.repo.influxdb
 # Needed to install Galera packages
 - system.linux.system.repo.mcp.openstack
