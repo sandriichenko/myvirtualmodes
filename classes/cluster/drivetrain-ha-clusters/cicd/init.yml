@@ -3,11 +3,11 @@ parameters:
     cicd_control_hostname: cid
     cicd_control_address: 172.16.10.252
     cicd_control_node01_hostname: cid01
-    cicd_control_node01_address: 172.16.10.11
+    cicd_control_node01_address: 172.16.10.90
     cicd_control_node02_hostname: cid02
-    cicd_control_node02_address: 172.16.10.12
+    cicd_control_node02_address: 172.16.10.91
     cicd_control_node03_hostname: cid03
-    cicd_control_node03_address: 172.16.10.13
+    cicd_control_node03_address: 172.16.10.92
 
     # CI/CD control infrastructure
     control_node01_address: ${_param:cicd_control_node01_address}
