@@ -6,14 +6,13 @@ classes:
 - system.rabbitmq.server.vhost.openstack
 - system.keystone.server.wsgi
 - system.keystone.server.single
-- system.mysql.client.database.keystone
-- system.mysql.client.database.glance
-- system.mysql.client.database.nova
-- system.mysql.client.database.nova_api
-- system.mysql.client.database.cinder
-- system.mysql.client.database.heat
-- system.mysql.client.database.designate
-- system.mysql.client.database.designate_pool_manager
+- service.galera.master.cluster
+- system.galera.server.database.cinder
+- system.galera.server.database.designate
+- system.galera.server.database.glance
+- system.galera.server.database.heat
+- system.galera.server.database.keystone
+- system.galera.server.database.nova
 - system.keystone.client.single
 - system.keystone.client.service.nova21
 - system.keystone.client.service.nova-placement
@@ -41,6 +40,9 @@ parameters:
     openstack_region: RegionOne
     admin_email: root@localhost
     rabbitmq_openstack_password: workshop
+    galera_server_cluster_name: openstack_cluster
+    galera_server_maintenance_password: workshop
+    galera_server_admin_password: workshop
     keystone_version: ${_param:openstack_version}
     glance_version: ${_param:openstack_version}
     nova_version: ${_param:openstack_version}
@@ -109,6 +111,13 @@ parameters:
     openstack_public_neutron_subnet_cidr: 192.168.130.0/24
     openstack_public_neutron_subnet_allocation_start: 192.168.130.10
     openstack_public_neutron_subnet_allocation_end: 192.168.130.254
+  galera:
+    master:
+      members: ~
+      innodb_buffer_pool_size: 1024M
+      max_connections: 1000
+    slave:
+      enabled: false
   neutron:
     server:
       message_queue:

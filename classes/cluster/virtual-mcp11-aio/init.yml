@@ -9,7 +9,6 @@ classes:
 - system.salt.minion.ca.salt_master
 - system.salt.minion.cert.proxy
 - system.reclass.storage.salt
-- service.mysql.server.single
 - system.mysql.client
 - system.memcached.server.single
 - system.rabbitmq.server.single
@@ -29,6 +28,7 @@ parameters:
 
     mysql_admin_user: root
     mysql_admin_password: workshop
+    mysql_cluster_role: master
     rabbitmq_secret_key: workshop
     rabbitmq_admin_password: workshop
     loopback_device_size: 20
@@ -69,10 +69,6 @@ parameters:
           proto: static
           address: ${_param:openstack_public_neutron_subnet_gateway}
           netmask: 255.255.255.0
-  mysql:
-    server:
-      version: '5.6'
-      max_connections: 20000
 # override on this level
   nova:
     compute:
@@ -86,6 +82,11 @@ parameters:
         members:
         - host: ${_param:single_address}
           port: 11211
+  galera:
+    master:
+      members:
+      - host: ${_param:single_address}
+        port: 4567
   neutron:
     server:
       message_queue:
