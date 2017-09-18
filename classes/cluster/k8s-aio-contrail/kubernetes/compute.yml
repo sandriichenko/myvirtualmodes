@@ -4,6 +4,7 @@ classes:
 - system.linux.network.hosts
 - system.salt.minion.cert.k8s_client
 - system.salt.minion.cert.etcd_client
+- cluster.k8s-aio-contrail.kubernetes
 - cluster.k8s-aio-contrail.infra
 - cluster.k8s-aio-contrail.opencontrail.compute
 - cluster.overrides

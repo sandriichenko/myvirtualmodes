@@ -53,12 +53,12 @@ parameters:
     # Kibana
     kibana_elasticsearch_host: ${_param:cluster_vip_address}
     # Docker/Elasticsearch
-    cluster_node01_hostname: ${_param:stacklight_node01_hostname}
-    cluster_node01_address: ${_param:stacklight_node01_address}
-    cluster_node02_hostname: ${_param:stacklight_node02_hostname}
-    cluster_node02_address: ${_param:stacklight_node02_address}
-    cluster_node03_hostname: ${_param:stacklight_node03_hostname}
-    cluster_node03_address: ${_param:stacklight_node03_address}
+    cluster_node01_hostname: ${_param:stacklight_monitor_node01_hostname}
+    cluster_node01_address: ${_param:stacklight_monitor_node01_address}
+    cluster_node02_hostname: ${_param:stacklight_monitor_node02_hostname}
+    cluster_node02_address: ${_param:stacklight_monitor_node02_address}
+    cluster_node03_hostname: ${_param:stacklight_monitor_node03_hostname}
+    cluster_node03_address: ${_param:stacklight_monitor_node03_address}
     influxdb_port: 8086
     influxdb_admin_password: password
     influxdb_stacklight_password: lmapass

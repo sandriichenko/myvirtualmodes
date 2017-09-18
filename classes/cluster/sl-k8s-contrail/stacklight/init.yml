@@ -8,12 +8,13 @@ classes:
 parameters:
   _param:
     stacklight_monitor_address: 172.16.10.251
-    stacklight_node01_hostname: mon01
-    stacklight_node02_hostname: mon02
-    stacklight_node03_hostname: mon03
-    stacklight_node01_address: 172.16.10.107
-    stacklight_node02_address: 172.16.10.108
-    stacklight_node03_address: 172.16.10.109
+    stacklight_monitor_node01_hostname: mon01
+    stacklight_monitor_node02_hostname: mon02
+    stacklight_monitor_node03_hostname: mon03
+    stacklight_monitor_node01_address: 172.16.10.107
+    stacklight_monitor_node02_address: 172.16.10.108
+    stacklight_monitor_node03_address: 172.16.10.109
+
     # Prometheus
     prometheus_control_address: ${_param:stacklight_monitor_address}
 
@@ -38,20 +39,20 @@ parameters:
           - mon
           - mon.${_param:cluster_domain}
         mon01:
-          address: ${_param:stacklight_node01_address}
+          address: ${_param:stacklight_monitor_node01_address}
           names:
-          - ${_param:stacklight_node01_hostname}
-          - ${_param:stacklight_node01_hostname}.${_param:cluster_domain}
+          - ${_param:stacklight_monitor_node01_hostname}
+          - ${_param:stacklight_monitor_node01_hostname}.${_param:cluster_domain}
         mon02:
-          address: ${_param:stacklight_node02_address}
+          address: ${_param:stacklight_monitor_node02_address}
           names:
-          - ${_param:stacklight_node02_hostname}
-          - ${_param:stacklight_node02_hostname}.${_param:cluster_domain}
+          - ${_param:stacklight_monitor_node02_hostname}
+          - ${_param:stacklight_monitor_node02_hostname}.${_param:cluster_domain}
         mon03:
-          address: ${_param:stacklight_node03_address}
+          address: ${_param:stacklight_monitor_node03_address}
           names:
-          - ${_param:stacklight_node03_hostname}
-          - ${_param:stacklight_node03_hostname}.${_param:cluster_domain}
+          - ${_param:stacklight_monitor_node03_hostname}
+          - ${_param:stacklight_monitor_node03_hostname}.${_param:cluster_domain}
     system:
       name: ${_param:infra_config_hostname}
       domain: ${_param:cluster_domain}

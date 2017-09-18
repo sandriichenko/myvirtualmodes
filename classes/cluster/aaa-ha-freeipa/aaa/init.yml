@@ -53,7 +53,7 @@ parameters:
   linux:
     network:
       resolv:
-        domain: virtual-aaa-freeipa.local
+        domain: aaa-ha-freeipa.local
         options:
           - ndots:5
           - timeout:2

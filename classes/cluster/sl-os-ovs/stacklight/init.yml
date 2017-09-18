@@ -29,6 +29,8 @@ parameters:
     galera_server_maintenance_password: workshop
     galera_server_admin_password: workshop
 
+
+    grafana_influxdb_host: ${_param:stacklight_monitor_node01_address}
     heka_elasticsearch_host: ${_param:stacklight_monitor_address}
     elasticsearch_port: 9200
     stacklight_environment: ${_param:cluster_domain}

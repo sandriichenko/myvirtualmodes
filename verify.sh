@@ -14,8 +14,8 @@ if [[ $BOOTSTRAP =~ ^(True|true|1|yes)$ ]]; then
     git submodule update --init --recursive --remote || true
   fi
   source_local_envs
-  /srv/salt/scripts/bootstrap.sh
-  if [[ -e /tmp/kitchen ]]; then sed -i '/export BOOTSTRAP=/d' /kitchen.env; fi
+  /srv/salt/scripts/bootstrap.sh &&\
+  if [[ -e /tmp/kitchen ]]; then sed -i '/BOOTSTRAP=/d' /kitchen.env; fi
 fi
 
 # VERIFY

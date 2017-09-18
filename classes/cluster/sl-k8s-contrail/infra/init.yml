@@ -12,6 +12,7 @@ parameters:
 
     cluster_domain: sl-k8s-contrail.local
     cluster_name: sl-k8s-contrail
+    cluster_public_host: 172.16.10.254
     apt_mk_version: nightly
   linux:
     network:

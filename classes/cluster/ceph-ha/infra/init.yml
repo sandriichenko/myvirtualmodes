@@ -13,11 +13,12 @@ parameters:
     salt_version: '2016.3'
     # infra service addresses
     infra_config_hostname: cfg01
-#    infra_config_address: 172.16.10.100
-#    infra_config_deploy_address: 192.168.10.90
+    infra_config_address: 172.16.10.100
+    infra_config_deploy_address: 192.168.10.90
 
     cluster_domain: ceph-ha.local
     cluster_name: ceph-ha
+    cluster_public_host: 172.16.10.254
     apt_mk_version: nightly
     primary_interface: ens3
   linux:
