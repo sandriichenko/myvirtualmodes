@@ -26,6 +26,8 @@ parameters:
       #      logLevel: INFO
   etcd:
     server:
+      bind:
+        host: ${_param:deploy_address}
       source:
         engine: docker_hybrid
       ssl:
@@ -37,11 +39,21 @@ parameters:
   kubernetes:
     common:
       addons:
-        netchecker:
-          enabled: true
+        dashboard:
+          enabled: ${_param:kubernetes_dashboard}
         helm:
-          enabled: false
+          enabled: ${_param:kubernetes_helm_enabled}
+        calico_policy:
+          enabled: ${_param:kubernetes_calico_policy_enabled}
+          image: ${_param:kubernetes_calico_policy_image}
+        netchecker:
+          enabled: ${_param:kubernetes_netchecker_enabled}
+          agent_image: ${_param:kubernetes_netchecker_agent_image}
+          server_image: ${_param:kubernetes_netchecker_server_image}
+          agent_probeurls: ${_param:kubernetes_netchecker_agent_probeurls}
     master:
+      kubelet:
+        address: ${_param:single_address}
       etcd:
         ssl:
           enabled: true

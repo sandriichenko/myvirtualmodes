@@ -14,6 +14,29 @@ parameters:
     kubernetes_dns_token: 0S1I4iJeFjq5fopPwwCwTp3xFpEZfeUl
     etcd_initial_token: IN7KaRMSo3xkGxkjAAPtkRkAgqN4ZNRq
 
+    # docker package version
+    kubernetes_docker_package: docker-engine=1.12.6-0~ubuntu-xenial
+
+    # component docker images
+    kubernetes_calicoctl_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/ctl:latest
+    kubernetes_calico_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/node:latest
+    kubernetes_calico_cni_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/cni:latest
+    kubernetes_calico_policy_image: calico/kube-policy-controller:v0.5.4
+
+    kubernetes_hyperkube_image: docker-prod-virtual.docker.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.7.5-2
+    kubernetes_virtlet_image: mirantis/virtlet:latest
+    kubernetes_netchecker_agent_image: mirantis/k8s-netchecker-agent:stable
+    kubernetes_netchecker_server_image: mirantis/k8s-netchecker-server:stable
+    kubernetes_netchecker_agent_probeurls: "http://ipinfo.io"
+
+    # switches of addons
+    kubernetes_addon_namespace: kube-system
+    kubernetes_dashboard: false
+    kubernetes_helm_enabled: false
+    kubernetes_netchecker_enabled: true
+    kubernetes_calico_policy_enabled: false
+    kubernetes_virtlet_enabled: false
+
     # addresses and hostnames
     kubernetes_internal_api_address: 10.254.0.1
     kubernetes_control_hostname: ctl
@@ -24,21 +47,22 @@ parameters:
     kubernetes_control_node01_address: 172.16.10.101
     kubernetes_control_node02_address: 172.16.10.102
     kubernetes_control_node03_address: 172.16.10.103
-    kubernetes_proxy_node01_hostname: prx01
-    kubernetes_proxy_node01_address: 172.16.10.121
+    kubernetes_control_node01_deploy_address: 192.168.10.101
+    kubernetes_control_node02_deploy_address: 192.168.10.102
+    kubernetes_control_node03_deploy_address: 192.168.10.103
 
     cluster_vip_address: ${_param:kubernetes_control_address}
-    cluster_local_address: ${_param:single_address}
+    cluster_local_address: ${_param:deploy_address}
 
     # etcd stuff
     cluster_node01_hostname: ${_param:kubernetes_control_node01_hostname}
-    cluster_node01_address: ${_param:kubernetes_control_node01_address}
+    cluster_node01_address: ${_param:kubernetes_control_node01_deploy_address}
     cluster_node01_port: 4001
     cluster_node02_hostname: ${_param:kubernetes_control_node02_hostname}
-    cluster_node02_address: ${_param:kubernetes_control_node02_address}
+    cluster_node02_address: ${_param:kubernetes_control_node02_deploy_address}
     cluster_node02_port: 4001
     cluster_node03_hostname: ${_param:kubernetes_control_node03_hostname}
-    cluster_node03_address: ${_param:kubernetes_control_node03_address}
+    cluster_node03_address: ${_param:kubernetes_control_node03_deploy_address}
     cluster_node03_port: 4001
 
     # calico
@@ -68,31 +92,3 @@ parameters:
           names:
           - ${_param:kubernetes_control_node03_hostname}
           - ${_param:kubernetes_control_node03_hostname}.${_param:cluster_domain}
-        prx01:
-          address: ${_param:kubernetes_proxy_node01_address}
-          names:
-          - ${_param:kubernetes_proxy_node01_hostname}
-          - ${_param:kubernetes_proxy_node01_hostname}.${_param:cluster_domain}
-    linux:
-      network:
-        interface:
-          primary_interface:
-            route:
-              # TODO: Remove comment.
-              # Will work once CI has this in linux formula (packaged): https://gerrit.mcp.mirantis.net/#/c/8952
-              kubernetes_internal:
-                address: 10.254.0.0
-                netmask: 255.255.0.0
-    system:
-      rc:
-        local: |
-          #!/bin/sh -e
-          #
-          # rc.local
-          #
-          ######### This file is managed by Salt! ##########
-          # This script is executed at the end of each multiuser runlevel.
-          # Make sure that the script will "exit 0" on success or any other
-          # value on error.
-          #
-          exit 0
