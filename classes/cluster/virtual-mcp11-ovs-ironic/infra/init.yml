@@ -8,8 +8,8 @@ parameters:
         cfg01:
           address: ${_param:infra_config_address}
           names:
-          - cfg01
-          - cfg01.${_param:cluster_domain}
+          - ${_param:infra_config_hostname}
+          - ${_param:infra_config_hostname}.${_param:cluster_domain}
         cfg:
           address: ${_param:infra_config_address}
           names:
