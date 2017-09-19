@@ -15,6 +15,7 @@ parameters:
     cluster_name: virtual-mcp10-contrail
 
     # infra service addresses
+    infra_config_hostname: cfg01
     infra_config_address: 172.16.10.100
 
     # openstack service addresses

@@ -2,6 +2,7 @@ parameters:
   _param:
     cluster_domain: virtual-mcp11-contrail.local
     cluster_name: virtual-mcp11-contrail
+    infra_config_hostname: cfg01
     infra_config_address: 172.16.10.100
   linux:
     network:
@@ -9,8 +10,8 @@ parameters:
         cfg01:
           address: ${_param:infra_config_address}
           names:
-          - cfg01
-          - cfg01.${_param:cluster_domain}
+          - ${_param:infra_config_hostname}
+          - ${_param:infra_config_hostname}.${_param:cluster_domain}
         cfg:
           address: ${_param:infra_config_address}
           names:

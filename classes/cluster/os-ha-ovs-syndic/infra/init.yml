@@ -3,6 +3,7 @@ parameters:
     cluster_domain: os-ha-ovs-syndic.local
     cluster_name: os-ha-ovs-syndic
     infra_config_deploy_address: 192.168.10.90
+    infra_config_hostname: cfg01
     infra_config_address: 172.16.10.90
     salt_syndic_master_address: 192.168.10.90
   linux:
@@ -11,8 +12,8 @@ parameters:
         cfg01:
           address: ${_param:infra_config_address}
           names:
-          - cfg01
-          - cfg01.${_param:cluster_domain}
+          - ${_param:infra_config_hostname}
+          - ${_param:infra_config_hostname}.${_param:cluster_domain}
         cfg:
           address: ${_param:infra_config_address}
           names:

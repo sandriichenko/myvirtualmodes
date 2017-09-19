@@ -20,6 +20,7 @@ parameters:
     cluster_domain: virtual-mcp-ocata-dvr.local
     cluster_name: virtual-mcp-ocata-dvr
     # infra service addresses
+    infra_config_hostname: cfg01
     infra_config_address: 172.16.10.100
     # openstack service addresses
     openstack_database_address: 172.16.10.254
