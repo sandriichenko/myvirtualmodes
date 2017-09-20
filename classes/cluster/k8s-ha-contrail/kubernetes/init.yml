@@ -24,7 +24,7 @@ parameters:
     kubernetes_calico_cni_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/cni:latest
     kubernetes_opencontrail_cni_image: docker-prod-virtual.docker.mirantis.net/mirantis/kubernetes/contrail-integration/contrail-cni:v1.0.0
 
-    kubernetes_hyperkube_image: docker-prod-virtual.docker.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.7.3-1
+    kubernetes_hyperkube_image: docker-prod-virtual.docker.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.7.5-2
     kubernetes_virtlet_image: mirantis/virtlet:latest
     kubernetes_netchecker_agent_image: mirantis/k8s-netchecker-agent:v1.1.0
     kubernetes_netchecker_server_image: mirantis/k8s-netchecker-server:v1.1.0
