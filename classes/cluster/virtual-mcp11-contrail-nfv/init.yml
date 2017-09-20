@@ -14,7 +14,7 @@ parameters:
   _param:
     cluster_domain: virtual-mcp11-contrail-nfv.local
     cluster_name: virtual-mcp11-contrail-nfv
-
+    infra_config_hostname: cfg01
     # infra service addresses
     infra_config_address: 172.16.10.100
 
