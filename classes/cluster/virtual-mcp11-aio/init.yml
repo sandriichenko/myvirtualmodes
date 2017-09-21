@@ -31,7 +31,7 @@ parameters:
     mysql_admin_password: workshop
     rabbitmq_secret_key: workshop
     rabbitmq_admin_password: workshop
-    loopback_device_size: 10
+    loopback_device_size: 20
     salt_master_host: 192.168.10.90
     salt_master_base_environment: prd
     salt_minion_ca_host: ${linux:network:fqdn}
