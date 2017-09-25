@@ -1,10 +1,10 @@
 classes:
-- system.salt.master.pkg
-- system.salt.master.api
-- system.salt.minion.ca.salt_master
-- system.reclass.storage.salt
-- system.sphinx.server.doc.reclass
-- cluster.drivetrain-ha-clusters
+  - system.salt.master.pkg
+  - system.salt.master.api
+  - system.salt.minion.ca.salt_master
+  - system.reclass.storage.salt
+  - system.sphinx.server.doc.reclass
+  - cluster.drivetrain-ha-clusters
 parameters:
   _param:
     reclass_data_repository: "https://gerrit.mcp.mirantis.net/salt-models/mcp-virtual-lab"
@@ -16,6 +16,8 @@ parameters:
     salt_minion_ca_host: ${linux:network:fqdn}
     salt_master_host: ${_param:infra_config_deploy_address}
     cluster_public_host: ${_param:infra_config_address}
+    salt_api_password: hovno12345!
+    salt_api_password_hash: "$6$sGnRlxGf$al5jMCetLP.vfI/fTl3Z0N7Za1aeiexL487jAtyRABVfT3NlwZxQGVhO7S1N8OwS/34VHYwZQA8lkXwKMN/GS1"
   salt:
     master:
       order_masters: true
@@ -74,7 +76,9 @@ parameters:
           name: ${_param:cicd_control_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
+          - cluster.${_param:cluster_name}.infra.config
           - cluster.${_param:cluster_name}.cicd.control.master
+          - cluster.overrides
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
@@ -85,6 +89,7 @@ parameters:
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.cicd.control.slave
+          - cluster.overrides
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
@@ -96,10 +101,10 @@ parameters:
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.cicd.control.slave
+          - cluster.overrides
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
             single_address: ${_param:cicd_control_node03_address}
             keepalived_vip_priority: 101
             docker_swarm_role: worker
-

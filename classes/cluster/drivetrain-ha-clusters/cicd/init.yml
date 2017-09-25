@@ -38,4 +38,3 @@ parameters:
           names:
           - ${_param:cicd_control_node03_hostname}
           - ${_param:cicd_control_node03_hostname}.${_param:cluster_domain}
-

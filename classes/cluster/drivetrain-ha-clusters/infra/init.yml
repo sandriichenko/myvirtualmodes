@@ -1,13 +1,3 @@
-classes:
-- system.linux.system.single
-- system.rsyslog.client.single
-- system.linux.system.haveged
-- system.linux.system.prompt
-- system.linux.system.motd.dynamic
-- system.openssh.server.team.lab
-- system.openssh.server.team.tcpcloud
-- system.openssh.server.team.mcp_qa
-- system.openssh.server.team.oss_team
 parameters:
   _param:
     cluster_domain: drivetrain-ha-clusters.local
@@ -19,8 +9,6 @@ parameters:
     infra_config_deploy_address: 192.168.10.90
     salt_minion_ca_host: ci01.${_param:cluster_domain}
     salt_minion_ca_authority: salt_master_ca
-    salt_api_password: hovno12345!
-    salt_api_password_hash: "$6$sGnRlxGf$al5jMCetLP.vfI/fTl3Z0N7Za1aeiexL487jAtyRABVfT3NlwZxQGVhO7S1N8OwS/34VHYwZQA8lkXwKMN/GS1"
   linux:
     network:
       host:
@@ -32,4 +20,3 @@ parameters:
     system:
       name: ${_param:infra_config_hostname}
       domain: ${_param:cluster_domain}
-

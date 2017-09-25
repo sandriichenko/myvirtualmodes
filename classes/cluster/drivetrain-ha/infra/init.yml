@@ -1,13 +1,3 @@
-classes:
-- system.linux.system.single
-- system.rsyslog.client.single
-- system.linux.system.haveged
-- system.linux.system.prompt
-- system.linux.system.motd.dynamic
-- system.openssh.server.team.lab
-- system.openssh.server.team.tcpcloud
-- system.openssh.server.team.mcp_qa
-- system.openssh.server.team.oss_team
 parameters:
   _param:
     cluster_domain: drivetrain-ha.local

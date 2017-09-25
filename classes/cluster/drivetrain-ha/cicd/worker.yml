@@ -1,6 +1,5 @@
 classes:
-- system.linux.system.single
-- system.jenkins.slave.docker
-- system.aptly.client.publisher
-- cluster.drivetrain-ha
-
+  - system.linux.system.single
+  - system.jenkins.slave.docker
+  - system.aptly.client.publisher
+  - cluster.drivetrain-ha

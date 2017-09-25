@@ -1,10 +1,10 @@
 classes:
-- system.salt.master.pkg
-- system.salt.master.api
-- system.salt.minion.ca.salt_master
-- system.reclass.storage.salt
-- system.sphinx.server.doc.reclass
-- cluster.drivetrain-ha
+  - system.salt.master.pkg
+  - system.salt.master.api
+  - system.salt.minion.ca.salt_master
+  - system.reclass.storage.salt
+  - system.sphinx.server.doc.reclass
+  - cluster.drivetrain-ha
 parameters:
   _param:
     reclass_data_repository: "https://gerrit.mcp.mirantis.net/salt-models/mcp-virtual-lab"
@@ -77,6 +77,7 @@ parameters:
           classes:
           - cluster.${_param:cluster_name}.infra.config
           - cluster.${_param:cluster_name}.cicd.control.master
+          - cluster.overrides
           params:
             salt_master_host: 127.0.0.1
             linux_system_codename: xenial
@@ -87,6 +88,7 @@ parameters:
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.cicd.control.slave
+          - cluster.overrides
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
@@ -98,6 +100,7 @@ parameters:
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.cicd.control.slave
+          - cluster.overrides
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
