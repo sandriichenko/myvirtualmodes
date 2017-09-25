@@ -1,8 +1,8 @@
 parameters:
   _param:
-    openstack_proxy_hostname: prx
-    openstack_proxy_address: ${_param:openstack_proxy_node01_address}
-    openstack_proxy_node01_hostname: prx01
+    openstack_proxy_hostname: cfg
+    openstack_proxy_address: ${_param:infra_config_address}
+    openstack_proxy_node01_hostname: cfg01
     openstack_proxy_node01_address: ${_param:infra_config_address}
     openstack_control_hostname: ctl
     openstack_control_node01_hostname: ctl01
