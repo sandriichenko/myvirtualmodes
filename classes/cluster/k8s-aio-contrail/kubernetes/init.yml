@@ -22,6 +22,12 @@ parameters:
     kubernetes_hyperkube_image: docker-prod-virtual.docker.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.7.5-2
     kubernetes_netchecker_agent_image: quay.io/l23network/k8s-netchecker-agent:v1.0
     kubernetes_netchecker_server_image: quay.io/l23network/k8s-netchecker-server:v1.0
+    kubernetes_externaldns_image: mirantis/external-dns:latest
+    kubernetes_externaldns_provider: coredns
+
+    # switches of addons
+    kubernetes_coredns_enabled: false
+    kubernetes_externaldns_enabled: false
 
     # addresses and hostnames
     kubernetes_internal_api_address: 10.254.0.1

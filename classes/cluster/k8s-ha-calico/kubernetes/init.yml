@@ -69,6 +69,14 @@ parameters:
     calico_private_network: 192.168.0.0
     calico_private_netmask: 16
 
+    # component docker images
+    kubernetes_externaldns_image: mirantis/external-dns:latest
+    kubernetes_externaldns_provider: coredns
+
+    # switches of addons
+    kubernetes_coredns_enabled: false
+    kubernetes_externaldns_enabled: false
+
   linux:
     network:
       host:

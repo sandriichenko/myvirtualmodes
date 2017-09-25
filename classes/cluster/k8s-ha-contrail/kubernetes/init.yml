@@ -30,6 +30,8 @@ parameters:
     kubernetes_netchecker_server_image: mirantis/k8s-netchecker-server:v1.1.0
     kubernetes_netchecker_agent_probeurls: "http://ipinfo.io"
     kubernetes_virtlet_image: mirantis/virtlet:v0.7.0
+    kubernetes_externaldns_image: mirantis/external-dns:latest
+    kubernetes_externaldns_provider: coredns
 
     # switches of addons
     kubernetes_addon_namespace: kube-system
@@ -39,6 +41,8 @@ parameters:
     kubernetes_calico_policy_enabled: false
     kubernetes_virtlet_enabled: false
     kubernetes_contrail_network_controller: true
+    kubernetes_coredns_enabled: false
+    kubernetes_externaldns_enabled: false
 
     # addresses and hostnames
     kubernetes_internal_api_address: 10.254.0.1

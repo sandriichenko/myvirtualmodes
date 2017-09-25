@@ -27,11 +27,15 @@ parameters:
     kubernetes_netchecker_agent_image: mirantis/k8s-netchecker-agent:v1.1.0
     kubernetes_netchecker_server_image: mirantis/k8s-netchecker-server:v1.1.0
     kubernetes_netchecker_agent_probeurls: "http://ipinfo.io"
+    kubernetes_externaldns_image: mirantis/external-dns:latest
+    kubernetes_externaldns_provider: coredns
 
     # switches of addons
     kubernetes_helm_enabled: true
     kubernetes_netchecker_enabled: true
     kubernetes_calico_policy_enabled: false
+    kubernetes_coredns_enabled: false
+    kubernetes_externaldns_enabled: false
 
     # addresses and hostnames
     kubernetes_internal_api_address: 10.254.0.1

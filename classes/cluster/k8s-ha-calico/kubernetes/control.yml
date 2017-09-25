@@ -51,6 +51,12 @@ parameters:
           agent_image: ${_param:kubernetes_netchecker_agent_image}
           server_image: ${_param:kubernetes_netchecker_server_image}
           agent_probeurls: ${_param:kubernetes_netchecker_agent_probeurls}
+        coredns:
+          enabled: ${_param:kubernetes_coredns_enabled}
+        externaldns:
+          enabled: ${_param:kubernetes_externaldns_enabled}
+          image: ${_param:kubernetes_externaldns_image}
+          provider: ${_param:kubernetes_externaldns_provider}
     master:
       kubelet:
         address: ${_param:single_address}

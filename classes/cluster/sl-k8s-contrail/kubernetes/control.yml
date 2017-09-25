@@ -29,6 +29,12 @@ parameters:
           server_image: ${_param:kubernetes_netchecker_server_image}
         helm:
           enabled: true
+        coredns:
+          enabled: ${_param:kubernetes_coredns_enabled}
+        externaldns:
+          enabled: ${_param:kubernetes_externaldns_enabled}
+          image: ${_param:kubernetes_externaldns_image}
+          provider: ${_param:kubernetes_externaldns_provider}
     master:
       etcd:
         ssl:

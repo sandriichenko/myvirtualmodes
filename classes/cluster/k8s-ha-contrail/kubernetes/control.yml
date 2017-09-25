@@ -37,6 +37,12 @@ parameters:
           namespace: ${_param:kubernetes_addon_namespace}
           enabled: ${_param:kubernetes_contrail_network_controller}
           image: ${_param:kubernetes_contrail_network_controller_image}
+        coredns:
+          enabled: ${_param:kubernetes_coredns_enabled}
+        externaldns:
+          enabled: ${_param:kubernetes_externaldns_enabled}
+          image: ${_param:kubernetes_externaldns_image}
+          provider: ${_param:kubernetes_externaldns_provider}
     master:
       etcd:
         ssl:

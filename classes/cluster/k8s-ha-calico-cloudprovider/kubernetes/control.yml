@@ -41,6 +41,12 @@ parameters:
           enabled: true
         helm:
           enabled: false
+        coredns:
+          enabled: ${_param:kubernetes_coredns_enabled}
+        externaldns:
+          enabled: ${_param:kubernetes_externaldns_enabled}
+          image: ${_param:kubernetes_externaldns_image}
+          provider: ${_param:kubernetes_externaldns_provider}
       cloudprovider:
         enabled: true
         provider: openstack
