@@ -1,0 +1,83 @@
+classes:
+- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.saltstack.xenial
+- system.linux.system.repo.mcp.contrail
+
+- system.opencontrail.client.cluster
+
+- system.ironic.api.cluster # deploy only api (heartbeat and lookup endpoints are open)
+- system.ironic.conductor.cluster
+- system.ironic.tftpd_hpa
+- system.nova.compute_ironic.cluster
+- system.apache.server.single
+- system.apache.server.site.ironic
+- system.keystone.client.core
+- system.neutron.client.service.ironic_provision
+- service.baremetal_simulator.simulator
+- service.baremetal_simulator.nodes_neutron
+- service.baremetal_simulator.network.contrail_ovs
+- service.baremetal_simulator.tor
+#- cluster.os-ha-contrail-ironic.openstack.ironic_provision
+- cluster.os-ha-contrail-ironic
+parameters:
+  _param:
+    deploy_interface: ens3
+    primary_interface: ens4
+    baremetal_interface: ens7
+    linux_system_codename: xenial
+    interface_mtu: 1450
+    cluster_vip_address: ${_param:openstack_control_address}
+    cluster_baremetal_vip_address: ${_param:single_baremetal_address}
+    cluster_baremetal_local_address: ${_param:single_baremetal_address}
+    linux_system_codename: xenial
+    opencontrail_compute_address: ${_param:single_address}
+    opencontrail_compute_gateway: 172.16.10.1
+    opencontrail_compute_iface: ens4
+    openstack_baremetal_neutron_subnet_cidr: 192.168.90.0/24
+    openstack_baremetal_neutron_subnet_allocation_start: 192.168.90.100
+    openstack_baremetal_neutron_subnet_allocation_end: 192.168.90.200
+  ironic:
+    conductor:
+      enabled_network_interfaces:
+        - flat
+        - neutron
+        - noop
+      neutron:
+        cleaning_network: baremetal-provision-network
+        provisioning_network: baremetal-provision-network
+      ipxe_enabled: false
+      pxe_bootfile_name: pxelinux.0
+      automated_clean: True
+      pxe_config_template: ~
+    api:
+      api_type: deploy
+  baremetal_simulator:
+    deploy_ramdisk_file: tinyipa-stable-${_param:ironic_version}.gz
+    deploy_kernel_file: tinyipa-stable-${_param:ironic_version}.vmlinuz
+    deploy_ramdisk_md5summ: bd65e1f2c842d6110620f534e7204294
+    deploy_kernel_md5summ: 8bffc2d4ca84e7b6d1310fef7b8c6ddc
+  linux:
+    network:
+      concat_iface_files:
+      - src: '/etc/network/interfaces.d/50-cloud-init.cfg'
+        dst: '/etc/network/interfaces'
+      bridge: openvswitch
+      interface:
+        dhcp_int:
+          enabled: true
+          name: ${_param:deploy_interface}
+          proto: dhcp
+          type: eth
+          mtu: ${_param:interface_mtu}
+        primary_interface:
+          enabled: true
+          name: ${_param:primary_interface}
+          proto: static
+          address: ${_param:single_address}
+          netmask: 255.255.255.0
+          type: eth
+        br-baremetal:
+          enabled: true
+          type: ovs_bridge
+          mtu: ${_param:interface_mtu}
