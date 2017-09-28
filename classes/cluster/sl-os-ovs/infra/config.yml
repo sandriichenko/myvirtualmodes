@@ -67,7 +67,7 @@ parameters:
       site:
         nginx_proxy_openstack_web:
           proxy:
-            host: prx
+            host: prx01
         nginx_proxy_openstack_api_heat_cfn:
           enabled: false
   salt:
