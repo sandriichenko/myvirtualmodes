@@ -8,7 +8,7 @@ classes:
 - cluster.k8s-ha-contrail
 parameters:
   _param:
-    keepalived_vip_interface: ens3
+    keepalived_vip_interface: vhost0
     keepalived_vip_virtual_router_id: 60
   etcd:
     server:
@@ -44,6 +44,8 @@ parameters:
           image: ${_param:kubernetes_externaldns_image}
           provider: ${_param:kubernetes_externaldns_provider}
     master:
+      kubelet:
+        address: ${_param:single_address}
       etcd:
         ssl:
           enabled: true
