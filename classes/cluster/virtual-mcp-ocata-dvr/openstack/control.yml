@@ -73,6 +73,9 @@ parameters:
       enabled: ${_param:designate_pool_manager_enabled}
       periodic_sync_interval: ${_param:designate_pool_manager_periodic_sync_interval}
     server:
+      mdns:
+        address: ${_param:designate_mdns_address}
+        port: ${_param:designate_mdns_port}
       pools:
         default:
           description: 'test pool'
