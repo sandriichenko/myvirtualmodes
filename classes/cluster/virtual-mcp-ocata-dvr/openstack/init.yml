@@ -52,6 +52,8 @@ parameters:
     powerdns_webserver_password: gJ6n3gVaYP8eS
     powerdns_webserver_port: 8081
     designate_domain_id: 5186883b-91fb-4891-bd49-e6769234a8fc
+    designate_mdns_address: 0.0.0.0
+    designate_mdns_port: 53
     designate_pdns_api_key: VxK9cMlFL5Ae
     designate_pdns_api_endpoint: "http://${_param:openstack_dns_node01_address}:${_param:powerdns_webserver_port}"
     designate_pool_manager_enabled: True
