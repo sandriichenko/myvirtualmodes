@@ -25,7 +25,6 @@ classes:
 - system.aodh.server.cluster
 - system.heka.ceilometer_collector.single
 - system.designate.server.cluster
-- system.designate.server.backend.pdns
 - system.galera.server.cluster
 - system.galera.server.database.aodh
 - system.galera.server.database.ceilometer
@@ -73,6 +72,10 @@ parameters:
       enabled: ${_param:designate_pool_manager_enabled}
       periodic_sync_interval: ${_param:designate_pool_manager_periodic_sync_interval}
     server:
+      backend:
+        pdns4:
+          api_token: ${_param:designate_pdns_api_key}
+          api_endpoint: ${_param:designate_pdns_api_endpoint}
       mdns:
         address: ${_param:designate_mdns_address}
         port: ${_param:designate_mdns_port}
