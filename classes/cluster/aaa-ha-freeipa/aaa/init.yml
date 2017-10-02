@@ -1,6 +1,10 @@
 classes:
 #- cluster.aaa-ha-freeipa.aaa
-- system.linux.system.single
+
+# FIXME: Workaround linux.system.single rhel
+#- system.linux.system.single
+- cluster.aaa-ha-freeipa.aaa.linux-system-single
+
 - system.openssh.server.team.lab
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.mcp_qa
