@@ -6,4 +6,5 @@ classes:
 - system.openssh.server.team.lab
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.mcp_qa
+- system.openssh.server.team.services
 - cluster.overrides
