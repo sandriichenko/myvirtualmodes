@@ -61,7 +61,7 @@ parameters:
     cluster_baremetal_local_address: ${_param:cluster_local_address}
     openstack_baremetal_node01_baremetal_address: 192.168.90.11
     openstack_baremetal_node01_address: 172.16.10.110
-    metadata_password: password
+    metadata_password: workshop
     mysql_admin_user: root
     mysql_admin_password: workshop
     mysql_cinder_password: workshop
@@ -85,7 +85,6 @@ parameters:
     keystone_nova_password: workshop
     keystone_ironic_password: workshop
     ceilometer_secret_key: workshop
-    metadata_password: workshop
     horizon_version: ${_param:openstack_version}
     horizon_secret_key: opaesee8Que2yahJoh9fo0eefo1Aeyo6ahyei8zeiboh3aeth5loth7ieNa5xi5e
     horizon_identity_host: ${_param:cluster_vip_address}
