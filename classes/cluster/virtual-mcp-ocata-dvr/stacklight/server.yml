@@ -52,7 +52,7 @@ parameters:
     docker_image_remote_storage_adapter: docker-prod-virtual.docker.mirantis.net/openstack-docker/remote_storage_adapter:latest
     docker_image_remote_collector: docker-prod-virtual.docker.mirantis.net/openstack-docker/heka:latest
     docker_image_prometheus_relay: docker-prod-virtual.docker.mirantis.net/openstack-docker/prometheus_relay:latest
-    docker_image_grafana: grafana/grafana:4.3.2
+    docker_image_grafana: grafana/grafana:4.5.2
     influxdb_port: 8086
     influxdb_admin_password: password
     influxdb_stacklight_password: lmapass
