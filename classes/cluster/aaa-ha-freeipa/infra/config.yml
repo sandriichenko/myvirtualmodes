@@ -39,8 +39,10 @@ parameters:
               #source: pkg
               #name: salt-formula-salt
               source: git
-              address: 'https://github.com/epcim/salt-formula-salt.git'
-              revision: 'review/petr_michalec/allow-multiple-ext-pillars-and-reclass-options'
+              address: 'https://github.com/salt-formulas/salt-formula-salt.git'
+              revision: 'master'
+              #address: 'https://github.com/epcim/salt-formula-salt.git'
+              #revision: 'review/petr_michalec/allow-multiple-ext-pillars-and-reclass-options'
 
   reclass:
     storage:

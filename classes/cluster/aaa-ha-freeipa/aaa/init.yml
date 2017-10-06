@@ -9,6 +9,7 @@ classes:
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.mcp_qa
 - system.openssh.server.team.mmo_devops
+- system.openssh.server.team.services
 parameters:
   _param:
     salt_minion_ca_host: ${_param:infra_config_hostname}.${_param:cluster_domain}

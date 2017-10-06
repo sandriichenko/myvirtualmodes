@@ -7,6 +7,7 @@ classes:
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.mcp_qa
 - system.openssh.server.team.mmo_devops
+- system.openssh.server.team.services
 - system.rsyslog.client.single
 parameters:
   _param:
