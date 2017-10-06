@@ -33,7 +33,7 @@ parameters:
           namespace: ${_param:kubernetes_addon_namespace}
           image: ${_param:kubernetes_virtlet_image}
           hosts:
-          - ${linux:system:name}
+          - ${_param:kubernetes_compute01_hostname}
       hyperkube:
         image: ${_param:kubernetes_hyperkube_image}
   linux:
