@@ -25,6 +25,8 @@ parameters:
     single_address: 172.16.10.90
     infra_config_address: ${_param:single_address}
     cluster_domain: virtual-mcp11-aio.local
+    cluster_name: virtual-mcp11-aio
+    infra_config_hostname: cfg01
 
     mysql_admin_user: root
     mysql_admin_password: workshop
