@@ -136,6 +136,7 @@ parameters:
           cluster_param:
             stacklight_monitor_node03_address:
               value_template: <<node_control_ip>>
+      node:
         prx_node:
           name: ${_param:openstack_proxy_node01_hostname}
           domain: ${_param:cluster_domain}
@@ -185,4 +186,3 @@ parameters:
             single_address: ${_param:stacklight_monitor_node03_address}
             keepalived_vip_priority: 102
             mysql_cluster_role: slave
-
