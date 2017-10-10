@@ -22,6 +22,8 @@ parameters:
     ceph_cfs_node01_hostname: cfs01
     ceph_cfs_node01_address: 172.16.10.97
 
+    single_address: ''
+
     ceph_cluster_fsid: a619c5fc-c4ed-4f22-9ed2-66cf2feca23d
     ceph_mon_keyring: AQAnQIhZ6in5KxAAdf467upoRMWFcVg5pbh1yg==
     ceph_admin_keyring: AQBHPYhZv5mYDBAAvisaSzCTQkC5gywGUp/voA==
