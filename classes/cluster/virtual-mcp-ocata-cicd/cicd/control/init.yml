@@ -36,7 +36,7 @@ classes:
   - system.docker.swarm.stack.rundeck
   - system.docker.swarm.stack.security_monkey
   # Docker networks
-  - system.docker.swarm.network.runbook
+  - system.docker.swarm.network.oss_backend
 
   # Keepalived
   - system.keepalived.cluster.instance.cicd_control_vip
