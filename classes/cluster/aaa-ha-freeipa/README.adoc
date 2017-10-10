@@ -1,0 +1,49 @@
+
+
+== AAA / Identity virtual lab
+
+The purpose of the this lab is to develop full featured AAA / Identity product
+that would ship side-by-side our MCP OpenStack / Kubernetes solution.
+
+We develop this independently to other our products. Expected use-cases for the
+final product:
+
+* integrate with MCP OpenSatack/K8s
+* sell/deploy independently as mature AAA/Identity solution
+
+=== Workproducts
+
+This lab, once implemented is expected to provide:
+
+* reclass-system (shared model) usable production defaults for apps.
+* core/base formulas to support identity features on Ubuntu/RHEL
+* updates in exsisting formulas/apps to support SSO, SSSD, SAML etc.
+* documentation to enable features for current deployments
+* test procedures for QA
+
+
+== Infrastructure
+
+Virtual lab:
+  1x cfg, SaltMaster (Ubuntu)
+  3x idm, FreeIPA (Centos)
+  2x prx, Nginx, Apps (Ubuntu)
+
+For production we should assume these types of delivery:
+
+1. physical/virtual deployment (current focus)
+2. kubernetes helm charts
+
+== Components
+
+TBD
+
+== Architecture
+
+TBD
+
+== Resources
+
+TBD
+
+
