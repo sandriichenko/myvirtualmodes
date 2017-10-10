@@ -3,11 +3,7 @@ classes:
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.mcp.salt
 - system.linux.system.repo.ubuntu
-- system.openssh.server.team.lab
-- system.openssh.server.team.tcpcloud
-- system.openssh.server.team.mcp_qa
-- system.openssh.server.team.mmo_devops
-- system.openssh.server.team.services
+- system.openssh.server.team.all
 - system.rsyslog.client.single
 parameters:
   _param:

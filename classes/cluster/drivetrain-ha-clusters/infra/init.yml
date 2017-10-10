@@ -1,3 +1,11 @@
+classes:
+- system.linux.system.single
+- system.rsyslog.client.single
+- system.linux.system.haveged
+- system.linux.system.prompt
+- system.linux.system.motd.dynamic
+- system.openssh.server.team.all
+
 parameters:
   _param:
     cluster_domain: drivetrain-ha-clusters.local

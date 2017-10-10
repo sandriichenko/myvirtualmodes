@@ -4,8 +4,7 @@ classes:
 - system.linux.system.repo.mcp.salt #FIXME
 - system.linux.system.repo.saltstack.xenial
 - system.linux.system.repo.ubuntu
-- system.openssh.server.team.members.mlos
-- system.openssh.server.team.tcpcloud
+- system.openssh.server.team.all
 - cluster.ceph-ha.ceph
 - cluster.overrides
 parameters:
