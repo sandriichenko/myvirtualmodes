@@ -3,10 +3,7 @@ classes:
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.mcp.salt
 - system.linux.system.repo.ubuntu
-- system.openssh.server.team.lab
-- system.openssh.server.team.stacklight
-- system.openssh.server.team.tcpcloud
-- system.openssh.server.team.mcp_qa
+- system.openssh.server.team.all
 - system.rsyslog.client.single
 - cluster.virtual-mcp-ocata-cicd.cicd
 - cluster.virtual-mcp-ocata-cicd.openstack
