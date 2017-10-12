@@ -53,6 +53,9 @@ parameters:
     # Kibana
     kibana_elasticsearch_host: ${_param:cluster_vip_address}
     # Docker/Elasticsearch
+    cluster_elasticsearch_port: 9200
+    cluster_kibana_port: 5601
+    cluster_grafana_port: 3000
     cluster_node01_hostname: ${_param:stacklight_node01_hostname}
     cluster_node01_address: ${_param:stacklight_node01_address}
     cluster_node02_hostname: ${_param:stacklight_node02_hostname}
