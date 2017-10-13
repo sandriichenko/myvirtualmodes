@@ -129,6 +129,7 @@ parameters:
       enabled: false
   barbican:
     server:
+      ks_notifications_enable: True
       store:
         software:
           crypto_plugin: simple_crypto
