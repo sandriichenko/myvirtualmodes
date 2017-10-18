@@ -31,11 +31,11 @@ parameters:
 
     # switches of addons
     kubernetes_addon_namespace: kube-system
-    kubernetes_dashboard: false
+    kubernetes_dashboard: true
     kubernetes_helm_enabled: false
     kubernetes_netchecker_enabled: true
     kubernetes_calico_policy_enabled: false
-    kubernetes_virtlet_enabled: false
+    kubernetes_virtlet_enabled: true
 
     # addresses and hostnames
     kubernetes_internal_api_address: 10.254.0.1
