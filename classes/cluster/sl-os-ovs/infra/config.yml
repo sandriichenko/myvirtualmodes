@@ -4,6 +4,7 @@ classes:
 - system.docker.host
 - system.linux.system.single
 - system.linux.system.repo.mcp.salt
+- system.linux.system.repo.docker
 - system.openssh.client.lab
 - system.salt.master.api
 - system.salt.master.pkg

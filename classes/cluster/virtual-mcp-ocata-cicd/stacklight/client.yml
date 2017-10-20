@@ -4,6 +4,7 @@ classes:
 - system.grafana.client
 - system.grafana.client.datasource.prometheus
 - system.kibana.client.single
+- system.linux.system.repo.docker
 - cluster.virtual-mcp-ocata-cicd.infra
 parameters:
   _param:

@@ -2,6 +2,8 @@ classes:
 - system.docker.client
 - system.docker.host
 - system.linux.system.repo.ubuntu
+- system.linux.system.repo.mcp.salt
+- system.linux.system.repo.docker
 - system.openssh.client.lab
 - system.salt.master.pkg
 - system.salt.minion.ca.salt_master
