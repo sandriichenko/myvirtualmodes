@@ -32,7 +32,6 @@ classes:
 parameters:
   _param:
     keepalived_vip_interface: ens4
-    keepalived_openstack_telemetry_vip_interface: ens4
   linux:
     system:
       package:
@@ -100,4 +99,3 @@ parameters:
       notification:
         driver: messagingv2
         topics: "notifications"
-

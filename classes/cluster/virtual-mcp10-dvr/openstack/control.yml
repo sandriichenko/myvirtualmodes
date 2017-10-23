@@ -33,7 +33,6 @@ classes:
 parameters:
   _param:
     keepalived_vip_interface: eth1
-    keepalived_openstack_telemetry_vip_address: 172.16.10.252
   linux:
     system:
       package:

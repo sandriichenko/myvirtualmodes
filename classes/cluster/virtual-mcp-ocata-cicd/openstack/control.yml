@@ -39,7 +39,6 @@ parameters:
   _param:
     glusterfs_service_host: ${_param:cluster_vip_address}
     keepalived_vip_interface: ens4
-    keepalived_openstack_telemetry_vip_interface: ens4
     linux_system_codename: xenial
   linux:
     system:
@@ -152,4 +151,3 @@ parameters:
       notification:
         driver: messagingv2
         topics: "notifications,${_param:stacklight_notification_topic}"
-
