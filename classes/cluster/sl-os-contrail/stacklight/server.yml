@@ -4,6 +4,7 @@ classes:
 - system.linux.system.repo.mcp.salt
 - system.linux.system.repo.elasticsearch
 - system.linux.system.repo.kibana
+- system.linux.system.repo.docker
 - system.elasticsearch.server.cluster
 - system.elasticsearch.server.curator
 - system.kibana.server.single

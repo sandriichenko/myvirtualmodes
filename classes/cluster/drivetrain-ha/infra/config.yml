@@ -1,4 +1,5 @@
 classes:
+  - system.linux.system.repo.mcp.salt
   - system.salt.master.pkg
   - system.salt.master.api
   - system.salt.minion.ca.salt_master
