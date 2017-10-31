@@ -120,6 +120,8 @@ parameters:
                 rndc_host: ${_param:openstack_control_node03_address}
                 rndc_port: 953
                 rndc_key_file: /etc/designate/rndc.key
+      quota:
+        zones: ${_param:designate_quota_zones}
     worker:
       enabled: ${_param:designate_worker_enabled}
   glance:

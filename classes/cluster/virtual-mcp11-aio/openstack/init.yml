@@ -111,6 +111,7 @@ parameters:
       rndc_host: 127.0.0.1
       rndc_port: 953
       rndc_key_file: /etc/designate/rndc.key
+    designate_quota_zones: 40
     designate_worker_enabled: true
     linux_system_repo: deb [arch=amd64] http://mirror.fuel-infra.org/mcp-repos/${_param:openstack_version}/xenial ${_param:openstack_version} main
     linux_system_repo_pin: release a=${_param:openstack_version}
@@ -169,6 +170,9 @@ parameters:
     server:
       secure: False
   designate:
+    server:
+      quota:
+        zones: ${_param:designate_quota_zones}
     worker:
       enabled: ${_param:designate_worker_enabled}
   glance:

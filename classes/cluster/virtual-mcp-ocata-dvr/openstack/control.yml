@@ -92,6 +92,8 @@ parameters:
                 port: 53
                 api_endpoint: "http://${_param:openstack_dns_node02_address}:${_param:powerdns_webserver_port}"
                 api_token: ${_param:designate_pdns_api_key}
+      quota:
+        zones: ${_param:designate_quota_zones}
   glance:
     server:
       storage:
