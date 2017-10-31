@@ -1,4 +1,3 @@
 classes:
 - system.linux.system.repo.ubuntu
-- system.linux.network.hosts
 - cluster.ceph-ha.infra

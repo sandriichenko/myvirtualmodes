@@ -1,62 +1,22 @@
 classes:
 - service.ceph.osd.cluster
-- system.linux.network.hosts
 - cluster.ceph-ha.ceph.common
 parameters:
   ceph:
     osd:
       enabled: true
-      copy_admin_key: true
-      journal_type: raw
-      dmcrypt: disable
-      osd_scenario: raw_journal_devices
-      fs_type: xfs
-      disk:
-        '00':
-          rule: hdd
-          dev: /dev/vdb2
-          journal: /dev/vdb1
-          class: bestssd
-          weight: 1.5
-        '01':
-          rule: hdd
-          dev: /dev/vdc2
-          journal: /dev/vdc1
-          class: bestssd
-          weight: 1.5
-        '02':
-          rule: hdd
-          dev: /dev/vdd2
-          journal: /dev/vdd1
-          class: bestssd
-          weight: 1.5
-  linux:
-   storage:
-     disk:
-       disk01:
-         name: /dev/vdb
-         type: gpt
-         partitions:
-         - size: 4000
-           type: xfs
-         - size: 6000
-           type: xfs
-           mkfs: true
-       disk02:
-         name: /dev/vdc
-         type: gpt
-         partitions:
-         - size: 4000
-           type: xfs
-         - size: 6000
-           type: xfs
-           mkfs: true
-       disk03:
-         name: /dev/vdd
-         type: gpt
-         partitions:
-         - size: 4000
-           type: xfs
-         - size: 6000
-           type: xfs
-           mkfs: true
+      crush_parent: ${_param:ceph_crush_parent}
+#      crush_update: false
+#      copy_admin_key: true
+      bluestore_block_db_size: 10073741824
+      backend:
+        bluestore:
+          disks:
+            - dev: /dev/xvdb
+              block_db: /dev/xvdd
+#              class: hdd
+#              weight: 1.5
+            - dev: /dev/xvdc
+              block_db: /dev/xvdd
+#              class: hdd
+#              weight: 1.5

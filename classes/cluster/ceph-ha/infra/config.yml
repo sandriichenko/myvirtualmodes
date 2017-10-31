@@ -12,7 +12,7 @@ classes:
 parameters:
   _param:
     salt_master_base_environment: prd
-    reclass_data_repository: "https://github.com/LotharKAtt/ceph-virtual-lab.git"
+    reclass_data_repository: "https://github.com/tomkukral/ceph_ha_model.git"
 #    salt_master_environment_revision: master
 #    salt_master_environment_repository: "https://github.com/salt-formulas"
     reclass_data_revision: master
@@ -35,13 +35,10 @@ parameters:
           classes:
           - cluster.${_param:cluster_name}.ceph.osd
           repeat:
-            count: 3
+            count: 2
             start: 0
             digits: 1
             params:
-              ceph_host_id:
-                value: <<count>>
-                start: 1
               ceph_crush_parent:
                 value: rack<<count>>
                 start: 1
@@ -112,13 +109,5 @@ parameters:
           cluster_param:
             ceph_mon_node03_address:
               value_template: <<node_control_ip>>
-            single_address:
-              value_template: <<node_control_ip>>
-        ceph_cfs:
-          expression: <<node_hostname>>__startswith__cfs
-          node_class:
-            value_template:
-              - cluster.<<node_cluster>>.ceph.cfs
-          cluster_param:
             single_address:
               value_template: <<node_control_ip>>

@@ -1,0 +1,131 @@
+classes:
+- system.ceph.mon.cluster_init
+parameters:
+  ceph:
+    setup:
+      pool:
+        images:
+          pg_num: 64
+          pgp_num: 64
+          type: replicated
+          application: rbd
+          crush_rule: sata
+        volumes:
+          pg_num: 64
+          pgp_num: 64
+          type: replicated
+          application: rbd
+          crush_rule: sata
+        vms:
+          pg_num: 64
+          pgp_num: 64
+          type: replicated
+          application: rbd
+          crush_rule: sata
+        .rgw.root:
+          pg_num: 64
+          pgp_num: 64
+          type: replicated
+          application: rgw
+          crush_rule: sata
+        default.rgw.control:
+          pg_num: 64
+          pgp_num: 64
+          type: replicated
+          application: rgw
+          crush_rule: sata
+        default.rgw.meta:
+          pg_num: 64
+          pgp_num: 64
+          type: replicated
+          application: rgw
+          crush_rule: sata
+        default.rgw.log:
+          pg_num: 64
+          pgp_num: 64
+          type: replicated
+          application: rgw
+          crush_rule: sata
+        default.rgw.buckets.index:
+          pg_num: 64
+          pgp_num: 64
+          type: replicated
+          application: rgw
+          crush_rule: sata
+        default.rgw.buckets.data:
+          pg_num: 64
+          pgp_num: 64
+          type: replicated
+          application: rgw 
+          crush_rule: sata
+      # crush:
+      #   enforce: true
+      #   tunables:
+      #     choose_total_tries: 50
+      #     choose_local_tries: 0 
+      #     choose_local_fallback_tries: 0
+      #     chooseleaf_descend_once: 1
+      #     chooseleaf_vary_r: 1
+      #     chooseleaf_stable: 1
+      #     straw_calc_version: 1
+      #     allowed_bucket_algs: 54
+      #   type:
+      #     - root
+      #     - region
+      #     - rack
+      #     - host
+      #     - osd # musi byt pro kraken
+      #   root:
+      #     - name: sata
+      #     - name: ssd
+      #   region:
+      #     - name: eu-1
+      #       parent: sata
+      #     - name: eu-2
+      #       parent: ssd
+      #     - name: us-1
+      #       parent: sata
+      #     - name: us-2
+      #       parent: ssd
+      #   rack:
+      #     - name: rack01
+      #       parent: eu-1
+      #     - name: rack02
+      #       parent: eu-1
+      #     - name: rack03
+      #       parent: eu-1
+      #     - name: rack04
+      #       parent: us-2
+      #     - name: rack05
+      #       parent: us-2
+      #     - name: rack06
+      #       parent: us-2
+      #   pool:
+      #     - name: vms
+      #       rule: sata
+      #       app: rbd
+      #     - name: images
+      #       rule: sata
+      #       app: rbd
+      #     - name: volumes
+      #       rule: sata
+      #       app: rbd
+      #   rule:
+      #     ssd:
+      #       ruleset: 0
+      #       type: replicated
+      #       min_size: 1
+      #       max_size: 10
+      #       steps:
+      #         - take ssd
+      #         - chooseleaf firstn 0 type host
+      #         - emit
+      #     sata:
+      #       ruleset: 1
+      #       type: replicated
+      #       min_size: 1
+      #       max_size: 10
+      #       steps:
+      #         - take sata
+      #         - chooseleaf firstn 0 type host
+      #         - emit

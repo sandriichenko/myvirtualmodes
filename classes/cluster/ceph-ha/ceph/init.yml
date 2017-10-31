@@ -1,41 +1,25 @@
 parameters:
   _param:
-    linux_repo_ceph_component: jewel
-    ceph_version: jewel
-    ceph_mon_keepalived_password: tv0jeM4m4neum1s0p3nSt4cK3m
+    linux_repo_ceph_component: ${_param:ceph_version}
+    ceph_version: luminous
 
-    ceph_mon_hostname: cmn
     ceph_mon_node01_hostname: cmn01
     ceph_mon_node02_hostname: cmn02
     ceph_mon_node03_hostname: cmn03
-    ceph_mon_node01_address: 172.16.10.91
-    ceph_mon_node02_address: 172.16.10.92
-    ceph_mon_node03_address: 172.16.10.93
 
     ceph_osd_node01_hostname: osd01
     ceph_osd_node02_hostname: osd02
-    ceph_osd_node03_hostname: osd03
     ceph_osd_node01_address: 172.16.10.94
     ceph_osd_node02_address: 172.16.10.95
-    ceph_osd_node03_address: 172.16.10.96
-
-    ceph_cfs_node01_hostname: cfs01
-    ceph_cfs_node01_address: 172.16.10.97
-
-    single_address: ''
+    ceph_mon_node01_address: 172.16.10.96
+    ceph_mon_node02_address: 172.16.10.97
+    ceph_mon_node03_address: 172.16.10.98
 
     ceph_cluster_fsid: a619c5fc-c4ed-4f22-9ed2-66cf2feca23d
-    ceph_mon_keyring: AQAnQIhZ6in5KxAAdf467upoRMWFcVg5pbh1yg==
-    ceph_admin_keyring: AQBHPYhZv5mYDBAAvisaSzCTQkC5gywGUp/voA==
 
   linux:
     network:
       host:
-      #   cmn:
-      #     address: ${_param:ceph_mon_address}
-      #     names:
-      #     - ${_param:ceph_mon_hostname}
-      #     - ${_param:ceph_mon_hostname}.${_param:cluster_domain}
         cmn01:
           address: ${_param:ceph_mon_node01_address}
           names:
@@ -61,14 +45,3 @@ parameters:
           names:
           - ${_param:ceph_osd_node02_hostname}
           - ${_param:ceph_osd_node02_hostname}.${_param:cluster_domain}
-        osd03:
-          address: ${_param:ceph_osd_node03_address}
-          names:
-          - ${_param:ceph_osd_node03_hostname}
-          - ${_param:ceph_osd_node03_hostname}.${_param:cluster_domain}
-        cfs01:
-          address: ${_param:ceph_cfs_node01_address}
-          names:
-          - ${_param:ceph_cfs_node01_hostname}
-          - ${_param:ceph_cfs_node01_hostname}.${_param:cluster_domain}
-

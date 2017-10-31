@@ -1,22 +1,38 @@
-classes:
-- system.linux.system.repo.ceph
-- system.linux.system.repo.ubuntu
-- cluster.ceph-ha.ceph.common
-- cluster.ceph-ha.infra
-parameters:
-  _param:
-    keepalived_ceph_monitor_vip_address: ${_param:ceph_monitor_address}
-    keepalived_ceph_monitor_vip_password: ${_param:ceph_monitor_keepalived_password}
-    keepalived_ceph_monitor_vip_interface: ens3
-    cluster_vip_address: ${_param:ceph_monitor_address}
-    cluster_local_address: ${_param:single_address}
-    cluster_node01_hostname: cmn01
-    cluster_node01_address: ${_param:ceph_monitor_node01_address}
-    cluster_node02_hostname: cmn02
-    cluster_node02_address: ${_param:ceph_monitor_node02_address}
-    cluster_node03_hostname: cmn03
-    cluster_node03_address: ${_param:ceph_monitor_node03_address}
-    ceph_frondend_network: 10.1.0.0/24
-    ceph_backend_network: 10.16.0.0/24
-    nova_storage_keyring: novakeyring
-    cinder_storage_keyring: cinderkeyrinig
+# classes:
+# - system.ceph.rgw.cluster
+# - system.ceph.rgw.keystone
+# - cluster.ceph-ha.ceph
+# - cluster.ceph-ha.ceph.common
+# - cluster.ceph-ha.infra
+# parameters:
+#   _param:
+#     keepalived_vip_interface: ens3
+#     keepalived_vip_virtual_router_id: 41
+#     haproxy_radosgw_bind_port: 8080
+#     haproxy_radosgw_source_port: 8080
+#     ceph_radosgw_bind_port: 8080
+#     keepalived_vip_password: 9HpXQgHKxL1
+#     cluster_vip_address: 172.16.47.158
+#     cluster_node01_hostname: ${_param:ceph_rgw_node01_hostname}
+#     cluster_node01_address: ${_param:ceph_rgw_node01_address}
+#     cluster_node02_hostname: ${_param:ceph_rgw_node02_hostname}
+#     cluster_node02_address: ${_param:ceph_rgw_node02_address}
+#     cluster_node03_hostname: ${_param:ceph_rgw_node03_hostname}
+#     cluster_node03_address: ${_param:ceph_rgw_node03_address}
+#     ceph_radosgw_keystone_host: ${_param:openstack_control_address}
+#     ceph_radosgw_keystone_password: ${_param:keystone_admin_password}
+#   ceph:
+#     common:
+#       keyring:
+#         rgw.rgw01:
+#           caps:
+#             mon: "allow *"
+#             osd: "allow *"
+#         rgw.rgw02:
+#           caps:
+#             mon: "allow *"
+#             osd: "allow *"
+#         rgw.rgw03:
+#           caps:
+#             mon: "allow *"
+#             osd: "allow *"
