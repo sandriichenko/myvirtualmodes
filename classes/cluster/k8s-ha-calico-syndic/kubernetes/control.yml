@@ -1,7 +1,7 @@
 classes:
 - service.etcd.server.cluster
 - system.haproxy.proxy.listen.kubernetes.apiserver
-- system.linux.system.repo.docker
+- system.linux.system.repo.docker_legacy
 - system.salt.minion.cert.etcd_server
 - system.kubernetes.master.cluster
 - cluster.k8s-ha-calico-syndic.kubernetes.compute
