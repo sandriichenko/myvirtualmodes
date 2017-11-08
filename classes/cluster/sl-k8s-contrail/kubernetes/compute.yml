@@ -1,5 +1,5 @@
 classes:
-- system.linux.system.repo.docker
+- system.linux.system.repo.docker_legacy
 - system.kubernetes.pool.cluster
 - system.linux.network.hosts
 - system.salt.minion.cert.k8s_client
