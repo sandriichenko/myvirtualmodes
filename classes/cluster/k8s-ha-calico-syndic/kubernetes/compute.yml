@@ -10,7 +10,7 @@ parameters:
     kubernetes_calicoctl_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/ctl:latest
     kubernetes_calico_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/node:latest
     kubernetes_calico_cni_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/cni:latest
-    kubernetes_hyperkube_image: docker-prod-virtual.docker.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.7.5-2
+    kubernetes_hyperkube_image: docker-prod-virtual.docker.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.7.8-3
   docker:
     host:
       pkgs:
