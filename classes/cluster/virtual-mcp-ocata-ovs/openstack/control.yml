@@ -110,6 +110,8 @@ parameters:
                 rndc_key_file: /etc/designate/rndc.key
     worker:
       enabled: ${_param:designate_worker_enabled}
+    quota:
+        zones: ${_param:designate_quota_zones}
   glance:
     server:
       storage:
