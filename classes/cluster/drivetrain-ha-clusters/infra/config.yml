@@ -7,18 +7,6 @@ classes:
   - system.sphinx.server.doc.reclass
   - cluster.drivetrain-ha-clusters
 parameters:
-  _param:
-    reclass_data_repository: "https://gerrit.mcp.mirantis.net/salt-models/mcp-virtual-lab"
-    reclass_data_revision: master
-    reclass_config_master: ${_param:infra_config_deploy_address}
-    single_address: ${_param:infra_config_address}
-    linux_system_codename: xenial
-    salt_master_base_environment: prd
-    salt_minion_ca_host: ${linux:network:fqdn}
-    salt_master_host: ${_param:infra_config_deploy_address}
-    cluster_public_host: ${_param:infra_config_address}
-    salt_api_password: hovno12345!
-    salt_api_password_hash: "$6$sGnRlxGf$al5jMCetLP.vfI/fTl3Z0N7Za1aeiexL487jAtyRABVfT3NlwZxQGVhO7S1N8OwS/34VHYwZQA8lkXwKMN/GS1"
   salt:
     master:
       order_masters: true
@@ -77,9 +65,7 @@ parameters:
           name: ${_param:cicd_control_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.infra.config
           - cluster.${_param:cluster_name}.cicd.control.master
-          - cluster.overrides
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
@@ -90,7 +76,6 @@ parameters:
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.cicd.control.slave
-          - cluster.overrides
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
@@ -102,7 +87,6 @@ parameters:
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.cicd.control.slave
-          - cluster.overrides
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial

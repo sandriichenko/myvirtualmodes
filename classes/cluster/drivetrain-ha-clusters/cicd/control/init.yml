@@ -94,18 +94,18 @@ classes:
   - cluster.drivetrain-ha-clusters.cicd
 parameters:
   _param:
-    cluster_name: cicd-lab-dev
-    cluster_node01_name: ci01
+    cluster_name: drivetrain-ha-clusters
+    cluster_node01_name: cid01
     cluster_node01_address: ${_param:control_node01_address}
-    cluster_node02_name: ci02
+    cluster_node02_name: cid02
     cluster_node02_address: ${_param:control_node02_address}
-    cluster_node03_name: ci03
+    cluster_node03_name: cid03
     cluster_node03_address: ${_param:control_node03_address}
 
     keepalived_vip_virtual_router_id: 180
     keepalived_vip_priority: 103
     keepalived_vip_password: password
-    keepalived_vip_interface: ens3
+    keepalived_vip_interface: ens4
 
     cluster_vip_address: ${_param:control_vip_address}
     cluster_public_host: ${_param:control_public_host}

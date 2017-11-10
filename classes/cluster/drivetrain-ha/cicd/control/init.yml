@@ -94,18 +94,18 @@ classes:
   - cluster.drivetrain-ha.cicd
 parameters:
   _param:
-    cluster_name: cicd-lab-dev
-    cluster_node01_name: ci01
+    cluster_name: drivetrain-ha
+    cluster_node01_name: cid01
     cluster_node01_address: ${_param:control_node01_address}
-    cluster_node02_name: ci02
+    cluster_node02_name: cid02
     cluster_node02_address: ${_param:control_node02_address}
-    cluster_node03_name: ci03
+    cluster_node03_name: cid03
     cluster_node03_address: ${_param:control_node03_address}
 
     keepalived_vip_virtual_router_id: 180
     keepalived_vip_priority: 103
     keepalived_vip_password: password
-    keepalived_vip_interface: ens3
+    keepalived_vip_interface: ens4
 
     cluster_vip_address: ${_param:control_vip_address}
     cluster_public_host: ${_param:control_public_host}
@@ -359,9 +359,9 @@ parameters:
     rundeck_postgresql_database: rundeck
     rundeck_postgresql_host: ${_param:rundeck_db_host}
     rundeck_cis_openstack:
-      username: ${_param:oss_openstack_username}/auth/tokens
+      username: ${_param:oss_openstack_username}
       password: ${_param:oss_openstack_password}
-      auth_url: ${_param:oss_openstack_auth_url}
+      auth_url: ${_param:oss_openstack_auth_url}/auth/tokens
     rundeck_cis_elasticsearch_url: http://${_param:haproxy_elasticsearch_bind_host}:${_param:haproxy_elasticsearch_http_bind_port}
     rundeck_runbook_public_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBPHRctBuN16hVe05HxKeN1AqPqbjvWvqQ1zcr/sbJJXHgVBTACRD6G+DAi7SSJr7dLzyeNo042szJclsH/qf9h0tcytINATzye//x6MtzXZ4YIDkcd1Yhz1LRgCXk1PvIensJAdClYOymx+SRaJxEEzbLxgqhSnYOUY3xVGbUrgfXI9+ZG9hs9zfq5JEMRjQay5p+xuYv/wCoU+pbFPDmsW0hQ99O+XBHcwrpU3crkImetTM2WfnRlBkoJypLv/HicTJtnL91/BWcebvW50oxrEq1QQ82T1Wl3pQsJw24M48fXyl/HbF2QVP6O1Ptqr3O7cIByxJWHih3paZncVEj
     rundeck_runbook_private_key: |
