@@ -1,0 +1,8 @@
+classes:
+- system.linux.system.repo.ceph
+- cluster.virtual-mcp-ocata-ovs-ceph
+parameters:
+  ceph:
+    common:
+      public_network: 10.1.0.0/24
+      cluster_network: 10.16.0.0/24

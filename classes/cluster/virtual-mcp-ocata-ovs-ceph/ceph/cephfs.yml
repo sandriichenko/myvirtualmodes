@@ -1,0 +1,3 @@
+classes:
+- system.linux.system.repo.ubuntu
+- cluster.virtual-mcp-ocata-ovs-ceph
