@@ -65,6 +65,7 @@ parameters:
           name: ${_param:cicd_control_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
+          - cluster.${_param:cluster_name}.infra.config
           - cluster.${_param:cluster_name}.cicd.control.master
           params:
             salt_master_host: 127.0.0.1
