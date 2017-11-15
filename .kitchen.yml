@@ -21,6 +21,7 @@ platforms:
       provision_command:
         - apt-get update
         - apt-get install -y git curl python-pip
+        - pip install --upgrade pip
         - git clone https://github.com/salt-formulas/salt-formulas-scripts /srv/salt/scripts
         - cd /srv/salt/scripts; git pull -r; cd -
         # NOTE: Configure ENV options as needed, example:
@@ -28,8 +29,9 @@ platforms:
             export BOOTSTRAP=1;\n
             export CLUSTER_NAME=<%= cluster %>;\n
             export FORMULAS_SOURCE=pkg;\n
-            export RECLASS_VERSION=dev;\n
+            export RECLASS_VERSION=develop;\n
             export RECLASS_IGNORE_CLASS_NOTFOUND=True;\n
+            export RECLASS_IGNORE_CLASS_REGEXP='service.*';\n
             export EXTRA_FORMULAS="";\n
           " > /kitchen.env
           #export RECLASS_SOURCE_PATH=/usr/lib/python2.7/site-packages/reclass;\n
