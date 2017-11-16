@@ -48,12 +48,12 @@ parameters:
               value_template: <<node_deploy_ip>>
             cluster_domain:
               value_template: <<node_domain>>
-            cicd_control_node_node01_address:
+            cicd_control_node01_address:
               value_template: <<node_control_ip>>
         cicd_control_node02:
           expression: <<node_hostname>>__equals__cid02
           cluster_param:
-            cicd_control_node_node02_address:
+            cicd_control_node02_address:
               value_template: <<node_control_ip>>
         cicd_control_node03:
           expression: <<node_hostname>>__equals__cid03
