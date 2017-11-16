@@ -121,7 +121,7 @@ parameters:
     openstack_public_neutron_subnet_allocation_start: 192.168.130.10
     openstack_public_neutron_subnet_allocation_end: 192.168.130.254
     barbican_simple_crypto_kek: YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoxMjM0NTY=
-    barbican_integration_enabled: True
+    barbican_integration_enabled: False
   galera:
     master:
       members: ~
@@ -147,7 +147,7 @@ parameters:
   nova:
     compute:
       barbican:
-        enable: ${_param:barbican_integration_enabled}
+        enabled: ${_param:barbican_integration_enabled}
       vncproxy_url: http://${_param:single_address}:6080
       network:
         user: neutron
