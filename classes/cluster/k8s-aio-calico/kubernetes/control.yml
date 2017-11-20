@@ -1,9 +1,9 @@
 classes:
-- service.etcd.server.cluster
-- system.haproxy.proxy.listen.kubernetes.apiserver
+- service.etcd.server.single
 - system.linux.system.repo.docker_legacy
-- system.salt.minion.cert.etcd_server
-- system.kubernetes.master.cluster
+- system.salt.minion.cert.etcd_server_single
+- system.salt.minion.cert.k8s_server_single
+- system.kubernetes.master.single
 - cluster.k8s-aio-calico.kubernetes.compute
 - cluster.k8s-aio-calico
 parameters:
@@ -12,6 +12,8 @@ parameters:
     keepalived_vip_virtual_router_id: 60
   etcd:
     server:
+      bind:
+        host: ${_param:deploy_address}
       source:
         engine: docker_hybrid
       ssl:
@@ -23,20 +25,31 @@ parameters:
   kubernetes:
     common:
       addons:
-        netchecker:
-          enabled: true
+        dashboard:
+          enabled: ${_param:kubernetes_dashboard}
         helm:
-          enabled: true
+          enabled: ${_param:kubernetes_helm_enabled}
         coredns:
           enabled: ${_param:kubernetes_coredns_enabled}
         externaldns:
           enabled: ${_param:kubernetes_externaldns_enabled}
           image: ${_param:kubernetes_externaldns_image}
           provider: ${_param:kubernetes_externaldns_provider}
+        calico_policy:
+          enabled: ${_param:kubernetes_calico_policy_enabled}
+          image: ${_param:kubernetes_calico_policy_image}
+        netchecker:
+          enabled: ${_param:kubernetes_netchecker_enabled}
+          agent_image: ${_param:kubernetes_netchecker_agent_image}
+          server_image: ${_param:kubernetes_netchecker_server_image}
+          agent_probeurls: ${_param:kubernetes_netchecker_agent_probeurls}
     master:
       etcd:
         ssl:
           enabled: true
+    master:
+      kubelet:
+        address: ${_param:single_address}
       network:
         etcd:
           ssl:
