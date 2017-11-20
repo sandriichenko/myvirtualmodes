@@ -26,6 +26,11 @@ parameters:
 
     kubernetes_hyperkube_image: docker-prod-virtual.docker.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.7.8-3
     kubernetes_virtlet_image: mirantis/virtlet:latest
+    kubernetes_dashboard_image: gcr.io/google_containers/kubernetes-dashboard-amd64:v1.5.1
+    kubernetes_kubedns_image: gcr.io/google_containers/k8s-dns-kube-dns-amd64:1.14.5
+    kubernetes_dnsmasq_image: gcr.io/google_containers/k8s-dns-dnsmasq-amd64:1.14.5
+    kubernetes_sidecar_image: gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.5
+    kubernetes_dns_autoscaler_image: gcr.io/google_containers/cluster-proportional-autoscaler-amd64:1.0.0
     kubernetes_netchecker_agent_image: mirantis/k8s-netchecker-agent:stable
     kubernetes_netchecker_server_image: mirantis/k8s-netchecker-server:stable
     kubernetes_netchecker_agent_probeurls: "http://ipinfo.io"
@@ -35,6 +40,7 @@ parameters:
 
     # switches of addons
     kubernetes_addon_namespace: kube-system
+    kubernetes_dns: true
     kubernetes_dashboard: false
     kubernetes_helm_enabled: true
     kubernetes_netchecker_enabled: true

@@ -27,6 +27,7 @@ parameters:
       addons:
         dashboard:
           enabled: ${_param:kubernetes_dashboard}
+          image: ${_param:kubernetes_dashboard_image}
         helm:
           enabled: ${_param:kubernetes_helm_enabled}
         netchecker:
@@ -37,6 +38,13 @@ parameters:
           namespace: ${_param:kubernetes_addon_namespace}
           enabled: ${_param:kubernetes_contrail_network_controller}
           image: ${_param:kubernetes_contrail_network_controller_image}
+        dns:
+          enabled: ${_param:kubernetes_dns}
+          kubedns_image: ${_param:kubernetes_kubedns_image}
+          dnsmasq_image: ${_param:kubernetes_dnsmasq_image}
+          sidecar_image: ${_param:kubernetes_sidecar_image}
+          autoscaler:
+            image: ${_param:kubernetes_dns_autoscaler_image}
         coredns:
           enabled: ${_param:kubernetes_coredns_enabled}
         externaldns:
