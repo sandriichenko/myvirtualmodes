@@ -1,0 +1,15 @@
+classes:
+- service.ceph.osd.cluster
+- system.linux.system.repo.ceph
+- cluster.virtual-mcp-ocata-ovs-ceph
+parameters:
+  ceph:
+    osd:
+      enabled: true
+      crush_parent: ${_param:ceph_crush_parent}
+      bluestore_block_db_size: 10073741824
+      backend:
+        bluestore:
+          disks:
+            - dev: /dev/vdb
+              block_db: /dev/vdb

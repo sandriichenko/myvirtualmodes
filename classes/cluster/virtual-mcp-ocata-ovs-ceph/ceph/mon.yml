@@ -1,0 +1,5 @@
+classes:
+- system.ceph.mon.cluster
+- system.ceph.mgr.cluster
+- system.linux.system.repo.ceph
+- cluster.virtual-mcp-ocata-ovs-ceph
