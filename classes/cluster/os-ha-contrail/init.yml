@@ -15,3 +15,12 @@ parameters:
     minion:
       trusted_ca_minions:
         - cfg01
+  linux:
+    network:
+      host:
+        vsrx1:
+          address: 172.16.10.131
+          names:
+          - vsrx1
+          - vsrx1.${_param:cluster_domain}
+
