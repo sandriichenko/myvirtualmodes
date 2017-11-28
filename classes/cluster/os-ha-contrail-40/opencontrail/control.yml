@@ -1,9 +1,11 @@
 classes:
+- service.docker.host
 - system.linux.system.lowmem
 - system.linux.system.repo.cassandra
 - system.linux.system.repo.mcp.contrail
 - system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.extra
+- system.linux.system.repo.docker_legacy
 - system.linux.system.repo.saltstack.xenial
 - system.opencontrail.client.resource.edge_router
 - system.opencontrail.control.cluster4_0
@@ -13,6 +15,7 @@ classes:
 - system.opencontrail.client.resource.database_node
 - system.opencontrail.client.resource.analytics_node
 - system.haproxy.proxy.listen.opencontrail.analytics
+- system.docker.client
 - cluster.os-ha-contrail-40
 parameters:
   _param:
@@ -42,25 +45,8 @@ parameters:
       instance:
         VIP:
           virtual_router_id: 144
-  opencontrail:
-    web:
-      database:
-        port: 9042
-      network:
-        host: ${_param:openstack_control_address}
-      identity:
-        host: ${_param:openstack_control_address}
-    common:
-      network:
-        host: ${_param:openstack_control_address}
-      identity:
-        host: ${_param:openstack_control_address}
-    config:
-      network:
-        host: ${_param:openstack_control_address}
-      identity:
-        host: ${_param:openstack_control_address}
-      message_queue:
-        engine: rabbitmq
-        host: ${_param:openstack_control_address}
-        port: 5672
+  docker:
+    host:
+      pkgs:
+        - docker-engine
+        - python-docker
