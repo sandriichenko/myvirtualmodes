@@ -36,6 +36,9 @@ classes:
 - system.mysql.client.database.neutron
 - system.reclass.storage.system.openstack_control_cluster
 - system.reclass.storage.system.opencontrail_control_cluster
+- system.glance.client.image.cirros
+- system.glance.client.image.ubuntu_xenial
+- system.nova.client.flavor.default
 - cluster.os-ha-contrail.openstack.proxy
 - cluster.os-ha-contrail
 parameters:
@@ -49,6 +52,11 @@ parameters:
     salt_minion_ca_host: ${linux:network:fqdn}
     salt_api_password_hash: "$6$sGnRlxGf$al5jMCetLP.vfI/fTl3Z0N7Za1aeiexL487jAtyRABVfT3NlwZxQGVhO7S1N8OwS/34VHYwZQA8lkXwKMN/GS1"
   linux:
+    system:
+      kernel:
+        sysctl:
+          net.ipv4.conf.ens3.forwarding: 1
+          net.ipv4.conf.ens3.send_redirects: 0
     network:
       interface:
         ens4:
@@ -57,6 +65,12 @@ parameters:
           proto: static
           address: ${_param:single_address}
           netmask: 255.255.255.0
+          # This is workaround for different interface
+          pre_up_cmds:
+          - "iptables -t nat -A POSTROUTING -o ens3 -j MASQUERADE"
+          post_down_cmds:
+          - "iptables -t nat -F POSTROUTING"
+
   nginx:
     server:
       site:
