@@ -1,0 +1,4 @@
+classes:
+- system.ceph.mon.cluster
+- system.ceph.mgr.cluster
+- cluster.os-ha-ovs-ceph.ceph.common

@@ -1,0 +1,3 @@
+classes:
+- system.linux.system.repo.ubuntu
+- cluster.os-ha-ovs-ceph

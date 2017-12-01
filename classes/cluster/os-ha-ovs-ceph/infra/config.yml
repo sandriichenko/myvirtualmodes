@@ -2,40 +2,48 @@ classes:
 - service.git.client
 - system.linux.system.single
 - system.linux.system.repo.mcp.salt
-- system.linux.system.repo.ubuntu
 - system.linux.system.repo.mcp.openstack
 - system.openssh.client.lab
 - system.salt.master.api
 - system.salt.master.pkg
 - system.reclass.storage.salt
-- system.reclass.storage.system.ceph_mon_cluster
 - system.salt.minion.ca.salt_master
 - system.salt.minion.cert.proxy
 - system.sphinx.server.doc.reclass
-- system.keystone.client.single
-- system.keystone.client.service.aodh
-- system.keystone.client.service.ceilometer
+- system.keystone.client.core
+- system.keystone.client.service.designate
+- system.keystone.client.service.cinder
+- system.keystone.client.service.cinder2
+- system.keystone.client.service.cinder3
+- system.keystone.client.service.glance
+- system.keystone.client.service.glare
+- system.keystone.client.service.heat
+- system.keystone.client.service.heat-cfn
+- system.keystone.client.service.keystone
+- system.keystone.client.service.neutron
+- system.keystone.client.service.nova-ec2
 - system.keystone.client.service.nova21
 - system.keystone.client.service.nova-placement
-- system.keystone.client.service.glare
-- system.keystone.client.service.cinder3
-- system.mysql.client.single
+- system.mysql.client
+- system.mysql.client.database.cinder
+- system.mysql.client.database.glance
+- system.mysql.client.database.heat
+- system.mysql.client.database.keystone
+- system.mysql.client.database.nova
+- system.mysql.client.database.nova_api
+- system.mysql.client.database.neutron
 - system.reclass.storage.system.openstack_control_cluster
-- system.reclass.storage.system.openstack_compute_multi
-- system.reclass.storage.system.openstack_gateway_single
-- system.reclass.storage.system.openstack_dashboard_single
-- system.reclass.storage.system.stacklightv2_server_cluster
-- cluster.virtual-mcp-ocata-ovs-ceph.openstack.proxy
-- cluster.virtual-mcp-ocata-ovs-ceph.stacklight.proxy
-- cluster.virtual-mcp-ocata-ovs-ceph
+- system.reclass.storage.system.ceph_mon_cluster
+- cluster.os-ha-ovs-ceph.openstack.proxy
+- cluster.os-ha-ovs-ceph
 parameters:
   _param:
     reclass_data_repository: https://gerrit.mcp.mirantis.net/salt-models/mcp-virtual-lab
     reclass_data_revision: master
     salt_master_environment_repository: "https://github.com/tcpcloud"
     salt_master_environment_revision: master
-    reclass_config_master: 192.168.10.90
-    single_address: 172.16.10.100
+    reclass_config_master: ${_param:infra_config_deploy_address}
+    single_address: ${_param:infra_config_address}
     salt_master_host: 127.0.0.1
     salt_master_base_environment: prd
     salt_minion_ca_host: ${linux:network:fqdn}
@@ -54,7 +62,7 @@ parameters:
       site:
         nginx_proxy_openstack_web:
           proxy:
-            host: prx
+            host: ${_param:infra_config_address}
         nginx_proxy_openstack_api_heat_cfn:
           enabled: false
   salt:
@@ -121,21 +129,6 @@ parameters:
           cluster_param:
             openstack_gateway_node01_address:
               value_template: <<node_control_ip>>
-        stacklight_monitor_node01:
-          expression: <<node_hostname>>__equals__mon01
-          cluster_param:
-            stacklight_monitor_node01_address:
-              value_template: <<node_control_ip>>
-        stacklight_monitor_node02:
-          expression: <<node_hostname>>__equals__mon02
-          cluster_param:
-            stacklight_monitor_node02_address:
-              value_template: <<node_control_ip>>
-        stacklight_monitor_node03:
-          expression: <<node_hostname>>__equals__mon03
-          cluster_param:
-            stacklight_monitor_node03_address:
-              value_template: <<node_control_ip>>
         ceph_osd_node01:
           expression: <<node_hostname>>__equals__osd01
           cluster_param:
@@ -161,15 +154,6 @@ parameters:
           cluster_param:
             ceph_mon_node03_address:
               value_template: <<node_control_ip>>
-        openstack_dashboard:
-          expression: <<node_hostname>>__startswith__prx
-          node_class:
-            value_template:
-              - cluster.<<node_cluster>>.openstack.dashboard
-              - cluster.<<node_cluster>>.openstack.proxy
-          cluster_param:
-            openstack_proxy_node01_address:
-              value_template: <<node_control_ip>>
       node:
         openstack_control_node01:
           classes:
@@ -189,29 +173,6 @@ parameters:
           params:
             mysql_cluster_role: slave
             linux_system_codename: xenial
-        stacklight_server_node01:
-          classes:
-          - system.influxdb.server.single
-          - system.influxdb.database.stacklight
-        openstack_compute_node01:
-          params:
-            single_address: 172.16.10.105
-            tenant_address: 10.1.0.105
-            external_address: 10.16.0.105
-        openstack_compute_node02:
-          params:
-            single_address: 172.16.10.106
-            tenant_address: 10.1.0.106
-            external_address: 10.16.0.106
-        openstack_gateway_node01:
-          params:
-            tenant_address: 10.1.0.110
-            external_address: 10.16.0.110
-        openstack_proxy_node01:
-          classes:
-          - cluster.virtual-mcp-ocata-ovs-ceph.openstack.proxy
-          params:
-            linux_system_codename: xenial
         infra_storage_rack01:
           name: osd0<<count>>
           domain: ${_param:cluster_domain}
@@ -230,6 +191,3 @@ parameters:
                 start: 1
                 digits: 2
                 interpolate: true
-          params:
-            salt_master_host: ${_param:reclass_config_master}
-            linux_system_codename: xenial

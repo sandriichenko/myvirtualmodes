@@ -1,0 +1,17 @@
+classes:
+- system.ceph.osd.cluster
+- cluster.os-ha-ovs-ceph.ceph.common
+parameters:
+  ceph:
+    osd:
+      enabled: true
+      crush_parent: ${_param:ceph_crush_parent}
+      bluestore_block_db_size: 1007374182
+      bluestore_block_wal_size: 107374182
+      backend:
+        bluestore:
+          disks:
+            - dev: /dev/vdb
+              block_db: /dev/vdd
+            - dev: /dev/vdc
+              block_db: /dev/vdd

@@ -1,0 +1,48 @@
+parameters:
+  _param:
+    linux_repo_ceph_component: ${_param:ceph_version}
+    ceph_version: luminous
+    ceph_mon_node01_hostname: cmn01
+    ceph_mon_node02_hostname: cmn02
+    ceph_mon_node03_hostname: cmn03
+
+    ceph_osd_node01_hostname: osd01
+    ceph_osd_node02_hostname: osd02
+
+
+    ceph_osd_node01_address: 172.16.10.94
+    ceph_osd_node02_address: 172.16.10.95
+    ceph_mon_node01_address: 172.16.10.96
+    ceph_mon_node02_address: 172.16.10.97
+    ceph_mon_node03_address: 172.16.10.98
+
+    ceph_cluster_fsid: a619c5fc-c4ed-4f22-9ed2-66cf2feca23d
+
+  linux:
+    network:
+      host:
+        cmn01:
+          address: ${_param:ceph_mon_node01_address}
+          names:
+          - ${_param:ceph_mon_node01_hostname}
+          - ${_param:ceph_mon_node01_hostname}.${_param:cluster_domain}
+        cmn02:
+          address: ${_param:ceph_mon_node02_address}
+          names:
+          - ${_param:ceph_mon_node02_hostname}
+          - ${_param:ceph_mon_node02_hostname}.${_param:cluster_domain}
+        cmn03:
+          address: ${_param:ceph_mon_node03_address}
+          names:
+          - ${_param:ceph_mon_node03_hostname}
+          - ${_param:ceph_mon_node03_hostname}.${_param:cluster_domain}
+        osd01:
+          address: ${_param:ceph_osd_node01_address}
+          names:
+          - ${_param:ceph_osd_node01_hostname}
+          - ${_param:ceph_osd_node01_hostname}.${_param:cluster_domain}
+        osd02:
+          address: ${_param:ceph_osd_node02_address}
+          names:
+          - ${_param:ceph_osd_node02_hostname}
+          - ${_param:ceph_osd_node02_hostname}.${_param:cluster_domain}

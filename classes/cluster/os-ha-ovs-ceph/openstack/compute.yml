@@ -5,25 +5,23 @@ classes:
 - system.linux.network.hosts
 - system.nova.compute.cluster
 - system.neutron.compute.cluster
-- system.ceilometer.agent.cluster
-- system.prometheus.exporters.libvirt
 - system.nova.compute.storage.ceph
 - system.ceph.common.cluster
-- cluster.virtual-mcp-ocata-ovs-ceph.ceph.common
-- cluster.virtual-mcp-ocata-ovs-ceph.infra
+- cluster.os-ha-ovs-ceph.ceph.common
+- cluster.os-ha-ovs-ceph
 parameters:
   _param:
     primary_interface: ens4
     tenant_interface: ens5
     external_interface: ens6
-    interface_mtu: 1500
+    interface_mtu: 9000
     linux_system_codename: xenial
   nova:
     compute:
       vncproxy_url: http://${_param:cluster_vip_address}:6080
       notification:
         driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
+        topics: "notifications"
         notify_on:
           state_change: vm_and_task_state
       message_queue:
@@ -34,6 +32,9 @@ parameters:
   linux:
     network:
       bridge: openvswitch
+      concat_iface_files:
+      - src: '/etc/network/interfaces.d/50-cloud-init.cfg'
+        dst: '/etc/network/interfaces'
       interface:
         dhcp_int:
           enabled: true
@@ -43,12 +44,14 @@ parameters:
           mtu: ${_param:interface_mtu}
         primary_interface:
           enabled: true
+          ipflush_onchange: true
           name: ${_param:primary_interface}
           mtu: ${_param:interface_mtu}
           proto: manual
           type: eth
         tenant_interface:
           enabled: true
+          ipflush_onchange: true
           name: ${_param:tenant_interface}
           mtu: ${_param:interface_mtu}
           proto: manual
@@ -69,3 +72,4 @@ parameters:
           netmask: 255.255.255.0
           use_interfaces:
           - ${_param:tenant_interface}
+

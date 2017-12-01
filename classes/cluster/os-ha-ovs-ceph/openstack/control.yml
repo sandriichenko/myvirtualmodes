@@ -18,30 +18,24 @@ classes:
 - system.glance.control.cluster
 - system.nova.control.cluster
 - system.neutron.control.openvswitch.cluster
+- system.cinder.control.cluster
 - system.heat.server.cluster
-- system.ceilometer.server.cluster
-- system.ceilometer.server.backend.influxdb
-- system.aodh.server.cluster
-- system.heka.ceilometer_collector.single
+- system.designate.server.cluster
+- system.designate.server.backend.bind
 - system.galera.server.cluster
-- system.galera.server.database.aodh
-- system.galera.server.database.ceilometer
 - system.galera.server.database.cinder
+- system.galera.server.database.designate
 - system.galera.server.database.glance
-- system.galera.server.database.grafana
 - system.galera.server.database.heat
 - system.galera.server.database.keystone
 - system.galera.server.database.nova
 - system.haproxy.proxy.listen.openstack.nova-placement
 - system.glance.control.storage.ceph
 - system.cinder.control.backend.ceph
+- cluster.os-ha-ovs-ceph.ceph.common
 - system.ceph.common.cluster
-- cluster.virtual-mcp-ocata-ovs-ceph.ceph.common
-- system.cinder.control.cluster
-- system.cinder.control.notification.messagingv2
-- system.cinder.volume.single
-- system.cinder.volume.notification.messagingv2
-- cluster.virtual-mcp-ocata-ovs-ceph.infra
+- cluster.os-ha-ovs-ceph.openstack.dashboard
+- cluster.os-ha-ovs-ceph
 parameters:
   _param:
     keepalived_vip_interface: ens4
@@ -68,7 +62,37 @@ parameters:
       admin_email: ${_param:admin_email}
       notification:
         driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
+        topics: "notifications"
+  designate:
+    worker:
+      enabled: ${_param:designate_worker_enabled}
+    server:
+      pools:
+        default:
+          description: 'test pool'
+          targets:
+            default:
+              description: 'test target1'
+            default1:
+              type: ${_param:designate_pool_target_type}
+              description: 'test target2'
+              masters: ${_param:designate_pool_target_masters}
+              options:
+                host: ${_param:openstack_control_node02_address}
+                port: 53
+                rndc_host: ${_param:openstack_control_node02_address}
+                rndc_port: 953
+                rndc_key_file: /etc/designate/rndc.key
+            default2:
+              type: ${_param:designate_pool_target_type}
+              description: 'test target3'
+              masters: ${_param:designate_pool_target_masters}
+              options:
+                host: ${_param:openstack_control_node03_address}
+                port: 53
+                rndc_host: ${_param:openstack_control_node03_address}
+                rndc_port: 953
+                rndc_key_file: /etc/designate/rndc.key
   glance:
     server:
       storage:
@@ -77,34 +101,52 @@ parameters:
       workers: 1
       notification:
         driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
+        topics: "notifications"
   heat:
     server:
       notification:
         driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
+        topics: "notifications"
   neutron:
     server:
       notification:
         driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
+        topics: "notifications"
+  bind:
+    server:
+      control:
+        mgmt:
+          enabled: true
+          bind:
+            address: ${_param:single_address}
+            port: 953
+          allow:
+            - ${_param:openstack_control_node01_address}
+            - ${_param:openstack_control_node02_address}
+            - ${_param:openstack_control_node03_address}
+          keys:
+            - designate
   nova:
     controller:
       networking: dvr
       cpu_allocation: 54
       metadata:
         password: ${_param:metadata_password}
+      bind:
+        private_address: ${_param:cluster_local_address}
+        public_address: ${_param:cluster_vip_address}
+        novncproxy_port: 6080
       vncproxy_url: http://${_param:cluster_vip_address}:6080
       workers: 1
       notification:
         driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
+        topics: "notifications"
   cinder:
     volume:
       notification:
         driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
+        topics: "notifications"
     controller:
       notification:
         driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
+        topics: "notifications"

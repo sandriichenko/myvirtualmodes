@@ -1,0 +1,18 @@
+classes:
+- system.linux.network.dynamic_hosts
+- system.linux.system.single
+- cluster.os-ha-ovs-ceph.infra
+- cluster.os-ha-ovs-ceph.openstack
+- system.openssh.server.team.lab
+- system.openssh.server.team.tcpcloud
+- system.openssh.server.team.mcp_qa
+- system.openssh.server.team.services
+- cluster.overrides
+parameters:
+  _param:
+    # ceph addresses
+    ceph_osd_node01_address: 172.16.10.94
+    ceph_osd_node02_address: 172.16.10.95
+    ceph_mon_node01_address: 172.16.10.96
+    ceph_mon_node02_address: 172.16.10.97
+    ceph_mon_node03_address: 172.16.10.98

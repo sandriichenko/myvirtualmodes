@@ -1,6 +1,5 @@
 classes:
 - system.ceph.mon.cluster_init
-- cluster.virtual-mcp-ocata-ovs-ceph
 parameters:
   ceph:
     setup:
