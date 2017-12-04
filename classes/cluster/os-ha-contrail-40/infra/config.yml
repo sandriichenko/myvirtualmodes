@@ -40,6 +40,8 @@ classes:
 - cluster.os-ha-contrail-40
 parameters:
   _param:
+    ubuntu_xenial_image_url: "http://ci.mcp.mirantis.net:8085/images/ubuntu-16-04-x64-mcp1.1.qcow2"
+    cirros_image_url: "http://ci.mcp.mirantis.net:8085/images/cirros-x64-20170828.qcow2"
     reclass_data_repository: "https://gerrit.mcp.mirantis.net/salt-models/mcp-virtual-lab"
     reclass_data_revision: master
     reclass_config_master: ${_param:infra_config_deploy_address}
