@@ -1,5 +1,0 @@
-classes:
-  - system.docker.swarm.manager
-  - cluster.virtual-mcp-ocata-cicd.infra
-  - cluster.virtual-mcp-ocata-cicd.cicd.control
-  - cluster.virtual-mcp-ocata-cicd.stacklight.server
