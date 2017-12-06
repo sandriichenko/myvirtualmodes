@@ -134,25 +134,42 @@ parameters:
           cluster_param:
             ceph_osd_node01_address:
               value_template: <<node_control_ip>>
+            single_address:
+              value_template: <<node_control_ip>>
         ceph_osd_node02:
           expression: <<node_hostname>>__equals__osd02
           cluster_param:
             ceph_osd_node02_address:
+              value_template: <<node_control_ip>>
+            single_address:
+              value_template: <<node_control_ip>>
+        ceph_osd_03:
+          expression: <<node_hostname>>__equals__osd2
+          cluster_param:
+            ceph_osd_node03_address:
+              value_template: <<node_control_ip>>
+            single_address:
               value_template: <<node_control_ip>>
         ceph_mon_node01:
           expression: <<node_hostname>>__equals__cmn01
           cluster_param:
             ceph_mon_node01_address:
               value_template: <<node_control_ip>>
+            single_address:
+              value_template: <<node_control_ip>>
         ceph_mon_node02:
           expression: <<node_hostname>>__equals__cmn02
           cluster_param:
             ceph_mon_node02_address:
               value_template: <<node_control_ip>>
+            single_address:
+              value_template: <<node_control_ip>>
         ceph_mon_node03:
           expression: <<node_hostname>>__equals__cmn03
           cluster_param:
             ceph_mon_node03_address:
+              value_template: <<node_control_ip>>
+            single_address:
               value_template: <<node_control_ip>>
       node:
         openstack_control_node01:
@@ -179,7 +196,7 @@ parameters:
           classes:
           - cluster.${_param:cluster_name}.ceph.osd
           repeat:
-            count: 2
+            count: 3
             start: 1
             digits: 1
             params:

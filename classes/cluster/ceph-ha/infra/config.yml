@@ -35,7 +35,7 @@ parameters:
           classes:
           - cluster.${_param:cluster_name}.ceph.osd
           repeat:
-            count: 2
+            count: 3
             start: 0
             digits: 1
             params:
