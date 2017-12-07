@@ -34,9 +34,9 @@ classes:
 - system.galera.server.database.nova
 - system.haproxy.proxy.listen.openstack.nova-placement
 - system.glance.control.storage.ceph
-- system.cinder.control.backend.ceph
 - system.ceph.common.cluster
 - cluster.virtual-mcp-ocata-ovs-ceph.ceph.common
+- system.cinder.control.backend.ceph
 - system.cinder.control.cluster
 - system.cinder.control.notification.messagingv2
 - system.cinder.volume.single
@@ -71,8 +71,6 @@ parameters:
         topics: "notifications,${_param:stacklight_notification_topic}"
   glance:
     server:
-      storage:
-        engine: file
       images: []
       workers: 1
       notification:

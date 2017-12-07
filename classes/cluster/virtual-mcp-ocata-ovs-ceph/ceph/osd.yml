@@ -3,6 +3,16 @@ classes:
 - system.linux.system.repo.ceph
 - cluster.virtual-mcp-ocata-ovs-ceph
 parameters:
+  linux:
+    network:
+      interface:
+        ens4:
+          enabled: true
+          type: eth
+          proto: static
+          address: ${_param:single_address}
+          netmask: 255.255.255.0
+
   ceph:
     osd:
       enabled: true
