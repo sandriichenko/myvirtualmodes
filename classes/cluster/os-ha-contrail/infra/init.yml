@@ -6,4 +6,3 @@ parameters:
     infra_config_address: 172.16.10.100
     infra_config_hostname: cfg01
     linux_system_repo_mcp_salt_version: nightly
-  

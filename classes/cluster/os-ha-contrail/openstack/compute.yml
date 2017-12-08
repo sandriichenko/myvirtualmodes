@@ -36,6 +36,8 @@ parameters:
           enabled: true
           type: eth
           proto: manual
+          pre_up_cmds:
+          - ethtool -K ens4 rx off tx off gro off tso off
         vhost0:
           enabled: true
           type: eth
