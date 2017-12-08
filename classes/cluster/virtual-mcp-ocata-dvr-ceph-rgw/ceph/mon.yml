@@ -1,0 +1,16 @@
+classes:
+- system.ceph.mon.cluster
+- system.ceph.mgr.cluster
+- system.linux.system.repo.mcp.apt_mirantis.ceph
+- cluster.virtual-mcp-ocata-dvr-ceph-rgw.ceph.common
+- cluster.virtual-mcp-ocata-dvr-ceph-rgw
+parameters:
+  linux:
+    network:
+      interface:
+        ens4:
+          enabled: true
+          type: eth
+          proto: static
+          address: ${_param:single_address}
+          netmask: 255.255.255.0
