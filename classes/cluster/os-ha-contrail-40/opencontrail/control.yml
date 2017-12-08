@@ -16,7 +16,7 @@ classes:
 - system.opencontrail.client.resource.analytics_node
 - system.opencontrail.client.resource.global_vrouter_config
 - system.haproxy.proxy.listen.opencontrail.analytics
-- system.docker.client
+- system.docker.client.compose
 - cluster.os-ha-contrail-40
 parameters:
   _param:
