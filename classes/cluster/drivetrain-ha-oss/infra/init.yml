@@ -1,0 +1,30 @@
+parameters:
+  _param:
+    cluster_domain: drivetrain-ha-oss.local
+    cluster_name: drivetrain-ha-oss
+    linux_system_codename: xenial
+    apt_mk_version: nightly
+    infra_config_hostname: cid01
+    infra_config_address: 172.16.10.100
+    infra_config_deploy_address: 192.168.10.90
+    salt_minion_ca_host: cid01.${_param:cluster_domain}
+    salt_minion_ca_authority: salt_master_ca
+    salt_api_password: hovno12345!
+    salt_api_password_hash: "$6$sGnRlxGf$al5jMCetLP.vfI/fTl3Z0N7Za1aeiexL487jAtyRABVfT3NlwZxQGVhO7S1N8OwS/34VHYwZQA8lkXwKMN/GS1"
+    salt_master_base_environment: prd
+    salt_master_host: ${_param:infra_config_deploy_address}
+    reclass_data_repository: "https://gerrit.mcp.mirantis.net/salt-models/mcp-virtual-lab"
+    reclass_data_revision: master
+    reclass_config_master: ${_param:infra_config_deploy_address}
+    single_address: ${_param:infra_config_address}
+  linux:
+    network:
+      host:
+        cfg01:
+          address: ${_param:infra_config_address}
+          names:
+          - ${_param:infra_config_hostname}
+          - ${_param:infra_config_hostname}.${_param:cluster_domain}
+    system:
+      name: ${_param:infra_config_hostname}
+      domain: ${_param:cluster_domain}

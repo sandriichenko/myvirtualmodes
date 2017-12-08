@@ -1,0 +1,10 @@
+classes:
+  - system.linux.network.dynamic_hosts
+  - system.linux.system.single
+  - system.linux.system.haveged
+  - system.linux.system.prompt
+  - system.linux.system.motd.dynamic
+  - system.openssh.server.team.all
+  - cluster.drivetrain-ha-oss.infra
+  - cluster.drivetrain-ha-oss.cicd.control
+  - cluster.overrides

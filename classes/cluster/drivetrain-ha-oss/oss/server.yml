@@ -1,0 +1,62 @@
+classes:
+  # GlusterFS
+  - system.glusterfs.server.volume.elasticsearch
+  - system.glusterfs.server.volume.devops_portal
+  - system.glusterfs.server.volume.mongodb
+  - system.glusterfs.server.volume.postgresql
+  - system.glusterfs.server.volume.pushkin
+  - system.glusterfs.server.volume.rundeck
+  - system.glusterfs.server.volume.security_monkey
+
+  - system.glusterfs.client.volume.devops_portal
+  - system.glusterfs.client.volume.elasticsearch
+  - system.glusterfs.client.volume.mongodb
+  - system.glusterfs.client.volume.postgresql
+  - system.glusterfs.client.volume.pushkin
+  - system.glusterfs.client.volume.rundeck
+  - system.glusterfs.client.volume.security_monkey
+
+  # HAProxy
+  - system.haproxy.proxy.listen.oss.devops_portal
+  - system.haproxy.proxy.listen.oss.elasticsearch
+  - system.haproxy.proxy.listen.oss.janitor_monkey
+  - system.haproxy.proxy.listen.oss.mongodb
+  - system.haproxy.proxy.listen.oss.postgresql
+  - system.haproxy.proxy.listen.oss.pushkin
+  - system.haproxy.proxy.listen.oss.rundeck
+  - system.haproxy.proxy.listen.oss.security_monkey
+
+  # Rundeck
+  - system.rundeck.client.runbook
+
+parameters:
+  _param:
+    rundeck_runbook_public_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBPHRctBuN16hVe05HxKeN1AqPqbjvWvqQ1zcr/sbJJXHgVBTACRD6G+DAi7SSJr7dLzyeNo042szJclsH/qf9h0tcytINATzye//x6MtzXZ4YIDkcd1Yhz1LRgCXk1PvIensJAdClYOymx+SRaJxEEzbLxgqhSnYOUY3xVGbUrgfXI9+ZG9hs9zfq5JEMRjQay5p+xuYv/wCoU+pbFPDmsW0hQ99O+XBHcwrpU3crkImetTM2WfnRlBkoJypLv/HicTJtnL91/BWcebvW50oxrEq1QQ82T1Wl3pQsJw24M48fXyl/HbF2QVP6O1Ptqr3O7cIByxJWHih3paZncVEj
+    rundeck_runbook_private_key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEpAIBAAKCAQEAwTx0XLQbjdeoVXtOR8SnjdQKj6m471r6kNc3K/7GySVx4FQU
+      wAkQ+hvgwIu0kia+3S88njaNONrMyXJbB/6n/YdLXMrSDQE88nv/8ejLc12eGCA5
+      HHdWIc9S0YAl5NT7yHp7CQHQpWDspsfkkWicRBM2y8YKoUp2DlGN8VRm1K4H1yPf
+      mRvYbPc36uSRDEY0GsuafsbmL/8AqFPqWxTw5rFtIUPfTvlwR3MK6VN3K5CJnrUz
+      Nln50ZQZKCcqS7/x4nEybZy/dfwVnHm71udKMaxKtUEPNk9Vpd6ULCcNuDOPH18p
+      fx2xdkFT+jtT7aq9zu3CAcsSVh4od6WmZ3FRIwIDAQABAoIBAQCsnUNY2G7Quzec
+      /KQFyi7eq+6vPK596ihwIEAhpdqPLkrWWGWc0bx/n02a0nGAKOpQjPS6ZAKtKg7L
+      WMLmll4cRLJWdrtCcLuv5ILS5uBu8s7ZwFckDZo8Y4YYrT+sdXFhOcAUYLGwOa/M
+      oD2WgvsseHl3eDZgtDJXQhTo4jtleW4/ZETmduUBx2djSfwx2vv8N6V7+5bH2kvL
+      3PgR3PYp1uD+dPDy00SwuiWDDwljubQzpres8K4ikIWWaU4/t9TUBv+PJt3Kbavi
+      0ca+jdpRdPCW4QmEhNT+D10B3DCN9uVt9leCrYzvcrT1ElqiL4ODBefG0clKq64d
+      Zc59IVypAoGBAO2PX2qApylv+uuVe2dscH10qUjgYIuXeszJYtSCiPbu7yMcuFWo
+      c6sqU2/l/4vdd8qeHvS75VPzmX2QfF9p1EsL+LE5tzc3m54WfJ884LLI+nx8ynKU
+      HrbaLCGCK09bLNXM7XkFTe9s+XrJzgqdff/rF2nZHHyoqPObSgaG//HnAoGBANA8
+      TusN74PUX4ABLwGCLEd4/qRa0kgFtwngrcUY9XMWhrJUqi9tKJLN2URhqTbOzFA0
+      qv3n6TgZQSVH4ojmgL8EElSU2qKjDQ/jk/kEr5A+sBLdzXWZWdGv/BdB2yn95JH4
+      qoD4E9PWkNwz+e6I5PivXrVVIA0PEZ2cthutR/dlAoGBAORHzvfoEzpliijSZ1h2
+      Qw67iWUngH8DnJSnvRnbKkSoTBJgqd5eVnCX5r/zs4Ky2kdRdQvWd0QaJVgc/Pcv
+      GjrXkS60+JPOEvNyRmU6ue3z5Yi03lIGdhFeS+QTUw0Z31bAaz7NUxwNixtsS1u2
+      Bftj7QbhBFfiNyCJDDSDi/XnAoGAbsd2sIO0ZSypNZ7rk+Ddj5Rl26fZcKlhq+aU
+      a2OQyI42UE7MTvjCef760+8kp1yywwSR5wvmPYrp5lxsvqnp2jTfT5H1Ekqt20MV
+      6Ic+ov1GjHLlJ+fSKcR21ySY5KkGXUWt53iSi8L9Q7h/ARBgx4/8UXmc2HWoyHGj
+      S+wOeiUCgYA2EMH3QOP+LewScNkdgDr9e20+NxmZs+b0ZOk6JAUE+/YLSNDlRQZV
+      fL0f0cjIyCdKfv+nR4gdMnm8RDHBiAqrKK3X9tiZ0fGmPHB+OLwYV8wE1u9jkJDA
+      IJA5GNU+Uj6+WbPO+hGn3NBWfb7/tR3ojSv7cBf2eEUh/vLSE9joKA==
+      -----END RSA PRIVATE KEY-----

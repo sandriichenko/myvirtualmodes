@@ -1,0 +1,100 @@
+classes:
+  - system.linux.system.repo.docker
+  - system.linux.system.repo.glusterfs
+  # GlusterFS
+  - system.glusterfs.server.cluster
+  - system.glusterfs.server.volume.aptly
+  - system.glusterfs.server.volume.gerrit
+  - system.glusterfs.server.volume.jenkins
+  - system.glusterfs.server.volume.mysql
+  - system.glusterfs.server.volume.openldap
+  - system.glusterfs.server.volume.registry
+
+  - system.glusterfs.client.cluster
+  - system.glusterfs.client.volume.aptly
+  - system.glusterfs.client.volume.gerrit
+  - system.glusterfs.client.volume.jenkins
+  - system.glusterfs.client.volume.mysql
+  - system.glusterfs.client.volume.openldap
+  - system.glusterfs.client.volume.registry
+  # Aptly
+  # We need aptly-publisher.yml on each node for our Jenkins slaves in docker
+  - system.aptly.client.publisher
+
+  # Keepalived
+  - system.keepalived.cluster.instance.cicd_control_vip
+
+  # HAProxy
+  - system.salt.minion.cert.proxy
+  - system.haproxy.proxy.single
+  - system.haproxy.proxy.listen.cicd.aptly
+  - system.haproxy.proxy.listen.cicd.gerrit
+  - system.haproxy.proxy.listen.cicd.jenkins
+  - system.haproxy.proxy.listen.docker.registry
+  - system.haproxy.proxy.listen.docker.visualizer
+  - system.haproxy.proxy.listen.mysql
+  - system.haproxy.proxy.listen.openldap
+  - system.haproxy.proxy.listen.phpldapadmin
+  - system.haproxy.proxy.listen.stats
+
+  - cluster.drivetrain-ha-oss.cicd
+parameters:
+  _param:
+    cluster_name: drivetrain-ha-oss
+    cluster_node01_name: cid01
+    cluster_node01_address: ${_param:control_node01_address}
+    cluster_node02_name: cid02
+    cluster_node02_address: ${_param:control_node02_address}
+    cluster_node03_name: cid03
+    cluster_node03_address: ${_param:control_node03_address}
+
+    keepalived_vip_virtual_router_id: 180
+    keepalived_vip_priority: 103
+    keepalived_vip_password: password
+    keepalived_vip_interface: ens4
+
+    cluster_vip_address: ${_param:control_vip_address}
+    cluster_public_host: ${_param:control_public_host}
+    glusterfs_service_host: ${_param:control_vip_address}
+
+    admin_email: root@localhost
+
+    # Haproxy SSL configuration
+    cluster_ssl_certificate:
+      enabled: true
+      pem_file: /etc/haproxy/ssl/${_param:cluster_public_host}-all.pem
+    haproxy_bind_address: ${_param:cluster_vip_address}
+    haproxy_mysql_source_port: 13306
+
+    docker_registry_http_secret: aikemee4AhK0Eechai2eh6aa3eeWiet9
+
+    # CI/CD service databases
+    mysql_admin_password: password
+    mysql_gerrit_password: password
+
+  salt:
+    minion:
+      cert:
+        proxy:
+          alternative_names: "DNS:${_param:cluster_public_host}, DNS:*.${_param:cluster_public_host}, IP:${_param:control_vip_address}, IP:${_param:single_address}"
+          key_file: /etc/haproxy/ssl/${_param:cluster_public_host}.key
+          cert_file: /etc/haproxy/ssl/${_param:cluster_public_host}.crt
+          all_file: /etc/haproxy/ssl/${_param:cluster_public_host}-all.pem
+          ca_file: /etc/haproxy/ssl/${_param:salt_minion_ca_authority}-ca.crt
+          user: root
+          group: haproxy
+          mode: 640
+  haproxy:
+    proxy:
+      enabled: true
+  linux:
+    network:
+      resolv:
+        dns:
+        - 172.18.176.4
+        - 172.18.176.5
+        - 8.8.8.8
+    system:
+      package:
+        ca-certificates-java:
+          version: latest

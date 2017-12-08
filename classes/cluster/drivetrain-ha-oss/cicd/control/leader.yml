@@ -1,0 +1,225 @@
+classes:
+  - system.docker.swarm.master
+
+  # Docker
+  - system.docker.host
+  # Docker services
+  - system.docker.swarm.stack.aptly
+  - system.docker.swarm.stack.docker
+  - system.docker.swarm.stack.gerrit
+  - system.docker.swarm.stack.jenkins
+  - system.docker.swarm.stack.ldap
+
+  # Services
+  - system.docker.client
+  - system.aptly.server.docker
+  # Jenkins
+  - system.jenkins.master.config
+  - system.jenkins.client
+  - system.jenkins.client.node
+  # ..credentials
+  - system.jenkins.client.credential.gerrit
+  - system.jenkins.client.credential.salt
+  # ..security
+  - system.jenkins.client.security.ldap
+  - system.jenkins.client.security.matrix
+  # ..jobs
+  - system.jenkins.client.job.aptly
+  - system.jenkins.client.job.git-mirrors.downstream.pipelines
+  - system.jenkins.client.job.deploy.lab.release.mcp10
+  - system.jenkins.client.job.deploy.update.package
+  - system.jenkins.client.job.deploy.update.config
+  # Gerrit
+  - system.gerrit.client
+  - system.gerrit.client.project.ci
+  # OpenLDAP
+  - system.openldap.client
+  - system.openldap.client.people.admin
+
+  - cluster.drivetrain-ha-oss
+
+parameters:
+  _param:
+    # OpenLDAP
+    openldap_organisation: ${_param:cluster_name}
+    openldap_dn: 'dc=drivetrain-ha-oss,dc=local'
+    openldap_domain: ${linux:system:domain}
+    openldap_admin_password: password
+    openldap_config_password: password
+    openldap_readonly_password: password
+
+    # CI/CD service setup
+    # Jenkins
+    jenkins_client_user: admin
+    jenkins_client_password: ${_param:openldap_admin_password}
+    jenkins_admin_email: ${_param:admin_email}
+    jenkins_admin_public_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQD3hnJDKW4R+aXxdaSJSQmV4a6tRmRI1CECkccApr0h15dXGhgeRyrtMsXKpVkQpweQX+75rJHVcNvHpCsR3wLhS/vgOowQh+Xc7bvl9MzoYBGUw5VZyRD4HoHrp2FEUHQqwnOYubFdHBnOi6HZDdf1axFzjmymQX/XvuAd4vCmtW/wumaJ6tH/VlM57ik5jsWwKQIQZl7ODmlGusycuD5QEPade+cHEijGbLtRyMrP+BFJAzVmav2jeu1CtLD8AaKHB+mtfbHYhFkYhLlmFenztbB9S2kJhuSDjB4c8Xxj3N0O1rhKAJPi2o4LS8boa38EnTz55wq02/DxNMSgs9H0BFKK5qRuhaG4GBvwYC9HR/uzH4abFdNAr2kBLMbAo49qwJL4dfyY87T3JLSEUpg1Ycr31A2e1v8kBOCMipFOkOwlVm1F2P178YJmCcIl2NnzIvfI7SKvVgjgmoxfDZu55CMqf+W6hlMrchhGvXmTDFNfW7cr8ak4GCgZLUIkzWPRcgfwLN+328JhCgGeHfSkQBzMD4sZR0yw3Pc939gMXkRIsfDNnTJ8qZTDkiYfktUt3pRp8AudqQ++cf95nf2lTOyGehXkn7oHGAQfJ9mlSOTTM/e9shtT+jqsB5HW0BRVqtsm7cvyhYKQZCfWOhInBg4hfK5rJVGjCSLckTa4jQ==
+    jenkins_admin_private_key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      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
+      -----END RSA PRIVATE KEY-----
+
+    jenkins_security_ldap_server: ${_param:cluster_vip_address}
+    jenkins_security_ldap_root_dn: ${_param:openldap_dn}
+    jenkins_security_ldap_manager_dn: "cn=admin,${_param:openldap_dn}"
+    jenkins_security_ldap_manager_password: ${_param:openldap_admin_password}
+    jenkins_security_ldap_user_search_base: ou=people,${_param:openldap_dn}
+    jenkins_security_ldap_group_search_base: ou=groups,${_param:openldap_dn}
+    # Jobs params
+    jenkins_gerrit_url: ssh://admin@${_param:haproxy_gerrit_bind_host}:${_param:haproxy_gerrit_ssh_bind_port}
+    jenkins_aptly_api_url: http://${_param:haproxy_aptly_api_bind_host}:${_param:haproxy_aptly_api_bind_port}
+    jenkins_aptly_url: http://${_param:haproxy_aptly_public_bind_host}:${_param:haproxy_aptly_public_bind_port}
+    jenkins_aptly_storages: "local"
+
+    # Gerrit
+    gerrit_auth_type: LDAP
+    gerrit_ldap_server: "ldap://${_param:cluster_vip_address}"
+    gerrit_ldap_bind_user: "cn=admin,${_param:openldap_dn}"
+    gerrit_ldap_bind_password: ${_param:openldap_admin_password}
+    gerrit_ldap_account_base: ou=people,${_param:openldap_dn}
+    gerrit_ldap_group_base: ou=groups,${_param:openldap_dn}
+    gerrit_admin_email: ${_param:admin_email}
+    gerrit_public_host: http://${_param:haproxy_gerrit_bind_host}:${_param:haproxy_gerrit_bind_port}
+    gerrit_admin_public_key: ${_param:jenkins_admin_public_key}
+    gerrit_admin_private_key: ${_param:jenkins_admin_private_key}
+    gerrit_admin_password: password
+
+    # Aptly
+    aptly_gpg_keypair_id: 6C0B7F8E
+    aptly_gpg_passphrase:
+    aptly_gpg_public_key: |
+      -----BEGIN PGP PUBLIC KEY BLOCK-----
+      Version: GnuPG v1
+      mQENBFhSxjwBCADDiI85tVV+Wu44LTySzY8+NiGHWrFDXpV1BfwS5I2L0YOtp334
+      Ma3toeBo9PJG0LBC31D1EseKIXcz+91j8m0WbFPd/r5H9aK1Qv8Mss6dNLUiz63/
+      zOI7VbfnH73dxGhDTN3rP2OaYFtw2L09nfcAunV5tyJuG2GrNYi7bOLeNQ3HR1mz
+      pA0cArmRbysfwKn+E82nwnglC4vQD7+UDoBMU1/82qqOZNdqMOAD1Rd9S4QG3q80
+      bI9Bc8sOOkrdUa4XWN8DdvaT/4z4evMjhbMjqo8m69+Z66EUrgL+PCYbEVeZt8g9
+      pcESB/2zv0w0PDifwKoHVkzplxGFrp5Q65TvABEBAAG0LEFUJlQgQ0kvQ0QgQXB0
+      bHkgc2lnbmluZyBrZXkgPGFwdGx5QGF0dC5jb20+iQE4BBMBAgAiBQJYUsY8AhsD
+      BgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRC5cJVmbAt/joBeB/0efCqtvYal
+      vfCM9VfOZ3nHebDO/Xy31QYJZyE/XBBaM29ZZos2p1p9pqybMz35DASsauDpbNv3
+      lO/DYAb4QXeiBlTk/2CbQlj7GTCYSzxKSAZf6PaGSE+xVfWLZe5pb36YQpFYFl80
+      17KpPT1LWbpyLD+NIa7UzK3PLcWTO7IdcqS4BZ8gEfVAyifZuyQubLU/u/uvqCdy
+      cP+kdYc6qIYWkTo63tlJFA/e1nwdRJ7pUXqTD3jx6BsMuwqovUSjPwpykeDnYpUG
+      AiDIWWN5Y8iM2EnHmHHnxVb/3BCzDUFS7McRE8a/8WXBNRfxfbqld/Lfg5e4QYYj
+      2nXFPx5ySuWDuQENBFhSxjwBCADAmHdXgfV8YIx68sCNgPzbLkrzmm1t3aitL/TS
+      3B2NC5rzLyBqUdSJSygz2sjZOQ5ju2PZqdw29gs/Ql5M2y9CJ1IDSVranhEJReKe
+      7fXDXTerMwzJPKhZghJev8xd3Za+QMmGWA8ME0LE6DHBsCkniNuzT2lx17Y6LrR+
+      lOhW/j34hwEDBePSZ2GBUbXel/CNh4pVapnrcC1gN161lIYgM6SVnMUHo/89W34k
+      mFee4m8BcNS+st7mJ5aFBXMSIdkWA/AYyWkRnZFIyZdZUjunNwL1tlHCPXds3II+
+      MVLdPB6fncicX1U6gzF8fk2w9Ckm8I1pf2FV057KDoGXA71vABEBAAGJAR8EGAEC
+      AAkFAlhSxjwCGwwACgkQuXCVZmwLf475Ggf+Iqw6ZNSE2lSmvOLhPihC8kLoW//n
+      0SC5axqiWQTXkCNlx0x4lTa60VRFvWOSn7meGmeqFxOE1jBeyXVUfae1NfJnKTpJ
+      aX2VovWu448CklyvJfzHCVRaMotu187LUv8swrfbFS0DVyGihPYw7FoF7oACEz2E
+      OESpmK0ZwMxbpeN0cBVz4mmfcbVqHS6BziD9Q52ocPl4sR0C1RDao1w/RLphNMQ1
+      CdmJnSRDhC2SzJI+Bsy+dPgf9XdvT8PlKKSTPGWR/fbBE51/q1DOQ3Awhwv6KlZA
+      w/ozIKtbsh74Q1wlxotO3FgbA2Pk9Zqb8ZabhJQCpegr/le92PFZMUywNA==
+      =jsLk
+      -----END PGP PUBLIC KEY BLOCK-----
+    aptly_gpg_private_key: |
+      -----BEGIN PGP PRIVATE KEY BLOCK-----
+      Version: GnuPG v1
+      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
+      NA==
+      =MGAS
+      -----END PGP PRIVATE KEY BLOCK-----
