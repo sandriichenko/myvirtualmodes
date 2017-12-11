@@ -106,6 +106,8 @@ parameters:
               value_template: <<node_deploy_ip>>
             cluster_domain:
               value_template: <<node_domain>>
+            linux_repo_contrail_component:
+              value_template: <<opencontrail_version>>
         openstack_control01:
           expression: <<node_hostname>>__equals__ctl01
           cluster_param:
@@ -168,4 +170,3 @@ parameters:
             mysql_cluster_role: slave
             linux_system_codename: xenial
             horizon_identity_host: ${_param:openstack_control_address}
-
