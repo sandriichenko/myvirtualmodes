@@ -54,6 +54,7 @@ parameters:
     master:
       kubelet:
         address: ${_param:single_address}
+        fail_on_swap: ${_param:kubelet_fail_on_swap}
       etcd:
         ssl:
           enabled: true
