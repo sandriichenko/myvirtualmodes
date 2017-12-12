@@ -1,0 +1,63 @@
+classes:
+- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.saltstack.xenial
+- system.linux.system.repo.mcp.contrail
+- system.opencontrail.compute.cluster
+- system.opencontrail.client.cluster
+- system.opencontrail.client.resource.virtual_router
+- service.opencontrail.compute.cluster
+#- system.keystone.client.core
+#- system.neutron.client.service.ironic_provision
+- cluster.os-ha-contrail-ironic
+parameters:
+  _param:
+    deploy_interface: ens3
+    primary_interface: ens4
+    linux_system_codename: xenial
+    interface_mtu: 1450
+    cluster_vip_address: ${_param:openstack_control_address}
+    linux_system_codename: xenial
+    opencontrail_compute_address: ${_param:single_address}
+    opencontrail_compute_gateway: 172.16.10.1
+    opencontrail_compute_iface: ens4
+    contrail_client_virtual_router_type: tor-service-node
+  opencontrail:
+    compute:
+      enabled: true
+      tor:
+        enabled: true
+        bind:
+          port: 8086
+        agent:
+          tor01:
+            id: 0
+            port: 6632 # here we use ptcp and this is default ovsdb port on the switch
+            host: 172.16.10.95 # ip address of bmt node
+            address: ${_param:single_address}
+  linux:
+    network:
+      concat_iface_files:
+      - src: '/etc/network/interfaces.d/50-cloud-init.cfg'
+        dst: '/etc/network/interfaces'
+      bridge: openvswitch
+      interface:
+        dhcp_int:
+          enabled: true
+          name: ${_param:deploy_interface}
+          proto: dhcp
+          type: eth
+          mtu: ${_param:interface_mtu}
+        primary_interface:
+          enabled: true
+          name: ${_param:primary_interface}
+          proto: manual
+          type: eth
+        vhost0:
+          enabled: true
+          type: eth
+          mtu: 1500
+          address: ${_param:single_address}
+          netmask: '255.255.255.0'
+          pre_up_cmds:
+          - /usr/lib/contrail/if-vhost0
