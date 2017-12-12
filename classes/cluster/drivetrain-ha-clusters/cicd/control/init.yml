@@ -1,5 +1,7 @@
 classes:
   - system.linux.system.repo.docker
+  - system.linux.system.repo.glusterfs
+
   # GlusterFS
   - system.glusterfs.server.cluster
   - system.glusterfs.server.volume.aptly
