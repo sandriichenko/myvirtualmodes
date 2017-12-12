@@ -127,7 +127,7 @@ parameters:
     # OpenLDAP
     openldap_organisation: ${_param:cluster_name}
     openldap_dn: 'dc=cicd-lab-dev,dc=local'
-    openldap_domain: ${linux:system:domain}
+    openldap_domain: 'cicd-lab-dev.local'
     openldap_admin_password: password
     openldap_config_password: password
     openldap_readonly_password: password
