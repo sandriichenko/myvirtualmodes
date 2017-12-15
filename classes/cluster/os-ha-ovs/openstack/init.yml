@@ -123,6 +123,7 @@ parameters:
     horizon_identity_host: ${_param:cluster_vip_address}
     horizon_identity_encryption: none
     horizon_identity_version: 2
+    nginx_proxy_openstack_api_proxy_host: ${_param:cluster_vip_address}
   linux:
     network:
       host:
