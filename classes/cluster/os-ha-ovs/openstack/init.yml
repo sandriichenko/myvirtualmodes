@@ -124,6 +124,7 @@ parameters:
     horizon_identity_encryption: none
     horizon_identity_version: 2
     nginx_proxy_openstack_api_proxy_host: ${_param:cluster_vip_address}
+    loopback_device_size: 20
   linux:
     network:
       host:
