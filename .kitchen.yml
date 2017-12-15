@@ -29,7 +29,7 @@ platforms:
             export BOOTSTRAP=1;\n
             export CLUSTER_NAME=<%= cluster %>;\n
             export FORMULAS_SOURCE=pkg;\n
-            export RECLASS_VERSION=develop;\n
+            export RECLASS_VERSION=master;\n
             export RECLASS_IGNORE_CLASS_NOTFOUND=True;\n
             export RECLASS_IGNORE_CLASS_REGEXP='service.*';\n
             export EXTRA_FORMULAS="";\n
