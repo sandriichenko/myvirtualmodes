@@ -1,0 +1,48 @@
+classes:
+- cluster.k8s-compact
+parameters:
+  _param:
+    control_address: ${_param:single_address}
+    kubernetes_internal_api_address: 10.201.0.1
+    kubernetes_internal_dns_address: 10.201.0.10
+    cluster_name: ${_param:infra_config_hostname}.${_param:cluster_domain}
+    kubernetes_control_node01_address: ${_param:single_address}
+    cluster_local_address: ${_param:single_address}
+    master_address: ${_param:single_address}
+
+    etcd_initial_token: IN7KaRMSo3xkGxkjAAPtkRkAgqN4ZNRq
+    node_address: ${_param:single_address}
+    node_hostname: ${_param:infra_config_hostname}
+    node_port: 4001
+
+    calico_private_network: 10.10.0.0
+    calico_private_netmask: 16
+
+    kubernetes_admin_user: admin
+    kubernetes_admin_password: sbPfel23ZigJF3Bm
+    kubernetes_admin_token: PpP6Mm3pAoPVqcKOKUu0x1dh7b1959Fi
+    kubernetes_kubelet_token: JJ2PKHxjiU6EYvIt18BqwdSK1HvWh8pt
+    kubernetes_kube-proxy_token: jT0hJk9L6cIw5UpYDNhsRwcj3Z2n62B6
+    kubernetes_scheduler_token: VgkUHfrW07zNxrb0ucFyX7NBnSJN9Xp6
+    kubernetes_controller-manager_token: uXrdZ1YKF6qlYm3sHje2iEXMGAGDWOIU
+    kubernetes_dns_token: 0S1I4iJeFjq5fopPwwCwTp3xFpEZfeUl
+    kubernetes_docker_package: docker-engine=1.12.6-0~ubuntu-xenial
+    kubernetes_calicoctl_image: docker-dev-virtual.docker.mirantis.net/mirantis/projectcalico/calico/ctl:latest
+    kubernetes_calico_image: docker-dev-virtual.docker.mirantis.net/mirantis/projectcalico/calico/node:latest
+    kubernetes_calico_cni_image: docker-dev-virtual.docker.mirantis.net/mirantis/projectcalico/calico/cni:latest
+    kubernetes_calico_policy_image: calico/kube-policy-controller:v0.5.4
+    kubernetes_hyperkube_image: docker-dev-local.docker.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.8.4-3
+    kubernetes_virtlet_image: mirantis/virtlet:latest
+    kubernetes_netchecker_agent_image: mirantis/k8s-netchecker-agent:stable
+    kubernetes_netchecker_server_image: mirantis/k8s-netchecker-server:stable
+    kubernetes_netchecker_agent_probeurls: "http://ipinfo.io"
+    kubernetes_externaldns_image: mirantis/external-dns:latest
+    kubernetes_externaldns_provider: coredns
+    kubernetes_addon_namespace: kube-system
+    kubernetes_dashboard: false
+    kubernetes_helm_enabled: false
+    kubernetes_netchecker_enabled: false
+    kubernetes_calico_policy_enabled: false
+    kubernetes_virtlet_enabled: true
+    kubernetes_coredns_enabled: false
+    kubernetes_externaldns_enabled: false

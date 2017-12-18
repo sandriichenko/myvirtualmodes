@@ -1,0 +1,22 @@
+classes:
+- system.linux.system.single
+- system.linux.system.repo.ubuntu
+- system.linux.network.hosts
+parameters:
+  _param:
+    primary_interface: ens3
+    infra_config_hostname: kube01
+    cluster_domain: edge
+    linux_system_codename: xenial
+    apt_mk_version: nightly
+  openssh:
+    server:
+      password_auth: true
+      permit_root_login: true
+  linux:
+    system:
+      user:
+        root:
+          enabled: true
+          # r00tme
+          password: $6$9ojWyyN.$26Vj46JtCUL6C7XBQ8RmQTZLwo8/8SkqTRElXh0X2YBLrt7E/aVe2AYQ5gguYUwUknZNOSn5q7M9M3Jyf2gof/

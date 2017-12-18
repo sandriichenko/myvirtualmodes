@@ -1,0 +1,46 @@
+classes:
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.mcp.salt
+- system.salt.master.pkg
+- system.salt.minion.ca.salt_master
+- system.salt.master.api
+- system.reclass.storage.salt
+- cluster.k8s-compact
+parameters:
+  _param:
+    salt_master_base_environment: prd
+    salt_api_password_hash: "$6$WV0P1shnoDh2gI/Z$22/Bcd7ffMv0jDlFpT63cAU4PiXHz9pjXwngToKwqAsgoeK4HNR3PiKaushjxp3JsQ8hNoJmAC6TxzVqfV8WH/"
+    salt_master_host: ${_param:single_address}
+    salt_master_environment_revision: master
+    salt_master_environment_repository: 'https://github.com/salt-formulas'
+    salt_minion_ca_host: ${_param:infra_config_hostname}.${_param:cluster_domain}
+    salt_minion_ca_authority: salt_master_ca
+    reclass_data_repository: "https://gerrit.mcp.mirantis.net/salt-models/mcp-virtual-lab"
+    reclass_data_revision: master
+    reclass_config_master: ${_param:single_address}
+  linux:
+    network:
+      host:
+        kube01:
+          address: ${_param:single_address}
+          names:
+          - ${_param:infra_config_hostname}
+          - ${_param:infra_config_hostname}.${_param:cluster_domain}
+    system:
+      name: ${_param:infra_config_hostname}
+      domain: ${_param:cluster_domain}
+  salt:
+    master:
+      worker_threads: 3
+  reclass:
+    storage:
+      class_mapping:
+        common_node:
+          expression: all
+          node_param:
+            single_address:
+              value_template: <<node_control_ip>>
+            linux_system_codename:
+              value_template: <<node_os>>
+            salt_master_host:
+              value_template: <<node_master_ip>>

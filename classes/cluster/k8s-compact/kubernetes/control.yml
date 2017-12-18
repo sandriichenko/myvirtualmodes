@@ -1,0 +1,63 @@
+classes:
+- system.salt.minion.cert.etcd_server_single
+- system.salt.minion.cert.k8s_server_single
+- service.etcd.server.single
+- system.kubernetes.master.single
+- cluster.k8s-compact.kubernetes.compute
+parameters:
+  helm:
+    client:
+      repos:
+        mirantisworkloads: https://mirantisworkloads.storage.googleapis.com/
+  etcd:
+    server:
+      bind:
+        host: ${_param:single_address}
+      source:
+        engine: docker_hybrid
+      ssl:
+        enabled: true
+      setup:
+        calico:
+           key: /calico/v1/ipam/v4/pool/${_param:calico_private_network}-${_param:calico_private_netmask}
+           value: '{"masquerade":true,"cidr":"${_param:calico_private_network}/${_param:calico_private_netmask}"}'
+  kubernetes:
+    common:
+      addons:
+        dns:
+          server: ${_param:kubernetes_internal_dns_address}
+        dashboard:
+          enabled: ${_param:kubernetes_dashboard}
+        helm:
+          enabled: ${_param:kubernetes_helm_enabled}
+        calico_policy:
+          enabled: ${_param:kubernetes_calico_policy_enabled}
+          image: ${_param:kubernetes_calico_policy_image}
+        netchecker:
+          enabled: ${_param:kubernetes_netchecker_enabled}
+          agent_image: ${_param:kubernetes_netchecker_agent_image}
+          server_image: ${_param:kubernetes_netchecker_server_image}
+          agent_probeurls: ${_param:kubernetes_netchecker_agent_probeurls}
+        coredns:
+          enabled: ${_param:kubernetes_coredns_enabled}
+        externaldns:
+          enabled: ${_param:kubernetes_externaldns_enabled}
+          image: ${_param:kubernetes_externaldns_image}
+          provider: ${_param:kubernetes_externaldns_provider}
+    master:
+      service_addresses: 10.201.0.0/16
+      addons:
+        dns:
+          server: ${_param:kubernetes_internal_dns_address}
+      kubelet:
+        address: ${_param:single_address}
+      etcd:
+        ssl:
+          enabled: true
+      network:
+        etcd:
+          ssl:
+            enabled: true
+      namespace:
+        netchecker:
+          enabled: true
