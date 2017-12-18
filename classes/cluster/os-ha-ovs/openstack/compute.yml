@@ -15,6 +15,7 @@ parameters:
     linux_system_codename: xenial
   nova:
     compute:
+      cpu_mode: none
       vncproxy_url: http://${_param:cluster_vip_address}:6080
       notification:
         driver: messagingv2
