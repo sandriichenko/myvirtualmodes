@@ -26,7 +26,7 @@ parameters:
     kubernetes_calico_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/node:latest
     kubernetes_calico_cni_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/cni:latest
     kubernetes_calico_policy_image: calico/kube-policy-controller:v0.5.4
-    kubernetes_hyperkube_image: docker-prod-virtual.docker.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.8.4-3
+    kubernetes_hyperkube_image: docker-prod-virtual.docker.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.8.5-4
     kubernetes_netchecker_agent_image: mirantis/k8s-netchecker-agent:v1.1.0
     kubernetes_netchecker_server_image: mirantis/k8s-netchecker-server:v1.1.0
     kubernetes_netchecker_agent_probeurls: "http://ipinfo.io"
