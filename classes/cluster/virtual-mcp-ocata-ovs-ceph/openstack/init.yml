@@ -2,7 +2,6 @@ parameters:
   _param:
     openstack_version: ocata
     apt_mk_version: nightly
-    mcp_repo_version: 1.1
     openstack_region: RegionOne
     admin_email: root@localhost
     cluster_public_protocol: http

@@ -1,8 +1,8 @@
 classes:
-- system.linux.system.repo.ubuntu
-- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.mcp.apt_mirantis.ubuntu
+- system.linux.system.repo.mcp.apt_mirantis.openstack
 - system.linux.system.repo.mcp.extra
-- system.linux.system.repo.saltstack.xenial
+- system.linux.system.repo.mcp.apt_mirantis.saltstack_2016_3
 - system.horizon.server.single
 - cluster.virtual-mcp-ocata-ovs
 parameters:

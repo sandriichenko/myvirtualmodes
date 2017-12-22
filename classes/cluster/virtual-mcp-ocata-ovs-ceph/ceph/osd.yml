@@ -1,6 +1,6 @@
 classes:
 - service.ceph.osd.cluster
-- system.linux.system.repo.ceph
+- system.linux.system.repo.mcp.apt_mirantis.ceph
 - cluster.virtual-mcp-ocata-ovs-ceph
 parameters:
   linux:
