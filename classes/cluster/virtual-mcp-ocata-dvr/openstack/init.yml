@@ -51,6 +51,7 @@ parameters:
     powerdns_overwrite_supermasters: True
     powerdns_webserver_password: gJ6n3gVaYP8eS
     powerdns_webserver_port: 8081
+    designate_admin_api_enabled: true
     designate_domain_id: 5186883b-91fb-4891-bd49-e6769234a8fc
     designate_mdns_address: 0.0.0.0
     designate_mdns_port: 53
