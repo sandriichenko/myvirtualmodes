@@ -88,7 +88,7 @@ parameters:
     mongodb_shared_key: eoTh1AwahlahqueingeejooLughah4tei9feing0eeVaephooDi2li1TaeV1ooth
     ceilometer_influxdb_password: lmapass
     # Ceph
-    cinder_storage_secret_uuid: "6e84ffc6-512f-4c0f-b2b7-df67cce14bb6"
+    cinder_storage_secret_uuid: "7e84ffc6-512f-4c0f-b2b7-df67cce14bb7"
     nova_storage_secret_uuid: "6e84ffc6-512f-4c0f-b2b7-df67cce14bb6"
     nova_storage_pool: vms
     nova_storage_user: nova
