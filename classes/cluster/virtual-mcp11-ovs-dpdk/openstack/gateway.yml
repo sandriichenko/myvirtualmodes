@@ -23,6 +23,7 @@ parameters:
           mtu: ${_param:interface_mtu}
         primary_interface:
           enabled: true
+          ipflush_onchange: true
           name: ${_param:primary_interface}
           mtu: ${_param:interface_mtu}
           proto: manual
@@ -35,6 +36,7 @@ parameters:
         #   type: eth
         external_interface:
           enabled: true
+          ipflush_onchange: true
           name: ${_param:external_interface}
           mtu: ${_param:interface_mtu}
           proto: manual
