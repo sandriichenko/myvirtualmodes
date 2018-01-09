@@ -3,8 +3,6 @@ classes:
 - system.linux.system.single
 - cluster.os-ha-ovs.infra
 - cluster.os-ha-ovs.openstack
-- cluster.os-ha-ovs.messaging
-- cluster.os-ha-ovs.database
 - system.openssh.server.team.lab
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.mcp_qa

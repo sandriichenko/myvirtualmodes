@@ -5,6 +5,7 @@ classes:
 - system.linux.network.hosts
 - system.nova.compute.cluster
 - system.neutron.compute.cluster
+- cluster.os-ha-ovs.messaging.compute
 - cluster.os-ha-ovs
 parameters:
   _param:

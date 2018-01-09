@@ -34,6 +34,8 @@ classes:
 - system.galera.server.database.keystone
 - system.galera.server.database.nova
 - system.haproxy.proxy.listen.openstack.nova-placement
+- cluster.os-ha-ovs.messaging.controller
+- cluster.os-ha-ovs.database.controller
 - cluster.os-ha-ovs.openstack.dashboard
 - cluster.os-ha-ovs
 parameters:

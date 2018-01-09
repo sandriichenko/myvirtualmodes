@@ -3,6 +3,7 @@ classes:
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.xenial
 - system.neutron.gateway.cluster
+- cluster.os-ha-ovs.messaging.gateway
 - cluster.os-ha-ovs
 parameters:
   _param:
