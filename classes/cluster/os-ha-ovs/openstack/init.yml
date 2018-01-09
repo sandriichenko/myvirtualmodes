@@ -169,5 +169,3 @@ parameters:
           names:
           - ${_param:openstack_gateway_hostname}
           - ${_param:openstack_gateway_hostname}.${_param:cluster_domain}
-  ssl:
-    enabled: true
