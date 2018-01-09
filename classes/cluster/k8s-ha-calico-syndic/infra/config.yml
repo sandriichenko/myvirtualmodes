@@ -25,6 +25,7 @@ parameters:
       master:
         host: ${_param:salt_syndic_master_address}
     master:
+      worker_threads: 40
       reactor:
         reclass/minion/classify:
         - salt://reclass/reactor/node_register.sls
@@ -43,7 +44,7 @@ parameters:
         infra_config:
           expression:
           - <<node_hostname>>__startswith__cfg
-          - <<node_cluster>>__equals__k8s_ha_calico_syndic
+          - <<node_cluster>>__equals__k8s-ha-calico-syndic
           cluster_param:
             infra_config_address:
               value_template: <<node_control_ip>>
@@ -54,28 +55,28 @@ parameters:
         kubernetes_control01:
           expression:
           - <<node_hostname>>__equals__ctl01
-          - <<node_cluster>>__equals__k8s_ha_calico_syndic
+          - <<node_cluster>>__equals__k8s-ha-calico-syndic
           cluster_param:
             kubernetes_control_node01_address:
               value_template: <<node_control_ip>>
         kubernetes_control02:
           expression:
           - <<node_hostname>>__equals__ctl02
-          - <<node_cluster>>__equals__k8s_ha_calico_syndic
+          - <<node_cluster>>__equals__k8s-ha-calico-syndic
           cluster_param:
             kubernetes_control_node02_address:
               value_template: <<node_control_ip>>
         kubernetes_control03:
           expression:
           - <<node_hostname>>__equals__ctl03
-          - <<node_cluster>>__equals__k8s_ha_calico_syndic
+          - <<node_cluster>>__equals__k8s-ha-calico-syndic
           cluster_param:
             kubernetes_control_node03_address:
               value_template: <<node_control_ip>>
         kubernetes_compute:
           expression:
           - <<node_hostname>>__startswith__cmp
-          - <<node_cluster>>__equals__k8s_ha_calico_syndic
+          - <<node_cluster>>__equals__k8s-ha-calico-syndic
           node_class:
             value_template:
               - cluster.<<node_cluster>>.kubernetes.compute
