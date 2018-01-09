@@ -2,8 +2,8 @@ classes:
 - system.docker.host
 - system.linux.system.repo.influxdb
 - system.linux.system.repo.mcp.salt
-- system.linux.system.repo.elasticsearch
-- system.linux.system.repo.kibana
+- system.linux.system.repo.mcp.apt_mirantis.elastic
+- system.linux.system.repo.mcp.apt_mirantis.kibana
 - system.linux.system.repo.docker
 - system.heka.remote_collector.container
 - system.heka.remote_collector.input.amqp
