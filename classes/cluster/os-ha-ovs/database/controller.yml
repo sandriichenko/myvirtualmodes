@@ -1,0 +1,44 @@
+classes:
+- system.salt.minion.cert.mysql.server
+- service.galera.ssl
+
+parameters:
+  heat:
+    server:
+      database:
+        ssl:
+          enabled: True
+  designate:
+    server:
+      database:
+        ssl:
+          enabled: True
+  glance:
+    server:
+      database:
+        ssl:
+          enabled: True
+  neutron:
+    server:
+      database:
+        ssl:
+          enabled: True
+  nova:
+    controller:
+      database:
+        ssl:
+          enabled: True
+  cinder:
+    controller:
+      database:
+        ssl:
+          enabled: True
+    volume:
+      database:
+        ssl:
+          enabled: True
+  keystone:
+    server:
+      database:
+        ssl:
+          enabled: True
