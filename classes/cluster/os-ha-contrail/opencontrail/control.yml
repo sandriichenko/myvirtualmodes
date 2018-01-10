@@ -66,3 +66,13 @@ parameters:
         engine: rabbitmq
         host: ${_param:openstack_control_address}
         port: 5672
+    client:
+      virtual_networks:
+          network01:
+            name: 'floating-ips'
+            ip_prefix: '172.16.111.0'
+            ip_prefix_len: 24
+            asn: 64512
+            route_target: 10000
+            external: True
+            rpf: 'disable'
