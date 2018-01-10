@@ -1,7 +1,7 @@
 classes:
 - system.docker.host
-- system.linux.system.repo.elasticsearch
-- system.linux.system.repo.kibana
+- system.linux.system.repo.mcp.apt_mirantis.elastic
+- system.linux.system.repo.mcp.apt_mirantis.kibana
 - system.linux.system.repo.docker
 # Needed to install Galera packages
 - system.linux.system.repo.mcp.openstack
