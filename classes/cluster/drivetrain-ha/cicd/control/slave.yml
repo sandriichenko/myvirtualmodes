@@ -1,3 +1,4 @@
 classes:
   - system.docker.swarm.manager
   - cluster.drivetrain-ha
+  - cluster.drivetrain-ha.cicd.control

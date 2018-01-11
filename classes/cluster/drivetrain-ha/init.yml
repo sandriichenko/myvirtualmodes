@@ -6,5 +6,5 @@ classes:
   - system.linux.system.motd.dynamic
   - system.openssh.server.team.all
   - cluster.drivetrain-ha.infra
-  - cluster.drivetrain-ha.cicd.control
+  - cluster.drivetrain-ha.cicd
   - cluster.overrides
