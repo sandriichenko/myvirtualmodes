@@ -22,7 +22,7 @@ parameters:
     openstack_message_queue_node02_address: ${_param:openstack_control_node02_address}
     openstack_message_queue_node03_address: ${_param:openstack_control_node03_address}
 
-    openstack_version: ocata
+    openstack_version: pike
     apt_mk_version: nightly
     mcp_repo_version: 1.1
     openstack_region: RegionOne
