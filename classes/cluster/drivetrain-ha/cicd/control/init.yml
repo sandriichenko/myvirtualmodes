@@ -92,8 +92,6 @@ classes:
 
   # Rundeck
   - system.rundeck.client.runbook
-
-  - cluster.drivetrain-ha.cicd
 parameters:
   _param:
     cluster_name: drivetrain-ha
