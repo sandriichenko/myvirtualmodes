@@ -76,3 +76,5 @@ parameters:
             route_target: 10000
             external: True
             rpf: 'disable'
+            domain: 'default-domain'
+            project: 'default-project'

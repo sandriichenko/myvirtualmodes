@@ -1,5 +1,6 @@
 classes:
 - service.git.client
+- service.opencontrail.test.single
 - system.linux.system.single
 - system.linux.system.repo.mcp.salt
 - system.linux.system.repo.mcp.openstack
