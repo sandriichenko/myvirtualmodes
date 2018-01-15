@@ -6,6 +6,8 @@ classes:
 - system.openssh.server.team.all
 - system.rsyslog.client.single
 parameters:
+  _jenkins:
+    tests_enabled: false
   _param:
     # infra service addresses
     infra_config_hostname: cfg01

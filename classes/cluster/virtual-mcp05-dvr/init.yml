@@ -10,6 +10,8 @@ classes:
 - cluster.virtual-mcp05-dvr.stacklight
 - cluster.virtual-mcp05-dvr.stacklight.client
 parameters:
+  _jenkins:
+    tests_enabled: false
   _param:
     cluster_domain: virtual-mcp05-dvr.local
     cluster_name: virtual-mcp05-dvr

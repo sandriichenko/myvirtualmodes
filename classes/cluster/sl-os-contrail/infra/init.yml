@@ -1,4 +1,6 @@
 parameters:
+  _jenkins:
+    tests_enabled: false
   _param:
     cluster_domain: sl-os-contrail.local
     cluster_name: sl-os-contrail

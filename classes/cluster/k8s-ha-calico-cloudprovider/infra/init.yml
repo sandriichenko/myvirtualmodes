@@ -5,6 +5,8 @@ classes:
 - system.linux.system.repo.ubuntu
 - system.openssh.server.team.all
 parameters:
+  _jenkins:
+    tests_enabled: false
   _param:
     # infra service addresses
     infra_config_hostname: cfg01
