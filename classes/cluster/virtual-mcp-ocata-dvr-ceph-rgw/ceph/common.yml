@@ -1,6 +1,6 @@
 classes:
 - system.linux.system.repo.mcp.apt_mirantis.ceph
-- cluster.virtual-mcp-ocata-ovs-ceph
+- cluster.virtual-mcp-ocata-dvr-ceph-rgw
 parameters:
   ceph:
     common:
@@ -21,4 +21,4 @@ parameters:
           name: ${_param:nova_storage_user}
           caps:
             mon: "allow r"
-            osd: "allow class-read object_prefix rbd_children, allow rwx pool=vms, allow rwx pool=images, allow rwx pool=volumes"
+            osd: "allow class-read object_prefix rbd_children, allow rwx pool=vms, allow rx pool=images, allow rwx pool=volumes"
