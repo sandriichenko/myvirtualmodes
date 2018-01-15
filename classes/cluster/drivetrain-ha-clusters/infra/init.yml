@@ -1,4 +1,6 @@
 parameters:
+  _jenkins:
+    tests_enabled: false
   _param:
     cluster_domain: drivetrain-ha-clusters.local
     cluster_name: drivetrain-ha-clusters
