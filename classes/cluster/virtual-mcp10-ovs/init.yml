@@ -10,6 +10,8 @@ classes:
 - cluster.virtual-mcp10-ovs.stacklight.client
 
 parameters:
+  _jenkins:
+    tests_enabled: false
   _param:
     cluster_domain: virtual-mcp10-ovs.local
     cluster_name: virtual-mcp10-ovs

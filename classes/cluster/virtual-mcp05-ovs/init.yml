@@ -10,6 +10,8 @@ classes:
 - system.openssh.server.team.mcp_qa
 
 parameters:
+  _jenkins:
+    tests_enabled: false
   _param:
     cluster_domain: virtual-mcp05-ovs.local
     cluster_name: virtual-mcp05-ovs

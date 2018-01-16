@@ -9,6 +9,8 @@ classes:
 - system.prometheus.collector
 - service.grafana.collector
 parameters:
+  _jenkins:
+    tests_enabled: false
   _param:
     # infra service addresses
     infra_config_hostname: cfg01

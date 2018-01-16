@@ -11,6 +11,8 @@ classes:
 - cluster.virtual-mcp11-contrail-nfv.stacklight
 - cluster.virtual-mcp11-contrail-nfv.stacklight.client
 parameters:
+  _jenkins:
+    tests_enabled: false
   _param:
     cluster_domain: virtual-mcp11-contrail-nfv.local
     cluster_name: virtual-mcp11-contrail-nfv
